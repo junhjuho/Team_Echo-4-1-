@@ -8,8 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public InputActionAsset inputActionAsset;
-
+    [SerializeField] protected InputActionAsset inputActionAsset;
     [SerializeField] protected ActionBasedContinuousMoveProvider moveProvider;
     [SerializeField] protected Animator animator;
     [SerializeField] protected PhotonView pv;
@@ -32,29 +31,3 @@ public class PlayerMovement : MonoBehaviour
         dir = new Vector2(_movePosition.x, _movePosition.y).normalized;
     }
 }
-    //public bool isGround;
-    //public InputActionReference jump;
-    //public Rigidbody rb;
-    //public bool isJump;
-    //float jumpPower = 2f;    
-
-    //public virtual void Jump() // 점프
-    //{
-    //    if (pv.IsMine)
-    //    {
-    //        isJump = inputActionAsset.actionMaps[4].actions[12].IsPressed(); // 점프 입력 이벤트
-
-    //        if (isJump && isGround)
-    //        {
-    //            Debug.Log(rb.velocity.y);
-    //            rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-    //            Debug.Log("점프");
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("착지");
-    //        }
-    //    }
-    //    else
-    //        return;
-    //}
