@@ -30,6 +30,7 @@ namespace SeongMin
                 int[] _intArray = GameManager.Instance.inGameMapManager.inGameRunnerItemNumberArray;
                 photonView.RPC("MissionSend", PhotonNetwork.PlayerList[i], _minValue, _maxValue, _intArray);
             }
+            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Get_Mission);
         }
         [PunRPC]
         public void MissionSend(int _minValue, int _maxValue, int[] _intArray)
@@ -42,6 +43,7 @@ namespace SeongMin
                     GameManager.Instance.inGameMapManager.inGameRunnerItemList[_intArray[i]];
                 j++;
             }
+
             // 복수자이면 복수자 미션 주기
             if (GameDB.Instance.playerMission.isChaser == true)
             {
