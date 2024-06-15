@@ -1,3 +1,4 @@
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,17 +22,29 @@ namespace NHR
 
         private void Start()
         {
-            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_GameResult, new EventHandler((type) =>
+            //게임이 끝나고 돌아왔다면
+            if (GameDB.Instance.hasGameData)
             {
                 Debug.Log("game result");
-                this.uiGameResult.gameObject.SetActive(true);
-            }));
+                this.ShowGameResult();
+                GameDB.Instance.hasGameData = false;
+            }
+
             this.uiGameResult.buttonStay.onClick.AddListener(() => this.uiGameResult.gameObject.SetActive(false));
             this.uiGameResult.buttonTitle.onClick.AddListener(() =>
             {
                 //타이틀로 돌아가기
                 EventDispatcher.instance.SendEvent<App.eSceneType>((int)NHR.EventType.eEventType.Change_Scene, App.eSceneType.Title);
             });
+        }
+
+        private void ShowGameResult()
+        {
+            this.uiGameResult.gameObject.SetActive(true);
+
+            var text = this.uiGameResult.textResult.text;
+            if (GameDB.Instance.isWin) text = DataManager.Instance.GetEventDialog("gameWin");
+            else text = DataManager.Instance.GetEventDialog("gameLose");
         }
     }
 
