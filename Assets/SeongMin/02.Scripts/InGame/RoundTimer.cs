@@ -34,6 +34,10 @@ namespace SeongMin
             GameManager.Instance.inGameSceneManager.Lose();
             yield break;
         }
+        public void MonsterTimerStart()
+        {
+            StartCoroutine(this.MonsterTimer());
+        }
         private IEnumerator MonsterTimer()
         {
             float _monsterTimer = this.monsterTimer;

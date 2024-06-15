@@ -99,27 +99,31 @@ namespace NHR
             //공격받음 1, 2, 3단계
             EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
             {
-                Debug.Log("<color=red>공격 받음</color>");
-
-                //UI열기
-                this.uiAttacked.OpenUI(heart);
-
-                //목숨 줄어드는 UI
-                this.uiAttacked.hearts[3 - heart].imageDeath.SetActive(true);
-
-                //기절 혹은 죽음 UI text
-                if (heart != 1)
+                //복수자가 아니면
+                if (!GameDB.Instance.playerMission.isChaser)
                 {
-                    this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("attacked");
-                    //부활
-                    this.ReviveUI();
+                    Debug.Log("<color=red>공격 받음</color>");
+
+                    //UI열기
+                    this.uiAttacked.OpenUI(heart);
+
+                    //목숨 줄어드는 UI
+                    this.uiAttacked.hearts[3 - heart].imageDeath.SetActive(true);
+
+                    //기절 혹은 죽음 UI text
+                    if (heart != 1)
+                    {
+                        this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("attacked");
+                        //부활
+                        this.ReviveUI();
+                    }
+                    else
+                    {
+                        this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("death");
+                        Invoke("PopWatching", 2f);
+                    }
+                    this.uiAttacked.Close();
                 }
-                else
-                {
-                    this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("death");
-                    Invoke("PopWatching", 2f);
-                }
-                this.uiAttacked.Close();
             }));
 
             //부활
