@@ -31,7 +31,10 @@ namespace NHR
         public ICharacterObserver observer;
 
         //캐릭터 슬롯들
-        public UICharacterSlot[] slots;
+        //public UICharacterSlot[] slots;
+        //임시 only Jake
+        public UICharacterSlot slot;
+
         //옷 컬러 슬롯들
         public UIClothesColor[] colors;
 
@@ -53,26 +56,42 @@ namespace NHR
         private void Init()
         {
             //캐릭터 슬롯들 받아오기
-            this.slots = this.GetComponentsInChildren<UICharacterSlot>();
-            //캐릭터 슬롯들
-            for (int i = 0; i < this.slots.Length; i++)
-            {
-                this.slots[i].Init();
-                //캐릭터 번호
-                this.slots[i].characterNum = i;
-                //캐릭터 이름 받아오기
-                Debug.Log($"id : {1000 + i}");
+            //this.slots = this.GetComponentsInChildren<UICharacterSlot>();
 
-                var data = DataManager.Instance.GetCharacterData(1000 + i);
-                this.slots[i].textCharacterName.text = data.name;
-                this.slots[i].imageCharacter.sprite = Resources.Load<Sprite>(data.texturePath);
-            }
+            //임시 only Jake
+            this.OnlyJake();
+
+            //캐릭터 슬롯들
+            //for (int i = 0; i < this.slots.Length; i++)
+            //{
+            //    this.slots[i].Init();
+            //    //캐릭터 번호
+            //    this.slots[i].characterNum = i;
+            //    //캐릭터 이름 받아오기
+            //    Debug.Log($"id : {1000 + i}");
+
+            //    var data = DataManager.Instance.GetCharacterData(1000 + i);
+            //    this.slots[i].textCharacterName.text = data.name;
+            //    this.slots[i].imageCharacter.sprite = Resources.Load<Sprite>(data.texturePath);
+            //}
             //옷 컬러들
             for (int i = 0; i < this.colors.Length; i++) this.colors[i].index = i;
 
             //인포에 저장된 캐릭터 불러오기
-            this.selectedCharacter = this.slots[InfoManager.Instance.PlayerInfo.nowCharacterId];
+            this.selectedCharacter = this.slot;
             this.selectedClothesColor = this.colors[InfoManager.Instance.PlayerInfo.nowCharacterId];
+        }
+
+        //임시
+        private void OnlyJake()
+        {
+            this.slot = this.GetComponentInChildren<UICharacterSlot>();
+            this.slot.Init();
+            this.slot.characterNum = 1;
+
+            var data = DataManager.Instance.GetCharacterData(1001);
+            this.slot.textCharacterName.text = data.name;
+            this.slot.imageCharacter.sprite = Resources.Load<Sprite>(data.texturePath);
         }
         private void Start()
         {
@@ -83,10 +102,13 @@ namespace NHR
             this.selectedClothesColor.selectedGo.SetActive(true);
 
             //버튼들 관리, 클릭 시 OnBtnClick 함수 호출
-            foreach (UICharacterSlot slot in this.slots)
-            {
-                slot.buttonCharacterSlot.onClick.AddListener(() => OnBtnClick(slot));
-            }
+            //foreach (UICharacterSlot slot in this.slots)
+            //{
+            //    slot.buttonCharacterSlot.onClick.AddListener(() => OnBtnClick(slot));
+            //}
+            //임시
+            this.slot.buttonCharacterSlot.onClick.AddListener(() => this.OnBtnClick(slot));
+
             foreach(UIClothesColor color in this.colors)
             {
                 color.btnColor.onClick.AddListener(() => OnBtnColorClick(color));
@@ -100,13 +122,13 @@ namespace NHR
             Debug.LogFormat("{0} clicked", slot);
             //이전 선택된 캐릭터 컬러 회색으로, 새로 선택한 캐릭터 컬러 흰색으로
             //이전 선택한 것과 같지 않다면
-            if (this.selectedCharacter != slot)
-            {
-                this.selectedCharacter.OnUnselected();
-                this.selectedCharacter = slot;
-                this.selectedCharacter.OnSelected();
-                this.UpdateObservers();
-            }
+            //if (this.selectedCharacter != slot)
+            //{
+            //    this.selectedCharacter.OnUnselected();
+            //    this.selectedCharacter = slot;
+            //    this.selectedCharacter.OnSelected();
+            //    this.UpdateObservers();
+            //}
         }
         private void OnBtnColorClick(UIClothesColor color)
         {
