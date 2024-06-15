@@ -6327,6 +6327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 191091659548221089, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_ActionAssets.Array.data[0]
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 576966162996363614, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6395,6 +6399,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 4741097949890476707, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_RightHandTurnAction.m_Reference
+      value: 
+      objectReference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 5724472107840532107, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6427,6 +6435,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 7380956148031961784, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_LeftHandMoveAction.m_Reference
+      value: 
+      objectReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 8635100798198523371, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

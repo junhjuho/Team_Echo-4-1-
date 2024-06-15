@@ -72,6 +72,7 @@ namespace SeongMin
                 // 3라운드에서 엔딩으로
                 case Round.Three:
                     // TODO 결과 UI나 Scene 띄우기 
+                    GameDB.Instance.hasGameData = true;
                     // 로비로 이동하기
                     EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Lobby);
                     break;

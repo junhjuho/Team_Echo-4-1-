@@ -1232,7 +1232,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Kneeling",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "5d916473-d45e-47db-8e03-6845a5f2b36f",
                     "expectedControlType": "Button",
@@ -1498,7 +1498,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Kneeling",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

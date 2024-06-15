@@ -36,6 +36,20 @@ namespace SeongMin
                 chaserMissionArray = new GameObject[GameManager.Instance.missionManager.chaserMissionCount];
             }
         }
+        private void Start()
+        {
+            //괴물 변신
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
+            {
+                //복수자 배정된 경우에만 괴물 변신
+                if(this.isChaser)
+                {
+                    Debug.Log("<color=red>괴물 변신 완료</color>");
+                    //괴물 On 모델
+                }
+                GameManager.Instance.roundTimer.MonsterTimerStart();
+            }));
+        }
         public bool MissionCheck(GameObject _item, GameObject[] _array)
         {
             bool _value = false;
