@@ -2,7 +2,6 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -33,27 +32,27 @@ public class PlayerSyncController : MonoBehaviour
     {
         pv = this.GetComponent<PhotonView>();
 
-        if (pv.IsMine)
+        ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
+        if(pv.IsMine)
         {
-            ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
+            XROrigin origin = FindObjectOfType<XROrigin>();
+            headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
+            leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
+            rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
+            riggingManager = this.GetComponentInChildren<RiggingManager>();
+
+            if (this.transform.GetComponentInChildren<HumanMovement>() != null)
+            {
+                humanMovement = this.GetComponentInChildren<HumanMovement>();
+            }
+            else
+            {
+                monsterMovement = this.GetComponentInChildren<MonsterMovement>();
+            }
+            lefttHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(0).GetChild(1);
+            rightHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(1).GetChild(1);
         }
 
-        XROrigin origin = FindObjectOfType<XROrigin>();
-        headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
-        leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
-        rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
-        riggingManager = this.GetComponentInChildren<RiggingManager>();
-        
-        if(this.transform.GetComponentInChildren<HumanMovement>() != null)
-        {
-            humanMovement = this.GetComponentInChildren<HumanMovement>();
-        }
-        else
-        {
-            monsterMovement = this.GetComponentInChildren<MonsterMovement>();
-        }
-        lefttHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(0).GetChild(1);
-        rightHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(1).GetChild(1);
         //if (this.transform.name == "Player")
         //{
         //    riggingManager = GameObject.Find("Banana Man").GetComponent<RiggingManager>();
@@ -72,14 +71,17 @@ public class PlayerSyncController : MonoBehaviour
         {
             if (headRig.transform.position.y > riggingManager.modelHeight)
             {
-                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight, headRig.transform.position.z);
-                //Debug.Log(headRig.transform.position);
-                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight, head.transform.position.z);
+                float floor = headRig.transform.position.y > 5f ? 5.3f : 0f;
+
+                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight + floor, headRig.transform.position.z);
+                //Debug.Log(headRig.transform.position); 
+                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight + floor, head.transform.position.z);
             }
 
             if (humanMovement != null && humanMovement.isKneeling)
             {
                 headRig.transform.position = new Vector3(headRig.transform.position.x, 1f, headRig.transform.position.z);
+                              
                 leftHandRig.transform.position = new Vector3(leftHandRig.transform.position.x, leftHandRig.transform.position.y - 0.67f, leftHandRig.transform.position.z);
                 leftHand.transform.position = new Vector3(leftHand.transform.position.x, leftHand.transform.position.y - 0.67f, leftHand.transform.position.z);
                 rightHandRig.transform.position = new Vector3(rightHandRig.transform.position.x, rightHandRig.transform.position.y - 0.67f, rightHandRig.transform.position.z);
@@ -104,12 +106,15 @@ public class PlayerSyncController : MonoBehaviour
     {
         obj.layer = layer;
 
-        foreach(Transform child in obj.transform)
+        if(pv.IsMine)
         {
-            if (child.gameObject.name == "Hand_Left" || child.gameObject.name == "Hand_Right")
-                continue;
-            else
-                ChangeLayer(child.gameObject, layer);
+            foreach(Transform child in obj.transform)
+            {
+                if (child.gameObject.name == "Hand_Left" || child.gameObject.name == "Hand_Right")
+                    ChangeLayer(child.gameObject, 0);
+                else
+                    ChangeLayer(child.gameObject, layer);
+            }
         }
     }
 }

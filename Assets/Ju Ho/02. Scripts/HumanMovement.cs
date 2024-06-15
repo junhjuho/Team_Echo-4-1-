@@ -19,7 +19,6 @@ public class HumanMovement : PlayerMovement
     {
         PlayerMove();
         FingerMove(animator);
-        Kneeling();
     }
     public override void PlayerMove() // 걷기와 달리기 
     {
@@ -36,15 +35,6 @@ public class HumanMovement : PlayerMovement
         else
             return;
     }
-
-    void Kneeling()
-    {
-        isKneeling = inputActionAsset.actionMaps[4].actions[12].IsPressed();
-        bool _KneelingAnim = isKneeling ? true : false;
-
-        animator.SetBool("isKneel", _KneelingAnim);
-    }
-
 
     public void FingerMove(Animator animator) // 손가락 움직임
     {
