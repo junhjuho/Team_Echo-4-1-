@@ -2,7 +2,6 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -33,10 +32,7 @@ public class PlayerSyncController : MonoBehaviour
     {
         pv = this.GetComponent<PhotonView>();
 
-        if (pv.IsMine)
-        {
-            ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
-        }
+        ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
 
         XROrigin origin = FindObjectOfType<XROrigin>();
         headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
@@ -104,12 +100,15 @@ public class PlayerSyncController : MonoBehaviour
     {
         obj.layer = layer;
 
-        foreach(Transform child in obj.transform)
+        if(pv.IsMine)
         {
-            if (child.gameObject.name == "Hand_Left" || child.gameObject.name == "Hand_Right")
-                continue;
-            else
-                ChangeLayer(child.gameObject, layer);
+            foreach(Transform child in obj.transform)
+            {
+                if (child.gameObject.name == "Hand_Left" || child.gameObject.name == "Hand_Right")
+                    ChangeLayer(child.gameObject, 0);
+                else
+                    ChangeLayer(child.gameObject, layer);
+            }
         }
     }
 }
