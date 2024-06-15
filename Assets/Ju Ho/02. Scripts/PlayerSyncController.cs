@@ -71,14 +71,17 @@ public class PlayerSyncController : MonoBehaviour
         {
             if (headRig.transform.position.y > riggingManager.modelHeight)
             {
-                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight, headRig.transform.position.z);
-                //Debug.Log(headRig.transform.position);
-                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight, head.transform.position.z);
+                float floor = headRig.transform.position.y > 5f ? 5.3f : 0f;
+
+                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight + floor, headRig.transform.position.z);
+                //Debug.Log(headRig.transform.position); 
+                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight + floor, head.transform.position.z);
             }
 
             if (humanMovement != null && humanMovement.isKneeling)
             {
                 headRig.transform.position = new Vector3(headRig.transform.position.x, 1f, headRig.transform.position.z);
+                              
                 leftHandRig.transform.position = new Vector3(leftHandRig.transform.position.x, leftHandRig.transform.position.y - 0.67f, leftHandRig.transform.position.z);
                 leftHand.transform.position = new Vector3(leftHand.transform.position.x, leftHand.transform.position.y - 0.67f, leftHand.transform.position.z);
                 rightHandRig.transform.position = new Vector3(rightHandRig.transform.position.x, rightHandRig.transform.position.y - 0.67f, rightHandRig.transform.position.z);
