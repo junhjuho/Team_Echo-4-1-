@@ -1,3 +1,4 @@
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,16 +9,22 @@ namespace NHR
 {
     public class UIGameEvent : MonoBehaviour
     {
+        [Header("안내 팝업 이벤트")]
         public UINotice uiNotice;
+
+        [Header("역할 배정 이벤트")]
         public UIRole uiRole;
 
         //생존자
+        [Header("생존자 공격 받음 이벤트")]
         public UIAttacked uiAttacked;
 
         //괴물
+        [Header("괴물 변신 중 이벤트")]
         public UIMonsterMode uiMonsterMode;
 
         //관전UI
+        [Header("관전 이벤트")]
         public UIWatching uiWatching;
 
         private GameObject nowPopUI;
@@ -90,7 +97,12 @@ namespace NHR
                 this.uiAttacked.hearts[3 - heart].imageDeath.SetActive(true);
 
                 //기절 혹은 죽음 UI text
-                if (heart != 1) this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("attacked");
+                if (heart != 1)
+                {
+                    this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("attacked");
+                    //부활
+                    this.ReviveUI();
+                }
                 else
                 {
                     this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("death");
@@ -102,19 +114,43 @@ namespace NHR
             //부활
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Respawn, new EventHandler((type) =>
             {
-                Debug.Log("<color=red>부활</color>");
-                //기절 UI 없애기
-                this.uiAttacked.imageDeath.gameObject.SetActive(false);
+                //
             }));
 
             //관전(죽은 후, 승리 후 다른 플레이어 기다림)
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Watching_Game, new EventHandler((type) =>
             {
                 Debug.Log("<color=blue>관전모드</color>");
+                this.uiWatching.gameObject.SetActive(true);
+            }));
 
+            //괴물 변신
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
+            {
+                Debug.Log("<color=red>괴물 변신</color>");
+                if (GameDB.Instance.playerMission.isChaser)
+                {
+                    //괴물 전용 UI 띄우기
+                    this.uiMonsterMode.gameObject.SetActive(true);
+
+                }
+                else
+                {
+                    //괴물 변신 알림
+                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOn");
+                }
             }));
         }
+        /// <summary>
+        /// 부활 UI
+        /// </summary>
+        private void ReviveUI()
+        {
+            Debug.Log("<color=red>부활</color>");
+            //기절 UI 없애기
+            this.uiAttacked.imageDeath.gameObject.SetActive(false);
 
+        }
         private void PopWatching()
         {
             this.uiWatching.gameObject.SetActive(true);
@@ -129,7 +165,7 @@ namespace NHR
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(2f);
-            //this.nowPopUI.gameObject.SetActive(false);
+            this.nowPopUI.gameObject.SetActive(false);
         }
     }
 }
