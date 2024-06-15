@@ -14,7 +14,7 @@ namespace NHR
 
         private void Awake()
         {
-            this.imageMonsterTime = GetComponentInChildren<Image>();
+            //this.imageMonsterTime = GetComponentInChildren<Image>();
         }
         private void Start()
         {
