@@ -33,23 +33,26 @@ public class PlayerSyncController : MonoBehaviour
         pv = this.GetComponent<PhotonView>();
 
         ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
+        if(pv.IsMine)
+        {
+            XROrigin origin = FindObjectOfType<XROrigin>();
+            headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
+            leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
+            rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
+            riggingManager = this.GetComponentInChildren<RiggingManager>();
 
-        XROrigin origin = FindObjectOfType<XROrigin>();
-        headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
-        leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
-        rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
-        riggingManager = this.GetComponentInChildren<RiggingManager>();
-        
-        if(this.transform.GetComponentInChildren<HumanMovement>() != null)
-        {
-            humanMovement = this.GetComponentInChildren<HumanMovement>();
+            if (this.transform.GetComponentInChildren<HumanMovement>() != null)
+            {
+                humanMovement = this.GetComponentInChildren<HumanMovement>();
+            }
+            else
+            {
+                monsterMovement = this.GetComponentInChildren<MonsterMovement>();
+            }
+            lefttHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(0).GetChild(1);
+            rightHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(1).GetChild(1);
         }
-        else
-        {
-            monsterMovement = this.GetComponentInChildren<MonsterMovement>();
-        }
-        lefttHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(0).GetChild(1);
-        rightHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(1).GetChild(1);
+
         //if (this.transform.name == "Player")
         //{
         //    riggingManager = GameObject.Find("Banana Man").GetComponent<RiggingManager>();
