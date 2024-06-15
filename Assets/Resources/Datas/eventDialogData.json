@@ -37,12 +37,12 @@
     {
         "id": 2007,
         "eventType": "attacked",
-        "dialog": "당신은 기절합니다. "
+        "dialog": "기절"
     },
     {
         "id": 2008,
         "eventType": "death",
-        "dialog": "당신은 사망하였습니다. "
+        "dialog": "사망"
     },
     {
         "id": 2009,
@@ -53,5 +53,15 @@
         "id": 2010,
         "eventType": "chaserChangeOff",
         "dialog": "복수자의 변신이 풀렸습니다. "
+    },
+    {
+        "id": 2011,
+        "eventType": "gameWin",
+        "dialog": "승리"
+    },
+    {
+        "id": 2012,
+        "eventType": "gameLose",
+        "dialog": "패배"
     }
 ]

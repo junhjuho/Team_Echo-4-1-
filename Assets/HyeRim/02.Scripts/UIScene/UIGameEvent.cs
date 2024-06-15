@@ -27,6 +27,14 @@ namespace NHR
         [Header("관전 이벤트")]
         public UIWatching uiWatching;
 
+        //Timer UI
+        [Header("Round Timer")]
+        public UITimer uiTimer;
+
+        //게임 현황
+        [Header("현재 플레이어들 현황")]
+        public UINowPlayers uiNowPlayers;
+
         private GameObject nowPopUI;
 
         private void Awake()
@@ -39,6 +47,8 @@ namespace NHR
             this.uiAttacked = FindObjectOfType<UIAttacked>();
             this.uiMonsterMode = FindObjectOfType<UIMonsterMode>();
             this.uiWatching = FindObjectOfType<UIWatching>();
+            this.uiTimer = FindObjectOfType<UITimer>();
+            this.uiNowPlayers = FindObjectOfType<UINowPlayers>();
 
             this.Init();
         }
@@ -60,6 +70,7 @@ namespace NHR
             //이벤트 string 전달
             EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_EventUI, new EventHandler<string>((type, str) =>
             {
+                if (str == "chaserChangeOff") this.uiMonsterMode.gameObject.SetActive(false);
                 this.uiNotice.Init();
                 Debug.Log("<color=yellow>notice</color>");
                 var dialog = DataManager.Instance.GetEventDialog(str);
@@ -132,7 +143,6 @@ namespace NHR
                 {
                     //괴물 전용 UI 띄우기
                     this.uiMonsterMode.gameObject.SetActive(true);
-
                 }
                 else
                 {
@@ -140,7 +150,24 @@ namespace NHR
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOn");
                 }
             }));
+
+            //타이머 갱신
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Update_Timer, new EventHandler<int>((type, time) =>
+            {
+                Debug.LogFormat("<color=yellow>남은 시간 : {0}</color>", time);
+                this.uiTimer.UpdateTimer(time);
+            }));
+            //괴물 변신 타이머 갱신
+            EventDispatcher.instance.AddEventHandler<float>((int)NHR.EventType.eEventType.Update_MonsterTimer, new EventHandler<float>((type, time) =>
+            {
+                if (GameDB.Instance.playerMission.isChaser)
+                {
+                    Debug.LogFormat("<color=yellow>변신 남은 시간 : {0}</color>", time);
+                    this.uiMonsterMode.UpdateTimer(time);
+                }
+            }));
         }
+
         /// <summary>
         /// 부활 UI
         /// </summary>
