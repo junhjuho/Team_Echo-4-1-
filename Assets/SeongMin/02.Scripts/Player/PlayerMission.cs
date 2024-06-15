@@ -45,8 +45,9 @@ namespace SeongMin
                 if(this.isChaser)
                 {
                     Debug.Log("<color=red>±«¹° º¯½Å ¿Ï·á</color>");
-                    //±«¹° On
+                    //±«¹° On ¸ðµ¨
                 }
+                GameManager.Instance.roundTimer.MonsterTimerStart();
             }));
         }
         public bool MissionCheck(GameObject _item, GameObject[] _array)
