@@ -24,7 +24,9 @@ namespace NHR
             Notice_Attacked, 
             Notice_Respawn, 
             Watching_Game, 
-            Change_Monster
+            Change_Monster,
+            Update_Timer,
+            Update_MonsterTimer, 
         }
     }
 
