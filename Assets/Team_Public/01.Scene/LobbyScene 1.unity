@@ -1984,11 +1984,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 988071803}
-  m_Father: {fileID: 4233112901677811250}
+  m_Father: {fileID: 1985353617951691343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.044, y: 0.6270001}
+  m_AnchoredPosition: {x: 0.044, y: 0.04}
   m_SizeDelta: {x: 2.9818, y: 1.9523}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042092183
@@ -2772,7 +2772,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4233112901677811250}
+  m_Father: {fileID: 1985353617951691343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1262016576
 MonoBehaviour:
@@ -5814,6 +5814,8 @@ Transform:
   - {fileID: 1946702612348880386}
   - {fileID: 3311314902971930454}
   - {fileID: 7910532609825658011}
+  - {fileID: 1262016575}
+  - {fileID: 1042092182}
   m_Father: {fileID: 4233112901677811250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2123113764435590608
@@ -6655,12 +6657,24 @@ PrefabInstance:
       value: Billboard (Scaler)
       objectReference: {fileID: 0}
     - target: {fileID: 4751831660328756967, guid: d7a90f73ead37a4408f242b21a3baa18, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.01006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751831660328756967, guid: d7a90f73ead37a4408f242b21a3baa18, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65653896
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751831660328756967, guid: d7a90f73ead37a4408f242b21a3baa18, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.01006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751831660328756967, guid: d7a90f73ead37a4408f242b21a3baa18, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.8
       objectReference: {fileID: 0}
     - target: {fileID: 4751831660328756967, guid: d7a90f73ead37a4408f242b21a3baa18, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 4751831660328756967, guid: d7a90f73ead37a4408f242b21a3baa18, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6782,8 +6796,6 @@ Transform:
   - {fileID: 1985353617951691343}
   - {fileID: 3809174137449706873}
   - {fileID: 2638262467129596301}
-  - {fileID: 1262016575}
-  - {fileID: 1042092182}
   m_Father: {fileID: 5897907405581118128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &4579354836706732819

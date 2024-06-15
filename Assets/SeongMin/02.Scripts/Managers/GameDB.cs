@@ -21,6 +21,7 @@ namespace SeongMin
         [Header("인게임 로컬 플레이어의 미션")]
         public PlayerMission playerMission;
         [Header(" 플레이어 인게임 결과 데이터")]
+        public bool hasGameData = false;
         public bool isWin = false;
 
         public void Shuffle(int[] _array)
