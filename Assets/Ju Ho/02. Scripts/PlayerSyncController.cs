@@ -33,6 +33,11 @@ public class PlayerSyncController : MonoBehaviour
     {
         pv = this.GetComponent<PhotonView>();
 
+        if (pv.IsMine)
+        {
+            ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
+        }
+
         XROrigin origin = FindObjectOfType<XROrigin>();
         headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
         leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
@@ -93,5 +98,18 @@ public class PlayerSyncController : MonoBehaviour
     {
         targetTf.position = rigTf.position;
         targetTf.rotation = rigTf.rotation;
+    }
+
+    void ChangeLayer(GameObject obj, int layer) // 플레이어 레이어 설정
+    {
+        obj.layer = layer;
+
+        foreach(Transform child in obj.transform)
+        {
+            if (child.gameObject.name == "Hand_Left" || child.gameObject.name == "Hand_Right")
+                continue;
+            else
+                ChangeLayer(child.gameObject, layer);
+        }
     }
 }

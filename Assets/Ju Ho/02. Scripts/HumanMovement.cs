@@ -6,12 +6,6 @@ using UnityEngine.InputSystem;
 
 public class HumanMovement : PlayerMovement
 {
-    public InputActionProperty leftPinch;
-    public InputActionProperty leftGrip;
-
-    public InputActionProperty rightPinch;
-    public InputActionProperty rightGrip;
-
     public bool isKneeling;
 
     bool _isRun;
@@ -19,13 +13,12 @@ public class HumanMovement : PlayerMovement
     public override void Start()
     {
         base.Start();
-
     }
 
     void Update()
     {
         PlayerMove();
-        FingerMove();
+        FingerMove(animator);
         Kneeling();
     }
     public override void PlayerMove() // 걷기와 달리기 
@@ -53,20 +46,20 @@ public class HumanMovement : PlayerMovement
     }
 
 
-    public void FingerMove() // 손가락 움직임
+    public void FingerMove(Animator animator) // 손가락 움직임
     {
         if (pv.IsMine)
         {
-            float leftTriggerValue = leftPinch.action.ReadValue<float>();
+            float leftTriggerValue = inputActionAsset.actionMaps[2].actions[3].ReadValue<float>();
             animator.SetFloat("Left Trigger", leftTriggerValue);
 
-            float leftGripValue = leftGrip.action.ReadValue<float>();
+            float leftGripValue = inputActionAsset.actionMaps[2].actions[1].ReadValue<float>();
             animator.SetFloat("Left Grip", leftGripValue);
 
-            float rightTriggerValue = rightPinch.action.ReadValue<float>();
+            float rightTriggerValue = inputActionAsset.actionMaps[5].actions[3].ReadValue<float>();
             animator.SetFloat("Right Trigger", rightTriggerValue);
 
-            float rightGripValue = rightGrip.action.ReadValue<float>();
+            float rightGripValue = inputActionAsset.actionMaps[5].actions[1].ReadValue<float>();
             animator.SetFloat("Right Grip", rightGripValue);
         }
         else
