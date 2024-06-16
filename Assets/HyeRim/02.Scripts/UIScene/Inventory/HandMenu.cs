@@ -10,4 +10,9 @@ public class HandMenu : MonoBehaviour
     {
         this.buttonOpenInventory = GetComponentInChildren<Button>();
     }
+
+    public void OnEnable()
+    {
+        
+    }
 }
