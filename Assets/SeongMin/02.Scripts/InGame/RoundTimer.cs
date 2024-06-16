@@ -7,7 +7,7 @@ namespace SeongMin
     public class RoundTimer : MonoBehaviour
     {
         [Header("라운드 타이머 시간 조절")]
-        public int timer = 60;
+        public int timer = 190;
         [Header("괴물 변신 타이머 시간 조절")]
         public float monsterTimer = 10;
 
@@ -32,6 +32,8 @@ namespace SeongMin
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Update_Timer, _timer);
             }
             GameManager.Instance.inGameSceneManager.Lose();
+            //테스트 끝나면 활성화
+            //GameManager.Instance.roundManager.RoundChange(RoundManager.Round.Three);
             yield break;
         }
         public void MonsterTimerStart()

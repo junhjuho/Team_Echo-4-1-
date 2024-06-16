@@ -1,3 +1,5 @@
+using Photon.Pun.Demo.PunBasics;
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +10,10 @@ namespace NHR
     //플레이어 카메라에 부착된 UI
     public class UIPlayer : MonoBehaviour
     {
+        //시계 UI
+        [Header("시계 UI")]
+        public UIWatch uiWatch;
+
         //에너지
         public TMP_Text txtEnergy;
 
@@ -27,9 +33,14 @@ namespace NHR
 
         private void Awake()
         {
+            if (this.uiWatch == null) this.uiWatch = GetComponentInChildren<UIWatch>();
             //코루틴 할당
             this.runningCoroutine = this.CRunning();
             this.energyChargingCoroutine = this.CEnergyCharging();
+        }
+        private void Start()
+        {
+            SeongMin.GameManager.Instance.playerManager.uiPlayer = this;
         }
         private void LateUpdate()
         {

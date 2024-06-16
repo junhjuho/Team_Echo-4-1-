@@ -1,3 +1,4 @@
+using NHR;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace SeongMin
         public RoundManager roundManager;
         public MissionManager missionManager;
         public RoundTimer roundTimer;
+        public PlayerManager playerManager;
     }
 
 }

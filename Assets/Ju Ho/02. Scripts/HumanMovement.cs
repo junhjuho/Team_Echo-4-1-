@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 
 public class HumanMovement : PlayerMovement
 {
-    public bool isKneeling;
-
     bool _isRun;
 
     public override void Start()
@@ -28,9 +26,10 @@ public class HumanMovement : PlayerMovement
 
             _isRun = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼 입력 이벤트
 
-            moveProvider.moveSpeed = _isRun ? 2f : 1f;
+            float moveBlendtree = _isRun ? 1f : 0.5f; // 애니메이션 블렌드 트리
 
-            animator.SetFloat("Move", dir.magnitude * moveProvider.moveSpeed);
+            moveProvider.moveSpeed = _isRun ? 10f : 5f; // 걷기 , 달리기 속도
+            animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
         else
             return;

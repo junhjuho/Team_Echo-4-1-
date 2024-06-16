@@ -1,3 +1,4 @@
+using NHR;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -38,6 +39,7 @@ namespace SeongMin
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
             //최초 라운드세팅 실행
             RoundMapSetting();
             // 1라운드 세팅
