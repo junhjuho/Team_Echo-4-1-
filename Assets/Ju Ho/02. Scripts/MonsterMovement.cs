@@ -13,7 +13,7 @@ public class MonsterMovement : PlayerMovement
         if (pv.IsMine)
         {
             base.PlayerMove();
-            moveProvider.moveSpeed = 2f;
+            moveProvider.moveSpeed = 10f;
             animator.SetFloat("Walk", dir.magnitude); // 블렌트 트리 임계값을 0 ~ 1로 설정
         }
     }
