@@ -49,8 +49,6 @@ public class PlayerSyncController : MonoBehaviour
             {
                 monsterMovement = this.GetComponentInChildren<MonsterMovement>();
             }
-            lefttHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(0).GetChild(1);
-            rightHandIK_hint = this.transform.GetChild(0).GetChild(9).GetChild(1).GetChild(1);
         }
 
         //if (this.transform.name == "Player")
@@ -78,21 +76,10 @@ public class PlayerSyncController : MonoBehaviour
                 head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight + floor, head.transform.position.z);
             }
 
-            if (humanMovement != null && humanMovement.isKneeling)
-            {
-                headRig.transform.position = new Vector3(headRig.transform.position.x, 1f, headRig.transform.position.z);
-                              
-                leftHandRig.transform.position = new Vector3(leftHandRig.transform.position.x, leftHandRig.transform.position.y - 0.67f, leftHandRig.transform.position.z);
-                leftHand.transform.position = new Vector3(leftHand.transform.position.x, leftHand.transform.position.y - 0.67f, leftHand.transform.position.z);
-                rightHandRig.transform.position = new Vector3(rightHandRig.transform.position.x, rightHandRig.transform.position.y - 0.67f, rightHandRig.transform.position.z);
-                rightHand.transform.position = new Vector3(rightHand.transform.position.x, rightHand.transform.position.y - 0.67f, rightHand.transform.position.z);
-
-                lefttHandIK_hint.transform.position = new Vector3(lefttHandIK_hint.transform.position.x, lefttHandIK_hint.transform.position.y - 0.67f, lefttHandIK_hint.transform.position.z);
-                rightHandIK_hint.transform.position = new Vector3(rightHandIK_hint.transform.position.x, rightHandIK_hint.transform.position.y - 0.67f, rightHandIK_hint.transform.position.z);
-            }            
             SyncTransform(head, headRig);
             SyncTransform(leftHand, leftHandRig);
             SyncTransform(rightHand, rightHandRig);
+       
         }
     }
 

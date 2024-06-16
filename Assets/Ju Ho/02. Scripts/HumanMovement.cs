@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 
 public class HumanMovement : PlayerMovement
 {
-    public bool isKneeling;
-
     bool _isRun;
 
     public override void Start()
