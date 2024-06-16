@@ -27,7 +27,7 @@ namespace SeongMin
         public CharactorValue charactorValue = CharactorValue.runner;
         [Header("협동 아이템인지 선택하기")]
         public ItemValue itemValue = ItemValue.solo;
-        private void Start()
+        protected void Start()
         {
             if (sceneValue == SceneValue.tutorial)
                 GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject);
