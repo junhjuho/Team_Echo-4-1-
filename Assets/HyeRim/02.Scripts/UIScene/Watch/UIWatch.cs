@@ -14,6 +14,7 @@ public class UIWatch : MonoBehaviour
     {
         this.uiInventory = GetComponentInChildren<UIInventory>();
         this.uiHeart = GetComponentInChildren<UIHeartWatch>();
+        this.nowHeart = 3;
     }
     private void Start()
     {
@@ -23,7 +24,6 @@ public class UIWatch : MonoBehaviour
             if (!GameDB.Instance.playerMission.isChaser)
             {
                 Debug.Log("<color=red>하트 갱신</color>");
-                this.uiHeart.nowHeart = heart;
             }
         }));
 
