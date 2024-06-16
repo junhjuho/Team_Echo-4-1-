@@ -23,6 +23,8 @@ namespace NHR
                     mission.textFirstStep.text = playerMissionObjects[i].name + "찾기";
                     this.missions.Add(mission);
                 }
+                //비활성화
+                this.gameObject.SetActive(false);
             }));
         }
     }

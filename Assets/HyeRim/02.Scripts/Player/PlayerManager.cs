@@ -12,9 +12,13 @@ namespace NHR
         [Header("플레이어 UI")]
         public UIPlayer uiPlayer;
 
+        [Header("남은 생명 수")]
+        public int heart = 3;
+
         private void Awake()
         {
             SeongMin.GameManager.Instance.playerManager = this;
+            this.heart = 3;
         }
         private void Start()
         {
