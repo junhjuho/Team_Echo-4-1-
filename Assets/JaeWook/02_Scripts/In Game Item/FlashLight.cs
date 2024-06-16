@@ -10,9 +10,9 @@ namespace Jaewook
         public bool isOn = false;
         public Light flashlight;
 
-        void Start()
+        protected void Start()
         {
-            // ItemObject.Start(); // ItemObject의 Start 메서드를 호출하여 씬과 캐릭터에 따라 등록
+            base.Start(); // ItemObject의 Start 메서드를 호출하여 씬과 캐릭터에 따라 등록
             flashlight = GetComponentInChildren<Light>();
             if (flashlight != null)
             {

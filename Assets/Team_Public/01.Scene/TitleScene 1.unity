@@ -1411,7 +1411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &379656777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,6 +1627,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a457d6e149777943bb10cc32d17eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneValue: 0
+  charactorValue: 0
+  itemValue: 0
+  isOn: 0
+  flashlight: {fileID: 0}
 --- !u!95 &379656780
 Animator:
   serializedVersion: 5
@@ -6644,8 +6649,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ': Find and Escape'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ba10a6937c85934ebbda69cec4180b5, type: 2}
-  m_sharedMaterial: {fileID: -5368866808996702209, guid: 1ba10a6937c85934ebbda69cec4180b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f6cf8a6e1de28d4c84831a266f7cc2b, type: 2}
+  m_sharedMaterial: {fileID: 2991772981199097218, guid: 3f6cf8a6e1de28d4c84831a266f7cc2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7072,6 +7077,7 @@ MonoBehaviour:
   playerCount: 0
   myPlayer: {fileID: 0}
   playerMission: {fileID: 0}
+  hasGameData: 0
   isWin: 0
 --- !u!4 &1371967614
 Transform:
@@ -7706,8 +7712,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4-1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ba10a6937c85934ebbda69cec4180b5, type: 2}
-  m_sharedMaterial: {fileID: -5368866808996702209, guid: 1ba10a6937c85934ebbda69cec4180b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f6cf8a6e1de28d4c84831a266f7cc2b, type: 2}
+  m_sharedMaterial: {fileID: 2991772981199097218, guid: 3f6cf8a6e1de28d4c84831a266f7cc2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10726,6 +10732,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a457d6e149777943bb10cc32d17eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneValue: 0
+  charactorValue: 0
+  itemValue: 0
+  isOn: 0
+  flashlight: {fileID: 0}
 --- !u!137 &2122455984159276212 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 940125597620560762, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
