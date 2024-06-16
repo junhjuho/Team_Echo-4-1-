@@ -69,7 +69,7 @@ public class PlayerSyncController : MonoBehaviour
         {
             if (headRig.transform.position.y > riggingManager.modelHeight)
             {
-                float floor = headRig.transform.position.y > 5f ? 5.3f : 0f;
+                float floor = headRig.transform.position.y > 5f ? 6.1f : 0f;
 
                 headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight + floor, headRig.transform.position.z);
                 //Debug.Log(headRig.transform.position); 

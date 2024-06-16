@@ -15,7 +15,7 @@ public class LeftHandController : MonoBehaviour
     void Start()
     {
         anim = this.GetComponent<Animator>();
-        pv = this.transform.root.GetComponent<PhotonView>();
+        pv = this.transform.GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
