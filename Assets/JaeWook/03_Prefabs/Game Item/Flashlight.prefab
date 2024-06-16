@@ -44,8 +44,6 @@ GameObject:
   - component: {fileID: 4444882439811233582}
   - component: {fileID: 3224153164518010527}
   - component: {fileID: 5642418607603815348}
-  - component: {fileID: 8347254483365287817}
-  - component: {fileID: 4252649570230504615}
   - component: {fileID: 7164317521166646568}
   - component: {fileID: 5994362011998508296}
   - component: {fileID: 4606724876789944557}
@@ -164,35 +162,6 @@ MonoBehaviour:
   itemValue: 0
   isOn: 0
   flashlight: {fileID: 0}
---- !u!114 &8347254483365287817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8211623650207601489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb5caf4e7ad1134899f5f09e10db3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneValue: 2
-  charactorValue: 0
-  itemValue: 0
---- !u!114 &4252649570230504615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8211623650207601489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed58514b6f81e144994dc56400b071c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneValue: 2
-  characterValeu: 0
 --- !u!54 &7164317521166646568
 Rigidbody:
   m_ObjectHideFlags: 0
