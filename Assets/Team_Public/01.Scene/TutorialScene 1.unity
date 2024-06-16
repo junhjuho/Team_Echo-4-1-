@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4716109}
   - component: {fileID: 4716108}
   - component: {fileID: 4716107}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: UIDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 212939925}
   - component: {fileID: 212939927}
   - component: {fileID: 212939926}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 254888432}
   - component: {fileID: 254888431}
   - component: {fileID: 254888430}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: UITutorialPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1643,7 +1643,7 @@ GameObject:
   - component: {fileID: 632947823}
   - component: {fileID: 632947825}
   - component: {fileID: 632947824}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: UIRole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2200,7 +2200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 818944812}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: UIGameEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3291,7 +3291,7 @@ GameObject:
   - component: {fileID: 1083491874}
   - component: {fileID: 1083491876}
   - component: {fileID: 1083491875}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: txtRole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3997,7 +3997,7 @@ GameObject:
   - component: {fileID: 1328321244}
   - component: {fileID: 1328321243}
   - component: {fileID: 1328321242}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: UI Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4038,6 +4038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7013a525311b9f47ba8702fabe8fbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiWatch: {fileID: 0}
   txtEnergy: {fileID: 1868518424}
   nowEnergy: 10
   isRunning: 0
@@ -5527,7 +5528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1849782605}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: UIInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5566,7 +5567,7 @@ GameObject:
   - component: {fileID: 1868518423}
   - component: {fileID: 1868518425}
   - component: {fileID: 1868518424}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: txtEnergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6123,7 +6124,7 @@ GameObject:
   - component: {fileID: 2124428406}
   - component: {fileID: 2124428408}
   - component: {fileID: 2124428407}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: txtQuest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6254,6 +6255,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 37154510985528245, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108294856344116860, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 191091659548221089, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_ActionAssets.Array.data[0]
       value: 
@@ -6298,8 +6307,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 967489850755685640, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1679190554773897973, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317550087001395038, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592736384005401682, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036539646899288562, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3242648389653816911, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
@@ -6330,6 +6355,14 @@ PrefabInstance:
       propertyPath: m_RightHandTurnAction.m_Reference
       value: 
       objectReference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 5493188525216907749, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724472107840532107, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5724472107840532107, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6337,6 +6370,22 @@ PrefabInstance:
     - target: {fileID: 5942554576849967281, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942554576849967281, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318001531848401396, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6350438277772626124, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861423579529892760, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7155305618431501657, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6366,6 +6415,10 @@ PrefabInstance:
       propertyPath: m_LeftHandMoveAction.m_Reference
       value: 
       objectReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 7870249072658660998, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8635100798198523371, guid: 0e6ac06aea38c214bbc1f83d4b6438eb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

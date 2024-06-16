@@ -91,16 +91,13 @@ public class PlayerSyncController : MonoBehaviour
 
     void ChangeLayer(GameObject obj, int layer) // 플레이어 레이어 설정
     {
-        obj.layer = layer;
-
         if(pv.IsMine)
         {
-            foreach(Transform child in obj.transform)
+            obj.layer = layer;
+
+            foreach (Transform child in obj.transform)
             {
-                if (child.gameObject.name == "Hand_Left" || child.gameObject.name == "Hand_Right")
-                    ChangeLayer(child.gameObject, 0);
-                else
-                    ChangeLayer(child.gameObject, layer);
+                ChangeLayer(child.gameObject, layer);
             }
         }
     }
