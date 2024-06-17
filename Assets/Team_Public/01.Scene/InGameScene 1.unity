@@ -2397,7 +2397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &340968913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5756,8 +5756,6 @@ MonoBehaviour:
   uiWatch: {fileID: 112869673}
   txtEnergy: {fileID: 919693191}
   staminaBar: {fileID: 526174239}
-  nowEnergy: 10
-  isRunning: 0
   isEnergyDown: 0
 --- !u!114 &1005449487
 MonoBehaviour:

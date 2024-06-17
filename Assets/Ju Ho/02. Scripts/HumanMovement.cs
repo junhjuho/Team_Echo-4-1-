@@ -19,11 +19,6 @@ public class HumanMovement : PlayerMovement
         base.Start();
 
         scene = SceneManager.GetActiveScene();
-
-        if (scene.name == ("InGameScene 1"))
-        {
-            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
-        }
     }
 
     void Update()
@@ -37,16 +32,17 @@ public class HumanMovement : PlayerMovement
         {
             base.PlayerMove();  // PlayerMovement의 버튼 입력 이벤트를 상속받음
 
-            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼 입력 이벤트
-
-            if (scene.name == ("InGameScene 1")) // 현재 씬의 이름이 인게임씬이라면
+            if (scene.name == ("InGameScene 1"))
             {
+                SeongMin.GameManager.Instance.playerManager.humanMovement = this;
                 isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
             }
             else // 아니라면
             {
                 isEnergyDown = false;
             }
+
+            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼 입력 이벤트
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 애니메이션 블렌드 트리
 
