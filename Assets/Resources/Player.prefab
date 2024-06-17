@@ -2898,6 +2898,7 @@ MonoBehaviour:
   moveProvider: {fileID: 0}
   animator: {fileID: 0}
   pv: {fileID: 0}
+  isRunBtnDown: 0
 --- !u!114 &5530197642181525178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3333,6 +3334,7 @@ MonoBehaviour:
   moveProvider: {fileID: 0}
   animator: {fileID: 0}
   pv: {fileID: 0}
+  isRunBtnDown: 0
 --- !u!114 &662856113354543662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16044,6 +16046,7 @@ MonoBehaviour:
   moveProvider: {fileID: 0}
   animator: {fileID: 0}
   pv: {fileID: 0}
+  isRunBtnDown: 0
 --- !u!114 &479101846059634882
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5192,7 +5192,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4215
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5755,6 +5755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiWatch: {fileID: 112869673}
   txtEnergy: {fileID: 919693191}
+  staminaBar: {fileID: 526174239}
   nowEnergy: 10
   isRunning: 0
   isEnergyDown: 0
@@ -9821,6 +9822,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   uiPlayer: {fileID: 0}
   heart: 3
+  humanMovement: {fileID: 0}
 --- !u!4 &1617752671
 Transform:
   m_ObjectHideFlags: 0

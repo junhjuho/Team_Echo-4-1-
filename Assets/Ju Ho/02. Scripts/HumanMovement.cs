@@ -1,3 +1,5 @@
+using NHR;
+using Photon.Pun.Demo.PunBasics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -6,11 +8,12 @@ using UnityEngine.InputSystem;
 
 public class HumanMovement : PlayerMovement
 {
-    bool _isRun;
-
+    public bool isRunBtnDown;
+    UIPlayer uiPlayer;
     public override void Start()
     {
         base.Start();
+        SeongMin.GameManager.Instance.playerManager.humanMovement = this;
     }
 
     void Update()
@@ -24,11 +27,14 @@ public class HumanMovement : PlayerMovement
         {
             base.PlayerMove();  // PlayerMovement의 버튼 입력 이벤트를 상속받음
 
-            _isRun = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼 입력 이벤트
+            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼 입력 이벤트
 
-            float moveBlendtree = _isRun ? 1f : 0.5f; // 애니메이션 블렌드 트리
+            bool isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
 
-            moveProvider.moveSpeed = _isRun ? 10f : 5f; // 걷기 , 달리기 속도
+            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 애니메이션 블렌드 트리
+
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // 걷기 , 달리기 속도
+            
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
         else
