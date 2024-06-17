@@ -154,6 +154,10 @@ namespace SeongMin
             if (GameDB.Instance.playerMission.isChaser == true)
                 for (int i = 0; i < GameDB.Instance.playerMission.chaserMissionArray.Length; i++)
                     GameDB.Instance.playerMission.chaserMissionArray[i] = null;
+            // 완료한 미션 갯수 초기화
+            GameDB.Instance.playerMission.runnerMissionClearCount = 0;
+            GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+
         }
         //복수자 배정하기
         private void ChaserSetting()

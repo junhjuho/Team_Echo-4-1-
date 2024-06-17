@@ -19,7 +19,13 @@ namespace SeongMin
         public GameObject[] playerTeamPlayMissionArray;
         [Header("현재 배정받은 복수자의의 미션 리스트 ")]
         public GameObject[] chaserMissionArray;
-
+        [Header("현재 완료한 미션 갯수")]
+        public int runnerMissionClearCount = 0;
+        [Header("현재 완료한 팀플레이 미션 갯수")]
+        public int playerTeamPlayMissionCount = 0;
+        [Header("현재 완료한 복수자 미션 갯수")]
+        public int chaserMissionClearCount = 0;
+        
         //[Header("")]
         private void Awake()
         {
@@ -50,7 +56,7 @@ namespace SeongMin
                 GameManager.Instance.roundTimer.MonsterTimerStart();
             }));
         }
-        public bool MissionCheck(GameObject _item, GameObject[] _array)
+        public bool MissionItemCheck(GameObject _item, GameObject[] _array)
         {
             bool _value = false;
 
