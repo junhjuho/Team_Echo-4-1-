@@ -115,7 +115,7 @@ namespace NHR
                     {
                         this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("attacked");
                         //∫Œ»∞
-                        this.ReviveUI();
+                        Invoke("ReviveUI", 2f);
                     }
                     else
                     {
