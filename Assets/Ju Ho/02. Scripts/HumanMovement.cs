@@ -73,4 +73,29 @@ public class HumanMovement : PlayerMovement
         else
             return;
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        if(/*pv.IsMine &&*/ other.transform.root.GetChild(3).GetComponent<MonsterMovement>() != null)
+        {
+            Vector3 zombiePos = other.transform.position - this.transform.position;
+            zombiePos.Normalize();
+            float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
+
+            if(attackPos > 0)
+            {
+                animator.SetTrigger("Forward Die");
+                Debug.Log("인간이 좀비 앞에 있따");
+            }
+            else
+            {
+                animator.SetTrigger("Backward Die");
+                Debug.Log("인간이 좀비 뒤에 있다");
+            }
+
+            Debug.Log("충돌");
+            //animator.SetBool("Die", true);
+        }
+    }
 }
