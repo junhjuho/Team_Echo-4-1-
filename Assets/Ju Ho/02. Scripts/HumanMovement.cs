@@ -94,6 +94,11 @@ public class HumanMovement : PlayerMovement
                 Debug.Log("인간이 좀비 뒤에 있다");
             }
 
+            for(int i = 0; i < 3; i++)
+            {
+                SeongMin.GameManager.Instance.playerManager.uiPlayer.imageDeaths[i].gameObject.SetActive(true);
+            }
+
             Debug.Log("충돌");
             //animator.SetBool("Die", true);
         }
