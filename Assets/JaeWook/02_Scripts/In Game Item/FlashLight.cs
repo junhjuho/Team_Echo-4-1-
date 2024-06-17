@@ -18,16 +18,17 @@ namespace Jaewook
 
         //배터리 값
         public bool hasBattery = true;
-        public int nowBatteryTime = 3;
-        public int nowBattery = 3;
+        public int nowBatteryTime = 10;
+        public int nowBattery = 10;
         //max 값
-        public int maxBatteryTime = 3;
-        public int maxBattery = 3;
+        public int maxBatteryTime = 10;
+        public int maxBattery = 10;
 
         private void Awake()
         {
             this.uiFlashlight = this.GetComponentInChildren<NHR.UIFlashlight>();
             this.Init();
+            StartCoroutine(this.flashCoroutine);
         }
         //초기 설정
         private void Init()
@@ -35,15 +36,19 @@ namespace Jaewook
             this.flashCoroutine = this.CLightOn();
             this.nowBattery = this.maxBattery;
             this.nowBatteryTime = this.maxBatteryTime;
-        }
-        protected void Start()
-        {
-            base.Start(); // ItemObject의 Start 메서드를 호출하여 씬과 캐릭터에 따라 등록
+            this.uiFlashlight.Init();
+            this.isOn = true;
+
             flashlight = GetComponentInChildren<Light>();
             if (flashlight != null)
             {
                 flashlight.enabled = isOn;
             }
+
+        }
+        protected void Start()
+        {
+            base.Start(); // ItemObject의 Start 메서드를 호출하여 씬과 캐릭터에 따라 등록
         }
 
         public void OnGrab()
@@ -85,7 +90,7 @@ namespace Jaewook
             this.hasBattery = true;
             foreach (var battery in this.uiFlashlight.batteries)
             {
-                battery.SetActive(true);
+                battery.gameObject.SetActive(true);
             }
         }
 
@@ -101,7 +106,9 @@ namespace Jaewook
                 //배터리 한 칸 시간이 다 되었을 경우
                 if (this.nowBatteryTime < 0)
                 {
-                    this.uiFlashlight.batteries[3 - this.nowBattery].SetActive(false);
+                    this.uiFlashlight.batteries[3 - this.nowBattery].gameObject.SetActive(false);
+                    this.uiFlashlight.batteries[4 - this.nowBattery].gameObject.SetActive(true);
+
                     Debug.Log(3 - this.nowBattery);
                     this.nowBatteryTime = 3;
                     this.nowBattery--;
