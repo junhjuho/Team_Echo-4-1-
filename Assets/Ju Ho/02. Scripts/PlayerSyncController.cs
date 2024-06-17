@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR;
+using static UnityEngine.UI.Image;
 
 public class PlayerSyncController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerSyncController : MonoBehaviour
     Transform headRig;
     Transform leftHandRig;
     Transform rightHandRig;
+    XROrigin origin;
 
     Transform lefttHandIK_hint;
     Transform rightHandIK_hint;
@@ -35,20 +37,12 @@ public class PlayerSyncController : MonoBehaviour
         ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
         if(pv.IsMine)
         {
-            XROrigin origin = FindObjectOfType<XROrigin>();
+            origin = FindObjectOfType<XROrigin>();
             headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
             leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
             rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
             riggingManager = this.GetComponentInChildren<RiggingManager>();
 
-            if (this.transform.GetComponentInChildren<HumanMovement>() != null)
-            {
-                humanMovement = this.GetComponentInChildren<HumanMovement>();
-            }
-            else
-            {
-                monsterMovement = this.GetComponentInChildren<MonsterMovement>();
-            }
         }
 
         //if (this.transform.name == "Player")
@@ -79,7 +73,6 @@ public class PlayerSyncController : MonoBehaviour
             SyncTransform(head, headRig);
             SyncTransform(leftHand, leftHandRig);
             SyncTransform(rightHand, rightHandRig);
-       
         }
     }
 
