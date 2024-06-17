@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NHR
 {
@@ -17,17 +18,12 @@ namespace NHR
         //에너지
         public TMP_Text txtEnergy;
 
+        public Image staminaBar;
+
         //코루틴
         public IEnumerator runningCoroutine;
         public IEnumerator energyChargingCoroutine;
 
-        //나중에 플레이어로 옮길 것
-        //max 값
-        private int maxEnergy = 10;
-        public int nowEnergy = 10;
-
-        //달리는 상태인가?
-        public bool isRunning = false;
         //에너지 다운 상태인가?
         public bool isEnergyDown = false;
 
@@ -44,47 +40,39 @@ namespace NHR
         }
         private void LateUpdate()
         {
-            //LeftShift를 누르고 있을 경우 달리기
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (SeongMin.GameManager.Instance.playerManager.humanMovement.isRunBtnDown)
             {
-                //에너지 다운 상태가 아니고, 달리는 상태가 아니라면 달리기
-                if(!this.isRunning && !this.isEnergyDown)
+                //달리는 버튼이 눌리고 스테미나가 0보다 크면 달리기 코루틴 실행 , 충전 코루틴 멈춤
+                if (staminaBar.fillAmount > 0)
                 {
-                    this.isRunning = !this.isRunning;
+                    this.isEnergyDown = false;
                     StartCoroutine(this.runningCoroutine);
                     StopCoroutine(this.energyChargingCoroutine);
+                    Debug.Log("달림");
                 }
-                Debug.Log("GetKeyDown LeftShift");
-            }
-            if(Input.GetKeyUp(KeyCode.LeftShift)) 
-            {
-                Debug.Log("GetKeyUp LeftShift");
-                //달리던 상태이고 에너지 다운 상태가 아니고 최대 에너지가 아니라면 달리는 상태 멈추고 충전 시작
-                if (this.isRunning && !this.isEnergyDown && this.nowEnergy < this.maxEnergy)
+                //달리는 버튼이 눌렸지만 스테미나가 0이라면 달리는 코루틴 멈추고 충전 코루틴 실행
+                if (staminaBar.fillAmount <= 0)
                 {
-                    this.isRunning = !this.isRunning;
+                    this.isEnergyDown = true;
                     StopCoroutine(this.runningCoroutine);
                     StartCoroutine(this.energyChargingCoroutine);
+                    Debug.Log("충전");
                 }
-
             }
+            else //달리는 버튼이 눌리지 않으면 충전 코루틴 실행
+                StartCoroutine(this.energyChargingCoroutine);
         }
-        //달리는 중
         public IEnumerator CRunning()
         {
             while (true)
             {
                 yield return new WaitForSeconds(1f);
 
-                //에너지 소모
-                this.nowEnergy--;
-                this.txtEnergy.text = $"달리기 On, 에너지 {this.nowEnergy}";
+                staminaBar.fillAmount -= 0.01f;
                 
                 //에너지를 다 사용했다면 달리는 중 코루틴 멈추기
-                if (this.nowEnergy <= 0)
+                if (staminaBar.fillAmount <= 0)
                 {
-                    this.txtEnergy.text = $"다운 상태, 에너지 {this.nowEnergy}";
-                    this.isRunning = false;
                     this.isEnergyDown = true;
                     StopCoroutine(this.runningCoroutine);
                     StartCoroutine(this.energyChargingCoroutine);
@@ -98,24 +86,15 @@ namespace NHR
             while (true)
             {
                 yield return new WaitForSeconds(1f);
-                //에너지 충전
-                this.nowEnergy++;
 
                 //에너지 다 충전되었다면 충전 코루틴 멈추기
-                if (this.nowEnergy >= maxEnergy)
+                if (staminaBar.fillAmount >= 1)
                 {
                     this.isEnergyDown = false;
                     Debug.Log("충전 끝");
                     StopCoroutine(this.energyChargingCoroutine);
                 }
-                if (this.isEnergyDown)
-                {
-                    this.txtEnergy.text = $"다운 상태, 에너지 {this.nowEnergy}";
-                }
-                else
-                {
-                    this.txtEnergy.text = $"달리기 Off, 에너지 {this.nowEnergy}";
-                }
+                staminaBar.fillAmount += 0.01f;
             }
         }
     }

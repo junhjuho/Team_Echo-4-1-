@@ -15,6 +15,9 @@ namespace NHR
         [Header("남은 생명 수")]
         public int heart = 3;
 
+        [Header("인간 플레이어 움직임")]
+        public HumanMovement humanMovement;
+
         private void Awake()
         {
             SeongMin.GameManager.Instance.playerManager = this;

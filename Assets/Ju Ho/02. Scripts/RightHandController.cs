@@ -15,7 +15,8 @@ public class RightHandController : MonoBehaviour
     void Start()
     {
         anim = this.GetComponent<Animator>();
-        pv = this.transform.root.GetComponent<PhotonView>();
+        pv = this.transform.GetComponent<PhotonView>();
+
     }
 
     // Update is called once per frame
@@ -30,4 +31,6 @@ public class RightHandController : MonoBehaviour
             anim.SetFloat("Grip", RightGripValue);
         }
     }
+
+
 }
