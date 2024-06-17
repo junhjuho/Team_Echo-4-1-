@@ -1,35 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NHR
 {
     public class UIFlashlight : MonoBehaviour
     {
         //배터리들
-        public GameObject[] batteries;
-
-        public bool hasBattery = true;
-        public int nowBatteryTime = 3;
-        public int nowBattery = 3;
-        //max 값
-        public int maxBatteryTime = 3;
-        public int maxBattery = 3;
+        public Image[] batteries;
 
         private void Awake()
         {
-            this.nowBattery = this.maxBattery;
-            this.nowBatteryTime = this.maxBatteryTime;
+            this.batteries = GetComponentsInChildren<Image>();
         }
-        public void ChargeFlashlight()
+
+        //초기 설정
+        public void Init()
         {
-            this.nowBattery = this.maxBattery;
-            this.nowBatteryTime = this.maxBatteryTime;
-            this.hasBattery = true;
-            foreach (var battery in batteries)
+            foreach(var battery in batteries)
             {
-                battery.SetActive(true);
+                battery.gameObject.SetActive(false);
             }
+            this.batteries[0].gameObject.SetActive(true);
         }
     }
 }
