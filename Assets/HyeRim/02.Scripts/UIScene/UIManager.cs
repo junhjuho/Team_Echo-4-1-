@@ -7,7 +7,7 @@ namespace NHR
     //모든 UI관리
     public class UIManager : MonoBehaviour
     {
-        public UIWorld uiWorld;
+        //public UIWorld uiWorld;
         public UIPlayer uiPlayer;
     }
 
