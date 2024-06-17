@@ -1,3 +1,4 @@
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -22,6 +23,15 @@ namespace NHR
         {
             SeongMin.GameManager.Instance.playerManager = this;
             this.heart = 3;
+        }
+        private void Start()
+        {
+            //공격받음
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
+            {
+                this.heart = heart - 1;
+            }));
+
         }
     }
 }
