@@ -7,7 +7,7 @@ namespace Jaewook
 {
     public class FlashLight : ItemObject, IItem
     {
-        public bool isOn = false;
+        public bool isOn = true;
         public Light flashlight;
 
         protected void Start()

@@ -1,24 +1,22 @@
 using NHR;
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 그냥 오브젝트로 제작하기로 결정 
 /// </summary>
-public class Bag : MonoBehaviour, Jaewook.IItem
+public class Bag : ItemObject, Jaewook.IItem
 {
     [Header("가방 프리펩")]
     public GameObject inventoryObjectPrefab;
 
     private void Start()
     {
-        // 인벤토리 UI ( 설정 )
-        if (inventoryObjectPrefab != null)
-        {
-            // pos, rot 추가설정 필요 -> 성민님 피드백 : 아이템매니저 제작 ( pos,rot 설정 )
-            GameObject inventoryObjectInstance = Instantiate(inventoryObjectPrefab, transform.position, transform.rotation);
-        }
+        base.Start();
+
     }
 
     public void OnGrab()
