@@ -23,18 +23,5 @@ namespace NHR
             SeongMin.GameManager.Instance.playerManager = this;
             this.heart = 3;
         }
-        private void Start()
-        {
-            this.playerController.watch.hoverEntered.AddListener((args) =>
-            {
-                Debug.Log("hoverEntered");
-                this.uiPlayer.uiWatch.uiInventory.handMenu.gameObject.SetActive(true);
-            });
-            this.playerController.watch.hoverExited.AddListener((args) =>
-            {
-                Debug.Log("hoverExited");
-                this.uiPlayer.uiWatch.uiInventory.handMenu.gameObject.SetActive(false);
-            });
-        }
     }
 }

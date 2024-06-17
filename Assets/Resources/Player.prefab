@@ -2658,13 +2658,14 @@ GameObject:
   - component: {fileID: 6747704889837046606}
   - component: {fileID: 5530197642181525178}
   - component: {fileID: 6549464174681808422}
+  - component: {fileID: 6475554866602124036}
   m_Layer: 0
   m_Name: Frank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5278810862315764896
 Transform:
   m_ObjectHideFlags: 0
@@ -2952,6 +2953,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &6475554866602124036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096075468381986903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1810ae84e475ae645bd248479d64e142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clothes: {fileID: 4866154357791445918}
+  material: {fileID: 0}
 --- !u!1 &1112156483293174740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,13 +3111,14 @@ GameObject:
   - component: {fileID: 4515049768067840740}
   - component: {fileID: 662856113354543662}
   - component: {fileID: 9082723997564200933}
+  - component: {fileID: 568239553882724931}
   m_Layer: 0
   m_Name: MJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5965356903287119246
 Transform:
   m_ObjectHideFlags: 0
@@ -3388,6 +3404,20 @@ MonoBehaviour:
     LayerIndex: 1
   - SynchronizeType: 0
     LayerIndex: 2
+--- !u!114 &568239553882724931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209871280481194162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1810ae84e475ae645bd248479d64e142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clothes: {fileID: 5170722468358746488}
+  material: {fileID: 0}
 --- !u!1 &1249293673947197414
 GameObject:
   m_ObjectHideFlags: 0
@@ -10442,6 +10472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b462ff1afbb62194681ae28f4c99bc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characters: []
   watch: {fileID: 0}
 --- !u!1 &4028289518996050825
 GameObject:
@@ -15762,6 +15793,7 @@ GameObject:
   - component: {fileID: 1613875989780044681}
   - component: {fileID: 479101846059634882}
   - component: {fileID: 5230459196823382439}
+  - component: {fileID: 7799693496687141074}
   m_Layer: 0
   m_Name: Jake
   m_TagString: Untagged
@@ -16104,6 +16136,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &7799693496687141074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210806223002501516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1810ae84e475ae645bd248479d64e142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clothes: {fileID: 1979160958870651215}
+  material: {fileID: 0}
 --- !u!1 &6240421188136164233
 GameObject:
   m_ObjectHideFlags: 0

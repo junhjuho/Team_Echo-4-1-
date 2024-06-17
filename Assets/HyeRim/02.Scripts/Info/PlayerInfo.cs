@@ -6,4 +6,5 @@ public class PlayerInfo
 {
     public int nowCharacterId;
     public int nowClothesColorIndex;
+    public string nowClothesColorName;
 }
