@@ -2,18 +2,28 @@ using NHR;
 using Photon.Pun.Demo.PunBasics;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
+using System.Xml.Serialization; 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class HumanMovement : PlayerMovement
 {
     public bool isRunBtnDown;
     UIPlayer uiPlayer;
+    Scene scene;
+    bool isEnergyDown;
+
     public override void Start()
     {
         base.Start();
-        SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+
+        scene = SceneManager.GetActiveScene();
+
+        if (scene.name == ("InGameScene 1"))
+        {
+            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+        }
     }
 
     void Update()
@@ -29,7 +39,14 @@ public class HumanMovement : PlayerMovement
 
             isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼 입력 이벤트
 
-            bool isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
+            if (scene.name == ("InGameScene 1")) // 현재 씬의 이름이 인게임씬이라면
+            {
+                isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
+            }
+            else // 아니라면
+            {
+                isEnergyDown = false;
+            }
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 애니메이션 블렌드 트리
 
