@@ -1,3 +1,4 @@
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace NHR
 
         private void Awake()
         {
+            GameDB.Instance.playerController = this;
             //this.Init();
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
         }
@@ -25,7 +27,7 @@ namespace NHR
             var selectedClothesColorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
 
             //캐릭터 설정
-            this.characters = this.GetComponentsInChildren<Character>();
+            //this.characters = this.GetComponentsInChildren<Character>();
             foreach (var character in this.characters)
             {
                 character.gameObject.SetActive(false);
