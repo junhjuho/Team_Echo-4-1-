@@ -14,11 +14,11 @@ namespace NHR
 
         private void Awake()
         {
-            this.Init();
+            //this.Init();
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
         }
 
-        private void Init()
+        public void Init()
         {
             //인포에 저장된 캐릭터 불러오기
             var selectedCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
