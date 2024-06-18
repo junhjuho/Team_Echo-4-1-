@@ -40,7 +40,7 @@ namespace SeongMin
             chaserPrefab = this.transform.Find("zombie").gameObject;
             GameDB.Instance.playerMission = this;
 
-            if (missionManager != null)
+            if (GameManager.Instance.missionManager != null)
             {
                 missionManager = GameManager.Instance.missionManager;
                 playerMissionArray = new GameObject[missionManager.runnerMissionCount];
