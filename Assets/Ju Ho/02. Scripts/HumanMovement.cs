@@ -27,27 +27,27 @@ public class HumanMovement : PlayerMovement
         PlayerMove();
         FingerMove(animator);
     }
-    public override void PlayerMove() // �ȱ�� �޸��� 
+    public override void PlayerMove() // 플레이어 걷기 , 달리기
     {
         if (pv.IsMine)
         {
-            base.PlayerMove();  // PlayerMovement�� ��ư �Է� �̺�Ʈ�� ��ӹ���
+            base.PlayerMove();  // PlayerMovement 스크립트 상속
 
             if (scene.name == ("InGameScene 1"))
             {
                 SeongMin.GameManager.Instance.playerManager.humanMovement = this;
                 isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
             }
-            else // �ƴ϶��
+            else // InGameScene 1이 아닐 때, 
             {
                 isEnergyDown = false;
             }
 
-            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // �޸��� ��ư �Է� �̺�Ʈ
+            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼
 
-            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // �ִϸ��̼� ������ Ʈ��
+            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
-            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // �ȱ� , �޸��� �ӵ�
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // 달리기 버튼에 따른 속도
             
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
