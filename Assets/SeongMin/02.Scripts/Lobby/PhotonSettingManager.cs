@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SeongMin
@@ -36,9 +37,18 @@ namespace SeongMin
         {
             print("방에 입장했습니다.");
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
             GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
 
-            UIManager.Instance.robbySceneMenu.PlayerOn();
+            //Debug.LogFormat("<color=green>{0}</color>", photonView);
+            if (GameManager.Instance.lobbySceneManager.playerMission.photonView.IsMine)
+            {
+                Debug.LogFormat("<color=green>{0}</color>", UIManager.Instance);
+                Debug.LogFormat("<color=green>{0}</color>", UIManager.Instance.robbySceneMenu);
+                int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
+                UIManager.Instance.robbySceneMenu.SetPlayer(id);
+            }
+
 
             //캐릭터 커스텀 설정
             //GameManager.Instance.lobbySceneManager.photonView.RPC("InitPlayerSetting", RpcTarget.All);
