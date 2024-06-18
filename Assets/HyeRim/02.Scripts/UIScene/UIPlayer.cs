@@ -20,6 +20,8 @@ namespace NHR
 
         public Image staminaBar;
 
+        public Transform[] imageDeaths = new Transform[3];
+
         //ÄÚ·çÆ¾
         public IEnumerator runningCoroutine;
         public IEnumerator energyChargingCoroutine;
@@ -37,6 +39,11 @@ namespace NHR
         private void Start()
         {
             SeongMin.GameManager.Instance.playerManager.uiPlayer = this;
+
+            for(int i = 0; i < 3; i++)
+            {
+                imageDeaths[i] = this.transform.GetChild(0).GetChild(4).GetChild(5).GetChild(i).GetChild(0);
+            }
         }
         private void LateUpdate()
         {
