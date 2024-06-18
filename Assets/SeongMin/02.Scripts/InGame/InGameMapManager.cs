@@ -28,7 +28,7 @@ namespace SeongMin
             photonView = GetComponent<PhotonView>();
 
             //임시
-            DataManager.Instance.LoadEventDialogData();
+            NHR.DataManager.Instance.LoadEventDialogData();
         }
         //inGameRunnerItemList의 길이만큼 숫자를 리스트에 넣기
         //각 플레이어가 inGameRunnerItemList 를 자동으로 넣으면 편하지만
