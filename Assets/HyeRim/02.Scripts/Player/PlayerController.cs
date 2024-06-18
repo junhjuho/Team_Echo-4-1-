@@ -1,3 +1,4 @@
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace NHR
 
         private void Awake()
         {
+            GameDB.Instance.playerController = this;
             //this.Init();
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
         }

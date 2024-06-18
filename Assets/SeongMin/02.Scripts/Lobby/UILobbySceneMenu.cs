@@ -88,7 +88,8 @@ namespace SeongMin
 
                 if (_player == PhotonNetwork.LocalPlayer) 
                 {
-                    GameManager.Instance.lobbySceneManager.playerController.Init();
+                    GameDB.Instance.playerController.Init();
+                    //GameManager.Instance.lobbySceneManager.playerController.Init();
                 }
             }
         }

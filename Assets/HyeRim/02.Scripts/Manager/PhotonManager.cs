@@ -1,6 +1,7 @@
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -30,7 +31,8 @@ namespace NHR
             {
                 if (_player == PhotonNetwork.LocalPlayer)
                 {
-                    SeongMin.GameManager.Instance.playerManager.playerController.Init();
+                    GameDB.Instance.playerController.Init();
+                    //SeongMin.GameManager.Instance.playerManager.playerController.Init();
                 }
             }
         }
