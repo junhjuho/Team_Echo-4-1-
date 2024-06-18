@@ -37,7 +37,7 @@ namespace SeongMin
         {
             
             photonView = GetComponent<PhotonView>();
-            chaserPrefab = this.transform.Find("skinless zombie").gameObject;
+            chaserPrefab = this.transform.Find("zombie").gameObject;
             GameDB.Instance.playerMission = this;
 
             if (missionManager != null)
