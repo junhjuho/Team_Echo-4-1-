@@ -27,7 +27,7 @@ namespace NHR
             var selectedClothesColorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
 
             //캐릭터 설정
-            this.characters = this.GetComponentsInChildren<Character>();
+            //this.characters = this.GetComponentsInChildren<Character>();
             foreach (var character in this.characters)
             {
                 character.gameObject.SetActive(false);
