@@ -31,8 +31,8 @@ namespace NHR
             {
                 if (_player == PhotonNetwork.LocalPlayer)
                 {
-                    GameDB.Instance.playerController.Init();
-                    //SeongMin.GameManager.Instance.playerManager.playerController.Init();
+                    //GameDB.Instance.playerController.Init();
+                    SeongMin.GameManager.Instance.playerManager.playerController.Init();
                 }
             }
         }
