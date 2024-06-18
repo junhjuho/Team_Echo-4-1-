@@ -28,7 +28,7 @@ namespace SeongMin
             photonView = GetComponent<PhotonView>();
 
             //임시
-            DataManager.Instance.LoadEventDialogData();
+            NHR.DataManager.Instance.LoadEventDialogData();
         }
         //inGameRunnerItemList의 길이만큼 숫자를 리스트에 넣기
         //각 플레이어가 inGameRunnerItemList 를 자동으로 넣으면 편하지만
@@ -44,6 +44,7 @@ namespace SeongMin
         }
         public void ItemPositionSetting()
         {
+            GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
             if (inGameRunnerItemList.Count < inGameItemPositionList.Count)
             {
                 for (int i = 0; i < inGameRunnerItemList.Count; i++)
@@ -55,6 +56,14 @@ namespace SeongMin
             else
             {
                 print("생성해야할 오브젝트 수가 생성 가능한 위치보다 많습니다. 생성위치를 추가해주세요.");
+            }
+        }
+        public void ChaserItemResetting()
+        {
+            GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
+            for(int i = 0; i < inGameChaserItemList.Count; i++)
+            {
+                inGameChaserItemList[i].transform.position = inGameItemPositionList[i].position;
             }
         }
         public void PlayerPositionSetting()

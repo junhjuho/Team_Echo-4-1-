@@ -39,8 +39,11 @@ namespace SeongMin
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
-            
             GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
+
+            //캐릭터 커스텀 설정
+            photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
+
             //최초 라운드세팅 실행
             RoundMapSetting();
             // 1라운드 세팅
@@ -160,6 +163,7 @@ namespace SeongMin
             // 완료한 미션 갯수 초기화
             GameDB.Instance.playerMission.runnerMissionClearCount = 0;
             GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+            GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
 
         }
         //복수자 배정하기
@@ -206,6 +210,12 @@ namespace SeongMin
                 isPlayerAllConnected = true;
             }
 
+        }
+        [PunRPC]
+        protected void InitPlayerSetting()
+        {
+            var controller = GameManager.Instance.playerManager.playerController;
+            if (controller != null) controller.Init();
         }
         private void ChangeText(string _text)
         {

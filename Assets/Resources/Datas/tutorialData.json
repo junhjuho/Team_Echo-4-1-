@@ -1,57 +1,112 @@
 [
     {
-        "id": 2000,
-        "eventType": "roundStart",
-        "dialog": "Game Start"
+        "id": 100,
+        "dialog": "잘하셨습니다!",
+        "type": -1
     },
     {
-        "id": 2001,
-        "eventType": "round1End",
-        "dialog": "다음 문이 열렸습니다. \n복수자가 드러납니다. "
+        "id": 101,
+        "dialog": "튜토리얼에 오신 것을 환영합니다. ",
+        "type": -1
     },
     {
-        "id": 2002,
-        "eventType": "round2End",
-        "dialog": "다음 문이 열렸습니다. \n복수자가 더욱 강해집니다. "
+        "id": 102,
+        "dialog": "컨트롤러의 조이스틱을 사용하여 빛나는 곳까지 이동하세요. ",
+        "type": 0
     },
     {
-        "id": 2003,
-        "eventType": "roleRunner",
-        "dialog": "당신은 생존자입니다"
+        "id": 103,
+        "dialog": "걷는 중에 A버튼을 누르면 달리기가 가능합니다. ",
+        "type": -1
     },
     {
-        "id": 2004,
-        "eventType": "roleChaser",
-        "dialog": "당신은 복수자입니다"
+        "id": 104,
+        "dialog": "달리기는 에너지를 소모합니다. ",
+        "type": -1
     },
     {
-        "id": 2005,
-        "eventType": "questRunner",
-        "dialog": "열쇠를 찾아 탈출하기"
+        "id": 105,
+        "dialog": "걷기와 달리기로 빛나는 곳까지 이동하세요. ",
+        "type": 0
     },
     {
-        "id": 2006,
-        "eventType": "questChaser",
-        "dialog": "생존자의 탈출을 방해하기"
+        "id": 106,
+        "dialog": "상호작용이 가능한 물체는 위에 빛나는 원으로 표시됩니다. ",
+        "type": -1
     },
     {
-        "id": 2007,
-        "eventType": "attacked",
-        "dialog": "기절"
+        "id": 107,
+        "dialog": "빛나는 곳까지 이동하여 램프에 접근해보세요. ",
+        "type": 0
     },
     {
-        "id": 2008,
-        "eventType": "death",
-        "dialog": "사망"
+        "id": 108,
+        "dialog": "손을 램프에 가까이 이동하여 Trigger 버튼을 누르세요. ",
+        "type": 0
     },
     {
-        "id": 2009,
-        "eventType": "chaserChangeOn",
-        "dialog": "복수자가 괴물로 변신하였습니다. \n모든 불이 꺼집니다. "
+        "id": 109,
+        "dialog": "같은 방법으로 서랍 위의 손전등을 주워보세요. ",
+        "type": 1
     },
     {
-        "id": 2010,
-        "eventType": "chaserChangeOff",
-        "dialog": "복수자의 변신이 풀렸습니다. "
+        "id": 110,
+        "dialog": "왼쪽 손을 바라보면 인벤토리를 볼 수 있습니다. ",
+        "type": -1
+    },
+    {
+        "id": 111,
+        "dialog": "손전등을 잡고 인벤토리에 넣어보세요. ",
+        "type": 0
+    },
+    {
+        "id": 112,
+        "dialog": "이제 다시 인벤토리에 손을 가져가 손전등을 꺼내보세요. ",
+        "type": 1
+    },
+    {
+        "id": 113,
+        "dialog": "손전등을 잡고 Grab 버튼을 누르면 손전등이 켜집니다. ",
+        "type": -1
+    },
+    {
+        "id": 114,
+        "dialog": "손전등은 배터리를 소모합니다. 충전기를 찾아 배터리를 충전하세요. ",
+        "type": -1
+    },
+    {
+        "id": 115,
+        "dialog": "당신은 생존자가 되었습니다. ",
+        "type": -1
+    },
+    {
+        "id": 116,
+        "dialog": "테이블 위의 키를 획득하여 문의 열쇠구멍에 가져가보세요",
+        "type": 0
+    },
+    {
+        "id": 117,
+        "dialog": "당신은 복수자가 되었습니다. ",
+        "type": -1
+    },
+    {
+        "id": 118,
+        "dialog": "테이블 위의 아이템을 획득하여 변신하세요. ",
+        "type": 0
+    },
+    {
+        "id": 119,
+        "dialog": "팔을 휘둘러 옆의 플레이어를 공격하세요. ",
+        "type": 0
+    },
+    {
+        "id": 120,
+        "dialog": "튜토리얼을 모두 완료하였습니다. ",
+        "type": -1
+    },
+    {
+        "id": 121,
+        "dialog": "타이틀 화면으로 돌아가 플레이를 시작하세요. ",
+        "type": -1
     }
 ]

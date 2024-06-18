@@ -6,11 +6,11 @@ namespace NHR
 {
     public class TutorialQuestObjectManager : MonoBehaviour
     {
-        public TutorialQuestObject[] questObjects;
+        public TutorialQuestObjectTrigger[] questObjects;
 
         private void Awake()
         {
-            this.questObjects = GetComponentsInChildren<TutorialQuestObject>();
+            this.questObjects = GetComponentsInChildren<TutorialQuestObjectTrigger>();
             //모든 오브젝트 비활성화
             foreach (var obj in questObjects)
             {
