@@ -38,8 +38,10 @@ namespace SeongMin
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
             GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
 
+            UIManager.Instance.robbySceneMenu.PlayerOn();
+
             //캐릭터 커스텀 설정
-            GameManager.Instance.lobbySceneManager.photonView.RPC("InitPlayerSetting", RpcTarget.All);
+            //GameManager.Instance.lobbySceneManager.photonView.RPC("InitPlayerSetting", RpcTarget.All);
 
             if (PhotonNetwork.IsMasterClient)
             GameManager.Instance.lobbySceneManager.isLobbySetting = true; // 로비 세팅 가능함을 알리기

@@ -46,11 +46,11 @@ namespace SeongMin
         }
         public PlayerController playerController;
 
-        [PunRPC]
-        protected void InitPlayerSetting()
-        {
-            if (this.playerController != null) this.playerController.Init();
-        }
+        //[PunRPC]
+        //protected void InitPlayerSetting()
+        //{
+        //    if (this.playerController != null) this.playerController.Init();
+        //}
 
     }
 
