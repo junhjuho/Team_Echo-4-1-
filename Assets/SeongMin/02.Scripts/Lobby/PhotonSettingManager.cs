@@ -1,3 +1,4 @@
+using NHR;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -34,11 +35,17 @@ namespace SeongMin
         public override void OnJoinedRoom()
         {
             print("방에 입장했습니다.");
-            PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
 
-            if(PhotonNetwork.IsMasterClient)
+            //캐릭터 커스텀 설정
+            GameManager.Instance.lobbySceneManager.photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
+
+            if (PhotonNetwork.IsMasterClient)
             GameManager.Instance.lobbySceneManager.isLobbySetting = true; // 로비 세팅 가능함을 알리기
         }
+
+
     }
 
 }

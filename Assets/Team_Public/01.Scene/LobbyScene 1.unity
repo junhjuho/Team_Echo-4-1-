@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemPrefab 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: 120c7baa611bc174eb7dcdd69f66050b, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 7307006495743471025, guid: 120c7baa611bc174eb7dcdd69f66050b, type: 3}
       propertyPath: sceneViewId
       value: 7
@@ -667,6 +671,10 @@ PrefabInstance:
     - target: {fileID: 5751889277336951097, guid: b9109109f9a59fe42a3e9b4842eac9c5, type: 3}
       propertyPath: m_Name
       value: ItemPrefab 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: b9109109f9a59fe42a3e9b4842eac9c5, type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: b9109109f9a59fe42a3e9b4842eac9c5, type: 3}
       propertyPath: sceneValue
@@ -1343,6 +1351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: 598219a6574f2084fa04a994389e2d33, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: 598219a6574f2084fa04a994389e2d33, type: 3}
       propertyPath: sceneValue
       value: 1
@@ -1802,6 +1814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemPrefab 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: 4efec69e88e7b0d4b8643390c8ea322a, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: 4efec69e88e7b0d4b8643390c8ea322a, type: 3}
       propertyPath: sceneValue
       value: 1
@@ -1879,6 +1895,10 @@ PrefabInstance:
     - target: {fileID: 5751889277336951097, guid: a642170ff8e6ad9429ad5232d6eeeef2, type: 3}
       propertyPath: m_Name
       value: ItemPrefab 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: a642170ff8e6ad9429ad5232d6eeeef2, type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: a642170ff8e6ad9429ad5232d6eeeef2, type: 3}
       propertyPath: sceneValue
@@ -2060,6 +2080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemPrefab 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: 221b1253515c5d1488f49db2fd922d7a, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: 221b1253515c5d1488f49db2fd922d7a, type: 3}
       propertyPath: sceneValue
       value: 1
@@ -2137,6 +2161,10 @@ PrefabInstance:
     - target: {fileID: 5751889277336951097, guid: 61307681ee7ac4f4b9df26b5830477de, type: 3}
       propertyPath: m_Name
       value: ItemPrefab 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: 61307681ee7ac4f4b9df26b5830477de, type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: 61307681ee7ac4f4b9df26b5830477de, type: 3}
       propertyPath: sceneValue
@@ -2796,6 +2824,10 @@ PrefabInstance:
     - target: {fileID: 5751889277336951097, guid: 67a94e7dc4ad0424e9663e56e4d03515, type: 3}
       propertyPath: m_Name
       value: ItemPrefab 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: 67a94e7dc4ad0424e9663e56e4d03515, type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: 67a94e7dc4ad0424e9663e56e4d03515, type: 3}
       propertyPath: sceneValue
@@ -4467,6 +4499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemPrefab 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5751889277336951097, guid: c373eb57961c52a499a0e00b865290f1, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 7745569583422304101, guid: c373eb57961c52a499a0e00b865290f1, type: 3}
       propertyPath: sceneValue
       value: 1
@@ -5191,7 +5227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1077641552886711946
 Transform:
   m_ObjectHideFlags: 0
@@ -5829,7 +5865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1652808025888953536
 GameObject:
   m_ObjectHideFlags: 0
