@@ -29,13 +29,15 @@ namespace NHR
         //에너지 다운 상태인가?
         public bool isEnergyDown = false;
 
-        int currentCount = 0;
-        public void ImageDeaths(int count)
-        {
-            int i = count + currentCount;
-            imageDeaths[i].gameObject.SetActive(true);
-            currentCount++;
-        }
+        bool isRunningCoroutine;
+        bool isChargingCoroutine;
+
+        //public void ImageDeaths(int count)
+        //{
+        //    int i = count + currentCount;
+        //    imageDeaths[i].gameObject.SetActive(true);
+        //    currentCount++;
+        //}
         private void Awake()
         {
             if (this.uiWatch == null) this.uiWatch = GetComponentInChildren<UIWatch>();
@@ -47,10 +49,10 @@ namespace NHR
         {
             SeongMin.GameManager.Instance.playerManager.uiPlayer = this;
 
-            for(int i = 0; i < 3; i++)
-            {
-                imageDeaths[i] = this.transform.GetChild(0).GetChild(4).GetChild(5).GetChild(i).GetChild(0);
-            }
+            //for(int i = 0; i < 3; i++)
+            //{
+            //    imageDeaths[i] = this.transform.GetChild(0).GetChild(4).GetChild(5).GetChild(i).GetChild(0);
+            //}
         }
         private void LateUpdate()
         {
@@ -65,10 +67,10 @@ namespace NHR
                     Debug.Log("달림");
                 }
                 //달리는 버튼이 눌렸지만 스테미나가 0이라면 달리는 코루틴 멈추고 충전 코루틴 실행
-                if (staminaBar.fillAmount <= 0)
+                else //(staminaBar.fillAmount <= 0)
                 {
                     this.isEnergyDown = true;
-                    StopCoroutine(this.runningCoroutine);
+                    //StopCoroutine(this.runningCoroutine);
                     StartCoroutine(this.energyChargingCoroutine);
                     Debug.Log("충전");
                 }
@@ -78,38 +80,29 @@ namespace NHR
         }
         public IEnumerator CRunning()
         {
-            while (true)
+            while (staminaBar.fillAmount > 0f)
             {
                 yield return new WaitForSeconds(1f);
-
                 staminaBar.fillAmount -= 0.01f;
-                
-                //에너지를 다 사용했다면 달리는 중 코루틴 멈추기
-                if (staminaBar.fillAmount <= 0)
-                {
-                    this.isEnergyDown = true;
-                    StopCoroutine(this.runningCoroutine);
-                    StartCoroutine(this.energyChargingCoroutine);
-                }
             }
+            //에너지를 다 사용했다면 달리는 중 코루틴 멈추기
+            this.isEnergyDown = true;
+            StopCoroutine(this.runningCoroutine);
+            //StartCoroutine(this.energyChargingCoroutine);  
         }
 
         //에너지 충전 중
         public IEnumerator CEnergyCharging()
         {
-            while (true)
+            while (staminaBar.fillAmount >= 1f)
             {
                 yield return new WaitForSeconds(1f);
-
-                //에너지 다 충전되었다면 충전 코루틴 멈추기
-                if (staminaBar.fillAmount >= 1)
-                {
-                    this.isEnergyDown = false;
-                    Debug.Log("충전 끝");
-                    StopCoroutine(this.energyChargingCoroutine);
-                }
                 staminaBar.fillAmount += 0.01f;
             }
+            //에너지 다 충전되었다면 충전 코루틴 멈추기   
+             this.isEnergyDown = false;
+             Debug.Log("충전 끝");
+             StopCoroutine(this.energyChargingCoroutine);
         }
     }
 }
