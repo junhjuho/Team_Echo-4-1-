@@ -49,8 +49,6 @@ public class PlayerSyncController : MonoBehaviour
     {
         if (pv.IsMine)
         {
-            headRig.transform.position = origin.transform.position;
-
             if (headRig.transform.position.y > riggingManager.modelHeight)
             {
                 float floor = headRig.transform.position.y > 5f ? 6.1f : 0f;

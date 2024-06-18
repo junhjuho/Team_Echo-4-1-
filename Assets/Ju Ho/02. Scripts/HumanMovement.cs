@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 
 public class HumanMovement : PlayerMovement
 {
-    public int attackCount = 0;
     public bool isRunBtnDown;
     UIPlayer uiPlayer;
     Scene scene;
