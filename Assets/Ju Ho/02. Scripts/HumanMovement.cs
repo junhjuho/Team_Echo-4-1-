@@ -1,5 +1,6 @@
 using NHR;
 using Photon.Pun.Demo.PunBasics;
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization; 
@@ -9,6 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class HumanMovement : PlayerMovement
 {
+    public int attackCount = 0;
     public bool isRunBtnDown;
     UIPlayer uiPlayer;
     Scene scene;
@@ -77,13 +79,13 @@ public class HumanMovement : PlayerMovement
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name);
-        if(pv.IsMine && other.transform.root.GetChild(3).GetComponent<MonsterMovement>() != null)
+        if (pv.IsMine && other.transform.root.GetChild(3).GetComponent<MonsterMovement>() != null)
         {
             Vector3 zombiePos = other.transform.position - this.transform.position;
             zombiePos.Normalize();
             float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
 
-            if(attackPos > 0)
+            if (attackPos > 0)
             {
                 animator.SetTrigger("Forward Die");
                 Debug.Log("인간이 좀비 앞에 있따");
@@ -94,13 +96,9 @@ public class HumanMovement : PlayerMovement
                 Debug.Log("인간이 좀비 뒤에 있다");
             }
 
-            for(int i = 0; i < 3; i++)
-            {
-                SeongMin.GameManager.Instance.playerManager.uiPlayer.imageDeaths[i].gameObject.SetActive(true);
-            }
-
-            Debug.Log("충돌");
-            //animator.SetBool("Die", true);
+            var heart = SeongMin.GameManager.Instance.playerManager.heart;
+            EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
+            heart--;
         }
     }
 }
