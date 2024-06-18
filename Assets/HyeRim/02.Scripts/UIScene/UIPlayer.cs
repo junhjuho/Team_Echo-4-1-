@@ -20,6 +20,8 @@ namespace NHR
 
         public Image staminaBar;
 
+        public Transform[] imageDeaths = new Transform[3];
+
         //코루틴
         public IEnumerator runningCoroutine;
         public IEnumerator energyChargingCoroutine;
@@ -27,6 +29,13 @@ namespace NHR
         //에너지 다운 상태인가?
         public bool isEnergyDown = false;
 
+        int currentCount = 0;
+        public void ImageDeaths(int count)
+        {
+            int i = count + currentCount;
+            imageDeaths[i].gameObject.SetActive(true);
+            currentCount++;
+        }
         private void Awake()
         {
             if (this.uiWatch == null) this.uiWatch = GetComponentInChildren<UIWatch>();
@@ -37,6 +46,11 @@ namespace NHR
         private void Start()
         {
             SeongMin.GameManager.Instance.playerManager.uiPlayer = this;
+
+            for(int i = 0; i < 3; i++)
+            {
+                imageDeaths[i] = this.transform.GetChild(0).GetChild(4).GetChild(5).GetChild(i).GetChild(0);
+            }
         }
         private void LateUpdate()
         {
