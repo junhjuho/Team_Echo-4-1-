@@ -6,9 +6,12 @@ using UnityEngine;
 public class XROriginBugFixed : MonoBehaviour
 {
     public GameObject target;
-    private void Start()
+    private void Awake()
     {
         GameDB.Instance.xrOriginBugFixedObject = this;
+    }
+    private void Start()
+    {
         if (GameDB.Instance.playerMission.currentRunnerPrefab != null)
             target = GameDB.Instance.playerMission.currentRunnerPrefab;
     }
