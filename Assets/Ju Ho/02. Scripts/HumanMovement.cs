@@ -77,7 +77,7 @@ public class HumanMovement : PlayerMovement
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name);
-        if(/*pv.IsMine &&*/ other.transform.root.GetChild(3).GetComponent<MonsterMovement>() != null)
+        if(pv.IsMine && other.transform.root.GetChild(3).GetComponent<MonsterMovement>() != null)
         {
             Vector3 zombiePos = other.transform.position - this.transform.position;
             zombiePos.Normalize();
