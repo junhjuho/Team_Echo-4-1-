@@ -10575,6 +10575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0242e43d0addddf4ca538f15c0c0f155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
   isChaser: 0
   isTeamMission: 0
   playerMissionArray: []
