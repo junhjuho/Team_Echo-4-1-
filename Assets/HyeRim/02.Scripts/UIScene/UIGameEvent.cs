@@ -158,7 +158,7 @@ namespace NHR
             //타이머 갱신
             EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Update_Timer, new EventHandler<int>((type, time) =>
             {
-                Debug.LogFormat("<color=yellow>남은 시간 : {0}</color>", time);
+                //Debug.LogFormat("<color=yellow>남은 시간 : {0}</color>", time);
                 this.uiTimer.UpdateTimer(time);
             }));
             //괴물 변신 타이머 갱신

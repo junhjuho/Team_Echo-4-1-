@@ -23,6 +23,8 @@ namespace SeongMin
         [Header(" 플레이어 인게임 결과 데이터")]
         public bool hasGameData = false;
         public bool isWin = false;
+        [Header("XROrigin 버그 픽스용 오브젝트")]
+        public XROriginBugFixed xrOriginBugFixedObject;
 
         public void Shuffle(int[] _array)
         {
