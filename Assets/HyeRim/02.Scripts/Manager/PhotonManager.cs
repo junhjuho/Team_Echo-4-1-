@@ -12,27 +12,33 @@ namespace NHR
 {
     public class PhotonManager : MonoBehaviourPunCallbacks
     {
+        HashTable playerCustom = new HashTable();
+
         private void Awake()
         {
             SeongMin.GameManager.Instance.photonManager = this;
         }
-        public void OnPlayer() // 플레이어가 버튼을 눌러 커스텀 프로퍼티 변경시 준비완료한 플레이어 숫자 동기화 
+        /// <summary>
+        /// 플레이어 접속 시커스텀프로퍼티에 플레이어 캐릭터 커스텀 정보 동기화
+        /// </summary>
+        public void SetPlayer()
         {
-            HashTable onPlayer = new HashTable
-                {
-                    {"onPlayer", true}
-                };
-
-            PhotonNetwork.LocalPlayer.SetCustomProperties(onPlayer); // 커스텀 프로퍼티 변경하는 함수
+            Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
+            //playerCustom["playerCustom"] = (InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
+            playerCustom["playerCustom"] = (0, "Green");
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustom);
         }
+
         public override void OnPlayerPropertiesUpdate(Player _player, HashTable _changedProps) // 커스텀 프로퍼티 변경시 콜백 받는 함수
         {
-            if (_changedProps.ContainsKey("onPlayer"))
+            if (_changedProps.ContainsKey("playerCustom"))
             {
+                var customPlayer = ((int, string))_changedProps["playerCustom"];
+
                 if (_player == PhotonNetwork.LocalPlayer)
                 {
                     //GameDB.Instance.playerController.Init();
-                    SeongMin.GameManager.Instance.playerManager.playerController.Init();
+                    GameManager.Instance.lobbySceneManager.playerController.Init();
                 }
             }
         }

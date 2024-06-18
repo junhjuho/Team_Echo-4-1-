@@ -100,7 +100,7 @@ namespace Jaewook
         {
             while (true)
             {
-                Debug.LogFormat("nowBattery time : {0}", this.nowBatteryTime);
+                //Debug.LogFormat("nowBattery time : {0}", this.nowBatteryTime);
                 this.nowBatteryTime--;
 
                 //배터리 한 칸 시간이 다 되었을 경우

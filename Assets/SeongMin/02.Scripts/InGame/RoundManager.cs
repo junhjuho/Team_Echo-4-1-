@@ -39,6 +39,7 @@ namespace SeongMin
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            GameManager.Instance.photonManager.SetPlayer();
             GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
 
             //캐릭터 커스텀 설정
