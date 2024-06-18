@@ -6,30 +6,22 @@ using UnityEngine;
 
 namespace Jaewook
 {
+    /// <summary>
+    /// 미션 아이템, OnGrab() -> 미션 완성
+    /// </summary>
     public class KeyItem : ItemObject, IItem
     {
-        // private MissionManager missionManager;
+        
 
         private void Start()
         {
             base.Start();
-            // missionManager = GameManager.Instance.missionManager;
+            
         }
 
         public void OnGrab()
         {
-            /*
-            if (missionManager != null)
-            {
-                missionManager.runnerMissionCount++;
-                missionManager.MissionSetting();
-                this.gameObject.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("MissionManager is not assigned.");
-            }
-            */
+            
             
         }
 
