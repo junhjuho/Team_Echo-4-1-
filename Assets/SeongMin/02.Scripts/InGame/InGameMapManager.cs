@@ -37,21 +37,34 @@ namespace SeongMin
         public void ItemNumberListSetting()
         {
             inGameRunnerItemNumberArray = new int[inGameRunnerItemList.Count];
-            for (int i = 0; i<inGameRunnerItemList.Count; i++)
+            for (int i = 0; i < inGameRunnerItemList.Count; i++)
             {
                 inGameRunnerItemNumberArray[i] = i;
             }
         }
         public void ItemPositionSetting()
         {
-            GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
-            if (inGameRunnerItemList.Count < inGameItemPositionList.Count)
+            GameDB.Instance.Shuffle(inGameItemPositionList);
+            if (inGameRunnerItemList.Count + inGameChaserItemList.Count + inGameTeamPlayItemList.Count <= inGameItemPositionList.Count)
             {
+                int num = 0;
+                int num2 = 0;
                 for (int i = 0; i < inGameRunnerItemList.Count; i++)
                 {
-                    var _object = inGameRunnerItemList[i];
-                    _object.transform.position = inGameItemPositionList[i].position;
+                    inGameRunnerItemList[i].transform.position = inGameItemPositionList[i].position;
                 }
+                for (int j = inGameRunnerItemList.Count; j < j + inGameChaserItemList.Count; j++)
+                {
+                    inGameChaserItemList[num].transform.position = inGameItemPositionList[j].position;
+                    num++;
+                }
+                for (int k = inGameRunnerItemList.Count + inGameChaserItemList.Count; k < k + inGameTeamPlayItemList.Count; k++)
+                {
+                    inGameTeamPlayItemList[num2].transform.position = inGameItemPositionList[k].position;
+                    num2++;
+                }
+                num = 0;
+                num2 = 0;
             }
             else
             {
@@ -61,7 +74,7 @@ namespace SeongMin
         public void ChaserItemResetting()
         {
             GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
-            for(int i = 0; i < inGameChaserItemList.Count; i++)
+            for (int i = 0; i < inGameChaserItemList.Count; i++)
             {
                 inGameChaserItemList[i].transform.position = inGameItemPositionList[i].position;
             }
