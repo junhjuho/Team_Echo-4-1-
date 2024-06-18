@@ -14,7 +14,7 @@ namespace NHR
 
         private void Awake()
         {
-            this.Init();
+            //this.Init();
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
         }
 
