@@ -29,6 +29,13 @@ namespace NHR
         //에너지 다운 상태인가?
         public bool isEnergyDown = false;
 
+        int currentCount = 0;
+        public void ImageDeaths(int count)
+        {
+            int i = count + currentCount;
+            imageDeaths[i].gameObject.SetActive(true);
+            currentCount++;
+        }
         private void Awake()
         {
             if (this.uiWatch == null) this.uiWatch = GetComponentInChildren<UIWatch>();
