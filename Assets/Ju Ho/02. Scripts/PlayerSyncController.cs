@@ -44,18 +44,30 @@ public class PlayerSyncController : MonoBehaviour
             riggingManager = this.GetComponentInChildren<RiggingManager>();
 
         }
+
+        //if (this.transform.name == "Player")
+        //{
+        //    riggingManager = GameObject.Find("Banana Man").GetComponent<RiggingManager>();
+        //}
+        //else
+        //{
+        //    riggingManager = GameObject.Find("skinless zombie").GetComponent<RiggingManager>();
+        //}
     }
 
     void Update()
     {
+        //Debug.DrawRay(head.transform.position, - head.transform.up * 5f, Color.red);
+
         if (pv.IsMine)
         {
             if (headRig.transform.position.y > riggingManager.modelHeight)
             {
                 float floor = headRig.transform.position.y > 5f ? 6.1f : 0f;
 
-                headRig.transform.position = new Vector3(headRig.transform.position.x, (riggingManager.modelHeight) + floor, headRig.transform.position.z);
-                head.transform.position = new Vector3(head.transform.position.x, (riggingManager.modelHeight) + floor, head.transform.position.z);
+                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight + floor, headRig.transform.position.z);
+                //Debug.Log(headRig.transform.position); 
+                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight + floor, head.transform.position.z);
             }
 
             SyncTransform(head, headRig);
@@ -74,11 +86,11 @@ public class PlayerSyncController : MonoBehaviour
     {
         if(pv.IsMine)
         {
-            obj.layer = this.transform.GetChild(3).gameObject.activeSelf ? 13 : layer;
-            // 좀비 오브젝트가 켜져있으면 레이어는 13번(좀비), 아니면 7번(플레이어)
+            obj.layer = layer;
+
             foreach (Transform child in obj.transform)
             {
-                ChangeLayer(child.gameObject, layer); 
+                ChangeLayer(child.gameObject, layer);
             }
         }
     }
