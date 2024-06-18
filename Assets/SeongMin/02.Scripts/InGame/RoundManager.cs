@@ -63,6 +63,7 @@ namespace SeongMin
                     RoundMapSetting();
                     Invoke("RoundTwoSetting", 3f);
                     //RoundTwoSetting();
+                    MissionSetting();
                     ChangeText("2");
                     break;
                 // 2라운드에서 3라운드로
@@ -72,6 +73,7 @@ namespace SeongMin
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round2End");
                     RoundMapSetting();
                     RoundThreeSetting();
+                    MissionSetting();
                     ChangeText("3");
                     break;
                 // 3라운드에서 엔딩으로
@@ -112,7 +114,7 @@ namespace SeongMin
             RoundPlayerDataReset();
             ChaserSetting();
             TeamMissionSetting();
-            MissionSetting();
+            
             Debug.Log("라운드2 셋팅 완료");
             Invoke("RoleSettingEvent", 2f);
         }
@@ -127,7 +129,6 @@ namespace SeongMin
             //내 라운드 데이터 초기화하기
             RoundPlayerDataReset();
             TeamMissionSetting();
-            MissionSetting();
         }
         private void RoundMapSetting()
         {
