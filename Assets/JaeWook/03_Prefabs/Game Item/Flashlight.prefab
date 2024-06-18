@@ -583,7 +583,6 @@ MonoBehaviour:
   sceneValue: 2
   charactorValue: 0
   itemValue: 0
-  isFind: 0
   isOn: 0
   flashlight: {fileID: 1311416542418607870}
   uiFlashlight: {fileID: 693863413551221102}
@@ -848,10 +847,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 10800000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
-      propertyPath: m_Range
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 10800000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_Intensity
