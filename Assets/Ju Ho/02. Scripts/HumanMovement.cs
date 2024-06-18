@@ -1,6 +1,5 @@
 using NHR;
 using Photon.Pun.Demo.PunBasics;
-using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization; 
@@ -10,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class HumanMovement : PlayerMovement
 {
-    public int attackCount = 0;
     public bool isRunBtnDown;
     UIPlayer uiPlayer;
     Scene scene;
@@ -21,6 +19,11 @@ public class HumanMovement : PlayerMovement
         base.Start();
 
         scene = SceneManager.GetActiveScene();
+
+        if (scene.name == ("InGameScene 1"))
+        {
+            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+        }
     }
 
     void Update()
@@ -28,27 +31,26 @@ public class HumanMovement : PlayerMovement
         PlayerMove();
         FingerMove(animator);
     }
-    public override void PlayerMove() // °È±â¿Í ´Þ¸®±â 
+    public override void PlayerMove() // ï¿½È±ï¿½ï¿½ ï¿½Þ¸ï¿½ï¿½ï¿½ 
     {
         if (pv.IsMine)
         {
-            base.PlayerMove();  // PlayerMovementÀÇ ¹öÆ° ÀÔ·Â ÀÌº¥Æ®¸¦ »ó¼Ó¹ÞÀ½
+            base.PlayerMove();  // PlayerMovementï¿½ï¿½ ï¿½ï¿½Æ° ï¿½Ô·ï¿½ ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½
 
-            if (scene.name == ("InGameScene 1"))
+            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½Ô·ï¿½ ï¿½Ìºï¿½Æ®
+
+            if (scene.name == ("InGameScene 1")) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ï¿½Ó¾ï¿½ï¿½Ì¶ï¿½ï¿½
             {
-                SeongMin.GameManager.Instance.playerManager.humanMovement = this;
                 isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
             }
-            else // ¾Æ´Ï¶ó¸é
+            else // ï¿½Æ´Ï¶ï¿½ï¿½
             {
                 isEnergyDown = false;
             }
 
-            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // ´Þ¸®±â ¹öÆ° ÀÔ·Â ÀÌº¥Æ®
+            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½
 
-            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // ¾Ö´Ï¸ÞÀÌ¼Ç ºí·»µå Æ®¸®
-
-            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // °È±â , ´Þ¸®±â ¼Óµµ
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // ï¿½È±ï¿½ , ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½Óµï¿½
             
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
@@ -56,7 +58,7 @@ public class HumanMovement : PlayerMovement
             return;
     }
 
-    public void FingerMove(Animator animator) // ¼Õ°¡¶ô ¿òÁ÷ÀÓ
+    public void FingerMove(Animator animator) // ï¿½Õ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         if (pv.IsMine)
         {
@@ -88,12 +90,12 @@ public class HumanMovement : PlayerMovement
             if (attackPos > 0)
             {
                 animator.SetTrigger("Forward Die");
-                Debug.Log("ÀÎ°£ÀÌ Á»ºñ ¾Õ¿¡ ÀÖµû");
+                Debug.Log("ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Õ¿ï¿½ ï¿½Öµï¿½");
             }
             else
             {
                 animator.SetTrigger("Backward Die");
-                Debug.Log("ÀÎ°£ÀÌ Á»ºñ µÚ¿¡ ÀÖ´Ù");
+                Debug.Log("ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½Ö´ï¿½");
             }
 
             var heart = SeongMin.GameManager.Instance.playerManager.heart;

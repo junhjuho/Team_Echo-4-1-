@@ -32,7 +32,7 @@ namespace NHR
             }
             this.characters[selectedCharacterID].gameObject.SetActive(true);
             var mat = this.characters[selectedCharacterID].material;
-            Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", selectedCharacterID, selectedClothesColorName);
+            Debug.LogFormat("<color=yellow>material : {0}</color>", mat.name);
             mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + selectedCharacterID + selectedClothesColorName);
 
         }

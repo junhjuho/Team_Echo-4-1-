@@ -40,21 +40,6 @@ namespace SeongMin
             PhotonNetwork.AutomaticallySyncScene = true; // 같은 씬에 있는 플레이어들 자동 동기화
         }
 
-        /// <summary>
-        /// 플레이어 접속 시커스텀프로퍼티에 플레이어 캐릭터 커스텀 정보 동기화
-        /// </summary>
-        /// <param name="characterId"></param>
-        /// <param name="textureName"></param>
-        public void PlayerOn()
-        {
-            Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
-            HashTable playerOn = new HashTable
-            {
-                { "playerOn", true }
-            };
-            PhotonNetwork.LocalPlayer.SetCustomProperties(playerOn);
-        }
-
         private void PlayerReady() // 플레이어가 버튼을 눌러 커스텀 프로퍼티 변경시 준비완료한 플레이어 숫자 동기화 
         {
             isReady = !isReady;
@@ -79,17 +64,6 @@ namespace SeongMin
                 // Update the number of ready players
                 UpdateReadyPlayerCount();
                 PlayersReadyCheck();
-            }
-
-            //캐릭터 커스텀
-            if (_changedProps.ContainsKey("playerOn")) 
-            {
-                bool hasPlayer = (bool)_changedProps["playerOn"];
-
-                if (_player == PhotonNetwork.LocalPlayer) 
-                {
-                    GameManager.Instance.lobbySceneManager.playerController.Init();
-                }
             }
         }
 

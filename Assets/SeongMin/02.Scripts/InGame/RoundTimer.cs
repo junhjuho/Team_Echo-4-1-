@@ -50,7 +50,6 @@ namespace SeongMin
                 _monsterTimer--;
                 EventDispatcher.instance.SendEvent<float>((int)NHR.EventType.eEventType.Update_MonsterTimer, _monsterTimer);
             }
-            GameDB.Instance.playerMission.photonView.RPC("CharacterChange",Photon.Pun.RpcTarget.AllBuffered, "Player");
             //괴물 변신 풀림
             EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOff");
         }
