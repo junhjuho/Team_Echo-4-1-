@@ -39,6 +39,7 @@ namespace SeongMin
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            
             GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
             //최초 라운드세팅 실행
             RoundMapSetting();
@@ -156,6 +157,10 @@ namespace SeongMin
             if (GameDB.Instance.playerMission.isChaser == true)
                 for (int i = 0; i < GameDB.Instance.playerMission.chaserMissionArray.Length; i++)
                     GameDB.Instance.playerMission.chaserMissionArray[i] = null;
+            // 완료한 미션 갯수 초기화
+            GameDB.Instance.playerMission.runnerMissionClearCount = 0;
+            GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+
         }
         //복수자 배정하기
         private void ChaserSetting()

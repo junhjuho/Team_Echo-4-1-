@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NHR
 {
-    public class TutorialQuestObject : MonoBehaviour
+    public class TutorialQuestObjectTrigger : MonoBehaviour
     {
         private void OnTriggerEnter(Collider other)
         {

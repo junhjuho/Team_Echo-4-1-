@@ -1,3 +1,4 @@
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -25,16 +26,12 @@ namespace NHR
         }
         private void Start()
         {
-            this.playerController.watch.hoverEntered.AddListener((args) =>
+            //공격받음
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
             {
-                Debug.Log("hoverEntered");
-                this.uiPlayer.uiWatch.uiInventory.handMenu.gameObject.SetActive(true);
-            });
-            this.playerController.watch.hoverExited.AddListener((args) =>
-            {
-                Debug.Log("hoverExited");
-                this.uiPlayer.uiWatch.uiInventory.handMenu.gameObject.SetActive(false);
-            });
+                this.heart = heart - 1;
+            }));
+
         }
     }
 }

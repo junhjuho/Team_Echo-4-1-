@@ -35,6 +35,7 @@ public class InfoManager
         this.PlayerInfo = new PlayerInfo();
         this.PlayerInfo.nowCharacterId = 0;
         this.PlayerInfo.nowClothesColorIndex = 0;
+        this.PlayerInfo.nowClothesColorName = "Red";
         this.SavePlayerInfo();
     }
     //키 인포
@@ -86,10 +87,11 @@ public class InfoManager
 
 
     //인포 가져오기(배열로 된 경우) 필요 시
-    public void EditPlayerInfo(int characterId, int colorIndex)
+    public void EditPlayerInfo(int characterId, int colorIndex, string colorName)
     {
         this.PlayerInfo.nowCharacterId = characterId;
         this.PlayerInfo.nowClothesColorIndex= colorIndex;
+        this.PlayerInfo.nowClothesColorName = colorName;
         SavePlayerInfo();
     }
 }
