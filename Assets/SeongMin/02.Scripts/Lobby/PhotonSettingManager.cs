@@ -41,18 +41,22 @@ namespace SeongMin
             GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
 
             //Debug.LogFormat("<color=green>{0}</color>", photonView);
-            foreach (Player player in PhotonNetwork.PlayerList)
-            {
-                if (player.CustomProperties.ContainsKey("playerCustom"))
-                {
-                    int id = (int)player.CustomProperties["playerCustom"];
-                    // 이 플레이어의 외형을 적용합니다.
-                    if (player == PhotonNetwork.LocalPlayer)
-                    {
-                        UIManager.Instance.robbySceneMenu.SetPlayer(id);
-                    }
-                }
-            }
+            //foreach (Player player in PhotonNetwork.PlayerList)
+            //{
+
+            //    if (player.CustomProperties.ContainsKey("playerCustom"))
+            //    {
+            //        Debug.Log("<color=yellow>playerSet</color>");
+
+            //        int id = (int)player.CustomProperties["playerCustom"];
+            //        // 이 플레이어의 외형을 적용합니다.
+            //        if (player == PhotonNetwork.LocalPlayer)
+            //        {
+            //            //UIManager.Instance.robbySceneMenu.SetPlayer(id);
+            //            GameManager.Instance.lobbySceneManager.playerController.ApplyCustom(id);
+            //        }
+            //    }
+            //}
 
             //if (GameManager.Instance.lobbySceneManager.playerMission.photonView.IsMine)
             //{
