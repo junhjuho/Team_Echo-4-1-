@@ -44,12 +44,13 @@ namespace NHR
         {
             if (SeongMin.GameManager.Instance.playerManager.humanMovement.isRunBtnDown)
             {
+                Debug.Log(staminaBar.fillAmount);
                 if(staminaBar.fillAmount > 0)
                 {
                     this.isEnergyDown = false;
                     staminaBar.fillAmount -= 0.1f * Time.deltaTime;
                 }
-                else
+                else if (staminaBar.fillAmount <= 0)
                 {
                     this.isEnergyDown = true;
                     staminaBar.fillAmount += 0.1f * Time.deltaTime;
@@ -61,10 +62,7 @@ namespace NHR
                 {
                     staminaBar.fillAmount += 0.1f * Time.deltaTime;
                 }
-                else
-                {
-                    this.isEnergyDown = true;
-                }
+                this.isEnergyDown = true;
             }
             //if (SeongMin.GameManager.Instance.playerManager.humanMovement.isRunBtnDown) 
             //{
