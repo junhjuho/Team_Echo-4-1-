@@ -88,12 +88,10 @@ public class HumanMovement : PlayerMovement
             if (attackPos > 0)
             {
                 animator.SetTrigger("Forward Die");
-                Debug.Log("�ΰ��� ���� �տ� �ֵ�");
             }
             else
             {
                 animator.SetTrigger("Backward Die");
-                Debug.Log("�ΰ��� ���� �ڿ� �ִ�");
             }
 
             var heart = SeongMin.GameManager.Instance.playerManager.heart;
