@@ -9,18 +9,19 @@ using static SeongMin.ItemObject;
 
 namespace SeongMin
 {
-    public class PlayerAction : XRGrabInteractable
+    public class PlayerAction : XRRayInteractor
     {
         PhotonView photonView;
         PlayerMission playerMission;
         private void Start()
         {
+            base.Start();
             photonView = GetComponent<PhotonView>();
-            playerMission = GetComponent<PlayerMission>();
-            this.activated.AddListener(ActivedEvent);
+            playerMission = GameDB.Instance.playerMission;
+            this.selectEntered.AddListener(ActivedEvent);
         }
         // 플레이어가 아이템을 잡았을 때,
-        private void ActivedEvent(ActivateEventArgs args)
+        private void ActivedEvent(SelectEnterEventArgs args)
         {
             //잡은 물체가 ItemObject 스크립트가 있는지 확인 후 _item 을 콜백으로 받아오기
             if (args.interactableObject.transform.TryGetComponent(out ItemObject _item) && _item.isFind == false)
