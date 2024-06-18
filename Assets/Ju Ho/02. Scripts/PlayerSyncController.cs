@@ -54,8 +54,8 @@ public class PlayerSyncController : MonoBehaviour
             {
                 float floor = headRig.transform.position.y > 5f ? 6.1f : 0f;
 
-                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight + floor, headRig.transform.position.z);
-                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight + floor, head.transform.position.z);
+                headRig.transform.position = new Vector3(headRig.transform.position.x, (riggingManager.modelHeight) + floor, headRig.transform.position.z);
+                head.transform.position = new Vector3(head.transform.position.x, (riggingManager.modelHeight) + floor, head.transform.position.z);
             }
 
             SyncTransform(head, headRig);
