@@ -39,7 +39,9 @@ namespace SeongMin
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
-            
+            //캐릭터 커스텀 설정
+            photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
+
             GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
             //최초 라운드세팅 실행
             RoundMapSetting();
@@ -206,6 +208,12 @@ namespace SeongMin
                 isPlayerAllConnected = true;
             }
 
+        }
+        [PunRPC]
+        private void InitPlayerSetting(GameObject player)
+        {
+            var controller = player.GetComponent<PlayerController>();
+            if (controller != null) controller.Init();
         }
         private void ChangeText(string _text)
         {
