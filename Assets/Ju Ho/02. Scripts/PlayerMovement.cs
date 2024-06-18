@@ -8,9 +8,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
     [SerializeField] protected InputActionAsset inputActionAsset;
     [SerializeField] protected ActionBasedContinuousMoveProvider moveProvider;
-    [SerializeField] protected Animator animator;
     [SerializeField] protected PhotonView pv;
 
     protected Vector2 dir;

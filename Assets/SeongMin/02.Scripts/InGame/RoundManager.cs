@@ -39,10 +39,11 @@ namespace SeongMin
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
+
             //캐릭터 커스텀 설정
             photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
 
-            GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
             //최초 라운드세팅 실행
             RoundMapSetting();
             // 1라운드 세팅
@@ -61,6 +62,7 @@ namespace SeongMin
                     RoundMapSetting();
                     Invoke("RoundTwoSetting", 3f);
                     //RoundTwoSetting();
+                    MissionSetting();
                     ChangeText("2");
                     break;
                 // 2라운드에서 3라운드로
@@ -70,6 +72,7 @@ namespace SeongMin
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round2End");
                     RoundMapSetting();
                     RoundThreeSetting();
+                    MissionSetting();
                     ChangeText("3");
                     break;
                 // 3라운드에서 엔딩으로
@@ -110,7 +113,7 @@ namespace SeongMin
             RoundPlayerDataReset();
             ChaserSetting();
             TeamMissionSetting();
-            MissionSetting();
+            
             Debug.Log("라운드2 셋팅 완료");
             Invoke("RoleSettingEvent", 2f);
         }
@@ -125,7 +128,6 @@ namespace SeongMin
             //내 라운드 데이터 초기화하기
             RoundPlayerDataReset();
             TeamMissionSetting();
-            MissionSetting();
         }
         private void RoundMapSetting()
         {
@@ -161,6 +163,7 @@ namespace SeongMin
             // 완료한 미션 갯수 초기화
             GameDB.Instance.playerMission.runnerMissionClearCount = 0;
             GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+            GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
 
         }
         //복수자 배정하기
@@ -209,9 +212,9 @@ namespace SeongMin
 
         }
         [PunRPC]
-        private void InitPlayerSetting(GameObject player)
+        protected void InitPlayerSetting()
         {
-            var controller = player.GetComponent<PlayerController>();
+            var controller = GameManager.Instance.playerManager.playerController;
             if (controller != null) controller.Init();
         }
         private void ChangeText(string _text)
