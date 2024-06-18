@@ -17,22 +17,17 @@ namespace NHR
         private string customKey = "playerCustom";
         [Header("캐릭터 커스텀")]
         public Character[] characters;
-        [Header("photonview")]
-        //public PhotonView photonView;
 
         public SmartWatchCustomInteractable watch;
 
         private void Awake()
         {
             GameDB.Instance.playerController = this;
-            //this.photonView = this.GetComponent<PhotonView>();
-
-            //this.Init();
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
         }
         private void Start()
         {
-            if(photonView.IsMine)this.SetPlayer(InfoManager.Instance.PlayerInfo.nowCharacterId);
+            if(photonView.IsMine)this.SetPlayer(InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
         }
 
 
@@ -41,13 +36,13 @@ namespace NHR
         /// </summary>
         /// <param name="characterId"></param>
         /// <param name="textureName"></param>
-        public void SetPlayer(int id)
+        public void SetPlayer(int characterId, string textureName)
         {
             Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
             //playerCustom["playerCustom"] = (InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
             HashTable props = new HashTable()
             {
-                {customKey, id }
+                {customKey, (characterId, textureName) }
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
         }
@@ -56,33 +51,22 @@ namespace NHR
             //캐릭터 커스텀
             if (_changedProps.ContainsKey(customKey) && _player == photonView.Owner)
             {
-                int customPlayer = (int)_changedProps[customKey];
+                var customPlayer = ((int, string))_changedProps[customKey];
+                int characterId = customPlayer.Item1;
+                string textureName = customPlayer.Item2;
                 Debug.LogFormat("<color=white>playerCustom {0}</color>", customPlayer);
                 Debug.LogFormat("<color=green>photonView.Owner {0}</color>", this.photonView.Owner.IsLocal);
 
                 if (_player == this.photonView.Owner)
                 {
                     Debug.Log("<color=white>playerCustom success</color>");
-                    //GameDB.Instance.playerController.Init();
-                    //GameManager.Instance.lobbySceneManager.playerController.Init();
                     Debug.LogFormat("<color=green>photonView.Owner {0}</color>", this.name);
-                    this.ApplyCustom(customPlayer);
-                    //UIManager.Instance.robbySceneMenu.SetPlayer(customPlayer);
+                    this.ApplyCustom(characterId, textureName);
                 }
             }
-            //if (_changedProps.ContainsKey("playerCustom"))
-            //{
-            //    var customPlayer = ((int, string))_changedProps["playerCustom"];
-
-            //    if (_player == PhotonNetwork.LocalPlayer)
-            //    {
-            //        //GameDB.Instance.playerController.Init();
-            //        GameManager.Instance.lobbySceneManager.playerController.Init();
-            //    }
-            //}
         }
 
-        public void ApplyCustom(int id)
+        public void ApplyCustom(int id, string textureName)
         {
             Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
             foreach (var character in this.characters)
@@ -91,6 +75,10 @@ namespace NHR
             }
 
             this.characters[id].gameObject.SetActive(true);
+            var mat = this.characters[id].material;
+            Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, textureName);
+            mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + textureName);
+
         }
 
         //public void Init()
@@ -122,11 +110,13 @@ namespace NHR
             {
                 if (player.CustomProperties.ContainsKey(this.customKey))
                 {
-                    int id = (int)player.CustomProperties[this.customKey];
-                    // 이 플레이어의 외형을 적용합니다.
+                    var custom = ((int, string))player.CustomProperties[this.customKey];
+                    int id = custom.Item1;
+                    string textureName = custom.Item2;
+                    // 커스텀 적용
                     if (player == PhotonNetwork.LocalPlayer)
                     {
-                        ApplyCustom(id);
+                        ApplyCustom(id, textureName);
                     }
                 }
             }
