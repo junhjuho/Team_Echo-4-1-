@@ -10642,7 +10642,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b462ff1afbb62194681ae28f4c99bc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters: []
+  characters:
+  - {fileID: 7799693496687141074}
+  - {fileID: 6475554866602124036}
+  - {fileID: 568239553882724931}
   watch: {fileID: 0}
 --- !u!1 &4028289518996050825
 GameObject:
@@ -16282,6 +16285,12 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 2
     Name: Right Trigger
+  - Type: 9
+    SynchronizeType: 0
+    Name: Forward Die
+  - Type: 9
+    SynchronizeType: 0
+    Name: Backward Die
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

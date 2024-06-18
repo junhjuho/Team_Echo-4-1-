@@ -43,7 +43,7 @@ namespace SeongMin
 
             //캐릭터 커스텀 설정
             //photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
-            GameManager.Instance.photonManager.OnPlayer();
+            //GameManager.Instance.photonManager.OnPlayer();
 
             //최초 라운드세팅 실행
             RoundMapSetting();
@@ -63,7 +63,6 @@ namespace SeongMin
                     RoundMapSetting();
                     Invoke("RoundTwoSetting", 3f);
                     //RoundTwoSetting();
-                    MissionSetting();
                     ChangeText("2");
                     break;
                 // 2라운드에서 3라운드로
@@ -73,7 +72,6 @@ namespace SeongMin
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round2End");
                     RoundMapSetting();
                     RoundThreeSetting();
-                    MissionSetting();
                     ChangeText("3");
                     break;
                 // 3라운드에서 엔딩으로
@@ -101,6 +99,10 @@ namespace SeongMin
                 yield return new WaitUntil(() => isPlayerAllConnected);
                 // 전체 플레이어에게 미션 세팅하기
                 MissionSetting();
+                for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+                {
+                    photonView.RPC("InitPlayerSetting", PhotonNetwork.PlayerList[i]);
+                }
             }
 
             //라운드 시작 UI
@@ -114,7 +116,7 @@ namespace SeongMin
             RoundPlayerDataReset();
             ChaserSetting();
             TeamMissionSetting();
-            
+            MissionSetting();
             Debug.Log("라운드2 셋팅 완료");
             Invoke("RoleSettingEvent", 2f);
         }
@@ -129,6 +131,7 @@ namespace SeongMin
             //내 라운드 데이터 초기화하기
             RoundPlayerDataReset();
             TeamMissionSetting();
+            MissionSetting();
         }
         private void RoundMapSetting()
         {
@@ -215,8 +218,7 @@ namespace SeongMin
         [PunRPC]
         protected void InitPlayerSetting()
         {
-            var controller = GameManager.Instance.playerManager.playerController;
-            if (controller != null) controller.Init();
+            GameManager.Instance.playerManager.playerController.Init();
         }
         private void ChangeText(string _text)
         {
