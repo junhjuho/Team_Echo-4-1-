@@ -23,22 +23,13 @@ namespace Jaewook
         {
             
             // 충돌이 발생할 때 한번만 사운드 재생
-            if (!oncePlayed)
-            {
-                audioSource.Play();
-                Debug.Log("트리거 사운드 실행!");
-            }
-            else
-            {
-                Debug.LogError("트리거 사운드 미할당");
-            }
+           
             
         }
         
         private void OnTriggerEnter(Collider other)
         {
-            /*
-            // 충돌이 발생할 때 한번만 사운드 재생
+            // 오브젝트 트리거 활성화
             if (!oncePlayed)
             {
                 audioSource.Play();
@@ -48,7 +39,6 @@ namespace Jaewook
             {
                 Debug.LogError("트리거 사운드 미할당");
             }
-            */
         }
     }
 
