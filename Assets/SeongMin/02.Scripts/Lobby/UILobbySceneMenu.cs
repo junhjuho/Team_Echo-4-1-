@@ -41,20 +41,20 @@ namespace SeongMin
         }
 
 
-        HashTable playerCustom = new HashTable();
+        //HashTable playerCustom = new HashTable();
 
-        /// <summary>
-        /// 플레이어 접속 시커스텀프로퍼티에 플레이어 캐릭터 커스텀 정보 동기화
-        /// </summary>
-        /// <param name="characterId"></param>
-        /// <param name="textureName"></param>
-        public void SetPlayer(int id)
-        {
-            Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
-            //playerCustom["playerCustom"] = (InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
-            playerCustom["playerCustom"] = id;
-            PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustom);
-        }
+        ///// <summary>
+        ///// 플레이어 접속 시커스텀프로퍼티에 플레이어 캐릭터 커스텀 정보 동기화
+        ///// </summary>
+        ///// <param name="characterId"></param>
+        ///// <param name="textureName"></param>
+        //public void SetPlayer(int id)
+        //{
+        //    Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
+        //    //playerCustom["playerCustom"] = (InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
+        //    playerCustom["playerCustom"] = id;
+        //    PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustom);
+        //}
         //public void SetPlayer()
         //{
         //    Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
@@ -90,21 +90,22 @@ namespace SeongMin
             }
 
             //캐릭터 커스텀
-            if (_changedProps.ContainsKey("playerCustom") && _player == GameManager.Instance.lobbySceneManager.playerMission.photonView.Owner) 
-            {
-                int customPlayer = (int)_changedProps["playerCustom"];
-                Debug.LogFormat("<color=white>playerCustom {0}</color>", customPlayer);
-                Debug.LogFormat("<color=green>photonView.Owner {0}</color>", GameManager.Instance.lobbySceneManager.playerMission.photonView.Owner.IsLocal);
+            //if (_changedProps.ContainsKey("playerCustom") && _player == GameManager.Instance.lobbySceneManager.playerMission.photonView.Owner) 
+            //{
+            //    int customPlayer = (int)_changedProps["playerCustom"];
+            //    Debug.LogFormat("<color=white>playerCustom {0}</color>", customPlayer);
+            //    Debug.LogFormat("<color=green>photonView.Owner {0}</color>", GameManager.Instance.lobbySceneManager.playerMission.photonView.Owner.IsLocal);
 
-                if (_player == GameManager.Instance.lobbySceneManager.playerMission.photonView.Owner)
-                {
-                    Debug.Log("<color=white>playerCustom success</color>");
-                    //GameDB.Instance.playerController.Init();
-                    //GameManager.Instance.lobbySceneManager.playerController.Init();
-                    Debug.LogFormat("<color=green>photonView.Owner {0}</color>", GameManager.Instance.lobbySceneManager.playerController.name);
-                    GameManager.Instance.lobbySceneManager.playerController.Set(customPlayer);
-                }
-            }
+            //    if (_player == GameManager.Instance.lobbySceneManager.playerMission.photonView.Owner)
+            //    {
+            //        Debug.Log("<color=white>playerCustom success</color>");
+            //        //GameDB.Instance.playerController.Init();
+            //        //GameManager.Instance.lobbySceneManager.playerController.Init();
+            //        Debug.LogFormat("<color=green>photonView.Owner {0}</color>", GameManager.Instance.lobbySceneManager.playerController.name);
+            //        GameManager.Instance.lobbySceneManager.playerController.Set(customPlayer);
+            //        //UIManager.Instance.robbySceneMenu.SetPlayer(customPlayer);
+            //    }
+            //}
             //if (_changedProps.ContainsKey("playerCustom"))
             //{
             //    var customPlayer = ((int, string))_changedProps["playerCustom"];
