@@ -42,7 +42,8 @@ namespace SeongMin
             GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
 
             //캐릭터 커스텀 설정
-            photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
+            //photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
+            GameManager.Instance.photonManager.OnPlayer();
 
             //최초 라운드세팅 실행
             RoundMapSetting();
