@@ -24,9 +24,14 @@ namespace NHR
                     this.missions.Add(mission);
                 }
                 //비활성화
-                this.gameObject.SetActive(false);
+                Invoke("CloseUI", 2f);
             }));
         }
+        private void CloseUI()
+        {
+            this.gameObject.SetActive(false);
+        }
     }
+    
 
 }
