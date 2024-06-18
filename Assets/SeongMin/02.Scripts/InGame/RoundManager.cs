@@ -162,6 +162,7 @@ namespace SeongMin
             // 완료한 미션 갯수 초기화
             GameDB.Instance.playerMission.runnerMissionClearCount = 0;
             GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+            GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
 
         }
         //복수자 배정하기
