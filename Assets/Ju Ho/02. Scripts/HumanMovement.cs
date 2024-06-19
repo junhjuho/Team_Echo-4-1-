@@ -3,6 +3,7 @@ using Photon.Pun.Demo.PunBasics;
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using Unity.XR.CoreUtils;
 using UnityEngine;
@@ -16,12 +17,6 @@ public class HumanMovement : PlayerMovement
     Scene scene;
     bool isEnergyDown;
 
-    public override void OnEnable()
-    {
-        base.OnEnable();
-        if (!smartWatch.gameObject.activeSelf)
-            smartWatch.gameObject.SetActive(true);
-    }
     public override void Start()
     {
         base.Start();
@@ -84,9 +79,9 @@ public class HumanMovement : PlayerMovement
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name);
-        if (pv.IsMine && TryGetComponent(out MonsterMovement monsterMovement))
+        if (pv.IsMine && other.gameObject.layer == 13) 
         {
-            Vector3 zombiePos = other.transform.position - this.transform.position;
+            Vector3 zombiePos = other.transform.position - this.transform.root.GetChild(3).position;
             zombiePos.Normalize();
             float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
 

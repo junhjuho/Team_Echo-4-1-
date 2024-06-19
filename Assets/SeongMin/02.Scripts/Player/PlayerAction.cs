@@ -33,6 +33,7 @@ namespace SeongMin
                 // 플레이어의 미션 배열에 _item 오브젝트와 일치하는 게 있으면 if문 안에 코드를 실행
                 if (_item.charactorValue == CharactorValue.runner && playerMission.MissionItemCheck(_item.gameObject, playerMission.playerMissionArray))
                 {
+                    print("잡았습니다");
                     _item.isFind = true;
                     playerMission.runnerMissionClearCount++;
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);

@@ -164,23 +164,22 @@ namespace SeongMin
         // 내 라운드 데이터 초기화하기
         private void RoundPlayerDataReset()
         {
-            PlayerMission playerMission = GameDB.Instance.playerMission;
             // 개인미션 초기화
-            for (int i = 0; i < playerMission.playerMissionArray.Length; i++)
-                playerMission.playerMissionArray[i] = null;
+            for (int i = 0; i < GameDB.Instance.playerMission.playerMissionArray.Length; i++)
+                GameDB.Instance.playerMission.playerMissionArray[i] = null;
             // 팀 미션 초기화
-            for (int i = 0; i < playerMission.playerTeamPlayMissionArray.Length; i++)
-                playerMission.playerTeamPlayMissionArray[i] = null;
+            for (int i = 0; i < GameDB.Instance.playerMission.playerTeamPlayMissionArray.Length; i++)
+                GameDB.Instance.playerMission.playerTeamPlayMissionArray[i] = null;
             // 팀 미션 수행 하는 사람 초기화
-            playerMission.isTeamMission = false;
+            GameDB.Instance.playerMission.isTeamMission = false;
             // 복수자 미션 초기화
-            if (playerMission.isChaser == true)
-                for (int i = 0; i < playerMission.chaserMissionArray.Length; i++)
-                    playerMission.chaserMissionArray[i] = null;
+            if (GameDB.Instance.playerMission.isChaser == true)
+                for (int i = 0; i < GameDB.Instance.playerMission.chaserMissionArray.Length; i++)
+                    GameDB.Instance.playerMission.chaserMissionArray[i] = null;
             // 완료한 미션 갯수 초기화
-            playerMission.runnerMissionClearCount = 0;
-            playerMission.chaserMissionClearCount = 0;
-            playerMission.playerTeamPlayMissionCount = 0;
+            GameDB.Instance.playerMission.runnerMissionClearCount = 0;
+            GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+            GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
             currentRoundPlayersMissionCount = 0;
             currentRoundPlayersMissionPerSent = 0;
 
@@ -234,20 +233,23 @@ namespace SeongMin
         public void SendAllPlayerMissionScoreUpdate(int _value)
         {
             // 플레이어들이 전체 목표 달성 했을 때. 라운드 체인지
-           
-            if(currentRoundPlayersMissionPerSent >= needPersent)
+            currentRoundPlayersMissionPerSent = _value;
+            if (PhotonNetwork.IsMasterClient)
             {
-                if (round == Round.Three)
+                if (currentRoundPlayersMissionPerSent >= needPersent)
                 {
-                    GameDB.Instance.Shuffle(inGameMapManager.inGameItemPositionList);
-                    PhotonNetwork.Instantiate("FinalKey", inGameMapManager.inGameItemPositionList[0].position,Quaternion.identity);
+                    if (round == Round.Three)
+                    {
+                        GameDB.Instance.Shuffle(inGameMapManager.inGameItemPositionList);
+                        PhotonNetwork.Instantiate("FinalKey", inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+                    }
+                    else
+                        RoundChange(round);
                 }
-                else 
-                RoundChange(round);
-            }
-            else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
-            {
-                photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
+                else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
+                {
+                    photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
+                }
             }
         }
         [PunRPC]
@@ -255,6 +257,12 @@ namespace SeongMin
         {
             //TODO 모든 플레이어에게 UI 갱신 시켜주기
             currentRoundPlayersMissionPerSent = _value;
+
+            //필요 퍼센트의 1/4, 2/4, 3/4 4/4마다 UI 안내
+            int quater = this.needPersent / 4;
+            if (_value >= needPersent) EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Complete_RoundMission);
+            else if (_value % quater == 0) EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, _value);
+
         }
         //[PunRPC]
         //protected void InitPlayerSetting()

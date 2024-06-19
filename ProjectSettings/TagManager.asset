@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - LetterUI
   - InteractiveObject
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - CurvedUI
   - 
   - PlayerCollision
-  - Zombie
   - 
+  - fireaxe
   - 
   - 
   - 
