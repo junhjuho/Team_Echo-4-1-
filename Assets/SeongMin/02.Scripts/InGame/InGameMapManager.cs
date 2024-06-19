@@ -47,24 +47,28 @@ namespace SeongMin
             GameDB.Instance.Shuffle(inGameItemPositionList);
             if (inGameRunnerItemList.Count + inGameChaserItemList.Count + inGameTeamPlayItemList.Count <= inGameItemPositionList.Count)
             {
-                int num = 0;
-                int num2 = 0;
+                int positionIndex = 0;
+
+                // inGameRunnerItemList의 아이템 위치 설정
                 for (int i = 0; i < inGameRunnerItemList.Count; i++)
                 {
-                    inGameRunnerItemList[i].transform.position = inGameItemPositionList[i].position;
+                    inGameRunnerItemList[i].transform.position = inGameItemPositionList[positionIndex].position;
+                    positionIndex++;
                 }
-                for (int j = inGameRunnerItemList.Count; j < j + inGameChaserItemList.Count; j++)
+
+                // inGameChaserItemList의 아이템 위치 설정
+                for (int i = 0; i < inGameChaserItemList.Count; i++)
                 {
-                    inGameChaserItemList[num].transform.position = inGameItemPositionList[j].position;
-                    num++;
+                    inGameChaserItemList[i].transform.position = inGameItemPositionList[positionIndex].position;
+                    positionIndex++;
                 }
-                for (int k = inGameRunnerItemList.Count + inGameChaserItemList.Count; k < k + inGameTeamPlayItemList.Count; k++)
+
+                // inGameTeamPlayItemList의 아이템 위치 설정
+                for (int i = 0; i < inGameTeamPlayItemList.Count; i++)
                 {
-                    inGameTeamPlayItemList[num2].transform.position = inGameItemPositionList[k].position;
-                    num2++;
+                    inGameTeamPlayItemList[i].transform.position = inGameItemPositionList[positionIndex].position;
+                    positionIndex++;
                 }
-                num = 0;
-                num2 = 0;
             }
             else
             {

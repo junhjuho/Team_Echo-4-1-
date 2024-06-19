@@ -73,9 +73,12 @@ namespace NHR
             }
 
             this.characters[id].gameObject.SetActive(true);
+            SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
             var mat = this.characters[id].material;
             Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, colorName);
             mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + colorName);
+
+            //마스터 클라이언트에 전달
         }
 
         //public void Init()
@@ -116,6 +119,37 @@ namespace NHR
                     }
                 }
             }
+        }
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            base.OnPlayerEnteredRoom(newPlayer);
+
+            //foreach (Player player in PhotonNetwork.PlayerList)
+            //{
+            //    if (player.CustomProperties.ContainsKey(this.characterKey))
+            //    {
+            //        int id = (int)player.CustomProperties[this.characterKey];
+            //        string colotName = (string)player.CustomProperties[this.colorKey];
+            //        // 커스텀 적용
+            //        if (player == PhotonNetwork.LocalPlayer)
+            //        {
+            //            ApplyCustom(id, colotName);
+            //        }
+            //    }
+            //}
+
+            if (newPlayer.CustomProperties.ContainsKey(this.characterKey))
+            {
+                int id = (int)newPlayer.CustomProperties[this.characterKey];
+                string colotName = (string)newPlayer.CustomProperties[this.colorKey];
+                // 커스텀 적용
+                if (newPlayer == PhotonNetwork.LocalPlayer)
+                {
+                    ApplyCustom(id, colotName);
+                }
+            }
+
         }
     }
 

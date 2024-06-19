@@ -1,3 +1,4 @@
+using NHR;
 using Photon.Pun;
 using SeongMin;
 using System.Collections;
@@ -26,7 +27,7 @@ namespace SeongMin
         [Header("현재 완료한 복수자 미션 갯수")]
         public int chaserMissionClearCount = 0;
         [Header("일반 상태 캐릭터 오브젝트")]
-        public GameObject currentRunnerPrefab;
+        public Character currentRunnerCharacrer;
         [Header("복수자 캐틱터 오브젝트")]
         public GameObject chaserPrefab;
         
@@ -72,6 +73,9 @@ namespace SeongMin
 
             for (int i = 0; i < _array.Length; i++)
             {
+                Debug.Log(_item + " / " + _array[i]);
+                Debug.Log(_item.name + " / " + _array[i].name);
+
                 if (_array[i] == _item)
                     _value = true;
             }
@@ -95,11 +99,11 @@ namespace SeongMin
             if (_value == "Chaser")
             {
                 chaserPrefab.SetActive(true);
-                currentRunnerPrefab.SetActive(false);
+                currentRunnerCharacrer.gameObject.SetActive(false);
             }
             else
             {
-                currentRunnerPrefab.SetActive(true);
+                currentRunnerCharacrer.gameObject.SetActive(true);
                 chaserPrefab.SetActive(false);
                 GameManager.Instance.inGameMapManager.ChaserItemResetting();
             }
