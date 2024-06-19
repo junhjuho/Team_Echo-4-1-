@@ -122,16 +122,30 @@ namespace NHR
         {
             base.OnPlayerEnteredRoom(newPlayer);
 
-            if (newPlayer.CustomProperties.ContainsKey(this.characterKey))
+            foreach (Player player in PhotonNetwork.PlayerList)
             {
-                int id = (int)newPlayer.CustomProperties[this.characterKey];
-                string colotName = (string)newPlayer.CustomProperties[this.colorKey];
-                // 目胶乓 利侩
-                if (newPlayer == PhotonNetwork.LocalPlayer)
+                if (player.CustomProperties.ContainsKey(this.characterKey))
                 {
-                    ApplyCustom(id, colotName);
+                    int id = (int)player.CustomProperties[this.characterKey];
+                    string colotName = (string)player.CustomProperties[this.colorKey];
+                    // 目胶乓 利侩
+                    if (player == PhotonNetwork.LocalPlayer)
+                    {
+                        ApplyCustom(id, colotName);
+                    }
                 }
             }
+
+            //if (newPlayer.CustomProperties.ContainsKey(this.characterKey))
+            //{
+            //    int id = (int)newPlayer.CustomProperties[this.characterKey];
+            //    string colotName = (string)newPlayer.CustomProperties[this.colorKey];
+            //    // 目胶乓 利侩
+            //    if (newPlayer == PhotonNetwork.LocalPlayer)
+            //    {
+            //        ApplyCustom(id, colotName);
+            //    }
+            //}
 
         }
     }
