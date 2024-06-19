@@ -97,12 +97,8 @@ namespace SeongMin
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
             value = (float)Math.Round(value, 2);
             value *= 100;
-            photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.MasterClient, value);
-        }
-        [PunRPC]
-        public void SendAllPlayerMissionScoreUpdate(int _value)
-        {
-
+            // 방장에게 전체 미션 퍼센트 바뀐 값 전달하게 요청하기
+            GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.MasterClient, (int)value);
         }
 
         [PunRPC]

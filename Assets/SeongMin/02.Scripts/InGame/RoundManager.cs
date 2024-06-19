@@ -22,6 +22,8 @@ namespace SeongMin
         public int currentRoundPlayersMissionCount = 0;
         [Header("현재 라운드 미션 전체 진행율")]
         public int currentRoundPlayersMissionPerSent = 0;
+        [Header("목표 진행률 설정하기")]
+        public int needPersent = 60;
 
         InGameMapManager inGameMapManager;
         public enum Round
@@ -32,7 +34,7 @@ namespace SeongMin
         }
         [Header("현재 라운드")]
         public Round round = Round.One;
-        private PhotonView photonView;
+        public PhotonView photonView;
         private void Awake()
         {
             GameManager.Instance.roundManager = this;
@@ -229,9 +231,23 @@ namespace SeongMin
 
         }
         [PunRPC]
-        public void UpdateAllPlayerMissionPersent()
+        public void SendAllPlayerMissionScoreUpdate(int _value)
         {
-
+            // 플레이어들이 전체 목표 달성 했을 때. 라운드 체인지
+            if(currentRoundPlayersMissionPerSent >= needPersent)
+            {
+                RoundChange(round);
+            }
+            else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
+            {
+                photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
+            }
+        }
+        [PunRPC]
+        public void UpdateAllPlayerMissionPersent(int _value)
+        {
+            //TODO 모든 플레이어에게 UI 갱신 시켜주기
+            currentRoundPlayersMissionPerSent = _value;
         }
         //[PunRPC]
         //protected void InitPlayerSetting()
