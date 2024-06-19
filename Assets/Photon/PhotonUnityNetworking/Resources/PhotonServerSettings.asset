@@ -59,9 +59,12 @@ MonoBehaviour:
   - CharacterChange
   - PlayerDateSetting
   - InitPlayerSetting
+<<<<<<< HEAD
   - RoundChange
   - WinUpdate
   - AllPlayerMissionScoreUpdate
+=======
+>>>>>>> e90f674b38393136fe6e8f3b2981485df679e4dd
   - SendAllPlayerMissionScoreUpdate
   - UpdateAllPlayerMissionPersent
   DisableAutoOpenWizard: 1
