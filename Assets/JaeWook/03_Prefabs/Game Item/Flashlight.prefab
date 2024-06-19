@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1230719690319196740}
   - component: {fileID: 1415004836695175560}
   - component: {fileID: 6062685647648668523}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4305929143295120018}
   - component: {fileID: 1424523409705853602}
   - component: {fileID: 6310846529606329881}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6171356423830521924}
   - component: {fileID: 4918392935555016921}
   - component: {fileID: 1165060521037506166}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 3274749459024037137}
   - component: {fileID: 355221996768133160}
   - component: {fileID: 1833514424027648725}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1435871824718099870}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 5604286746792651058}
   - component: {fileID: 2632643179012329827}
   - component: {fileID: 693863413551221102}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: UIFlashLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 4606724876789944557}
   - component: {fileID: -5098395208493787142}
   - component: {fileID: -2435681594954659801}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_Layer
-      value: 21
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_LocalPosition.x

@@ -35,6 +35,9 @@ namespace NHR
         [Header("현재 플레이어들 현황")]
         public UINowPlayers uiNowPlayers;
 
+        [Header("미션 달성 텍스트")]
+        public TMP_Text completeText;
+
         private GameObject nowPopUI;
 
         private void Awake()
@@ -64,6 +67,8 @@ namespace NHR
 
             this.uiMonsterMode.gameObject.SetActive(false);
             this.uiWatching.gameObject.SetActive(false);
+
+            this.completeText.gameObject.SetActive(false);
         }
         private void Start()
         {
@@ -170,6 +175,11 @@ namespace NHR
                     this.uiMonsterMode.UpdateTimer(time);
                 }
             }));
+            //미션 달성 이벤트
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Update_MonsterTimer, new EventHandler<string>((type, name) =>
+            {
+                this.CompleteMission(name);
+            }));
         }
 
         /// <summary>
@@ -198,5 +208,14 @@ namespace NHR
             yield return new WaitForSeconds(2f);
             this.nowPopUI.gameObject.SetActive(false);
         }
+
+        //미션 달성 시 팝업
+        public void CompleteMission(string missionName)
+        {
+            Debug.Log("미션 완료");
+            this.completeText.gameObject.SetActive(true);
+            this.completeText.text = string.Format("{0} 획득 완료!", missionName);
+        }
+
     }
 }

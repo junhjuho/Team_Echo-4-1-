@@ -13,7 +13,6 @@ namespace SeongMin
     public class PlayerAction : XRRayInteractor
     {
         PhotonView photonView;
-        PlayerMission playerMission;
         protected override void Start()
         {
             base.Start();
@@ -53,19 +52,25 @@ namespace SeongMin
                     _item.isFind = true;
                     playerMission.playerTeamPlayMissionCount++;
                 }
+
+                if (args.interactableObject.transform.TryGetComponent(out FlashLight _flash))
+                {
+                    GameDB.Instance.myFlashLight = _flash;
+                }
+
                 MissionClearCheck();
             }
         }
         private void MissionClearCheck()
         {
             //이 클라이언트 플레이어가 복수자가 아니고, 일반 미션 클리어한 갯수가 일반 미션 배열의 길이와 같거나 높으면 실행
-            if (playerMission.isChaser == false &&
-                playerMission.runnerMissionClearCount >= playerMission.playerMissionArray.Length)
+            if (GameDB.Instance.playerMission.isChaser == false &&
+                GameDB.Instance.playerMission.runnerMissionClearCount >= GameDB.Instance.playerMission.playerMissionArray.Length)
             {
                 //TODO 미션 클리어 띄우기
             }
             // 이 클라이언트가 복수자이며, 복수자 미션 클리어 갯수가 복수자 미션 배열의 길이와 같거나 높으면 실행
-            if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
+            if (GameDB.Instance.playerMission.isChaser && GameDB.Instance.playerMission.chaserMissionClearCount >= GameDB.Instance.playerMission.chaserMissionArray.Length)
             {
                 EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
                 GameManager.Instance.inGameMapManager.PlayerPositionSetting();
