@@ -39,6 +39,8 @@ namespace Jaewook
             {
                 Debug.LogError("트리거 사운드 미할당");
             }
+            // 한번 트리거 되면 삭제
+            this.gameObject.SetActive(false);
         }
     }
 
