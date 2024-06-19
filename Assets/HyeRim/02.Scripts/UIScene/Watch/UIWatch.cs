@@ -9,6 +9,7 @@ public class UIWatch : MonoBehaviour
 {
     public UIInventory uiInventory;
     public UIHeartWatch uiHeart;
+    public UIMission uiMission;
     public int nowHeart;
 
     public Image dim;
@@ -17,10 +18,11 @@ public class UIWatch : MonoBehaviour
     {
         this.uiInventory = GetComponentInChildren<UIInventory>();
         this.uiHeart = GetComponentInChildren<UIHeartWatch>();
+        this.uiMission = GetComponentInChildren<UIMission>();
     }
     private void Start()
     {
         this.dim.gameObject.SetActive(false);
-
     }
+
 }
