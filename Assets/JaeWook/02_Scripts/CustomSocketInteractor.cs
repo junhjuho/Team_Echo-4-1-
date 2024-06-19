@@ -8,12 +8,18 @@ namespace Jaewook
     public class CustomSocketInteractable : XRSocketInteractor
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         [Header("¹ßµ¿ È¿°ú »ç¿îµå")]
         public AudioSource audioSource;
         [Header("³ª°¡´Â ¹®")]
         public Door door;
 
         private  void Start()
+=======
+        AudioSource audiosource;
+        
+        protected override void Start()
+>>>>>>> parent of 49b38158 (ã…‡)
 =======
         AudioSource audiosource;
         
@@ -31,6 +37,7 @@ namespace Jaewook
         private void OnSelectEntered(SelectEnterEventArgs args)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             // Å°°¡ 
             if(args.interactorObject.transform.TryGetComponent<FinalKey>(out FinalKey finalKeyComponenet))
             {
@@ -43,6 +50,8 @@ namespace Jaewook
                 Debug.LogError("ÀÌ°Å Å° ¾Æ´Ñµð?");
             }
 =======
+=======
+>>>>>>> parent of 49b38158 (ã…‡)
             if (args.interactorObject.transform.TryGetComponent<FinalKey>(out FinalKey keyComponent))
             {
                 // mesh renderer »èÁ¦
@@ -62,6 +71,9 @@ namespace Jaewook
 
 
 
+<<<<<<< HEAD
+>>>>>>> parent of 49b38158 (ã…‡)
+=======
 >>>>>>> parent of 49b38158 (ã…‡)
         }
 
