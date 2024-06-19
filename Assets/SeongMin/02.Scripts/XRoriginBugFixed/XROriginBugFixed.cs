@@ -9,13 +9,6 @@ public class XROriginBugFixed : MonoBehaviour
     private void Start()
     {
         GameDB.Instance.xrOriginBugFixedObject = this;
-        if (GameDB.Instance.playerMission.currentRunnerPrefab != null)
-            target = GameDB.Instance.playerMission.currentRunnerPrefab;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        this.transform.position = target.transform.position;
     }
 }

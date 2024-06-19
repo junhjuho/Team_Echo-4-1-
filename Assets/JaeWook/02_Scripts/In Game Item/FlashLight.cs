@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Jaewook
 {
-    public class FlashLight : ItemObject, IItem
+    public class FlashLight : MonoBehaviour, IItem
     {
         public bool isOn = true;
         public Light flashlight;
@@ -45,10 +45,6 @@ namespace Jaewook
                 flashlight.enabled = isOn;
             }
 
-        }
-        protected void Start()
-        {
-            base.Start(); // ItemObject의 Start 메서드를 호출하여 씬과 캐릭터에 따라 등록
         }
 
         public void OnGrab()
