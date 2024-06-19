@@ -2667,7 +2667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5278810862315764896
 Transform:
   m_ObjectHideFlags: 0
@@ -3179,7 +3179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5965356903287119246
 Transform:
   m_ObjectHideFlags: 0
@@ -10540,7 +10540,7 @@ MonoBehaviour:
   runnerMissionClearCount: 0
   playerTeamPlayMissionCount: 0
   chaserMissionClearCount: 0
-  currentRunnerPrefab: {fileID: 6210806223002501516}
+  currentRunnerCharacrer: {fileID: 0}
   chaserPrefab: {fileID: 8990541683088355710}
 --- !u!114 &8688130894239647620
 MonoBehaviour:
@@ -10581,7 +10581,7 @@ MonoBehaviour:
   - {fileID: 1025130312823222001}
   - {fileID: 7620289874563921606}
   - {fileID: 1436647467282689128}
-  sceneViewId: 3
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &5543160392446795685
@@ -15929,7 +15929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3296381192567591127
 Transform:
   m_ObjectHideFlags: 0
@@ -23418,7 +23418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9132861521565619948
 Transform:
   m_ObjectHideFlags: 0
@@ -24725,7 +24725,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
