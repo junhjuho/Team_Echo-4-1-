@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 using static UnityEngine.UI.Image;
 
@@ -27,14 +28,18 @@ public class PlayerSyncController : MonoBehaviour
     Transform lefttHandIK_hint;
     Transform rightHandIK_hint;
 
-
     RaycastHit hitInfo;
 
     void Start()
     {
         pv = this.GetComponent<PhotonView>();
 
-        ChangeLayer(this.gameObject, 7); // 플레이어 레이어 설정
+        for(int i = 0; i < 4; i++) // 플레이어 프리팹 자식의 Jake, Frank, MJ, Zombie에 접근
+        { 
+            ChangeLayer(this.transform.GetChild(i).gameObject, 7); // 플레이어 레이어 설정
+        }
+
+
         if(pv.IsMine)
         {
             origin = FindObjectOfType<XROrigin>();
@@ -73,11 +78,14 @@ public class PlayerSyncController : MonoBehaviour
     {
         if(pv.IsMine)
         {
-            obj.layer = this.transform.GetChild(3).gameObject.activeSelf ? 13 : layer;
-            // 좀비 오브젝트가 켜져있으면 레이어는 13번(좀비), 아니면 7번(플레이어)
-            foreach (Transform child in obj.transform)
+            Renderer[] renderers = obj.transform.GetComponentsInChildren<Renderer>();
+
+            foreach (var renderer in renderers)
             {
-                ChangeLayer(child.gameObject, layer); 
+                int layerNumber = renderer.gameObject.layer == 14 ? 0 : layer;
+                // 렌더 게임오브젝트의 레이어가 14(fireaxe)였다면 default로 변경
+                // 아니면 layer로 변경
+                renderer.gameObject.layer = layerNumber;
             }
         }
     }

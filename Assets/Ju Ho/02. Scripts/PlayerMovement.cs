@@ -15,15 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] protected ActionBasedContinuousMoveProvider moveProvider;
     [SerializeField] protected PhotonView pv;
 
-    protected GameObject origin;
     protected Vector2 dir;
-    [SerializeField] protected SmartWatchCustomInteractable smartWatch;
 
-    public virtual void OnEnable()
-    {
-        origin = FindObjectOfType<XROrigin>().gameObject;
-        smartWatch = origin.GetComponentInChildren<SmartWatchCustomInteractable>(true);
-    }
 
     public virtual void Start()
     {
