@@ -1,3 +1,4 @@
+using Jaewook;
 using Photon.Pun;
 using SeongMin;
 using System.Collections;
@@ -13,11 +14,10 @@ namespace SeongMin
     {
         PhotonView photonView;
         PlayerMission playerMission;
-        private void Start()
+        protected override void Start()
         {
             base.Start();
             photonView = GetComponent<PhotonView>();
-            playerMission = GameDB.Instance.playerMission;
             this.selectEntered.AddListener(SelectEvent);
         }
         // 플레이어가 아이템을 잡았을 때,
@@ -26,9 +26,12 @@ namespace SeongMin
             //잡은 물체가 ItemObject 스크립트가 있는지 확인 후 _item 을 콜백으로 받아오기
             if (args.interactableObject.transform.TryGetComponent(out ItemObject _item) && _item.isFind == false)
             {
+                PlayerMission playerMission = GameDB.Instance.playerMission;
+
+                //_item.isFind = true;
+
                 // 플레이어의 미션 배열에 _item 오브젝트와 일치하는 게 있으면 if문 안에 코드를 실행
-                if (_item.charactorValue == CharactorValue.runner &&
-                    playerMission.MissionItemCheck(_item.gameObject, playerMission.playerMissionArray))
+                if (_item.charactorValue == CharactorValue.runner && playerMission.MissionItemCheck(_item.gameObject, playerMission.playerMissionArray))
                 {
                     _item.isFind = true;
                     playerMission.runnerMissionClearCount++;

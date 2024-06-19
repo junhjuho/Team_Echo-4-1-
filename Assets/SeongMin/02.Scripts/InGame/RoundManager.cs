@@ -17,6 +17,8 @@ namespace SeongMin
         [Header("모든 플레이어 연결 완료 여부")]
         public bool isPlayerAllConnected = false;
         public int playerCount = 0;
+
+        InGameMapManager inGameMapManager;
         public enum Round
         {
             One = 0,
@@ -33,6 +35,7 @@ namespace SeongMin
         // 1라운드 세팅 
         private IEnumerator Start()
         {
+            inGameMapManager = GameManager.Instance.inGameMapManager;
             // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
             // 방장에게 내가 들어 왔음을 알리기
@@ -138,17 +141,17 @@ namespace SeongMin
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                GameManager.Instance.inGameMapManager.ItemPositionSetting();
-                GameManager.Instance.inGameMapManager.PlayerPositionSetting();
+                inGameMapManager.ItemPositionSetting();
+                inGameMapManager.PlayerPositionSetting();
             }
             GameManager.Instance.roundTimer.TimerStart();
         }
         private void InGamePublicDataReset()
         {
             // 이름순으로 정렬하기 (모든 클라이언트에게 같은 정렬로 된 리스트 가지고 있게 하기 위해)
-            GameManager.Instance.inGameMapManager.inGameRunnerItemList.Sort((a, b) => a.name.CompareTo(b.name));
+            inGameMapManager.inGameRunnerItemList.Sort((a, b) => a.name.CompareTo(b.name));
             // 아이템 넘버링 리스트 초기화 하기
-            GameManager.Instance.inGameMapManager.ItemNumberListSetting();
+            inGameMapManager.ItemNumberListSetting();
         }
         // 내 라운드 데이터 초기화하기
         private void RoundPlayerDataReset()

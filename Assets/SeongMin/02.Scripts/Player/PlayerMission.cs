@@ -73,6 +73,9 @@ namespace SeongMin
 
             for (int i = 0; i < _array.Length; i++)
             {
+                Debug.Log(_item + " / " + _array[i]);
+                Debug.Log(_item.name + " / " + _array[i].name);
+
                 if (_array[i] == _item)
                     _value = true;
             }
