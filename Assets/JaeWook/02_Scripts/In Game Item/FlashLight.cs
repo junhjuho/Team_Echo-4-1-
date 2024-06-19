@@ -9,6 +9,7 @@ namespace Jaewook
     {
         public bool isOn = true;
         public Light flashlight;
+        
 
         //NHR
         [Header("손전등 UI")]
@@ -29,6 +30,8 @@ namespace Jaewook
             this.uiFlashlight = this.GetComponentInChildren<NHR.UIFlashlight>();
             this.Init();
             StartCoroutine(this.flashCoroutine);
+
+            GameDB.Instance.myFlashLight = flashlight;
         }
         //초기 설정
         private void Init()

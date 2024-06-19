@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3647436386101073066}
   - component: {fileID: -8081466934862062973}
   - component: {fileID: 1275911146835112137}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: firstaid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneValue: 2
   charactorValue: 0
-  itemValue: 0
+  itemValue: 1
   isFind: 0
   useEffect: {fileID: 0}
 --- !u!1 &138231240639244345
@@ -378,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6933370826427833549}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

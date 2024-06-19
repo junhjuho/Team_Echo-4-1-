@@ -14,6 +14,7 @@ namespace Jaewook
         public void OnGrab()
         {
             flashlight = GameDB.Instance.myFlashLight;
+
             // SeoungMin.ItemObject.cs ->public bool isFind = false;
             base.isFind = true;
 
