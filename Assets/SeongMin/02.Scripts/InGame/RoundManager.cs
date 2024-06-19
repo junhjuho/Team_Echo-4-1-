@@ -57,8 +57,6 @@ namespace SeongMin
             //photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
             //GameManager.Instance.photonManager.OnPlayer();
 
-            //최초 라운드세팅 실행
-            RoundMapSetting();
             // 1라운드 세팅
             StartCoroutine(RoundOneSetting());
             // TODO 로딩 구현
@@ -111,6 +109,8 @@ namespace SeongMin
                 yield return new WaitUntil(() => isPlayerAllConnected);
                 // 전체 플레이어에게 미션 세팅하기
                 MissionSetting();
+                //최초 라운드세팅 실행
+                RoundMapSetting();
                 //for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
                 //{
                 //    photonView.RPC("InitPlayerSetting", PhotonNetwork.PlayerList[i]);
