@@ -16,7 +16,12 @@ namespace SeongMin
         public bool isMapSettingDone = false;
         [Header("모든 플레이어 연결 완료 여부")]
         public bool isPlayerAllConnected = false;
+        [Header("연결된 플레이어  수")]
         public int playerCount = 0;
+        [Header("현재 완료된 플레이어 미션 수")]
+        public int currentRoundPlayersMissionCount = 0;
+        [Header("현재 라운드 미션 전체 진행율")]
+        public int currentRoundPlayersMissionPerSent = 0;
 
         InGameMapManager inGameMapManager;
         public enum Round
@@ -25,6 +30,7 @@ namespace SeongMin
             Two = 1,
             Three = 2
         }
+        [Header("현재 라운드")]
         public Round round = Round.One;
         private PhotonView photonView;
         private void Awake()
@@ -156,22 +162,25 @@ namespace SeongMin
         // 내 라운드 데이터 초기화하기
         private void RoundPlayerDataReset()
         {
+            PlayerMission playerMission = GameDB.Instance.playerMission;
             // 개인미션 초기화
-            for (int i = 0; i < GameDB.Instance.playerMission.playerMissionArray.Length; i++)
-                GameDB.Instance.playerMission.playerMissionArray[i] = null;
+            for (int i = 0; i < playerMission.playerMissionArray.Length; i++)
+                playerMission.playerMissionArray[i] = null;
             // 팀 미션 초기화
-            for (int i = 0; i < GameDB.Instance.playerMission.playerTeamPlayMissionArray.Length; i++)
-                GameDB.Instance.playerMission.playerTeamPlayMissionArray[i] = null;
+            for (int i = 0; i < playerMission.playerTeamPlayMissionArray.Length; i++)
+                playerMission.playerTeamPlayMissionArray[i] = null;
             // 팀 미션 수행 하는 사람 초기화
-            GameDB.Instance.playerMission.isTeamMission = false;
+            playerMission.isTeamMission = false;
             // 복수자 미션 초기화
-            if (GameDB.Instance.playerMission.isChaser == true)
-                for (int i = 0; i < GameDB.Instance.playerMission.chaserMissionArray.Length; i++)
-                    GameDB.Instance.playerMission.chaserMissionArray[i] = null;
+            if (playerMission.isChaser == true)
+                for (int i = 0; i < playerMission.chaserMissionArray.Length; i++)
+                    playerMission.chaserMissionArray[i] = null;
             // 완료한 미션 갯수 초기화
-            GameDB.Instance.playerMission.runnerMissionClearCount = 0;
-            GameDB.Instance.playerMission.chaserMissionClearCount = 0;
-            GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
+            playerMission.runnerMissionClearCount = 0;
+            playerMission.chaserMissionClearCount = 0;
+            playerMission.playerTeamPlayMissionCount = 0;
+            currentRoundPlayersMissionCount = 0;
+            currentRoundPlayersMissionPerSent = 0;
 
         }
         //복수자 배정하기
@@ -217,6 +226,11 @@ namespace SeongMin
             {
                 isPlayerAllConnected = true;
             }
+
+        }
+        [PunRPC]
+        public void UpdateAllPlayerMissionPersent()
+        {
 
         }
         //[PunRPC]
