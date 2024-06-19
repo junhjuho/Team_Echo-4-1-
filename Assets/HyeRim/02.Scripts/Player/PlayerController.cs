@@ -117,6 +117,37 @@ namespace NHR
                 }
             }
         }
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            base.OnPlayerEnteredRoom(newPlayer);
+
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.CustomProperties.ContainsKey(this.characterKey))
+                {
+                    int id = (int)player.CustomProperties[this.characterKey];
+                    string colotName = (string)player.CustomProperties[this.colorKey];
+                    // 目胶乓 利侩
+                    if (player == PhotonNetwork.LocalPlayer)
+                    {
+                        ApplyCustom(id, colotName);
+                    }
+                }
+            }
+
+            //if (newPlayer.CustomProperties.ContainsKey(this.characterKey))
+            //{
+            //    int id = (int)newPlayer.CustomProperties[this.characterKey];
+            //    string colotName = (string)newPlayer.CustomProperties[this.colorKey];
+            //    // 目胶乓 利侩
+            //    if (newPlayer == PhotonNetwork.LocalPlayer)
+            //    {
+            //        ApplyCustom(id, colotName);
+            //    }
+            //}
+
+        }
     }
 
 }
