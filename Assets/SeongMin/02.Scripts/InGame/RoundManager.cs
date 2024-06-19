@@ -164,23 +164,22 @@ namespace SeongMin
         // 내 라운드 데이터 초기화하기
         private void RoundPlayerDataReset()
         {
-            PlayerMission playerMission = GameDB.Instance.playerMission;
             // 개인미션 초기화
-            for (int i = 0; i < playerMission.playerMissionArray.Length; i++)
-                playerMission.playerMissionArray[i] = null;
+            for (int i = 0; i < GameDB.Instance.playerMission.playerMissionArray.Length; i++)
+                GameDB.Instance.playerMission.playerMissionArray[i] = null;
             // 팀 미션 초기화
-            for (int i = 0; i < playerMission.playerTeamPlayMissionArray.Length; i++)
-                playerMission.playerTeamPlayMissionArray[i] = null;
+            for (int i = 0; i < GameDB.Instance.playerMission.playerTeamPlayMissionArray.Length; i++)
+                GameDB.Instance.playerMission.playerTeamPlayMissionArray[i] = null;
             // 팀 미션 수행 하는 사람 초기화
-            playerMission.isTeamMission = false;
+            GameDB.Instance.playerMission.isTeamMission = false;
             // 복수자 미션 초기화
-            if (playerMission.isChaser == true)
-                for (int i = 0; i < playerMission.chaserMissionArray.Length; i++)
-                    playerMission.chaserMissionArray[i] = null;
+            if (GameDB.Instance.playerMission.isChaser == true)
+                for (int i = 0; i < GameDB.Instance.playerMission.chaserMissionArray.Length; i++)
+                    GameDB.Instance.playerMission.chaserMissionArray[i] = null;
             // 완료한 미션 갯수 초기화
-            playerMission.runnerMissionClearCount = 0;
-            playerMission.chaserMissionClearCount = 0;
-            playerMission.playerTeamPlayMissionCount = 0;
+            GameDB.Instance.playerMission.runnerMissionClearCount = 0;
+            GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+            GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
             currentRoundPlayersMissionCount = 0;
             currentRoundPlayersMissionPerSent = 0;
 
