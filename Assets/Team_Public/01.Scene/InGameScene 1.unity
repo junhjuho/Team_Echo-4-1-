@@ -682,6 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiInventory: {fileID: 0}
   uiHeart: {fileID: 0}
+  uiMission: {fileID: 0}
   nowHeart: 0
   dim: {fileID: 1664003647}
 --- !u!1001 &120581083
@@ -2249,6 +2250,7 @@ MonoBehaviour:
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
   m_ScaleMode: 0
+  playerMission: {fileID: 0}
 --- !u!1001 &224559816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4587,7 +4589,11 @@ MonoBehaviour:
   isMapSettingDone: 0
   isPlayerAllConnected: 0
   playerCount: 0
+  currentRoundPlayersMissionCount: 0
+  currentRoundPlayersMissionPerSent: 0
+  needPersent: 60
   round: 0
+  photonView: {fileID: 0}
 --- !u!4 &625918499
 Transform:
   m_ObjectHideFlags: 0
@@ -11688,7 +11694,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 10485815
+    m_Bits: 27263031
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -12864,10 +12870,6 @@ MonoBehaviour:
   uiWatch: {fileID: 112869673}
   txtEnergy: {fileID: 919693191}
   staminaBar: {fileID: 526174239}
-  imageDeaths:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   isEnergyDown: 0
 --- !u!114 &1005449487
 MonoBehaviour:
@@ -13600,6 +13602,7 @@ MonoBehaviour:
   uiWatching: {fileID: 0}
   uiTimer: {fileID: 0}
   uiNowPlayers: {fileID: 0}
+  uiCompleteMission: {fileID: 0}
 --- !u!1 &1120808325
 GameObject:
   m_ObjectHideFlags: 0
@@ -18141,6 +18144,7 @@ MonoBehaviour:
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
   m_ScaleMode: 0
+  playerMission: {fileID: 0}
 --- !u!1 &1605741386
 GameObject:
   m_ObjectHideFlags: 0
