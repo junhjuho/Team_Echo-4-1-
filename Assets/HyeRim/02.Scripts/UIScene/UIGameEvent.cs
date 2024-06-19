@@ -35,8 +35,8 @@ namespace NHR
         [Header("현재 플레이어들 현황")]
         public UINowPlayers uiNowPlayers;
 
-        [Header("미션 달성 텍스트")]
-        public TMP_Text completeText;
+        [Header("미션 달성 UI")]
+        public UICompleteMission uiCompleteMission;
 
         private GameObject nowPopUI;
 
@@ -45,13 +45,14 @@ namespace NHR
             //임시
             DataManager.Instance.LoadEventDialogData();
 
-            this.uiNotice = FindObjectOfType<UINotice>();
-            this.uiRole = FindObjectOfType<UIRole>();
-            this.uiAttacked = FindObjectOfType<UIAttacked>();
-            this.uiMonsterMode = FindObjectOfType<UIMonsterMode>();
-            this.uiWatching = FindObjectOfType<UIWatching>();
-            this.uiTimer = FindObjectOfType<UITimer>();
-            this.uiNowPlayers = FindObjectOfType<UINowPlayers>();
+            this.uiNotice = GetComponentInChildren<UINotice>();
+            this.uiRole = GetComponentInChildren<UIRole>();
+            this.uiAttacked = GetComponentInChildren<UIAttacked>();
+            this.uiMonsterMode = GetComponentInChildren<UIMonsterMode>();
+            this.uiWatching = GetComponentInChildren<UIWatching>();
+            this.uiTimer = GetComponentInChildren<UITimer>();
+            this.uiNowPlayers = GetComponentInChildren<UINowPlayers>();
+            this.uiCompleteMission = GetComponentInChildren<UICompleteMission>();
 
             this.Init();
         }
@@ -68,7 +69,7 @@ namespace NHR
             this.uiMonsterMode.gameObject.SetActive(false);
             this.uiWatching.gameObject.SetActive(false);
 
-            this.completeText.gameObject.SetActive(false);
+            this.uiCompleteMission.gameObject.SetActive(false);
         }
         private void Start()
         {
@@ -176,9 +177,32 @@ namespace NHR
                 }
             }));
             //미션 달성 이벤트
-            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Update_MonsterTimer, new EventHandler<string>((type, name) =>
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
             {
-                this.CompleteMission(name);
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.uiCompleteMission.CompleteMission(name);
+            }));
+            //생존자 전체 미션 달성도 알림
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<int>((type, per) =>
+            {
+                Debug.Log("Notice TotalMission Percent");
+                this.uiCompleteMission.Init();
+                var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
+                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.nowPopUI = this.uiCompleteMission.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiCompleteMission.textCompleteMission));
+            }));
+            //생존자 라운드 목표 완료 알림
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>
+            {
+                Debug.Log("Notice TotalMission Percent");
+                this.uiCompleteMission.Init();
+                var dialog = DataManager.Instance.GetEventDialog("missionPercentComplete");
+                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.nowPopUI = this.uiCompleteMission.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiCompleteMission.textCompleteMission));
             }));
         }
 
@@ -207,14 +231,6 @@ namespace NHR
             }
             yield return new WaitForSeconds(2f);
             this.nowPopUI.gameObject.SetActive(false);
-        }
-
-        //미션 달성 시 팝업
-        public void CompleteMission(string missionName)
-        {
-            Debug.Log("미션 완료");
-            this.completeText.gameObject.SetActive(true);
-            this.completeText.text = string.Format("{0} 획득 완료!", missionName);
         }
 
     }

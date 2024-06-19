@@ -1,6 +1,7 @@
 using NHR;
 using Photon.Pun;
 using SeongMin;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,13 +31,13 @@ namespace SeongMin
         public Character currentRunnerCharacrer;
         [Header("복수자 캐틱터 오브젝트")]
         public GameObject chaserPrefab;
-        
+
 
         private MissionManager missionManager;
         //[Header("")]
         private void Awake()
         {
-            
+
             photonView = GetComponent<PhotonView>();
             chaserPrefab = this.transform.Find("zombie").gameObject;
             GameDB.Instance.playerMission = this;
@@ -57,7 +58,7 @@ namespace SeongMin
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
             {
                 //복수자 배정된 경우에만 괴물 변신
-                if(this.isChaser)
+                if (this.isChaser)
                 {
                     Debug.Log("<color=red>괴물 변신 완료</color>");
                     //괴물 모델로 바뀐걸 모든 플레이어에게 동기화 하기
@@ -81,7 +82,6 @@ namespace SeongMin
             }
             return _value;
         }
-
         [PunRPC]
         public void WinCheck()
         {
@@ -89,8 +89,16 @@ namespace SeongMin
             if (PhotonNetwork.IsMasterClient)
             {
 
-               
+
             }
+        }
+        public void AllPlayerMissionScoreUpdate()
+        {
+            float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
+            value = (float)Math.Round(value, 2);
+            value *= 100;
+            // 방장에게 전체 미션 퍼센트 바뀐 값 전달하게 요청하기
+            GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.MasterClient, (int)value);
         }
 
         [PunRPC]

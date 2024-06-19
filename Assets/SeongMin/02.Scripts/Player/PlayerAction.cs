@@ -13,6 +13,7 @@ namespace SeongMin
     public class PlayerAction : XRRayInteractor
     {
         PhotonView photonView;
+        public PlayerMission playerMission;
         protected override void Start()
         {
             base.Start();
@@ -25,15 +26,19 @@ namespace SeongMin
             //잡은 물체가 ItemObject 스크립트가 있는지 확인 후 _item 을 콜백으로 받아오기
             if (args.interactableObject.transform.TryGetComponent(out ItemObject _item) && _item.isFind == false)
             {
-                PlayerMission playerMission = GameDB.Instance.playerMission;
+                playerMission = GameDB.Instance.playerMission;
 
                 //_item.isFind = true;
 
                 // 플레이어의 미션 배열에 _item 오브젝트와 일치하는 게 있으면 if문 안에 코드를 실행
                 if (_item.charactorValue == CharactorValue.runner && playerMission.MissionItemCheck(_item.gameObject, playerMission.playerMissionArray))
                 {
+                    print("잡았습니다");
                     _item.isFind = true;
                     playerMission.runnerMissionClearCount++;
+                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
+                    GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
+                    playerMission.AllPlayerMissionScoreUpdate();
                     //TODO 이 아이템 인벤토리에 넣기
                 }
                 // 내가 복수자 일 때만 복수자용 아이템 카운팅 하기
@@ -63,16 +68,18 @@ namespace SeongMin
         }
         private void MissionClearCheck()
         {
+            playerMission = GameDB.Instance.playerMission;
             //이 클라이언트 플레이어가 복수자가 아니고, 일반 미션 클리어한 갯수가 일반 미션 배열의 길이와 같거나 높으면 실행
-            if (GameDB.Instance.playerMission.isChaser == false &&
-                GameDB.Instance.playerMission.runnerMissionClearCount >= GameDB.Instance.playerMission.playerMissionArray.Length)
+            if (playerMission.isChaser == false &&
+                playerMission.runnerMissionClearCount >= playerMission.playerMissionArray.Length)
             {
                 //TODO 미션 클리어 띄우기
             }
             // 이 클라이언트가 복수자이며, 복수자 미션 클리어 갯수가 복수자 미션 배열의 길이와 같거나 높으면 실행
-            if (GameDB.Instance.playerMission.isChaser && GameDB.Instance.playerMission.chaserMissionClearCount >= GameDB.Instance.playerMission.chaserMissionArray.Length)
+            if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
             {
                 EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
+                // 플레이어위치 재 세팅
                 GameManager.Instance.inGameMapManager.PlayerPositionSetting();
             }
         }

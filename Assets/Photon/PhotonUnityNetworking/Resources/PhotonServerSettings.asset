@@ -59,6 +59,11 @@ MonoBehaviour:
   - CharacterChange
   - PlayerDateSetting
   - InitPlayerSetting
+  - RoundChange
+  - WinUpdate
+  - AllPlayerMissionScoreUpdate
+  - SendAllPlayerMissionScoreUpdate
+  - UpdateAllPlayerMissionPersent
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

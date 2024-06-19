@@ -16,7 +16,14 @@ namespace SeongMin
         public bool isMapSettingDone = false;
         [Header("모든 플레이어 연결 완료 여부")]
         public bool isPlayerAllConnected = false;
+        [Header("연결된 플레이어  수")]
         public int playerCount = 0;
+        [Header("현재 완료된 플레이어 미션 수")]
+        public int currentRoundPlayersMissionCount = 0;
+        [Header("현재 라운드 미션 전체 진행율")]
+        public int currentRoundPlayersMissionPerSent = 0;
+        [Header("목표 진행률 설정하기")]
+        public int needPersent = 60;
 
         InGameMapManager inGameMapManager;
         public enum Round
@@ -25,8 +32,9 @@ namespace SeongMin
             Two = 1,
             Three = 2
         }
+        [Header("현재 라운드")]
         public Round round = Round.One;
-        private PhotonView photonView;
+        public PhotonView photonView;
         private void Awake()
         {
             GameManager.Instance.roundManager = this;
@@ -172,6 +180,8 @@ namespace SeongMin
             GameDB.Instance.playerMission.runnerMissionClearCount = 0;
             GameDB.Instance.playerMission.chaserMissionClearCount = 0;
             GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
+            currentRoundPlayersMissionCount = 0;
+            currentRoundPlayersMissionPerSent = 0;
 
         }
         //복수자 배정하기
@@ -217,6 +227,38 @@ namespace SeongMin
             {
                 isPlayerAllConnected = true;
             }
+
+        }
+        [PunRPC]
+        public void SendAllPlayerMissionScoreUpdate(int _value)
+        {
+            // 플레이어들이 전체 목표 달성 했을 때. 라운드 체인지
+           
+            if(currentRoundPlayersMissionPerSent >= needPersent)
+            {
+                if (round == Round.Three)
+                {
+                    GameDB.Instance.Shuffle(inGameMapManager.inGameItemPositionList);
+                    PhotonNetwork.Instantiate("FinalKey", inGameMapManager.inGameItemPositionList[0].position,Quaternion.identity);
+                }
+                else 
+                RoundChange(round);
+            }
+            else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
+            {
+                photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
+            }
+        }
+        [PunRPC]
+        public void UpdateAllPlayerMissionPersent(int _value)
+        {
+            //TODO 모든 플레이어에게 UI 갱신 시켜주기
+            currentRoundPlayersMissionPerSent = _value;
+
+            //필요 퍼센트의 1/4, 2/4, 3/4 4/4마다 UI 안내
+            int quater = this.needPersent / 4;
+            if (_value >= needPersent) EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Complete_RoundMission);
+            else if (_value % quater == 0) EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, _value);
 
         }
         //[PunRPC]
