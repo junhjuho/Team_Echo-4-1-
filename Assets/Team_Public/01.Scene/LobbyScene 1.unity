@@ -14338,6 +14338,7 @@ MonoBehaviour:
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
   m_ScaleMode: 0
+  playerMission: {fileID: 0}
 --- !u!1 &8807538228509011756
 GameObject:
   m_ObjectHideFlags: 0
@@ -14600,6 +14601,7 @@ MonoBehaviour:
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
   m_ScaleMode: 0
+  playerMission: {fileID: 0}
 --- !u!4 &8913809825420521296
 Transform:
   m_ObjectHideFlags: 0
