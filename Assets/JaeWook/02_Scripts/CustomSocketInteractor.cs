@@ -33,6 +33,8 @@ namespace Jaewook
                 }
 
                 args.interactableObject.transform.gameObject.SetActive(false);
+                
+
 
             }
 
