@@ -30,7 +30,6 @@ namespace SeongMin
         public MissionManager missionManager;
         public RoundTimer roundTimer;
         public PlayerManager playerManager;
-        public PhotonManager photonManager;
     }
 
 }

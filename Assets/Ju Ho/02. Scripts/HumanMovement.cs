@@ -1,11 +1,8 @@
 using NHR;
 using Photon.Pun.Demo.PunBasics;
-using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Unity.XR.CoreUtils;
+using System.Xml.Serialization; 
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -20,7 +17,13 @@ public class HumanMovement : PlayerMovement
     public override void Start()
     {
         base.Start();
+
         scene = SceneManager.GetActiveScene();
+
+        if (scene.name == ("InGameScene 1"))
+        {
+            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+        }
     }
 
     void Update()
@@ -28,27 +31,26 @@ public class HumanMovement : PlayerMovement
         PlayerMove();
         FingerMove(animator);
     }
-    public override void PlayerMove() // í”Œë ˆì´ì–´ ê±·ê¸° , ë‹¬ë¦¬ê¸°
+    public override void PlayerMove() // °È±â¿Í ´Þ¸®±â 
     {
         if (pv.IsMine)
         {
-            base.PlayerMove();  // PlayerMovement ìŠ¤í¬ë¦½íŠ¸ ìƒì†
+            base.PlayerMove();  // PlayerMovementÀÇ ¹öÆ° ÀÔ·Â ÀÌº¥Æ®¸¦ »ó¼Ó¹ÞÀ½
 
-            if (scene.name == ("InGameScene 1"))
+            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // ´Þ¸®±â ¹öÆ° ÀÔ·Â ÀÌº¥Æ®
+
+            if (scene.name == ("InGameScene 1")) // ÇöÀç ¾ÀÀÇ ÀÌ¸§ÀÌ ÀÎ°ÔÀÓ¾ÀÀÌ¶ó¸é
             {
-                SeongMin.GameManager.Instance.playerManager.humanMovement = this;
                 isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
             }
-            else // InGameScene 1ì´ ì•„ë‹ ë•Œ, 
+            else // ¾Æ´Ï¶ó¸é
             {
                 isEnergyDown = false;
             }
 
-            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // ë‹¬ë¦¬ê¸° ë²„íŠ¼
+            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // ¾Ö´Ï¸ÞÀÌ¼Ç ºí·»µå Æ®¸®
 
-            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // ë‹¬ë¦¬ê¸° ë²„íŠ¼ì— ë”°ë¥¸ ë¸”ë Œë“œ íŠ¸ë¦¬
-
-            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 4f : 2f; // ë‹¬ë¦¬ê¸° ë²„íŠ¼ì— ë”°ë¥¸ ì†ë„
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // °È±â , ´Þ¸®±â ¼Óµµ
             
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
@@ -56,7 +58,7 @@ public class HumanMovement : PlayerMovement
             return;
     }
 
-    public void FingerMove(Animator animator) // ì†ê°€ë½ ì• ë‹ˆë©”ì´ì…˜
+    public void FingerMove(Animator animator) // ¼Õ°¡¶ô ¿òÁ÷ÀÓ
     {
         if (pv.IsMine)
         {
@@ -74,24 +76,5 @@ public class HumanMovement : PlayerMovement
         }
         else
             return;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.name);
-        if (pv.IsMine && other.gameObject.layer == 13) 
-        {
-            Vector3 zombiePos = other.transform.position - this.transform.root.GetChild(3).position;
-            zombiePos.Normalize();
-            float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
-
-            string dirDie = attackPos > 0 ? "Forward Die" : "Backward Die";
-
-            animator.SetTrigger(dirDie);
-
-            var heart = SeongMin.GameManager.Instance.playerManager.heart;
-            EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
-            heart--;
-        }
     }
 }

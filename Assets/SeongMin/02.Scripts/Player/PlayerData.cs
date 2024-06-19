@@ -10,11 +10,9 @@ namespace SeongMin
     /// </summary>
     public class PlayerData : MonoBehaviour
     {
-        public GameObject[] characterArray = new GameObject[10];
         private void Awake()
         {
             GameDB.Instance.myPlayer = this.gameObject;
-            
         }
     }
 }

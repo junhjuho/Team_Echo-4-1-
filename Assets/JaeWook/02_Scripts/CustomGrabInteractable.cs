@@ -4,9 +4,6 @@ using UnityEngine;
 using Jaewook;
 using UnityEngine.XR.Interaction.Toolkit;
 using System;
-using TMPro;
-using UnityEngine.Animations.Rigging;
-using SeongMin;
 
 namespace Jaewook
 {
@@ -16,21 +13,7 @@ namespace Jaewook
     /// </summary>
     public class CustomGrabInteractable : XRGrabInteractable
     {
-        public enum Axis
-        {
-            X,
-            Y,
-            Z
-        }
-
-        public Axis lookAxis = Axis.Y;
-
-        public Transform targetTf;
-        public bool isTargetCamera = true;
-
-        public GameObject uiGo;
-        public GameObject txtGo;
-
+        
         void Start()
         {
             // base.Start();
@@ -38,40 +21,6 @@ namespace Jaewook
             this.selectExited.AddListener(ReleaseEvent); // not grab
             this.activated.AddListener(ActivatingEvent); // trigger
             //this.deactivated.AddListener(DeactivatingEvent);
-
-            if (isTargetCamera)
-            {
-                targetTf = Camera.main.transform;
-            }
-
-            this.txtGo.SetActive(false);
-            this.uiGo.SetActive(false);
-            this.txtGo.GetComponent<TMP_Text>().text = this.name;
-
-        }
-        private void OnBecameVisible()
-        {
-            //시야각에 들어왔을 때 상호작용 가능 UI 보여줌
-            Debug.Log("OnBecameVisible");
-            this.uiGo.SetActive(true);
-            //StartCoroutine(CLookCamera(this.uiGo));
-        }
-        private void OnBecameInvisible()
-        {
-            //시야각에서 빠져나왔을 때 상호작용 가능 UI 없어짐
-            Debug.Log("OnBecameInvisible");
-            this.uiGo.SetActive(true);
-            //StopAllCoroutines();
-        }
-
-        PlayerData plaerData;
-        public void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                Debug.Log("PlayerCollision");
-                this.txtGo.SetActive(true);
-            }
         }
 
         /// <summary>
@@ -104,8 +53,5 @@ namespace Jaewook
                 item.OnRelease();
             }
         }
-
-
-
     }
 }

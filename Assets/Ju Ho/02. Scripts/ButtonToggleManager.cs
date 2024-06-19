@@ -11,7 +11,7 @@ public class ButtonToggleManager : MonoBehaviour
 
     private void Start()
     {
-        UI = this.transform.parent.parent.GetChild(1).gameObject;
+        UI = this.transform.parent.parent.GetChild(0).gameObject;
         isOn = false;
     }
 

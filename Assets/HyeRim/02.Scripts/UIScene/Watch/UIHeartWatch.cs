@@ -1,5 +1,4 @@
 using NHR;
-using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,17 +22,13 @@ namespace NHR
         private void OnEnable()
         {
             Debug.Log("Heart Enabled");
-            if (!GameDB.Instance.playerMission.isChaser)
+            this.nowHeart = SeongMin.GameManager.Instance.playerManager.heart;
+            if (this.nowHeart < this.maxHeart)
             {
-                this.nowHeart = SeongMin.GameManager.Instance.playerManager.heart;
-                if (this.nowHeart < this.maxHeart)
+                for (int i = 0; i < 3 - this.nowHeart; i++)
                 {
-                    for (int i = 0; i < 3 - this.nowHeart; i++)
-                    {
-                        this.hearts[i].imageDeath.SetActive(true);
-                    }
+                    this.hearts[i].imageDeath.SetActive(true);
                 }
-
             }
         }
     }

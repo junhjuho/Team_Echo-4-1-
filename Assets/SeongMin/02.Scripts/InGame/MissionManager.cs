@@ -9,11 +9,11 @@ namespace SeongMin
     public class MissionManager : MonoBehaviour
     {
         public PhotonView photonView;
-        [Header("분배 할 도망자 미션 갯수 설정")]
+        [Header("도망자 미션 갯수 설정")]
         public int runnerMissionCount = 3;
-        [Header("분배 할 협력 미션 갯수 설정")]
+        [Header("협력 미션 갯수 설정")]
         public int teamPlayMissionCount = 1;
-        [Header("분배 할 복수자 미션 갯수 설정")]
+        [Header("복수자 미션 갯수 설정")]
         public int chaserMissionCount = 3;
         private void Awake()
         {

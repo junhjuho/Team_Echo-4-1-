@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using SeongMin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Jaewook
 {
-    public class MapScroll : ItemObject, IItem
+    public class MapScroll : MonoBehaviour, IItem
     {
         public RawImage mapUI;
 
         private void Start()
         {
-            base.Start();
-            
             mapUI = GetComponentInChildren<RawImage>();
 
             if (mapUI != null)

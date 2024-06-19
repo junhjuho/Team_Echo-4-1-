@@ -1185,10 +1185,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 69988114}
     m_Modifications:
-    - target: {fileID: -5098395208493787142, guid: c71add972a8649f478b752012b27f47e, type: 3}
-      propertyPath: sceneViewId
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8161734374659916711, guid: c71add972a8649f478b752012b27f47e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.154
@@ -5025,10 +5021,6 @@ MonoBehaviour:
   uiWatch: {fileID: 0}
   txtEnergy: {fileID: 1868518424}
   staminaBar: {fileID: 0}
-  imageDeaths:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   isEnergyDown: 0
 --- !u!114 &1328321243
 MonoBehaviour:
@@ -8125,7 +8117,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2099063
+    m_Bits: 1911
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
