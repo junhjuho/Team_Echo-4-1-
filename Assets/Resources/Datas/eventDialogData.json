@@ -63,5 +63,15 @@
         "id": 2012,
         "eventType": "gameLose",
         "dialog": "패배"
+    },
+    {
+        "id": 2013,
+        "eventType": "missionPercent",
+        "dialog": "생존자 목표의 25% 달성!"
+    },
+    {
+        "id": 2014,
+        "eventType": "missionPercentComplete",
+        "dialog": "생존자 목표 100% 달성!\n잠시 후 다음 라운드로 넘어갑니다. "
     }
 ]

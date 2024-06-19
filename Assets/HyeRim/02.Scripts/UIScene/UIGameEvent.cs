@@ -182,6 +182,28 @@ namespace NHR
                 this.uiCompleteMission.gameObject.SetActive(true);
                 this.uiCompleteMission.CompleteMission(name);
             }));
+            //생존자 전체 미션 달성도 알림
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<int>((type, per) =>
+            {
+                Debug.Log("Notice TotalMission Percent");
+                this.uiCompleteMission.Init();
+                var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
+                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.nowPopUI = this.uiCompleteMission.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiCompleteMission.textCompleteMission));
+            }));
+            //생존자 라운드 목표 완료 알림
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>
+            {
+                Debug.Log("Notice TotalMission Percent");
+                this.uiCompleteMission.Init();
+                var dialog = DataManager.Instance.GetEventDialog("missionPercentComplete");
+                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.nowPopUI = this.uiCompleteMission.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiCompleteMission.textCompleteMission));
+            }));
         }
 
         /// <summary>
