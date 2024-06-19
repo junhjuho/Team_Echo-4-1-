@@ -35,6 +35,7 @@ namespace SeongMin
                 {
                     _item.isFind = true;
                     playerMission.runnerMissionClearCount++;
+                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
                     playerMission.AllPlayerMissionScoreUpdate();
                     //TODO 이 아이템 인벤토리에 넣기

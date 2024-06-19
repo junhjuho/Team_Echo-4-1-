@@ -31,7 +31,11 @@ namespace Jaewook
             this.Init();
             StartCoroutine(this.flashCoroutine);
 
+<<<<<<< HEAD
             GameDB.Instance.myFlashLight = this;
+=======
+            //GameDB.Instance.myFlashLight = flashlight;
+>>>>>>> e90f674b38393136fe6e8f3b2981485df679e4dd
         }
         //초기 설정
         private void Init()
