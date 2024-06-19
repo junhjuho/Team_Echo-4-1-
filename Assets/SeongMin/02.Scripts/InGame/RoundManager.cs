@@ -233,20 +233,23 @@ namespace SeongMin
         public void SendAllPlayerMissionScoreUpdate(int _value)
         {
             // 플레이어들이 전체 목표 달성 했을 때. 라운드 체인지
-           
-            if(currentRoundPlayersMissionPerSent >= needPersent)
+            currentRoundPlayersMissionPerSent = _value;
+            if (PhotonNetwork.IsMasterClient)
             {
-                if (round == Round.Three)
+                if (currentRoundPlayersMissionPerSent >= needPersent)
                 {
-                    GameDB.Instance.Shuffle(inGameMapManager.inGameItemPositionList);
-                    PhotonNetwork.Instantiate("FinalKey", inGameMapManager.inGameItemPositionList[0].position,Quaternion.identity);
+                    if (round == Round.Three)
+                    {
+                        GameDB.Instance.Shuffle(inGameMapManager.inGameItemPositionList);
+                        PhotonNetwork.Instantiate("FinalKey", inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+                    }
+                    else
+                        RoundChange(round);
                 }
-                else 
-                RoundChange(round);
-            }
-            else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
-            {
-                photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
+                else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
+                {
+                    photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
+                }
             }
         }
         [PunRPC]
