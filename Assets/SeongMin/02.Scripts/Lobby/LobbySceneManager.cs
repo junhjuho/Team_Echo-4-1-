@@ -17,6 +17,11 @@ namespace SeongMin
         public List<Transform> playerSpawnPointList;
         public PhotonView photonView;
         public bool isLobbySetting = false;
+
+        [Header("플레이어")]
+        public PlayerMission playerMission;
+        public PlayerController playerController;
+
         private void Awake()
         {
             photonView = GetComponent<PhotonView>();
@@ -44,7 +49,6 @@ namespace SeongMin
                 print("생성해야할 오브젝트 수가 생성 가능한 위치보다 많습니다. 생성위치를 추가해주세요.");
             }
         }
-        public PlayerController playerController;
 
         //[PunRPC]
         //protected void InitPlayerSetting()

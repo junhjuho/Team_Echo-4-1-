@@ -18,11 +18,11 @@ namespace Jaewook
 
         //배터리 값
         public bool hasBattery = true;
-        public int nowBatteryTime = 10;
-        public int nowBattery = 10;
+        public int nowBatteryTime = 20;
+        public int nowBattery = 20;
         //max 값
-        public int maxBatteryTime = 10;
-        public int maxBattery = 10;
+        public int maxBatteryTime = 30;
+        public int maxBattery = 30;
 
         private void Awake()
         {
@@ -100,7 +100,7 @@ namespace Jaewook
         {
             while (true)
             {
-                Debug.LogFormat("nowBattery time : {0}", this.nowBatteryTime);
+                //Debug.LogFormat("nowBattery time : {0}", this.nowBatteryTime);
                 this.nowBatteryTime--;
 
                 //배터리 한 칸 시간이 다 되었을 경우

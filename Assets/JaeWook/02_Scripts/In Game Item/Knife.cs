@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Jaewook
 {
+    /// <summary>
+    /// 복수자 전용 아이템 -> OnGrab() 변신 가능
+    /// </summary>
     public class Knife : ItemObject, IItem
     {
         private void Start()
@@ -14,7 +17,7 @@ namespace Jaewook
         }
         public void OnGrab()
         {
-            // 복수자 전용 아이템 -> 집으면 변신 가능
+            
         }
 
         public void OnRelease()
