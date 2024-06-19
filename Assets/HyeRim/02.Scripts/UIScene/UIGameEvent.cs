@@ -35,6 +35,9 @@ namespace NHR
         [Header("현재 플레이어들 현황")]
         public UINowPlayers uiNowPlayers;
 
+        [Header("미션 달성 UI")]
+        public UICompleteMission uiCompleteMission;
+
         private GameObject nowPopUI;
 
         private void Awake()
@@ -42,13 +45,14 @@ namespace NHR
             //임시
             DataManager.Instance.LoadEventDialogData();
 
-            this.uiNotice = FindObjectOfType<UINotice>();
-            this.uiRole = FindObjectOfType<UIRole>();
-            this.uiAttacked = FindObjectOfType<UIAttacked>();
-            this.uiMonsterMode = FindObjectOfType<UIMonsterMode>();
-            this.uiWatching = FindObjectOfType<UIWatching>();
-            this.uiTimer = FindObjectOfType<UITimer>();
-            this.uiNowPlayers = FindObjectOfType<UINowPlayers>();
+            this.uiNotice = GetComponentInChildren<UINotice>();
+            this.uiRole = GetComponentInChildren<UIRole>();
+            this.uiAttacked = GetComponentInChildren<UIAttacked>();
+            this.uiMonsterMode = GetComponentInChildren<UIMonsterMode>();
+            this.uiWatching = GetComponentInChildren<UIWatching>();
+            this.uiTimer = GetComponentInChildren<UITimer>();
+            this.uiNowPlayers = GetComponentInChildren<UINowPlayers>();
+            this.uiCompleteMission = GetComponentInChildren<UICompleteMission>();
 
             this.Init();
         }
@@ -64,6 +68,8 @@ namespace NHR
 
             this.uiMonsterMode.gameObject.SetActive(false);
             this.uiWatching.gameObject.SetActive(false);
+
+            this.uiCompleteMission.gameObject.SetActive(false);
         }
         private void Start()
         {
@@ -170,6 +176,12 @@ namespace NHR
                     this.uiMonsterMode.UpdateTimer(time);
                 }
             }));
+            //미션 달성 이벤트
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
+            {
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.uiCompleteMission.CompleteMission(name);
+            }));
         }
 
         /// <summary>
@@ -198,5 +210,6 @@ namespace NHR
             yield return new WaitForSeconds(2f);
             this.nowPopUI.gameObject.SetActive(false);
         }
+
     }
 }

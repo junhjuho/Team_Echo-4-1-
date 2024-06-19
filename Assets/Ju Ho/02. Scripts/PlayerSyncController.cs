@@ -42,7 +42,6 @@ public class PlayerSyncController : MonoBehaviour
             leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
             rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
             riggingManager = this.GetComponentInChildren<RiggingManager>();
-
         }
     }
 
