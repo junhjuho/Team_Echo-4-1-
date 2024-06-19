@@ -1,3 +1,4 @@
+using Jaewook;
 using Photon.Pun;
 using SeongMin;
 using System.Collections;
@@ -50,6 +51,12 @@ namespace SeongMin
                     _item.isFind = true;
                     playerMission.playerTeamPlayMissionCount++;
                 }
+
+                if (args.interactableObject.transform.TryGetComponent(out FlashLight _flash))
+                {
+                    GameDB.Instance.myFlashLight = _flash;
+                }
+
                 MissionClearCheck();
             }
         }

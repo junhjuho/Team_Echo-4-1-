@@ -1,3 +1,4 @@
+using Jaewook;
 using NHR;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace SeongMin
         public int playerCount = 0;
         [Header("인게임 로컬 플레이어의 오브젝트")]
         public GameObject myPlayer;
+        [Header("플레이어 손전등")]
+        public FlashLight myFlashLight;
         [Header("인게임 로컬 플레이어의 미션")]
         public PlayerMission playerMission;
         [Header("인게임 로컬 플레이어의 컨트롤러")]
