@@ -10,13 +10,13 @@ namespace Jaewook
     /// </summary>
     public class Battery : ItemObject, IItem
     {
+        FlashLight flashlight;
         public void OnGrab()
         {
-            // 수정 필요
-            FlashLight flashlight = FindObjectOfType<FlashLight>();
+            flashlight = GameDB.Instance.myFlashLight;
 
             // SeoungMin.ItemObject.cs ->public bool isFind = false;
-            this.isFind = true;
+            base.isFind = true;
 
             if (isFind && (flashlight != null))
             {
@@ -24,17 +24,17 @@ namespace Jaewook
             }
             // 배터리 충전 후배터리 오브젝트 삭제
             gameObject.SetActive(false);
-            this.isFind = false;
+            base.isFind = false;
         }
 
         public void OnUse()
         {
-            
+
         }
 
         public void OnRelease()
         {
-            
+
         }
     }
 }

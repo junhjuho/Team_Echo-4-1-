@@ -3,23 +3,28 @@ using Photon.Pun.Demo.PunBasics;
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization; 
+using System.Xml.Serialization;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class HumanMovement : PlayerMovement
 {
-    public int attackCount = 0;
     public bool isRunBtnDown;
     UIPlayer uiPlayer;
     Scene scene;
     bool isEnergyDown;
 
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        if (!smartWatch.gameObject.activeSelf)
+            smartWatch.gameObject.SetActive(true);
+    }
     public override void Start()
     {
         base.Start();
-
         scene = SceneManager.GetActiveScene();
     }
 
@@ -28,27 +33,27 @@ public class HumanMovement : PlayerMovement
         PlayerMove();
         FingerMove(animator);
     }
-    public override void PlayerMove() // �ȱ�� �޸��� 
+    public override void PlayerMove() // 플레이어 걷기 , 달리기
     {
         if (pv.IsMine)
         {
-            base.PlayerMove();  // PlayerMovement�� ��ư �Է� �̺�Ʈ�� ��ӹ���
+            base.PlayerMove();  // PlayerMovement 스크립트 상속
 
             if (scene.name == ("InGameScene 1"))
             {
                 SeongMin.GameManager.Instance.playerManager.humanMovement = this;
                 isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
             }
-            else // �ƴ϶��
+            else // InGameScene 1이 아닐 때, 
             {
                 isEnergyDown = false;
             }
 
-            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // �޸��� ��ư �Է� �̺�Ʈ
+            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼
 
-            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // �ִϸ��̼� ������ Ʈ��
+            float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
-            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // �ȱ� , �޸��� �ӵ�
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 4f : 2f; // 달리기 버튼에 따른 속도
             
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
@@ -56,7 +61,7 @@ public class HumanMovement : PlayerMovement
             return;
     }
 
-    public void FingerMove(Animator animator) // �հ��� ������
+    public void FingerMove(Animator animator) // 손가락 애니메이션
     {
         if (pv.IsMine)
         {
@@ -85,14 +90,9 @@ public class HumanMovement : PlayerMovement
             zombiePos.Normalize();
             float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
 
-            if (attackPos > 0)
-            {
-                animator.SetTrigger("Forward Die");
-            }
-            else
-            {
-                animator.SetTrigger("Backward Die");
-            }
+            string dirDie = attackPos > 0 ? "Forward Die" : "Backward Die";
+
+            animator.SetTrigger(dirDie);
 
             var heart = SeongMin.GameManager.Instance.playerManager.heart;
             EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
