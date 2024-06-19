@@ -20,13 +20,23 @@ namespace NHR
                 for (int i = 0; i < playerMissionObjects.Length; i++)
                 {
                     var mission = Instantiate(Resources.Load<Mission>("UI/Mission/Mission"), this.transform);
-                    mission.textFirstStep.text = playerMissionObjects[i].name + "√£±‚";
+                    mission.targetItem = playerMissionObjects[i].GetComponent<ItemObject>();
+                    mission.textFirstStep.text = playerMissionObjects[i].name + "»πµÊ«œ±‚";
                     this.missions.Add(mission);
                 }
                 //∫Ò»∞º∫»≠
-                this.gameObject.SetActive(false);
+                Invoke("CloseUI", 2f);
             }));
         }
+        private void CloseUI()
+        {
+            this.gameObject.SetActive(false);
+        }
+        public void UpdateMissions()
+        {
+            foreach (var mission in this.missions) mission.UpdateMission();
+        }
     }
+    
 
 }

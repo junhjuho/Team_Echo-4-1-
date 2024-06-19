@@ -1,30 +1,47 @@
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class MonsterMovement : PlayerMovement
 {
+    GameObject origin;
+    PlayerAction[] controllers;
+
+    void OnEnable()
+    {
+        origin = FindObjectOfType<XROrigin>().gameObject;
+        controllers = origin.GetComponentsInChildren<PlayerAction>();
+        
+        for (int i = 0; i < controllers.Length; i++)
+        {
+            controllers[i].transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+    void OnDisable()
+    {
+        for (int i = 0; i < controllers.Length; i++)
+        {
+            controllers[i].transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
+
+
     private void Update()
     {
         PlayerMove();
     }
+
     public override void PlayerMove() // 걷기 
     {
         if (pv.IsMine)
         {
             base.PlayerMove();
-            moveProvider.moveSpeed = 10f;
-            animator.SetFloat("Walk", dir.magnitude); // 블렌트 트리 임계값을 0 ~ 1로 설정
+            moveProvider.moveSpeed = 4f;
+            animator.SetFloat("Walk", dir.magnitude); 
         }
     }
 }
-
-
-    //private void FixedUpdate()
-    //{
-    //    Jump();
-    //}
-    //public override void Jump()
-    //{
-    //    base.Jump();
-    //}

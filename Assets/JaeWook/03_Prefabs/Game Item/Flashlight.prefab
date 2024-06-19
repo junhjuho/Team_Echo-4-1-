@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1230719690319196740}
   - component: {fileID: 1415004836695175560}
   - component: {fileID: 6062685647648668523}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.35686275, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4305929143295120018}
   - component: {fileID: 1424523409705853602}
   - component: {fileID: 6310846529606329881}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.6901961, b: 0.10980392, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6171356423830521924}
   - component: {fileID: 4918392935555016921}
   - component: {fileID: 1165060521037506166}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 3274749459024037137}
   - component: {fileID: 355221996768133160}
   - component: {fileID: 1833514424027648725}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: battery1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.93333334, g: 0.8117647, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1435871824718099870}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 5604286746792651058}
   - component: {fileID: 2632643179012329827}
   - component: {fileID: 693863413551221102}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: UIFlashLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,9 @@ GameObject:
   - component: {fileID: 7164317521166646568}
   - component: {fileID: 5994362011998508296}
   - component: {fileID: 4606724876789944557}
-  m_Layer: 21
+  - component: {fileID: -5098395208493787142}
+  - component: {fileID: -2435681594954659801}
+  m_Layer: 23
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,16 +486,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8211623650207601489}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.154, y: 0, z: 1.5488439}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1311416542424748030}
   - {fileID: 1435871824718099870}
   - {fileID: 5504656759012165117}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1547719394988743667
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -583,6 +585,7 @@ MonoBehaviour:
   sceneValue: 2
   charactorValue: 0
   itemValue: 0
+  isFind: 0
   isOn: 0
   flashlight: {fileID: 1311416542418607870}
   uiFlashlight: {fileID: 693863413551221102}
@@ -792,6 +795,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.11621137, y: 0.23057182, z: 0.1104058}
   m_Center: {x: 0.0063942894, y: 0, z: -0.00082081556}
+--- !u!114 &-5098395208493787142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211623650207601489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -2435681594954659801}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-2435681594954659801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211623650207601489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &1311416542424618366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -806,11 +848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_Layer
-      value: 21
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000000045928843
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -818,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.052536473
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_LocalRotation.w

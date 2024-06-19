@@ -5,22 +5,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIWatch : MonoBehaviour
+namespace NHR
 {
-    public UIInventory uiInventory;
-    public UIHeartWatch uiHeart;
-    public int nowHeart;
-
-    public Image dim;
-
-    private void Awake()
+    public class UIWatch : MonoBehaviour
     {
-        this.uiInventory = GetComponentInChildren<UIInventory>();
-        this.uiHeart = GetComponentInChildren<UIHeartWatch>();
-    }
-    private void Start()
-    {
-        this.dim.gameObject.SetActive(false);
+        public UIInventory uiInventory;
+        public UIHeartWatch uiHeart;
+        public UIMission uiMission;
+        public int nowHeart;
+
+        public Image dim;
+
+        private void Awake()
+        {
+            this.uiInventory = GetComponentInChildren<UIInventory>();
+            this.uiHeart = GetComponentInChildren<UIHeartWatch>();
+            this.uiMission = GetComponentInChildren<UIMission>();
+        }
+        private void Start()
+        {
+            this.dim.gameObject.SetActive(false);
+        }
 
     }
+
 }

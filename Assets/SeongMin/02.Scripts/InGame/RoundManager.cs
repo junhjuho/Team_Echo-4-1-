@@ -16,15 +16,25 @@ namespace SeongMin
         public bool isMapSettingDone = false;
         [Header("모든 플레이어 연결 완료 여부")]
         public bool isPlayerAllConnected = false;
+        [Header("연결된 플레이어  수")]
         public int playerCount = 0;
+        [Header("현재 완료된 플레이어 미션 수")]
+        public int currentRoundPlayersMissionCount = 0;
+        [Header("현재 라운드 미션 전체 진행율")]
+        public int currentRoundPlayersMissionPerSent = 0;
+        [Header("목표 진행률 설정하기")]
+        public int needPersent = 60;
+
+        InGameMapManager inGameMapManager;
         public enum Round
         {
             One = 0,
             Two = 1,
             Three = 2
         }
+        [Header("현재 라운드")]
         public Round round = Round.One;
-        private PhotonView photonView;
+        public PhotonView photonView;
         private void Awake()
         {
             GameManager.Instance.roundManager = this;
@@ -33,15 +43,20 @@ namespace SeongMin
         // 1라운드 세팅 
         private IEnumerator Start()
         {
+            inGameMapManager = GameManager.Instance.inGameMapManager;
             // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
             // 방장에게 내가 들어 왔음을 알리기
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            //GameManager.Instance.photonManager.SetPlayer();
             GameManager.Instance.playerManager.playerController = _player.GetComponent<PlayerController>();
-            //최초 라운드세팅 실행
-            RoundMapSetting();
+
+            //캐릭터 커스텀 설정
+            //photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
+            //GameManager.Instance.photonManager.OnPlayer();
+
             // 1라운드 세팅
             StartCoroutine(RoundOneSetting());
             // TODO 로딩 구현
@@ -58,7 +73,6 @@ namespace SeongMin
                     RoundMapSetting();
                     Invoke("RoundTwoSetting", 3f);
                     //RoundTwoSetting();
-                    MissionSetting();
                     ChangeText("2");
                     break;
                 // 2라운드에서 3라운드로
@@ -68,7 +82,6 @@ namespace SeongMin
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round2End");
                     RoundMapSetting();
                     RoundThreeSetting();
-                    MissionSetting();
                     ChangeText("3");
                     break;
                 // 3라운드에서 엔딩으로
@@ -96,6 +109,12 @@ namespace SeongMin
                 yield return new WaitUntil(() => isPlayerAllConnected);
                 // 전체 플레이어에게 미션 세팅하기
                 MissionSetting();
+                //최초 라운드세팅 실행
+                RoundMapSetting();
+                //for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+                //{
+                //    photonView.RPC("InitPlayerSetting", PhotonNetwork.PlayerList[i]);
+                //}
             }
 
             //라운드 시작 UI
@@ -109,7 +128,7 @@ namespace SeongMin
             RoundPlayerDataReset();
             ChaserSetting();
             TeamMissionSetting();
-            
+            MissionSetting();
             Debug.Log("라운드2 셋팅 완료");
             Invoke("RoleSettingEvent", 2f);
         }
@@ -124,22 +143,23 @@ namespace SeongMin
             //내 라운드 데이터 초기화하기
             RoundPlayerDataReset();
             TeamMissionSetting();
+            MissionSetting();
         }
         private void RoundMapSetting()
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                GameManager.Instance.inGameMapManager.ItemPositionSetting();
-                GameManager.Instance.inGameMapManager.PlayerPositionSetting();
+                inGameMapManager.ItemPositionSetting();
+                inGameMapManager.PlayerPositionSetting();
             }
             GameManager.Instance.roundTimer.TimerStart();
         }
         private void InGamePublicDataReset()
         {
             // 이름순으로 정렬하기 (모든 클라이언트에게 같은 정렬로 된 리스트 가지고 있게 하기 위해)
-            GameManager.Instance.inGameMapManager.inGameRunnerItemList.Sort((a, b) => a.name.CompareTo(b.name));
+            inGameMapManager.inGameRunnerItemList.Sort((a, b) => a.name.CompareTo(b.name));
             // 아이템 넘버링 리스트 초기화 하기
-            GameManager.Instance.inGameMapManager.ItemNumberListSetting();
+            inGameMapManager.ItemNumberListSetting();
         }
         // 내 라운드 데이터 초기화하기
         private void RoundPlayerDataReset()
@@ -156,6 +176,13 @@ namespace SeongMin
             if (GameDB.Instance.playerMission.isChaser == true)
                 for (int i = 0; i < GameDB.Instance.playerMission.chaserMissionArray.Length; i++)
                     GameDB.Instance.playerMission.chaserMissionArray[i] = null;
+            // 완료한 미션 갯수 초기화
+            GameDB.Instance.playerMission.runnerMissionClearCount = 0;
+            GameDB.Instance.playerMission.chaserMissionClearCount = 0;
+            GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
+            currentRoundPlayersMissionCount = 0;
+            currentRoundPlayersMissionPerSent = 0;
+
         }
         //복수자 배정하기
         private void ChaserSetting()
@@ -202,6 +229,46 @@ namespace SeongMin
             }
 
         }
+        [PunRPC]
+        public void SendAllPlayerMissionScoreUpdate(int _value)
+        {
+            // 플레이어들이 전체 목표 달성 했을 때. 라운드 체인지
+            currentRoundPlayersMissionPerSent = _value;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                if (currentRoundPlayersMissionPerSent >= needPersent)
+                {
+                    if (round == Round.Three)
+                    {
+                        GameDB.Instance.Shuffle(inGameMapManager.inGameItemPositionList);
+                        PhotonNetwork.Instantiate("FinalKey", inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+                    }
+                    else
+                        RoundChange(round);
+                }
+                else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
+                {
+                    photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
+                }
+            }
+        }
+        [PunRPC]
+        public void UpdateAllPlayerMissionPersent(int _value)
+        {
+            //TODO 모든 플레이어에게 UI 갱신 시켜주기
+            currentRoundPlayersMissionPerSent = _value;
+
+            //필요 퍼센트의 1/4, 2/4, 3/4 4/4마다 UI 안내
+            int quater = this.needPersent / 4;
+            if (_value >= needPersent) EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Complete_RoundMission);
+            else if (_value % quater == 0) EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, _value);
+
+        }
+        //[PunRPC]
+        //protected void InitPlayerSetting()
+        //{
+        //    GameManager.Instance.playerManager.playerController.Init();
+        //}
         private void ChangeText(string _text)
         {
             //UIManager.Instance.inGameSceneMenu.roundChangeText.text = _text;

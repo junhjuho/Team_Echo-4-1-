@@ -37,24 +37,50 @@ namespace SeongMin
         public void ItemNumberListSetting()
         {
             inGameRunnerItemNumberArray = new int[inGameRunnerItemList.Count];
-            for (int i = 0; i<inGameRunnerItemList.Count; i++)
+            for (int i = 0; i < inGameRunnerItemList.Count; i++)
             {
                 inGameRunnerItemNumberArray[i] = i;
             }
         }
         public void ItemPositionSetting()
         {
-            if (inGameRunnerItemList.Count < inGameItemPositionList.Count)
+            GameDB.Instance.Shuffle(inGameItemPositionList);
+            if (inGameRunnerItemList.Count + inGameChaserItemList.Count + inGameTeamPlayItemList.Count <= inGameItemPositionList.Count)
             {
+                int positionIndex = 0;
+
+                // inGameRunnerItemList의 아이템 위치 설정
                 for (int i = 0; i < inGameRunnerItemList.Count; i++)
                 {
-                    var _object = inGameRunnerItemList[i];
-                    _object.transform.position = inGameItemPositionList[i].position;
+                    inGameRunnerItemList[i].transform.position = inGameItemPositionList[positionIndex].position;
+                    positionIndex++;
+                }
+
+                // inGameChaserItemList의 아이템 위치 설정
+                for (int i = 0; i < inGameChaserItemList.Count; i++)
+                {
+                    inGameChaserItemList[i].transform.position = inGameItemPositionList[positionIndex].position;
+                    positionIndex++;
+                }
+
+                // inGameTeamPlayItemList의 아이템 위치 설정
+                for (int i = 0; i < inGameTeamPlayItemList.Count; i++)
+                {
+                    inGameTeamPlayItemList[i].transform.position = inGameItemPositionList[positionIndex].position;
+                    positionIndex++;
                 }
             }
             else
             {
                 print("생성해야할 오브젝트 수가 생성 가능한 위치보다 많습니다. 생성위치를 추가해주세요.");
+            }
+        }
+        public void ChaserItemResetting()
+        {
+            GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
+            for (int i = 0; i < inGameChaserItemList.Count; i++)
+            {
+                inGameChaserItemList[i].transform.position = inGameItemPositionList[i].position;
             }
         }
         public void PlayerPositionSetting()

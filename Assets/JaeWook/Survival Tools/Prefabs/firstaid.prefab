@@ -15,7 +15,10 @@ GameObject:
   - component: {fileID: 1657048130363339786}
   - component: {fileID: 4176612290643076353}
   - component: {fileID: 1125113552674049828}
-  m_Layer: 21
+  - component: {fileID: 3647436386101073066}
+  - component: {fileID: -8081466934862062973}
+  - component: {fileID: 1275911146835112137}
+  m_Layer: 23
   m_Name: firstaid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,6 +313,62 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8154834, y: 0.3475596, z: 0.62949526}
   m_Center: {x: -0.0068259835, y: 0.1600316, z: 0.0025842488}
+--- !u!114 &3647436386101073066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987713744733760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -8081466934862062973}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-8081466934862062973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987713744733760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &1275911146835112137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987713744733760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b025d8ef80c91e2428d02dbe66c49abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneValue: 2
+  charactorValue: 0
+  itemValue: 1
+  isFind: 0
+  useEffect: {fileID: 0}
 --- !u!1 &138231240639244345
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6933370826427833549}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

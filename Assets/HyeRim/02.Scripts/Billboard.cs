@@ -21,6 +21,7 @@ public class Billboard : MonoBehaviour
         {
             targetTf = Camera.main.transform;
         }
+        //StartCoroutine(this.Look());
     }
 
     void Update()
@@ -47,4 +48,31 @@ public class Billboard : MonoBehaviour
 
         this.transform.localEulerAngles = currRot;
     }
+    //IEnumerator Look()
+    //{
+    //    while (true)
+    //    {
+    //        transform.LookAt(this.transform.position + targetTf.transform.rotation * Vector3.forward, targetTf.transform.rotation * Vector3.up);
+
+    //        var currRot = this.transform.localEulerAngles;
+
+    //        if (lookAxis == Axis.X)
+    //        {
+    //            currRot.y = 0f;
+    //            currRot.z = 0f;
+    //        }
+    //        else if (lookAxis == Axis.Y)
+    //        {
+    //            currRot.x = 0f;
+    //            currRot.z = 0f;
+    //        }
+    //        else if (lookAxis == Axis.Z)
+    //        {
+    //            currRot.x = 0f;
+    //            currRot.y = 0f;
+    //        }
+
+    //        this.transform.localEulerAngles = currRot;
+    //    }
+    //}
 }

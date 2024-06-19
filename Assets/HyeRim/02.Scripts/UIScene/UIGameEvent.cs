@@ -35,6 +35,12 @@ namespace NHR
         [Header("현재 플레이어들 현황")]
         public UINowPlayers uiNowPlayers;
 
+        [Header("미션 달성 UI")]
+        public UICompleteMission uiCompleteMission;
+
+        [Header("전체 플레이어 미션 현황 UI")]
+        public UIMissionPercent uiMissionPercent;
+
         private GameObject nowPopUI;
 
         private void Awake()
@@ -42,13 +48,15 @@ namespace NHR
             //임시
             DataManager.Instance.LoadEventDialogData();
 
-            this.uiNotice = FindObjectOfType<UINotice>();
-            this.uiRole = FindObjectOfType<UIRole>();
-            this.uiAttacked = FindObjectOfType<UIAttacked>();
-            this.uiMonsterMode = FindObjectOfType<UIMonsterMode>();
-            this.uiWatching = FindObjectOfType<UIWatching>();
-            this.uiTimer = FindObjectOfType<UITimer>();
-            this.uiNowPlayers = FindObjectOfType<UINowPlayers>();
+            this.uiNotice = GetComponentInChildren<UINotice>();
+            this.uiRole = GetComponentInChildren<UIRole>();
+            this.uiAttacked = GetComponentInChildren<UIAttacked>();
+            this.uiMonsterMode = GetComponentInChildren<UIMonsterMode>();
+            this.uiWatching = GetComponentInChildren<UIWatching>();
+            this.uiTimer = GetComponentInChildren<UITimer>();
+            this.uiNowPlayers = GetComponentInChildren<UINowPlayers>();
+            this.uiCompleteMission = GetComponentInChildren<UICompleteMission>();
+            this.uiMissionPercent = GetComponentInChildren<UIMissionPercent>();
 
             this.Init();
         }
@@ -64,6 +72,9 @@ namespace NHR
 
             this.uiMonsterMode.gameObject.SetActive(false);
             this.uiWatching.gameObject.SetActive(false);
+
+            this.uiCompleteMission.gameObject.SetActive(false);
+            this.uiMissionPercent.gameObject.SetActive(false);
         }
         private void Start()
         {
@@ -158,7 +169,7 @@ namespace NHR
             //타이머 갱신
             EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Update_Timer, new EventHandler<int>((type, time) =>
             {
-                Debug.LogFormat("<color=yellow>남은 시간 : {0}</color>", time);
+                //Debug.LogFormat("<color=yellow>남은 시간 : {0}</color>", time);
                 this.uiTimer.UpdateTimer(time);
             }));
             //괴물 변신 타이머 갱신
@@ -169,6 +180,34 @@ namespace NHR
                     Debug.LogFormat("<color=yellow>변신 남은 시간 : {0}</color>", time);
                     this.uiMonsterMode.UpdateTimer(time);
                 }
+            }));
+            //미션 달성 이벤트
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
+            {
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.uiCompleteMission.CompleteMission(name);
+            }));
+            //생존자 전체 미션 달성도 알림
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<int>((type, per) =>
+            {
+                Debug.Log("Notice TotalMission Percent");
+                this.uiMissionPercent.Init();
+                var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
+                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                this.uiMissionPercent.gameObject.SetActive(true);
+                this.nowPopUI = this.uiMissionPercent.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice));
+            }));
+            //생존자 라운드 목표 완료 알림
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>
+            {
+                Debug.Log("Notice TotalMission Percent");
+                this.uiMissionPercent.Init();
+                var dialog = DataManager.Instance.GetEventDialog("missionPercentComplete");
+                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                this.uiMissionPercent.gameObject.SetActive(true);
+                this.nowPopUI = this.uiMissionPercent.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice));
             }));
         }
 
@@ -198,5 +237,6 @@ namespace NHR
             yield return new WaitForSeconds(2f);
             this.nowPopUI.gameObject.SetActive(false);
         }
+
     }
 }

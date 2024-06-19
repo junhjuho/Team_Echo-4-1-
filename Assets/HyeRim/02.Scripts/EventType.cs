@@ -27,7 +27,10 @@ namespace NHR
             Change_Monster,
             Update_Timer,
             Update_MonsterTimer, 
-            Get_Mission
+            Get_Mission, 
+            Complete_Mission, 
+            Notice_TotalMissionPercent, 
+            Complete_RoundMission
         }
     }
 

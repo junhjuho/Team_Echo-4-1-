@@ -5,32 +5,35 @@ using UnityEngine;
 
 namespace Jaewook
 {
-    public class FlashLight : ItemObject, IItem
+    public class FlashLight : MonoBehaviour, IItem
     {
         public bool isOn = true;
         public Light flashlight;
+        
 
         //NHR
-        [Header("¼ÕÀüµî UI")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UI")]
         public NHR.UIFlashlight uiFlashlight;
-        //ÄÚ·çÆ¾
+        //ï¿½Ú·ï¿½Æ¾
         private IEnumerator flashCoroutine;
 
-        //¹èÅÍ¸® °ª
+        //ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½
         public bool hasBattery = true;
-        public int nowBatteryTime = 10;
-        public int nowBattery = 10;
-        //max °ª
-        public int maxBatteryTime = 10;
-        public int maxBattery = 10;
+        public int nowBatteryTime = 20;
+        public int nowBattery = 20;
+        //max ï¿½ï¿½
+        public int maxBatteryTime = 30;
+        public int maxBattery = 30;
 
         private void Awake()
         {
             this.uiFlashlight = this.GetComponentInChildren<NHR.UIFlashlight>();
             this.Init();
             StartCoroutine(this.flashCoroutine);
+
+            GameDB.Instance.myFlashLight = this;
         }
-        //ÃÊ±â ¼³Á¤
+        //ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½
         private void Init()
         {
             this.flashCoroutine = this.CLightOn();
@@ -46,10 +49,6 @@ namespace Jaewook
             }
 
         }
-        protected void Start()
-        {
-            base.Start(); // ItemObjectÀÇ Start ¸Þ¼­µå¸¦ È£ÃâÇÏ¿© ¾À°ú Ä³¸¯ÅÍ¿¡ µû¶ó µî·Ï
-        }
 
         public void OnGrab()
         {
@@ -61,11 +60,11 @@ namespace Jaewook
         {
             if(this.hasBattery)
             {
-                // Æ®¸®°Å ¹öÆ°À» ´­·¶À» ¶§ ÇÃ·¡½Ã¶óÀÌÆ® ÄÑ±â/²ô±â
+                // Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½Æ® ï¿½Ñ±ï¿½/ï¿½ï¿½ï¿½ï¿½
                 isOn = !isOn;
                 flashlight.enabled = isOn;
 
-                //¼ÕÀüµî ¹èÅÍ¸®
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½
                 if (this.isOn) StartCoroutine(this.flashCoroutine);
                 else StopCoroutine(this.flashCoroutine);
 
@@ -81,7 +80,7 @@ namespace Jaewook
         }
 
         /// <summary>
-        /// ¼ÕÀüµî ÃæÀü
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public void ChargeFlashlight()
         {
@@ -95,15 +94,15 @@ namespace Jaewook
         }
 
 
-        //¼ÕÀüµî »ç¿ë ÄÚ·çÆ¾
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾
         public IEnumerator CLightOn()
         {
             while (true)
             {
-                Debug.LogFormat("nowBattery time : {0}", this.nowBatteryTime);
+                //Debug.LogFormat("nowBattery time : {0}", this.nowBatteryTime);
                 this.nowBatteryTime--;
 
-                //¹èÅÍ¸® ÇÑ Ä­ ½Ã°£ÀÌ ´Ù µÇ¾úÀ» °æ¿ì
+                //ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ Ä­ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
                 if (this.nowBatteryTime < 0)
                 {
                     this.uiFlashlight.batteries[3 - this.nowBattery].gameObject.SetActive(false);
@@ -113,7 +112,7 @@ namespace Jaewook
                     this.nowBatteryTime = 3;
                     this.nowBattery--;
 
-                    //¹èÅÍ¸®°¡ ´Ù ´â¾ÒÀ» °æ¿ì ¼ÕÀüµî °­Á¦ Á¾·á
+                    //ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     if (this.nowBattery <= 0)
                     {
                         StopCoroutine(this.flashCoroutine);
