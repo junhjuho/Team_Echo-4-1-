@@ -117,6 +117,23 @@ namespace NHR
                 }
             }
         }
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            base.OnPlayerEnteredRoom(newPlayer);
+
+            if (newPlayer.CustomProperties.ContainsKey(this.characterKey))
+            {
+                int id = (int)newPlayer.CustomProperties[this.characterKey];
+                string colotName = (string)newPlayer.CustomProperties[this.colorKey];
+                // Ä¿½ºÅÒ Àû¿ë
+                if (newPlayer == PhotonNetwork.LocalPlayer)
+                {
+                    ApplyCustom(id, colotName);
+                }
+            }
+
+        }
     }
 
 }
