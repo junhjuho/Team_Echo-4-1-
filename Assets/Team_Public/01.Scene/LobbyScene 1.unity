@@ -1067,6 +1067,7 @@ MonoBehaviour:
   playerSpawnPointList: []
   photonView: {fileID: 0}
   isLobbySetting: 0
+  playerMission: {fileID: 0}
   playerController: {fileID: 0}
 --- !u!4 &258297154
 Transform:
@@ -10056,7 +10057,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 6007
+    m_Bits: 2103159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
