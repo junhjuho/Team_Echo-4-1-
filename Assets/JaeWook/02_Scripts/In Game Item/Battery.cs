@@ -12,7 +12,7 @@ namespace Jaewook
     {
         public void OnGrab()
         {
-            // flashlight를 갖고 있으면 충전 (ChargeFlashlight)
+            // 수정 필요
             FlashLight flashlight = FindObjectOfType<FlashLight>();
 
             // SeoungMin.ItemObject.cs ->public bool isFind = false;
