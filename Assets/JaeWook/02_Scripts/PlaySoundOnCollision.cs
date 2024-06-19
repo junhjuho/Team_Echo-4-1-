@@ -33,8 +33,7 @@ namespace Jaewook
             if (!oncePlayed)
             {
                 audioSource.Play();
-                // Debug.Log("트리거 사운드 실행!");
-                oncePlayed = true;
+                Debug.Log("트리거 사운드 실행!");
             }
             else
             {
