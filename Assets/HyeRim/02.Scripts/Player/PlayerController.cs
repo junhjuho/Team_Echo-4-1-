@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static TreeEditor.TextureAtlas;
 using HashTable = ExitGames.Client.Photon.Hashtable;
 
 namespace NHR
