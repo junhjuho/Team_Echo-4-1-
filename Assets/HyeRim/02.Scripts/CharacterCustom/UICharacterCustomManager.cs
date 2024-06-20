@@ -70,7 +70,7 @@ namespace NHR
             for (int i = 0; i < this.colors.Length; i++) this.colors[i].index = i;
 
             //인포에 저장된 캐릭터 불러오기
-            InfoManager.Instance.PlayerInfoInit();
+            //InfoManager.Instance.PlayerInfoInit();
             this.selectedCharacter = this.slots[InfoManager.Instance.PlayerInfo.nowCharacterId];
             this.selectedClothesColor = this.colors[InfoManager.Instance.PlayerInfo.nowClothesColorIndex];
 
