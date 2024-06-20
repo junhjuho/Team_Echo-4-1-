@@ -10599,6 +10599,7 @@ MonoBehaviour:
   - {fileID: 6475554866602124036}
   - {fileID: 568239553882724931}
   watch: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!1 &4028289518996050825
 GameObject:
   m_ObjectHideFlags: 0
@@ -23415,7 +23416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9132861521565619948
 Transform:
   m_ObjectHideFlags: 0
