@@ -19,8 +19,6 @@ namespace NHR
         public Character[] characters;
         public Character nowCharacter;
 
-        public string nowColorName;
-
         public SmartWatchCustomInteractable watch;
 
         public int nowCharacterID;
@@ -32,7 +30,6 @@ namespace NHR
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
 
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
-            this.nowColorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
         }
         private void Start()
         {
@@ -46,11 +43,6 @@ namespace NHR
             this.characters[nowCharacterID].gameObject.SetActive(true);
             this.nowCharacter = this.characters[nowCharacterID];
             SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
-
-            //var mat = this.nowCharacter.material;
-            //Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", this.nowCharacterID, this.nowColorName);
-            //mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + this.nowCharacterID + this.nowColorName);
-
         }
         public void UpdateCharacter(int id)
         {
@@ -58,12 +50,6 @@ namespace NHR
             photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
             this.ApplyCharacter(id);
         }
-        //public void UpdateColor(string color)
-        //{
-        //    Debug.Log("UpdateColor");
-        //    photonView.RPC("UpdateColorRPC", RpcTarget.OthersBuffered, color);
-        //    this.ApplyColor(color);
-        //}
 
         [PunRPC]
         public void UpdateCharacterRPC(int id)
@@ -73,14 +59,6 @@ namespace NHR
             this.nowCharacterID = id;
             this.ApplyCharacter(id);
         }
-        //[PunRPC]
-        //public void UpdateColorRPC(string color)
-        //{
-        //    Debug.Log("UpdateCharacterRPC");
-
-        //    this.nowColorName = color;
-        //    this.ApplyColor(color);
-        //}
 
         public void ApplyCharacter(int id)
         {
@@ -94,24 +72,9 @@ namespace NHR
             if (this.nowCharacter != null)
             {
                 this.nowCharacter.gameObject.SetActive(true);
-
-                //var mat = this.nowCharacter.material;
-                //Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", this.nowCharacterID, this.nowColorName);
-                //mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + this.nowCharacterID + this.nowColorName);
             }
             SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
         }
-        //public void ApplyColor(string color)
-        //{
-        //    this.nowColorName = color;
-
-        //    if (this.nowCharacter != null)
-        //    {
-        //        var mat = this.nowCharacter.material;
-        //        Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", this.nowCharacterID, color);
-        //        mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + this.nowCharacterID + color);
-        //    }
-        //}
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
