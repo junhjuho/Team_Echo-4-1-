@@ -122,5 +122,4 @@ namespace NHR
             //else this.nowCharacterID = (int)stream.ReceiveNext();
         }
     }
-
 }
