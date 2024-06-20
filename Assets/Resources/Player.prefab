@@ -10518,6 +10518,7 @@ MonoBehaviour:
   head: {fileID: 1497171489332586268}
   leftHand: {fileID: 927024852629838001}
   rightHand: {fileID: 7893504428891386148}
+  origin: {fileID: 0}
 --- !u!114 &2578181009039727142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16190,7 +16191,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
-  modelHeight: 1.67
+  modelHeight: 3
 --- !u!114 &1613875989780044681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23638,6 +23639,8 @@ MonoBehaviour:
   inputActionAsset: {fileID: 0}
   moveProvider: {fileID: 0}
   pv: {fileID: 0}
+  origin: {fileID: 0}
+  controllers: []
 --- !u!114 &5811930333523427140
 MonoBehaviour:
   m_ObjectHideFlags: 0
