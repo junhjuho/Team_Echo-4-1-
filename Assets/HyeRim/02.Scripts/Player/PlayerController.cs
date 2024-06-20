@@ -40,7 +40,7 @@ namespace NHR
             }
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
 
-            this.characters[nowCharacterID].gameObject.SetActive(true);
+            //this.characters[nowCharacterID].gameObject.SetActive(true);
             this.nowCharacter = this.characters[nowCharacterID];
             SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
         }
@@ -48,7 +48,7 @@ namespace NHR
         {
             Debug.Log("UpdateCharacter");
             photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
-            this.ApplyCharacter(id);
+            //this.ApplyCharacter(id);
         }
 
         [PunRPC]
