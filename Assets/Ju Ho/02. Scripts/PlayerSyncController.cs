@@ -26,11 +26,6 @@ public class PlayerSyncController : MonoBehaviour
     Transform leftHandRig;
     Transform rightHandRig;
 
-    Transform lefttHandIK_hint;
-    Transform rightHandIK_hint;
-
-    RaycastHit hitInfo;
-
     void Start()
     {
         pv = this.GetComponent<PhotonView>();

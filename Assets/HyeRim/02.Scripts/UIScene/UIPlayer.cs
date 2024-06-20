@@ -36,17 +36,15 @@ namespace NHR
             // 스테미너 코드
             if (SeongMin.GameManager.Instance.playerManager.humanMovement.isRunBtnDown)
             {
-                staminaBar.fillAmount -= 0.1f * Time.deltaTime;
+                staminaBar.fillAmount -= 0.2f * Time.deltaTime;
 
                 this.isEnergyDown = staminaBar.fillAmount > 0 ? false : true;
-
-                Debug.Log(staminaBar.fillAmount);
             }
             else
             {
                 if(staminaBar.fillAmount < 1)
                 {
-                    staminaBar.fillAmount += 0.1f * Time.deltaTime;
+                    staminaBar.fillAmount += 0.2f * Time.deltaTime;
                 }
             }
         }

@@ -29,7 +29,6 @@ public class MonsterMovement : PlayerMovement
         }
     }
 
-
     private void Update()
     {
         PlayerMove();
@@ -40,7 +39,7 @@ public class MonsterMovement : PlayerMovement
         if (pv.IsMine)
         {
             base.PlayerMove();
-            moveProvider.moveSpeed = 4f;
+            moveProvider.moveSpeed = 3f;
             animator.SetFloat("Walk", dir.magnitude); 
         }
     }

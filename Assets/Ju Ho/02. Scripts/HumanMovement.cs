@@ -99,9 +99,9 @@ public class HumanMovement : PlayerMovement
         }
     }
 
-    void RespawnPlayer()
-    {
-        playerSyncController.origin.transform.position = 
-            SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
-    }
+    //void RespawnPlayer()
+    //{
+    //    playerSyncController.origin.transform.position = 
+    //        SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
+    //}
 }
