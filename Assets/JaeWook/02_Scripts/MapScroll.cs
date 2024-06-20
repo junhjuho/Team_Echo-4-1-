@@ -24,6 +24,7 @@ namespace Jaewook
 
             mapUI = GetComponentInChildren<RawImage>();
 
+            /*
             if (mapUI != null)
             {
                 mapUI.enabled = false;
@@ -32,6 +33,7 @@ namespace Jaewook
             {
                 Debug.LogError("Map UI 없음");
             }
+            */
         }
 
         public void OnGrab()
@@ -39,6 +41,7 @@ namespace Jaewook
             // 잡으면 UI 활성화하고 잠깐 mesh Renderer 삭제 
             isGrab = true;
 
+            /*
             if (isGrab)
             {
                 this.scrollMeshRen.enabled = false;
@@ -58,7 +61,7 @@ namespace Jaewook
             {
                 isGrab = false;
             }
-
+            */
         }
 
         public void OnUse()
@@ -68,12 +71,14 @@ namespace Jaewook
 
         public void OnRelease()
         {
+            /*
             if (mapUI != null)
             {
                 mapUI.enabled = false;
                 this.scrollMeshRen.enabled = true;
                 this.scrollCollider.enabled = true;
             }
+            */
         }
     }
 }

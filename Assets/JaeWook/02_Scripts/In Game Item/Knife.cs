@@ -12,14 +12,48 @@ namespace Jaewook
     /// </summary>
     public class Knife : ItemObject, IItem
     {
+        [Header("파티클 효과")]
+        public ParticleSystem particleSys;
+
+        private void Start()
+        {
+            base.Start();
+
+            particleSys = GetComponent<ParticleSystem>();
+
+            // 파티클효과 상시 유지
+            particleSys.Play();
+
+        }
+
+        public void OnGrab()
+        {
+            // 잡으면 파티클 끄기
+            if (particleSys != null)
+            {
+                particleSys.Stop();
+            }
+
+        }
+
+            public void OnRelease()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnUse()
+        {
+            throw new System.NotImplementedException();
+        }
+
         // [Header("chaser 아이템 할당")]
         // public List<GameObject> inGameChaserItems = GameManager.Instance.inGameMapManager.inGameChaserItemList;
-        [Header("chaser 아이템은 chaser에게만 보이기")]
-        public List<GameObject> chaserItemList = GameManager.Instance.inGameMapManager.inGameChaserItemList;
-        [Header("chaser인지 아닌지 확인")]
-        public CharactorValue charValue = CharactorValue.chaser;
-        [Header("배정받은 복수자 미션 아이템 리스트")]
-        public GameObject[] chaserMA = GameDB.Instance.playerMission.chaserMissionArray;
+        // [Header("chaser 아이템은 chaser에게만 보이기")]
+        // public List<GameObject> chaserItemList = GameManager.Instance.inGameMapManager.inGameChaserItemList;
+        // [Header("chaser인지 아닌지 확인")]
+        // public CharactorValue charValue = CharactorValue.chaser;
+        //[Header("배정받은 복수자 미션 아이템 리스트")]
+        //public GameObject[] chaserMA = GameDB.Instance.playerMission.chaserMissionArray;
 
         /*
         private void Awake()
@@ -27,10 +61,6 @@ namespace Jaewook
             
         }
         */
-
-        private void Start()
-        {
-            base.Start();
 
             /*
             for (int i = 0; i < chaserMA.Length; i++)
@@ -43,21 +73,7 @@ namespace Jaewook
             }
             */
 
-        }
-        public void OnGrab()
-        {
-            // Chaser 변신 가능 아이템
-        }
 
-        public void OnRelease()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnUse()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
 }

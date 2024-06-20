@@ -34,39 +34,30 @@ namespace NHR
             // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
 
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-            {
-                photonView.RPC("InitPlayerSetting", PhotonNetwork.PlayerList[i]);
-            }
-
             //캐릭터 커스텀 설정
-            int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
-            string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
-            //this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered, id, colorName);
+            this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
         }
 
         [PunRPC]
-        public void InitPlayerSetting()
+        public void ApplyCustom()
         {
-            this.ApplyCustom(InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
-        }
-
-        public void ApplyCustom(int id, string colorName)
-        {
-
-            //int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
-            //string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
-            Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
-            foreach (var character in this.characters)
+            if (this.photonView.IsMine)
             {
-                character.gameObject.SetActive(false);
-            }
+                int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
+                string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
+                Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
+                foreach (var character in this.characters)
+                {
+                    character.gameObject.SetActive(false);
+                }
 
-            this.characters[id].gameObject.SetActive(true);
-            SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
-            var mat = this.characters[id].material;
-            Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, colorName);
-            mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + colorName);
+                this.characters[id].gameObject.SetActive(true);
+                SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
+                var mat = this.characters[id].material;
+                Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, colorName);
+                mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + colorName);
+
+            }
 
         }
 
