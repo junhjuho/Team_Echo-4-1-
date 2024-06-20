@@ -33,6 +33,7 @@ namespace NHR
         }
         private void LateUpdate()
         {
+            // 스테미너 코드
             if (SeongMin.GameManager.Instance.playerManager.humanMovement.isRunBtnDown)
             {
                 staminaBar.fillAmount -= 0.1f * Time.deltaTime;
