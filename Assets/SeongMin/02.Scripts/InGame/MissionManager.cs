@@ -17,8 +17,9 @@ namespace SeongMin
         public int chaserMissionCount = 3;
         private void Awake()
         {
-            GameManager.Instance.missionManager = this;
             photonView = GetComponent<PhotonView>();
+            if(photonView.IsMine)
+            GameManager.Instance.missionManager = this;
         }
         public void MissionSetting()
         {
