@@ -78,7 +78,10 @@ namespace SeongMin
             // 이 클라이언트가 복수자이며, 복수자 미션 클리어 갯수가 복수자 미션 배열의 길이와 같거나 높으면 실행
             if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
             {
+                // 복수자로 캐릭터 변경
                 EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
+                // 카운팅 초기화
+                playerMission.chaserMissionClearCount = 0;
             }
         }
     }
