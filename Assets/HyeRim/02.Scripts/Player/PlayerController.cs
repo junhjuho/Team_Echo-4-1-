@@ -33,10 +33,10 @@ namespace NHR
             if (!photonView.IsMine) return;
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
 
-            foreach (var character in this.characters)
-            {
-                character.gameObject.SetActive(false);
-            }
+            //foreach (var character in this.characters)
+            //{
+            //    character.gameObject.SetActive(false);
+            //}
             this.characters[nowCharacterID].gameObject.SetActive(true);
             Debug.Log(this.nowCharacterID);
         }

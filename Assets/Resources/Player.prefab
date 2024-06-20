@@ -2667,7 +2667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5278810862315764896
 Transform:
   m_ObjectHideFlags: 0
@@ -3178,7 +3178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5965356903287119246
 Transform:
   m_ObjectHideFlags: 0
@@ -10561,6 +10561,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 5543160392446795685}
   - {fileID: 479101846059634882}
   - {fileID: 5230459196823382439}
   - {fileID: 5530197642181525178}
@@ -10601,7 +10602,7 @@ MonoBehaviour:
   - {fileID: 6475554866602124036}
   - {fileID: 568239553882724931}
   watch: {fileID: 0}
-  photonView: {fileID: 0}
+  nowCharacterID: 0
 --- !u!1 &4028289518996050825
 GameObject:
   m_ObjectHideFlags: 0
@@ -15930,7 +15931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3296381192567591127
 Transform:
   m_ObjectHideFlags: 0
