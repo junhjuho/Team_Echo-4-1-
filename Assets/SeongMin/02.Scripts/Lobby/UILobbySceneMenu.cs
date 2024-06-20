@@ -1,3 +1,4 @@
+using NHR;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -14,11 +15,16 @@ namespace SeongMin
         public Button readyButton;
         public Button quitButton;
         public Button roundStartButton;
+        public Button customButton;
         [Header("최대 플레이어 설정 하기")]
         public int maxPlayer = 4;
         [Header("준비된 플레이어 표시되는 곳")]
         public int readyPlayer = 0;
         public bool isReady = false;
+
+        [Header("캐릭터 커스텀 UI")]
+        public UICharacterCustomManager characterCustomManager;
+        public CustomPlayer customPlayer;
 
         private void Awake()
         {
@@ -26,6 +32,7 @@ namespace SeongMin
             readyButton = transform.Find("ReadyButton").GetComponent<Button>();
             quitButton = transform.Find("QuitButton").GetComponent<Button>();
             roundStartButton = transform.Find("RoundStartButton").GetComponent<Button>();
+            //customButton = transform.Find("CustomButton").GetComponent<Button>();
 
             readyButton.onClick.AddListener(() => PlayerReady());
             quitButton.onClick.AddListener(() =>
@@ -62,6 +69,15 @@ namespace SeongMin
         //    playerCustom["playerCustom"] = (0, "Green");
         //    PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustom);
         //}
+        private void Start()
+        {
+            customButton.onClick.AddListener(() =>
+            {
+                Debug.Log("customButton clicked");
+                this.characterCustomManager.gameObject.SetActive(true);
+            });
+
+        }
 
         private void PlayerReady() // 플레이어가 버튼을 눌러 커스텀 프로퍼티 변경시 준비완료한 플레이어 숫자 동기화 
         {
