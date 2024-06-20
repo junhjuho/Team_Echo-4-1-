@@ -21,7 +21,7 @@ namespace NHR
 
         public TMP_Text characterName;
 
-        public PhotonView photonView;
+        //public PhotonView photonView;
 
         public PlayerController playerController;
 
@@ -60,7 +60,7 @@ namespace NHR
             this.nowCharacterNum = characterNum;
             this.nowTextureName = textureName;
 
-            this.playerController.UpdateCharacter(nowCharacterNum);
+            this.playerController.UpdateCharacter(characterNum);
             //Debug.LogFormat("<color=yellow>Set id {0}</color>", characterNum);
             //foreach (var character in this.playerController.characters)
             //{

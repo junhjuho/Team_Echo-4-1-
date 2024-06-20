@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace SeongMin
 {
@@ -36,10 +37,11 @@ namespace SeongMin
         public override void OnJoinedRoom()
         {
             print("방에 입장했습니다.");
-            var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
-            GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
-            GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
-            UIManager.Instance.robbySceneMenu.customPlayer.playerController = _player.GetComponent<PlayerController>();
+            UIManager.Instance.robbySceneMenu.customPlayer.playerController = PlayerController.localPlayer.GetComponent<PlayerController>();
+            //var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            //GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
+            //GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
+            //UIManager.Instance.robbySceneMenu.customPlayer.playerController = _player.GetComponent<PlayerController>();
             //GameManager.Instance.lobbySceneManager.playerController.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
 
             //Debug.LogFormat("<color=green>{0}</color>", photonView);
