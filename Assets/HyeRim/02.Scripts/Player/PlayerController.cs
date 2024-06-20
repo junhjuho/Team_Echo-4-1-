@@ -5,62 +5,83 @@ using Photon.Realtime;
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace NHR
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
-        private string characterKey = "characterID";
-        private string colorKey = "colorName";
 
-        [Header("캐릭터 커스텀")]
+        [Header("캐릭터 배열")]
         public Character[] characters;
 
-        public SmartWatchCustomInteractable watch;
+        [Header("현재 캐릭터 정보")]
+        public Character nowCharacter;
+        public int nowCharacterID;
 
-        public PhotonView photonView;
+        public static PlayerController localPlayer;
 
         private void Awake()
         {
             GameDB.Instance.playerController = this;
-
-            if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
+            this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
         }
-        private IEnumerator Start()
+        private void Start()
         {
-            this.photonView = GetComponent<PhotonView>();
-            // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
-            yield return new WaitUntil(() => PhotonNetwork.IsConnected);
+            if(photonView.IsMine)
+            {
+                localPlayer = this;
+                Debug.LogFormat("<color=green>PlayerID : {0}</color>", InfoManager.Instance.PlayerInfo.nowCharacterId);
+                this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
 
-            //캐릭터 커스텀 설정
-            this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
+                this.characters[nowCharacterID].gameObject.SetActive(true);
+                this.nowCharacter = this.characters[nowCharacterID];
+                SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
+            }
+            this.UpdateCharacter(nowCharacterID);
+        }
+        public void UpdateCharacter(int id)
+        {
+            Debug.Log("UpdateCharacter");
+            photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
+            this.ApplyCharacter(id);
         }
 
         [PunRPC]
-        public void ApplyCustom()
+        public void UpdateCharacterRPC(int id)
         {
-            if (this.photonView.IsMine)
-            {
-                int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
-                string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
-                Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
-                foreach (var character in this.characters)
-                {
-                    character.gameObject.SetActive(false);
-                }
+            Debug.Log("UpdateCharacterRPC");
 
-                this.characters[id].gameObject.SetActive(true);
-                SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
-                var mat = this.characters[id].material;
-                Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, colorName);
-                mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + colorName);
-
-            }
-
+            this.nowCharacterID = id;
+            this.ApplyCharacter(id);
         }
 
-    }
+        public void ApplyCharacter(int id)
+        {
+            if(this.nowCharacter != null)
+            {
+                this.nowCharacter.gameObject.SetActive(false);
+            }
+            this.nowCharacter = this.characters[id];
+            this.nowCharacterID = id;
 
+            if (this.nowCharacter != null)
+            {
+                this.nowCharacter.gameObject.SetActive(true);
+            }
+            SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            //if (stream.IsWriting)   //isMine인 경우
+            //{
+            //    stream.SendNext(this.nowCharacterID);
+            //}
+            //else this.nowCharacterID = (int)stream.ReceiveNext();
+        }
+    }
 }
