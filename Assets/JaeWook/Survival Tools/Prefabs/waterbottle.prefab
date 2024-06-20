@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 1552114867465365973}
   - component: {fileID: 6019839495850895213}
   - component: {fileID: 6982347463701090916}
+  - component: {fileID: 7106924985071581485}
   - component: {fileID: -2541764723115142522}
   - component: {fileID: -561565197210276389}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: waterbottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +312,28 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35075733, y: 0.85118955, z: 0.35075733}
+  m_Size: {x: 0.7218758, y: 0.9944011, z: 0.7534501}
+  m_Center: {x: 0.012312114, y: -0.13883698, z: -0.005841106}
+--- !u!65 &7106924985071581485
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216505430168376}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: -0.21044275, z: 0}
 --- !u!114 &-2541764723115142522
 MonoBehaviour:
@@ -331,7 +353,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -561565197210276389}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -360,7 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085572552582166187}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
