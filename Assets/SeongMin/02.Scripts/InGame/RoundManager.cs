@@ -53,8 +53,6 @@ namespace SeongMin
             //캐릭터 커스텀 설정
             //photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
             //GameManager.Instance.photonManager.OnPlayer();
-            //최초 라운드세팅 실행
-            RoundMapSetting();
             // 1라운드 세팅
             StartCoroutine(RoundOneSetting());
             // TODO 로딩 구현
@@ -95,6 +93,8 @@ namespace SeongMin
         
         private IEnumerator RoundOneSetting()
         {
+            //최초 라운드세팅 실행
+            RoundMapSetting();
             // 인게임 시작 시 최초 한번만 공용 데이터 초기화 하기
             InGamePublicDataReset();
             // 내 클라이언트 라운드 데이터 초기화하기
