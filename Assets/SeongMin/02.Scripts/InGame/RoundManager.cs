@@ -24,8 +24,6 @@ namespace SeongMin
         public int currentRoundPlayersMissionPerSent = 0;
         [Header("목표 진행률 설정하기")]
         public int needPersent = 60;
-
-        InGameMapManager inGameMapManager;
         public enum Round
         {
             One = 0,
@@ -43,11 +41,10 @@ namespace SeongMin
         // 1라운드 세팅 
         private IEnumerator Start()
         {
-            inGameMapManager = GameManager.Instance.inGameMapManager;
             // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
             // 방장에게 내가 들어 왔음을 알리기
-            photonView.RPC("CountPlayer", RpcTarget.MasterClient);
+            //photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
             //GameManager.Instance.photonManager.SetPlayer();
@@ -56,7 +53,6 @@ namespace SeongMin
             //캐릭터 커스텀 설정
             //photonView.RPC("InitPlayerSetting", RpcTarget.AllBuffered);
             //GameManager.Instance.photonManager.OnPlayer();
-
             // 1라운드 세팅
             StartCoroutine(RoundOneSetting());
             // TODO 로딩 구현
@@ -97,11 +93,13 @@ namespace SeongMin
         
         private IEnumerator RoundOneSetting()
         {
+            //최초 라운드세팅 실행
+            RoundMapSetting();
             // 인게임 시작 시 최초 한번만 공용 데이터 초기화 하기
             InGamePublicDataReset();
             // 내 클라이언트 라운드 데이터 초기화하기
             RoundPlayerDataReset();
-
+            photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             if (PhotonNetwork.IsMasterClient)
             {
                 //TODO 모든 플레이어 연결 할 때까지 기다리는 UI 구현하기
@@ -109,8 +107,7 @@ namespace SeongMin
                 yield return new WaitUntil(() => isPlayerAllConnected);
                 // 전체 플레이어에게 미션 세팅하기
                 MissionSetting();
-                //최초 라운드세팅 실행
-                RoundMapSetting();
+                GameManager.Instance.inGameMapManager.PlayerPositionSetting();
                 //for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
                 //{
                 //    photonView.RPC("InitPlayerSetting", PhotonNetwork.PlayerList[i]);
@@ -129,6 +126,7 @@ namespace SeongMin
             ChaserSetting();
             TeamMissionSetting();
             MissionSetting();
+            GameManager.Instance.inGameMapManager.PlayerPositionSetting();
             Debug.Log("라운드2 셋팅 완료");
             Invoke("RoleSettingEvent", 2f);
         }
@@ -144,22 +142,22 @@ namespace SeongMin
             RoundPlayerDataReset();
             TeamMissionSetting();
             MissionSetting();
+            GameManager.Instance.inGameMapManager.PlayerPositionSetting();
         }
         private void RoundMapSetting()
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                inGameMapManager.ItemPositionSetting();
-                inGameMapManager.PlayerPositionSetting();
+                GameManager.Instance.inGameMapManager.ItemPositionSetting();
             }
             GameManager.Instance.roundTimer.TimerStart();
         }
         private void InGamePublicDataReset()
         {
             // 이름순으로 정렬하기 (모든 클라이언트에게 같은 정렬로 된 리스트 가지고 있게 하기 위해)
-            inGameMapManager.inGameRunnerItemList.Sort((a, b) => a.name.CompareTo(b.name));
+            GameManager.Instance.inGameMapManager.inGameRunnerItemList.Sort((a, b) => a.name.CompareTo(b.name));
             // 아이템 넘버링 리스트 초기화 하기
-            inGameMapManager.ItemNumberListSetting();
+            GameManager.Instance.inGameMapManager.ItemNumberListSetting();
         }
         // 내 라운드 데이터 초기화하기
         private void RoundPlayerDataReset()
@@ -240,8 +238,8 @@ namespace SeongMin
                 {
                     if (round == Round.Three)
                     {
-                        GameDB.Instance.Shuffle(inGameMapManager.inGameItemPositionList);
-                        PhotonNetwork.Instantiate("FinalKey", inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+                        GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
+                        PhotonNetwork.Instantiate("FinalKey", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
                     }
                     else
                         RoundChange(round);
