@@ -59,6 +59,8 @@ namespace NHR
 
             this.nowCharacterNum = characterNum;
             this.nowTextureName = textureName;
+
+            this.playerController.UpdateCharacter(nowCharacterNum);
             //Debug.LogFormat("<color=yellow>Set id {0}</color>", characterNum);
             //foreach (var character in this.playerController.characters)
             //{
@@ -66,7 +68,7 @@ namespace NHR
             //}
 
             //this.playerController.characters[characterNum].gameObject.SetActive(true);
-            SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.playerController.characters[characterNum];
+            //SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.playerController.characters[characterNum];
             //this.playerController.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
 
             //이전 선택과 다를 경우

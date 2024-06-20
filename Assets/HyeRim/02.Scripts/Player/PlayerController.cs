@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace NHR
 {
-    public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
+    public class PlayerController : MonoBehaviourPunCallbacks//, IPunObservable
     {
 
         [Header("캐릭터 커스텀")]
@@ -27,10 +27,8 @@ namespace NHR
 
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
         }
-
-        private void Update()
+        private void Start()
         {
-            if (!photonView.IsMine) return;
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
 
             //foreach (var character in this.characters)
@@ -38,8 +36,25 @@ namespace NHR
             //    character.gameObject.SetActive(false);
             //}
             this.characters[nowCharacterID].gameObject.SetActive(true);
-            Debug.Log(this.nowCharacterID);
         }
+        public void UpdateCharacter(int id)
+        {
+            this.nowCharacterID = id;
+            this.characters[nowCharacterID].gameObject.SetActive(true);
+        }
+
+        //private void Update()
+        //{
+        //    if (!photonView.IsMine) return;
+        //    this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
+
+        //    //foreach (var character in this.characters)
+        //    //{
+        //    //    character.gameObject.SetActive(false);
+        //    //}
+        //    this.characters[nowCharacterID].gameObject.SetActive(true);
+        //    Debug.Log(this.nowCharacterID);
+        //}
         //private IEnumerator Start()
         //{
         //    // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
@@ -75,14 +90,14 @@ namespace NHR
 
         //}
 
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.IsWriting)   //isMine인 경우
-            {
-                stream.SendNext(this.nowCharacterID);
-            }
-            else this.nowCharacterID = (int)stream.ReceiveNext();
-        }
+        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        //{
+        //    if (stream.IsWriting)   //isMine인 경우
+        //    {
+        //        stream.SendNext(this.nowCharacterID);
+        //    }
+        //    else this.nowCharacterID = (int)stream.ReceiveNext();
+        //}
     }
 
 }
