@@ -34,28 +34,16 @@ namespace NHR
             // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
 
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-            {
-                photonView.RPC("InitPlayerSetting", PhotonNetwork.PlayerList[i]);
-            }
-
             //캐릭터 커스텀 설정
-            int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
-            string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
-            //this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered, id, colorName);
+            this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
         }
 
         [PunRPC]
-        public void InitPlayerSetting()
-        {
-            this.ApplyCustom(InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
-        }
-
-        public void ApplyCustom(int id, string colorName)
+        public void ApplyCustom()
         {
 
-            //int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
-            //string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
+            int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
             Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
             foreach (var character in this.characters)
             {
