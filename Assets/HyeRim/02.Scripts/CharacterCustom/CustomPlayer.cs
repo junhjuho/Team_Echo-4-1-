@@ -41,16 +41,16 @@ namespace NHR
             //this.characters[this.nowCharacterNum].gameObject.SetActive(true);
             //this.characterName.text = this.characters[this.nowCharacterNum].name;
         }
-        private IEnumerator Start()
-        {
-            //.photonView = GetComponent<PhotonView>();
-            // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
-            yield return new WaitUntil(() => PhotonNetwork.IsConnected);
+        //private IEnumerator Start()
+        //{
+        //    //.photonView = GetComponent<PhotonView>();
+        //    // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
+        //    yield return new WaitUntil(() => PhotonNetwork.IsConnected);
 
-            //this.playerController = GameDB.Instance.myPlayer.GetComponent<PlayerController>();
-            //캐릭터 커스텀 설정
-            //this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
-        }
+        //    //this.playerController = GameDB.Instance.myPlayer.GetComponent<PlayerController>();
+        //    //캐릭터 커스텀 설정
+        //    //this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
+        //}
 
         public void ObserverUpdate(int characterNum, string textureName)
         {
@@ -67,7 +67,7 @@ namespace NHR
 
             //this.playerController.characters[characterNum].gameObject.SetActive(true);
             SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.playerController.characters[characterNum];
-            this.playerController.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
+            //this.playerController.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
 
             //이전 선택과 다를 경우
             //if (this.nowCharacterNum != characterNum)
