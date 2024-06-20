@@ -32,8 +32,6 @@ namespace SeongMin
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Update_Timer, _timer);
             }
             GameManager.Instance.inGameSceneManager.Lose();
-            //테스트 끝나면 활성화
-            //GameManager.Instance.roundManager.RoundChange(RoundManager.Round.Three);
             yield break;
         }
         public void MonsterTimerStart()
@@ -50,9 +48,10 @@ namespace SeongMin
                 _monsterTimer--;
                 EventDispatcher.instance.SendEvent<float>((int)NHR.EventType.eEventType.Update_MonsterTimer, _monsterTimer);
             }
-            GameDB.Instance.playerMission.photonView.RPC("CharacterChange",Photon.Pun.RpcTarget.AllBuffered, "Player");
+            GameDB.Instance.playerMission.photonView.RPC("CharacterChange",Photon.Pun.RpcTarget.All, "Player");
             //괴물 변신 풀림
             EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOff");
+            yield break;
         }
     }
 

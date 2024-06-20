@@ -49,7 +49,7 @@ namespace SeongMin
                     _item.isFind = true;
                     playerMission.chaserMissionClearCount++;
                 }
-                // 내가 팀 플레이 미션이 있을 때만 팀플레이용 아이테 카운팅 하기
+                // 내가 팀 플레이 미션이 있을 때만 팀플레이용 아이템 카운팅 하기
                 else if (_item.itemValue == ItemValue.teamPlay
                     && playerMission.isTeamMission
                     && playerMission.MissionItemCheck(_item.gameObject, playerMission.playerTeamPlayMissionArray))
@@ -79,8 +79,6 @@ namespace SeongMin
             if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
             {
                 EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
-                // 플레이어위치 재 세팅
-                GameManager.Instance.inGameMapManager.PlayerPositionSetting();
             }
         }
     }

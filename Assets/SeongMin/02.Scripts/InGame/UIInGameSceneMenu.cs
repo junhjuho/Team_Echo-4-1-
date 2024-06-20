@@ -26,9 +26,9 @@ namespace SeongMin
             timer = transform.Find("Timer").GetComponent<TMP_Text>();
 
 
-            roundTwoButton.onClick.AddListener(() => GameManager.Instance.roundManager.RoundChange(RoundManager.Round.One));
-            roundThreeButton.onClick.AddListener(() => GameManager.Instance.roundManager.RoundChange(RoundManager.Round.Two));
-            endingButton.onClick.AddListener(() => GameManager.Instance.roundManager.RoundChange(RoundManager.Round.Three));
+            //roundTwoButton.onClick.AddListener(() => GameManager.Instance.roundManager.RoundChange(RoundManager.Round.One));
+            //roundThreeButton.onClick.AddListener(() => GameManager.Instance.roundManager.RoundChange(RoundManager.Round.Two));
+            //endingButton.onClick.AddListener(() => GameManager.Instance.roundManager.RoundChange(RoundManager.Round.Three));
             //loadingImage = transform.Find("RoundLoadingImage").GetComponent<Image>();
             //roundChangeText = transform.Find("RoundChangeText").GetComponent <TMP_Text>();
         }
