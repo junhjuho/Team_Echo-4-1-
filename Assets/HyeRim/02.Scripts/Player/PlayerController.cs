@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace NHR
 {
@@ -15,6 +16,7 @@ namespace NHR
 
         [Header("캐릭터 커스텀")]
         public Character[] characters;
+        public Character nowCharacter;
 
         public SmartWatchCustomInteractable watch;
 
@@ -36,11 +38,21 @@ namespace NHR
             //    character.gameObject.SetActive(false);
             //}
             this.characters[nowCharacterID].gameObject.SetActive(true);
+            this.nowCharacter = this.characters[nowCharacterID];
+            SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
         }
         public void UpdateCharacter(int id)
         {
             this.nowCharacterID = id;
+
+            //foreach (var character in this.characters)
+            //{
+            //    character.gameObject.SetActive(false);
+            //}
+            this.nowCharacter.gameObject.SetActive(false);
             this.characters[nowCharacterID].gameObject.SetActive(true);
+            this.nowCharacter = this.characters[nowCharacterID];
+            SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
         }
 
         //private void Update()

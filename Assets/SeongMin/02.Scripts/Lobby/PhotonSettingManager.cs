@@ -39,6 +39,7 @@ namespace SeongMin
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
             GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
             GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
+            UIManager.Instance.robbySceneMenu.customPlayer.playerController = _player.GetComponent<PlayerController>();
             //GameManager.Instance.lobbySceneManager.playerController.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
 
             //Debug.LogFormat("<color=green>{0}</color>", photonView);
