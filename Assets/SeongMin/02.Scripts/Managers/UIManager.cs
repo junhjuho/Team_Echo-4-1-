@@ -22,5 +22,7 @@ namespace SeongMin
         public UITitleSceneMenu titleSceneMenu;
         public UILobbySceneMenu robbySceneMenu;
         public UIInGameSceneMenu inGameSceneMenu;
+        // юс╫ц
+        public TitleSceneController titleSceneController;
     }
 }
