@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 7164317521166646568}
   - component: {fileID: 5994362011998508296}
   - component: {fileID: 4606724876789944557}
+  - component: {fileID: 7737881657434624582}
   - component: {fileID: -5098395208493787142}
   - component: {fileID: -2435681594954659801}
   m_Layer: 23
@@ -582,18 +583,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a457d6e149777943bb10cc32d17eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneValue: 2
-  charactorValue: 0
-  itemValue: 0
-  isFind: 0
   isOn: 0
   flashlight: {fileID: 1311416542418607870}
   uiFlashlight: {fileID: 693863413551221102}
   hasBattery: 1
-  nowBatteryTime: 3
-  nowBattery: 3
-  maxBatteryTime: 3
-  maxBattery: 3
+  nowBatteryTime: 20
+  nowBattery: 20
+  maxBatteryTime: 30
+  maxBattery: 30
 --- !u!54 &7164317521166646568
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -793,8 +790,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.11621137, y: 0.23057182, z: 0.1104058}
-  m_Center: {x: 0.0063942894, y: 0, z: -0.00082081556}
+  m_Size: {x: 0.2, y: 0.3, z: 0.2}
+  m_Center: {x: 0.0063942894, y: 0, z: 0.029604081}
+--- !u!65 &7737881657434624582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211623650207601489}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 4, z: 4}
+  m_Center: {x: -0.08128369, y: 0, z: -0.036888003}
 --- !u!114 &-5098395208493787142
 MonoBehaviour:
   m_ObjectHideFlags: 0

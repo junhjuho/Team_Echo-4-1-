@@ -17,7 +17,7 @@ namespace Jaewook
         public void OnUse()
         {
             // HP 회복 효과
-            Instantiate(useEffect, this.transform.position, Quaternion.identity);
+            // Instantiate(useEffect, this.transform.position, Quaternion.identity);
 
             // HP 회복 (시스템, UI 전달)
 
