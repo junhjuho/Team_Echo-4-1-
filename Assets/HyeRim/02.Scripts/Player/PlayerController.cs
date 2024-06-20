@@ -39,7 +39,9 @@ namespace NHR
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
 
             //캐릭터 커스텀 설정
-            this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
+            int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
+            this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered, id, colorName);
             //GameManager.Instance.photonManager.OnPlayer();
         }
 
@@ -74,10 +76,10 @@ namespace NHR
         //}
 
         [PunRPC]
-        public void ApplyCustom()
+        public void ApplyCustom(int id, string colorName)
         {
-            int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
-            string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
+            //int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            //string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
             Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
             foreach (var character in this.characters)
             {
