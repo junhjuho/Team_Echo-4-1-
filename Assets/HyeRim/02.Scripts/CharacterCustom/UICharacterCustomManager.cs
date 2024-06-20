@@ -38,7 +38,7 @@ namespace NHR
         public UIClothesColor[] colors;
 
         //타이틀로 가는 버튼
-        public Button buttonClose;
+        //public Button buttonClose;
 
         private void Awake()
         {
@@ -70,6 +70,7 @@ namespace NHR
             for (int i = 0; i < this.colors.Length; i++) this.colors[i].index = i;
 
             //인포에 저장된 캐릭터 불러오기
+            InfoManager.Instance.PlayerInfoInit();
             this.selectedCharacter = this.slots[InfoManager.Instance.PlayerInfo.nowCharacterId];
             this.selectedClothesColor = this.colors[InfoManager.Instance.PlayerInfo.nowClothesColorIndex];
 
@@ -80,7 +81,7 @@ namespace NHR
             this.selectedCharacter.OnSelected();
             this.selectedClothesColor.selectedGo.SetActive(true);
 
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
 
         }
 
