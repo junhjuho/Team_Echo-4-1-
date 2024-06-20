@@ -5,10 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static UnityEngine.UI.Image;
 
 public class HumanMovement : PlayerMovement
 {
@@ -16,11 +18,13 @@ public class HumanMovement : PlayerMovement
     UIPlayer uiPlayer;
     Scene scene;
     bool isEnergyDown;
+    PlayerSyncController playerSyncController;
 
     public override void Start()
     {
         base.Start();
         scene = SceneManager.GetActiveScene();
+        playerSyncController = this.GetComponentInParent<PlayerSyncController>();
     }
 
     void Update()
@@ -93,5 +97,11 @@ public class HumanMovement : PlayerMovement
             EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
             heart--;
         }
+    }
+
+    void RespawnPlayer()
+    {
+        playerSyncController.origin.transform.position = 
+            SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
     }
 }

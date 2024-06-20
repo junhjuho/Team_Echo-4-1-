@@ -2716,7 +2716,12 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'CC_Base_R_Hand'\n\tTransform 'CC_Base_NeckTwist02'\n\tTransform
+    'CC_Base_L_Upperarm'\n\tTransform 'CC_Base_L_Forearm'\n\tTransform 'CC_Base_R_Forearm'\n\tTransform
+    'CC_Base_L_Hand'\n\tTransform 'CC_Base_R_Upperarm'\n\tTransform 'CC_Base_Head'\n\tTransform
+    'CC_Base_R_Hand'\n\tTransform 'CC_Base_NeckTwist02'\n\tand more ..."
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -10517,6 +10522,7 @@ MonoBehaviour:
   head: {fileID: 1497171489332586268}
   leftHand: {fileID: 927024852629838001}
   rightHand: {fileID: 7893504428891386148}
+  origin: {fileID: 0}
 --- !u!114 &2578181009039727142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23415,7 +23421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9132861521565619948
 Transform:
   m_ObjectHideFlags: 0

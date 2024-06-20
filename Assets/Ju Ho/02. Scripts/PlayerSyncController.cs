@@ -1,4 +1,5 @@
 using Photon.Pun;
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
@@ -20,10 +21,10 @@ public class PlayerSyncController : MonoBehaviour
     public Transform rightHand;
 
     // xr origin의 헤드, 왼손, 오른손
+    public XROrigin origin;
     Transform headRig;
     Transform leftHandRig;
     Transform rightHandRig;
-    XROrigin origin;
 
     Transform lefttHandIK_hint;
     Transform rightHandIK_hint;
