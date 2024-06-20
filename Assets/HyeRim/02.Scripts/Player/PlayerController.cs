@@ -43,6 +43,7 @@ namespace NHR
                 this.nowCharacter = this.characters[nowCharacterID];
                 SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
             }
+            this.UpdateCharacter(nowCharacterID);
         }
         public void UpdateCharacter(int id)
         {
