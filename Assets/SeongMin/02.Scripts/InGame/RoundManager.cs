@@ -43,8 +43,6 @@ namespace SeongMin
         {
             // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
-            // 방장에게 내가 들어 왔음을 알리기
-            //photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             //내 플레이어 생성
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
             //GameManager.Instance.photonManager.SetPlayer();
@@ -90,7 +88,7 @@ namespace SeongMin
 
             }
         }
-        
+
         private IEnumerator RoundOneSetting()
         {
             //최초 라운드세팅 실행
@@ -199,8 +197,8 @@ namespace SeongMin
         }
         private void MissionSetting()
         {
-            if(PhotonNetwork.IsMasterClient)
-            GameManager.Instance.missionManager.MissionSetting();
+            if (PhotonNetwork.IsMasterClient)
+                GameManager.Instance.missionManager.MissionSetting();
         }
         //협업 미션 배정하기
         private void TeamMissionSetting()

@@ -97,6 +97,7 @@ namespace SeongMin
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
             value = (float)Math.Round(value, 2);
             value *= 100;
+            print(value+"내가 잡은 거 총합 퍼센트");
             // 전체 미션 퍼센트 바뀐 값 전달하게 요청하기
             GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
         }
