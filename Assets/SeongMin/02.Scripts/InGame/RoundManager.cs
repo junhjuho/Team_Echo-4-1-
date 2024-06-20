@@ -244,7 +244,7 @@ namespace SeongMin
                     else
                         RoundChange(round);
                 }
-                else // 그게 아니라면, 방장이 모든 플레이어에게 전체 미션 진행도 공유하기
+                else // 그게 아니라면, 모든 플레이어에게 전체 미션 진행도 공유하기
                 {
                     photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
                 }
