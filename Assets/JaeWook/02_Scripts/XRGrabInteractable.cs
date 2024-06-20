@@ -10,18 +10,6 @@ namespace Jaewook
 {
     public class XRInteractableCustom : XRGrabInteractable
     {
-        public enum Axis
-        {
-            X,
-            Y,
-            Z
-        }
-
-        public Axis lookAxis = Axis.Y;
-
-        public Transform targetTf;
-        public bool isTargetCamera = true;
-
         public GameObject uiGo;
         public GameObject txtGo;
 
@@ -31,14 +19,9 @@ namespace Jaewook
             this.selectExited.AddListener(ReleaseEvent);
             this.activated.AddListener(ActivatingEvent);
 
-            if (isTargetCamera)
-            {
-                targetTf = Camera.main.transform;
-            }
-
             this.txtGo.SetActive(false);
             this.uiGo.SetActive(false);
-            this.txtGo.GetComponent<TMP_Text>().text = this.name;
+            this.txtGo.GetComponent<TMP_Text>().text = this.gameObject.name;
 
         }
         private void OnBecameVisible()
@@ -52,7 +35,7 @@ namespace Jaewook
         {
             //시야각에서 빠져나왔을 때 상호작용 가능 UI 없어짐
             Debug.Log("OnBecameInvisible");
-            this.uiGo.SetActive(true);
+            this.uiGo.SetActive(false);
             //StopAllCoroutines();
         }
 
