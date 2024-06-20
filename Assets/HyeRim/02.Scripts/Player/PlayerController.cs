@@ -50,7 +50,7 @@ namespace NHR
         public void UpdateCharacter(int id)
         {
             Debug.Log("UpdateCharacter");
-            photonView.RPC("UpdateCharacterRPC", RpcTarget.All, id);
+            photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
         }
 
         [PunRPC]
