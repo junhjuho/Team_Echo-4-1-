@@ -27,6 +27,16 @@ namespace NHR
 
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
         }
+
+        private void Update()
+        {
+            foreach (var character in this.characters)
+            {
+                character.gameObject.SetActive(false);
+            }
+            this.characters[nowCharacterID].gameObject.SetActive(true);
+
+        }
         //private IEnumerator Start()
         //{
         //    // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
