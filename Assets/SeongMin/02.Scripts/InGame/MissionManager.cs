@@ -18,7 +18,6 @@ namespace SeongMin
         private void Awake()
         {
             photonView = GetComponent<PhotonView>();
-            if(photonView.IsMine)
             GameManager.Instance.missionManager = this;
         }
         public void MissionSetting()
