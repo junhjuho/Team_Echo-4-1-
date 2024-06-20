@@ -34,6 +34,7 @@ namespace NHR
         //}
         private IEnumerator Start()
         {
+            this.photonView = GetComponent<PhotonView>();
             // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
 
