@@ -19,7 +19,7 @@ namespace NHR
         public int nowCharacterNum;
         public string nowColorName;
 
-        public TMP_Text characterName;
+        //public TMP_Text characterName;
 
         public PlayerController playerController;
 
