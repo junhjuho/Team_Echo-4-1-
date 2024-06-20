@@ -2716,12 +2716,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'CC_Base_R_Hand'\n\tTransform 'CC_Base_NeckTwist02'\n\tTransform
-    'CC_Base_L_Upperarm'\n\tTransform 'CC_Base_L_Forearm'\n\tTransform 'CC_Base_R_Forearm'\n\tTransform
-    'CC_Base_L_Hand'\n\tTransform 'CC_Base_R_Upperarm'\n\tTransform 'CC_Base_Head'\n\tTransform
-    'CC_Base_R_Hand'\n\tTransform 'CC_Base_NeckTwist02'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -10562,7 +10557,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 1
+  OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 479101846059634882}
