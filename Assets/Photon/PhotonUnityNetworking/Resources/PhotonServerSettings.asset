@@ -34,36 +34,22 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - CharacterChange
   - ClickRpc
+  - CountPlayer
   - DestroyRpc
   - DestroySpaceship
   - Fire
-  - RespawnSpaceship
-  - ReddyValueUpdate
-  - ObjectSetting
-  - MapSetting
-  - ChangeCharacter
-  - MissionSetting
-  - MyMission
-  - CountPlayer
-  - MissionSend
-  - TeamMission
-  - TeamPlayMission
-  - GetTeamMission
-  - ChaserSetting
-  - GetChaser
-  - ImChaser
-  - PlayerSpawn
   - GetPlayerPosition
-  - WinCheck
-  - CharacterChange
-  - PlayerDateSetting
-  - InitPlayerSetting
-  - RoundChange
-  - WinUpdate
-  - AllPlayerMissionScoreUpdate
+  - GetTeamMission
+  - ImChaser
+  - MissionSend
+  - RespawnSpaceship
   - SendAllPlayerMissionScoreUpdate
   - UpdateAllPlayerMissionPersent
+  - WinCheck
+  - ApplyCustom
+  - InitPlayerSetting
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

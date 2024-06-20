@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1230719690319196740}
   - component: {fileID: 1415004836695175560}
   - component: {fileID: 6062685647648668523}
-  m_Layer: 23
+  m_Layer: 21
   m_Name: battery2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4305929143295120018}
   - component: {fileID: 1424523409705853602}
   - component: {fileID: 6310846529606329881}
-  m_Layer: 23
+  m_Layer: 21
   m_Name: battery0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6171356423830521924}
   - component: {fileID: 4918392935555016921}
   - component: {fileID: 1165060521037506166}
-  m_Layer: 23
+  m_Layer: 21
   m_Name: battery3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 3274749459024037137}
   - component: {fileID: 355221996768133160}
   - component: {fileID: 1833514424027648725}
-  m_Layer: 23
+  m_Layer: 21
   m_Name: battery1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1435871824718099870}
-  m_Layer: 23
+  m_Layer: 21
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 5604286746792651058}
   - component: {fileID: 2632643179012329827}
   - component: {fileID: 693863413551221102}
-  m_Layer: 23
+  m_Layer: 21
   m_Name: UIFlashLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,9 +469,10 @@ GameObject:
   - component: {fileID: 7164317521166646568}
   - component: {fileID: 5994362011998508296}
   - component: {fileID: 4606724876789944557}
+  - component: {fileID: 7737881657434624582}
   - component: {fileID: -5098395208493787142}
   - component: {fileID: -2435681594954659801}
-  m_Layer: 23
+  m_Layer: 21
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,18 +583,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a457d6e149777943bb10cc32d17eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneValue: 2
-  charactorValue: 0
-  itemValue: 0
-  isFind: 0
   isOn: 0
   flashlight: {fileID: 1311416542418607870}
   uiFlashlight: {fileID: 693863413551221102}
   hasBattery: 1
-  nowBatteryTime: 3
-  nowBattery: 3
-  maxBatteryTime: 3
-  maxBattery: 3
+  nowBatteryTime: 20
+  nowBattery: 20
+  maxBatteryTime: 30
+  maxBattery: 30
 --- !u!54 &7164317521166646568
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -602,7 +599,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8211623650207601489}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.02
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -793,8 +790,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.11621137, y: 0.23057182, z: 0.1104058}
-  m_Center: {x: 0.0063942894, y: 0, z: -0.00082081556}
+  m_Size: {x: 0.2, y: 0.3, z: 0.2}
+  m_Center: {x: 0.0063942894, y: 0, z: 0.029604081}
+--- !u!65 &7737881657434624582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211623650207601489}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: -0.08128369, y: 0, z: -0.036888003}
 --- !u!114 &-5098395208493787142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_Layer
-      value: 23
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c4cfd35d7e78fb44a0f5522e37c35b1, type: 3}
       propertyPath: m_LocalPosition.x

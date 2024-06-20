@@ -7,8 +7,8 @@ using UnityEngine.InputSystem.XR;
 
 public class MonsterMovement : PlayerMovement
 {
-    GameObject origin;
-    PlayerAction[] controllers;
+    public GameObject origin;
+    public PlayerAction[] controllers;
 
     void OnEnable()
     {

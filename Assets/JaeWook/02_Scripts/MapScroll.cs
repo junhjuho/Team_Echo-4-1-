@@ -10,13 +10,21 @@ namespace Jaewook
     public class MapScroll : ItemObject, IItem
     {
         public RawImage mapUI;
+        public MeshRenderer scrollMeshRen;
+        public Collider scrollCollider;
+
+        public bool isGrab = false;
 
         private void Start()
         {
             base.Start();
             
+            scrollMeshRen = GetComponent<MeshRenderer>();
+            scrollCollider = GetComponent<Collider>();
+
             mapUI = GetComponentInChildren<RawImage>();
 
+            /*
             if (mapUI != null)
             {
                 mapUI.enabled = false;
@@ -25,15 +33,35 @@ namespace Jaewook
             {
                 Debug.LogError("Map UI 없음");
             }
+            */
         }
 
         public void OnGrab()
         {
-            if (mapUI != null)
+            // 잡으면 UI 활성화하고 잠깐 mesh Renderer 삭제 
+            isGrab = true;
+
+            /*
+            if (isGrab)
             {
-                mapUI.enabled = true;
-                Debug.Log("지도 잡음, UI 활성화");
+                this.scrollMeshRen.enabled = false;
+                this.scrollCollider.enabled = false;
+
+                if (mapUI != null)
+                {
+                    mapUI.enabled = true;
+                    Debug.Log("지도 잡음, UI 활성화");
+                }
+                else
+                {
+                    Debug.LogError("지도가 없음, UI 활성 불가");
+                }
             }
+            else
+            {
+                isGrab = false;
+            }
+            */
         }
 
         public void OnUse()
@@ -43,10 +71,14 @@ namespace Jaewook
 
         public void OnRelease()
         {
+            /*
             if (mapUI != null)
             {
                 mapUI.enabled = false;
+                this.scrollMeshRen.enabled = true;
+                this.scrollCollider.enabled = true;
             }
+            */
         }
     }
 }
