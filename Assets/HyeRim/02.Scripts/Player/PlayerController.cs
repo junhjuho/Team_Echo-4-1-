@@ -78,19 +78,23 @@ namespace NHR
         [PunRPC]
         public void ApplyCustom(int id, string colorName)
         {
-            //int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
-            //string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
-            Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
-            foreach (var character in this.characters)
+            if(this.photonView.IsMine)
             {
-                character.gameObject.SetActive(false);
-            }
+                //int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
+                //string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
+                Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
+                foreach (var character in this.characters)
+                {
+                    character.gameObject.SetActive(false);
+                }
 
-            this.characters[id].gameObject.SetActive(true);
-            SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
-            var mat = this.characters[id].material;
-            Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, colorName);
-            mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + colorName);
+                this.characters[id].gameObject.SetActive(true);
+                SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
+                var mat = this.characters[id].material;
+                Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, colorName);
+                mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + colorName);
+
+            }
 
         }
 
