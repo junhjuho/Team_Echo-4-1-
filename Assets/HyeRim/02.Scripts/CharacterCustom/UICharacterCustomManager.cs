@@ -37,9 +37,6 @@ namespace NHR
         //옷 컬러 슬롯들
         public UIClothesColor[] colors;
 
-        //타이틀로 가는 버튼
-        //public Button buttonClose;
-
         private void Awake()
         {
             //예비
@@ -70,24 +67,18 @@ namespace NHR
             for (int i = 0; i < this.colors.Length; i++) this.colors[i].index = i;
 
             //인포에 저장된 캐릭터 불러오기
-            //InfoManager.Instance.PlayerInfoInit();
             this.selectedCharacter = this.slots[InfoManager.Instance.PlayerInfo.nowCharacterId];
             this.selectedClothesColor = this.colors[InfoManager.Instance.PlayerInfo.nowClothesColorIndex];
-
-            //this.selectedCharacter = this.slots[0];
-            //this.selectedClothesColor = this.colors[0];
-
-            //디폴트로 선택된 캐릭터/색 활성화
-            this.selectedCharacter.OnSelected();
-            this.selectedClothesColor.selectedGo.SetActive(true);
-
-            //this.gameObject.SetActive(false);
 
         }
 
         private void Start()
         {
             Debug.Log("UICharacterCustomManager start");
+
+            //디폴트로 선택된 캐릭터/색 활성화
+            this.selectedCharacter.OnSelected();
+            this.selectedClothesColor.selectedGo.SetActive(true);
 
 
             //버튼들 관리, 클릭 시 OnBtnClick 함수 호출
@@ -142,11 +133,6 @@ namespace NHR
                 observer.ObserverUpdate(this.selectedCharacter.characterNum, this.selectedClothesColor.textureName);
             }
 
-            //curvedUI 업데이트
-            //EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Update_CurvedUI);
-            //canvasRender.UpdateCamera();
-            //canvasMeshRenderer.UpdateUI();
-            //this.canvasRender.UpdateCurved();
         }
 
         public void RemoveObserver(ICharacterObserver observer)

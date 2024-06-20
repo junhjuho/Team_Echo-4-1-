@@ -18,6 +18,8 @@ namespace NHR
         public Character[] characters;
         public Character nowCharacter;
 
+        public string nowColorName;
+
         public SmartWatchCustomInteractable watch;
 
         public int nowCharacterID;
@@ -29,6 +31,7 @@ namespace NHR
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
 
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            this.nowColorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
         }
         private void Start()
         {
@@ -42,24 +45,30 @@ namespace NHR
             this.characters[nowCharacterID].gameObject.SetActive(true);
             this.nowCharacter = this.characters[nowCharacterID];
             SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
+
+            var mat = this.nowCharacter.material;
+            Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", this.nowCharacterID, this.nowColorName);
+            mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + this.nowCharacterID + this.nowColorName);
+
         }
-        public void UpdateCharacter(int id)
+        public void UpdateCharacter(int id, string colorName)
         {
             Debug.Log("UpdateCharacter");
-            photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
-            this.ApplyCharacter(id);
+            photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id, colorName);
+            this.ApplyCharacter(id, colorName);
         }
 
         [PunRPC]
-        public void UpdateCharacterRPC(int id)
+        public void UpdateCharacterRPC(int id, string colorName)
         {
             Debug.Log("UpdateCharacterRPC");
 
             this.nowCharacterID = id;
-            this.ApplyCharacter(id);
+            this.nowColorName = colorName;
+            this.ApplyCharacter(id, colorName);
         }
 
-        public void ApplyCharacter(int id)
+        public void ApplyCharacter(int id, string colorName)
         {
             if(this.nowCharacter != null)
             {
@@ -67,10 +76,14 @@ namespace NHR
             }
             this.nowCharacter = this.characters[id];
             this.nowCharacterID = id;
+            this.nowColorName = colorName;
 
             if (this.nowCharacter != null)
             {
                 this.nowCharacter.gameObject.SetActive(true);
+                var mat = this.nowCharacter.material;
+                Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", this.nowCharacterID, this.nowColorName);
+                mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + this.nowCharacterID + this.nowColorName);
             }
             SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
         }
