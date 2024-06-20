@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6833288772472053803}
   - component: {fileID: -7001736336843688325}
   - component: {fileID: 1074100005135894462}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1074100005135894462}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
