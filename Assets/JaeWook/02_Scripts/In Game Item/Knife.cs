@@ -32,6 +32,7 @@ namespace Jaewook
         {
             base.Start();
 
+            /*
             for (int i = 0; i < chaserMA.Length; i++)
             {
                 if (this.gameObject == chaserMA[i])
@@ -40,11 +41,12 @@ namespace Jaewook
                     // 그럼 플레이어 정보는 어디서 가져오지..?
                 }
             }
+            */
 
         }
         public void OnGrab()
         {
-          // 파티클?
+            // Chaser 변신 가능 아이템
         }
 
         public void OnRelease()
