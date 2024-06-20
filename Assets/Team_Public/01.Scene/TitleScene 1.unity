@@ -1627,11 +1627,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a457d6e149777943bb10cc32d17eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneValue: 0
-  charactorValue: 0
-  itemValue: 0
   isOn: 0
   flashlight: {fileID: 0}
+  uiFlashlight: {fileID: 0}
+  hasBattery: 1
+  nowBatteryTime: 20
+  nowBattery: 20
+  maxBatteryTime: 30
+  maxBattery: 30
 --- !u!95 &379656780
 Animator:
   serializedVersion: 5
@@ -2705,6 +2708,8 @@ MonoBehaviour:
   roundManager: {fileID: 0}
   missionManager: {fileID: 0}
   roundTimer: {fileID: 0}
+  playerManager: {fileID: 0}
+  photonManager: {fileID: 0}
 --- !u!4 &434018724
 Transform:
   m_ObjectHideFlags: 0
@@ -7076,9 +7081,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCount: 0
   myPlayer: {fileID: 0}
+  myFlashLight: {fileID: 0}
   playerMission: {fileID: 0}
+  playerController: {fileID: 0}
   hasGameData: 0
   isWin: 0
+  xrOriginBugFixedObject: {fileID: 0}
 --- !u!4 &1371967614
 Transform:
   m_ObjectHideFlags: 0
@@ -7710,7 +7718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4-1
+  m_text: "\uC5D0\uC14B\uC73C\uB85C \uB300\uCCB4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f6cf8a6e1de28d4c84831a266f7cc2b, type: 2}
   m_sharedMaterial: {fileID: 2991772981199097218, guid: 3f6cf8a6e1de28d4c84831a266f7cc2b, type: 2}
@@ -10732,11 +10740,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a457d6e149777943bb10cc32d17eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneValue: 0
-  charactorValue: 0
-  itemValue: 0
   isOn: 0
   flashlight: {fileID: 0}
+  uiFlashlight: {fileID: 0}
+  hasBattery: 1
+  nowBatteryTime: 20
+  nowBattery: 20
+  maxBatteryTime: 30
+  maxBattery: 30
 --- !u!137 &2122455984159276212 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 940125597620560762, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
