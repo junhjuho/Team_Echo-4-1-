@@ -15,20 +15,18 @@ namespace NHR
     public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
 
-        [Header("캐릭터 커스텀")]
+        [Header("캐릭터 배열")]
         public Character[] characters;
+
+        [Header("현재 캐릭터 정보")]
         public Character nowCharacter;
-
-        public SmartWatchCustomInteractable watch;
-
         public int nowCharacterID;
+
         public static PlayerController localPlayer;
+
         private void Awake()
         {
             GameDB.Instance.playerController = this;
-
-            if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
-
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
         }
         private void Start()
