@@ -7,12 +7,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static TreeEditor.TextureAtlas;
-using HashTable = ExitGames.Client.Photon.Hashtable;
 
 namespace NHR
 {
-    public class PlayerController : MonoBehaviourPunCallbacks
+    public class PlayerController : MonoBehaviour
     {
         private string characterKey = "characterID";
         private string colorKey = "colorName";
@@ -22,50 +20,63 @@ namespace NHR
 
         public SmartWatchCustomInteractable watch;
 
+        public PhotonView photonView;
+
         private void Awake()
         {
             GameDB.Instance.playerController = this;
 
             if (this.watch == null) this.watch = GetComponentInChildren<SmartWatchCustomInteractable>();
         }
-        private void Start()
+        //private void Start()
+        //{
+        //    //if(photonView.IsMine)this.SetPlayer(InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
+        //}
+        private IEnumerator Start()
         {
-            if(photonView.IsMine)this.SetPlayer(InfoManager.Instance.PlayerInfo.nowCharacterId, InfoManager.Instance.PlayerInfo.nowClothesColorName);
+            // 나의 클라이언트가 네트워크에 연결될때까지 기달리기
+            yield return new WaitUntil(() => PhotonNetwork.IsConnected);
+
+            //캐릭터 커스텀 설정
+            this.photonView.RPC("ApplyCustom", RpcTarget.AllBuffered);
+            //GameManager.Instance.photonManager.OnPlayer();
         }
 
+        //public void SetPlayer(int id, string colorName)
+        //{
+        //    Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
+        //    HashTable props = new HashTable()
+        //    {
+        //        {characterKey, id },
+        //        {colorKey, colorName}
+        //    };
+        //    PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+        //}
+        //public override void OnPlayerPropertiesUpdate(Player _player, HashTable _changedProps) // 커스텀 프로퍼티 변경시 콜백 받는 함수
+        //{
+        //    //캐릭터 커스텀
+        //    if (_changedProps.ContainsKey(characterKey) && _player == photonView.Owner)
+        //    {
+        //        int customPlayer = (int)_changedProps[characterKey];
+        //        string customColor = (string)_changedProps[colorKey];
+        //        Debug.LogFormat("<color=white>playerCustom {0}</color>", customPlayer);
+        //        Debug.LogFormat("<color=white>customColor {0}</color>", customColor);
+        //        Debug.LogFormat("<color=green>photonView.Owner {0}</color>", this.photonView.Owner.IsLocal);
 
-        public void SetPlayer(int id, string colorName)
-        {
-            Debug.Log("<color=white>PlayerOn SetCustomProperties</color>");
-            HashTable props = new HashTable()
-            {
-                {characterKey, id },
-                {colorKey, colorName}
-            };
-            PhotonNetwork.LocalPlayer.SetCustomProperties(props);
-        }
-        public override void OnPlayerPropertiesUpdate(Player _player, HashTable _changedProps) // 커스텀 프로퍼티 변경시 콜백 받는 함수
-        {
-            //캐릭터 커스텀
-            if (_changedProps.ContainsKey(characterKey) && _player == photonView.Owner)
-            {
-                int customPlayer = (int)_changedProps[characterKey];
-                string customColor = (string)_changedProps[colorKey];
-                Debug.LogFormat("<color=white>playerCustom {0}</color>", customPlayer);
-                Debug.LogFormat("<color=white>customColor {0}</color>", customColor);
-                Debug.LogFormat("<color=green>photonView.Owner {0}</color>", this.photonView.Owner.IsLocal);
+        //        if (_player == this.photonView.Owner)
+        //        {
+        //            Debug.Log("<color=white>playerCustom success</color>");
+        //            Debug.LogFormat("<color=green>photonView.Owner {0}</color>", this.name);
+        //            this.ApplyCustom(customPlayer, customColor);
+        //        }
+        //    }
+        //}
 
-                if (_player == this.photonView.Owner)
-                {
-                    Debug.Log("<color=white>playerCustom success</color>");
-                    Debug.LogFormat("<color=green>photonView.Owner {0}</color>", this.name);
-                    this.ApplyCustom(customPlayer, customColor);
-                }
-            }
-        }
-
-        public void ApplyCustom(int id, string colorName)
+        [PunRPC]
+        public void ApplyCustom()
         {
+            int id = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            string colorName = InfoManager.Instance.PlayerInfo.nowClothesColorName;
             Debug.LogFormat("<color=yellow>Set id {0}</color>", id);
             foreach (var character in this.characters)
             {
@@ -78,7 +89,6 @@ namespace NHR
             Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", id, colorName);
             mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + id + colorName);
 
-            //마스터 클라이언트에 전달
         }
 
         //public void Init()
@@ -104,53 +114,53 @@ namespace NHR
 
         //}
 
-        public override void OnJoinedRoom()
-        {
-            foreach (Player player in PhotonNetwork.PlayerList)
-            {
-                if (player.CustomProperties.ContainsKey(this.characterKey))
-                {
-                    int id = (int)player.CustomProperties[this.characterKey];
-                    string colotName = (string)player.CustomProperties[this.colorKey];
-                    // 커스텀 적용
-                    if (player == PhotonNetwork.LocalPlayer)
-                    {
-                        ApplyCustom(id, colotName);
-                    }
-                }
-            }
-        }
+        //public override void OnJoinedRoom()
+        //{
+        //    foreach (Player player in PhotonNetwork.PlayerList)
+        //    {
+        //        if (player.CustomProperties.ContainsKey(this.characterKey))
+        //        {
+        //            int id = (int)player.CustomProperties[this.characterKey];
+        //            string colotName = (string)player.CustomProperties[this.colorKey];
+        //            // 커스텀 적용
+        //            if (player == PhotonNetwork.LocalPlayer)
+        //            {
+        //                ApplyCustom(id, colotName);
+        //            }
+        //        }
+        //    }
+        //}
 
-        public override void OnPlayerEnteredRoom(Player newPlayer)
-        {
-            base.OnPlayerEnteredRoom(newPlayer);
+        //public override void OnPlayerEnteredRoom(Player newPlayer)
+        //{
+        //    base.OnPlayerEnteredRoom(newPlayer);
 
-            //foreach (Player player in PhotonNetwork.PlayerList)
-            //{
-            //    if (player.CustomProperties.ContainsKey(this.characterKey))
-            //    {
-            //        int id = (int)player.CustomProperties[this.characterKey];
-            //        string colotName = (string)player.CustomProperties[this.colorKey];
-            //        // 커스텀 적용
-            //        if (player == PhotonNetwork.LocalPlayer)
-            //        {
-            //            ApplyCustom(id, colotName);
-            //        }
-            //    }
-            //}
+        //    //foreach (Player player in PhotonNetwork.PlayerList)
+        //    //{
+        //    //    if (player.CustomProperties.ContainsKey(this.characterKey))
+        //    //    {
+        //    //        int id = (int)player.CustomProperties[this.characterKey];
+        //    //        string colotName = (string)player.CustomProperties[this.colorKey];
+        //    //        // 커스텀 적용
+        //    //        if (player == PhotonNetwork.LocalPlayer)
+        //    //        {
+        //    //            ApplyCustom(id, colotName);
+        //    //        }
+        //    //    }
+        //    //}
 
-            if (newPlayer.CustomProperties.ContainsKey(this.characterKey))
-            {
-                int id = (int)newPlayer.CustomProperties[this.characterKey];
-                string colotName = (string)newPlayer.CustomProperties[this.colorKey];
-                // 커스텀 적용
-                if (newPlayer == PhotonNetwork.LocalPlayer)
-                {
-                    ApplyCustom(id, colotName);
-                }
-            }
+        //    if (newPlayer.CustomProperties.ContainsKey(this.characterKey))
+        //    {
+        //        int id = (int)newPlayer.CustomProperties[this.characterKey];
+        //        string colotName = (string)newPlayer.CustomProperties[this.colorKey];
+        //        // 커스텀 적용
+        //        if (newPlayer == PhotonNetwork.LocalPlayer)
+        //        {
+        //            ApplyCustom(id, colotName);
+        //        }
+        //    }
 
-        }
+        //}
     }
 
 }
