@@ -30,12 +30,14 @@ namespace NHR
 
         private void Update()
         {
+            this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
+
             foreach (var character in this.characters)
             {
                 character.gameObject.SetActive(false);
             }
             this.characters[nowCharacterID].gameObject.SetActive(true);
-
+            Debug.Log(this.nowCharacterID);
         }
         //private IEnumerator Start()
         //{

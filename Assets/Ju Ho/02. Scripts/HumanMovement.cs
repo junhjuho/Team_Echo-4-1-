@@ -82,7 +82,7 @@ public class HumanMovement : PlayerMovement
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
         if (pv.IsMine && other.gameObject.layer == 13) 
         {
             Vector3 zombiePos = other.transform.position - this.transform.root.GetChild(3).position;
