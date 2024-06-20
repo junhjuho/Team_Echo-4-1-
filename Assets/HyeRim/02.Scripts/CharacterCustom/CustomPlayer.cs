@@ -17,7 +17,7 @@ namespace NHR
     {
         //현재 캐릭터번호, 텍스쳐 이름
         public int nowCharacterNum;
-        public string nowTextureName;
+        public string nowColorName;
 
         public TMP_Text characterName;
 
@@ -30,9 +30,10 @@ namespace NHR
             //전달된 정보 업데이트
 
             this.nowCharacterNum = characterNum;
-            //this.nowTextureName = colorName;
+            this.nowColorName = colorName;
 
             this.playerController.UpdateCharacter(characterNum);
+            this.playerController.UpdateColor(colorName);
         }
     }
 }
