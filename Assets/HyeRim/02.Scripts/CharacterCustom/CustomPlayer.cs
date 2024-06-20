@@ -30,9 +30,9 @@ namespace NHR
             //전달된 정보 업데이트
 
             this.nowCharacterNum = characterNum;
-            this.nowTextureName = colorName;
+            //this.nowTextureName = colorName;
 
-            this.playerController.UpdateCharacter(characterNum, colorName);
+            this.playerController.UpdateCharacter(characterNum);
         }
     }
 }
