@@ -14,6 +14,8 @@ namespace NHR
         [SerializeField]
         private CustomPlayer observerCharacter;
 
+        public UICharacterCustomManager characterCustomManager;
+
         private void Start()
         {
             //주체에 옵저버 등록
@@ -21,7 +23,7 @@ namespace NHR
             this.subjectUI.UpdateObservers();
 
             //버튼 이벤트
-            this.subjectUI.buttonExit.onClick.AddListener(() =>
+            this.subjectUI.buttonClose.onClick.AddListener(() =>
             {
                 Debug.Log("buttonExit clicked");
 
@@ -29,8 +31,9 @@ namespace NHR
                 InfoManager.Instance.EditPlayerInfo
                 (this.subjectUI.selectedCharacter.characterNum, this.subjectUI.selectedClothesColor.index, this.subjectUI.selectedClothesColor.textureName);
 
-                //Exit 누르면 타이틀씬으로
-                EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Title);
+                //Close 누르면 닫기
+                this.characterCustomManager.gameObject.SetActive(false);
+                //EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Title);
                 //SceneManager.LoadScene("TitleScene");
             });
 

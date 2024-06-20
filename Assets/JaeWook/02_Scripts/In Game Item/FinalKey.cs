@@ -12,18 +12,20 @@ namespace Jaewook
     /// 3라운드, Socket 형식으로 Door에 갖다 대면 Door가 열리는 애니메이션까지
     /// 성민님 manager스크립트에서 생성 배치 까지 구현 -> ItemObject.cs X
     /// </summary>
-    public class FinalKey : MonoBehaviour, IItem
+    public class FinalKey : ItemObject, IItem
     {
         [Header("파티클 입력")]
         public new ParticleSystem particleSystem;
 
         private void Start()
         {
+            /*
             if (GameManager.Instance.roundManager.round == RoundManager.Round.Three)
             {
                 // 배치 ( 퍼센트 완성 시 배치 )
 
             }
+            */
             this.particleSystem = this.GetComponentInChildren<ParticleSystem>();
 
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4765887201927728}
   - component: {fileID: 33511468056579554}
   - component: {fileID: 23285752894973642}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: PAGE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,12 +94,13 @@ GameObject:
   - component: {fileID: 4795266759639050}
   - component: {fileID: 95092961394454540}
   - component: {fileID: 4812726992827774817}
+  - component: {fileID: 2082096047745791534}
   - component: {fileID: 1250046895961922772}
   - component: {fileID: 5112028734950370358}
   - component: {fileID: 682122769846454140}
   - component: {fileID: -5859301611978289764}
   - component: {fileID: -375674618928498382}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Clipboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,8 +166,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.34211403, z: 1.3789879}
-  m_Center: {x: 0, y: 0.17556417, z: 0.09466261}
+  m_Size: {x: 1.3328958, y: 0.47405452, z: 1.731446}
+  m_Center: {x: 0.0037899613, y: 0.24153438, z: 0.13194695}
+--- !u!65 &2082096047745791534
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685343955664076}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1250046895961922772
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -397,7 +419,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -5859301611978289764}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -412,7 +435,7 @@ GameObject:
   - component: {fileID: 4706570796905144}
   - component: {fileID: 33115531409079032}
   - component: {fileID: 23832010425885406}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +520,7 @@ GameObject:
   - component: {fileID: 1503196186021454482}
   - component: {fileID: 7669016823445507975}
   - component: {fileID: 5060540315921895357}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3003426028696114056}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +652,7 @@ GameObject:
   - component: {fileID: 7960450594116855158}
   - component: {fileID: 2958301122455004476}
   - component: {fileID: 5859786088965288303}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

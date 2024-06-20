@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 2324993847696112257}
   - component: {fileID: -655913926472299715}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: locker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -655913926472299715}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -89,7 +90,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 3300000}
   - component: {fileID: 6500000}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +152,7 @@ GameObject:
   - component: {fileID: 400004}
   - component: {fileID: 3300002}
   - component: {fileID: 6500002}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +214,7 @@ GameObject:
   - component: {fileID: 400006}
   - component: {fileID: 3300004}
   - component: {fileID: 6500004}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +276,7 @@ GameObject:
   - component: {fileID: 400008}
   - component: {fileID: 3300006}
   - component: {fileID: 6500006}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +338,7 @@ GameObject:
   - component: {fileID: 400010}
   - component: {fileID: 3300008}
   - component: {fileID: 6500008}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +404,7 @@ GameObject:
   - component: {fileID: 8666339340066033264}
   - component: {fileID: 356453431822736937}
   - component: {fileID: 6342899976012856410}
-  m_Layer: 21
+  m_Layer: 24
   m_Name: lockerDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,7 +727,7 @@ GameObject:
   - component: {fileID: 400014}
   - component: {fileID: 3300012}
   - component: {fileID: 2300002}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: lockerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
