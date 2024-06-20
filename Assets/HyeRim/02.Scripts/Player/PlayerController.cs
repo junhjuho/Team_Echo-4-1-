@@ -58,12 +58,12 @@ namespace NHR
             photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
             this.ApplyCharacter(id);
         }
-        public void UpdateColor(string color)
-        {
-            Debug.Log("UpdateColor");
-            photonView.RPC("UpdateColorRPC", RpcTarget.OthersBuffered, color);
-            this.ApplyColor(color);
-        }
+        //public void UpdateColor(string color)
+        //{
+        //    Debug.Log("UpdateColor");
+        //    photonView.RPC("UpdateColorRPC", RpcTarget.OthersBuffered, color);
+        //    this.ApplyColor(color);
+        //}
 
         [PunRPC]
         public void UpdateCharacterRPC(int id)
@@ -73,14 +73,14 @@ namespace NHR
             this.nowCharacterID = id;
             this.ApplyCharacter(id);
         }
-        [PunRPC]
-        public void UpdateColorRPC(string color)
-        {
-            Debug.Log("UpdateCharacterRPC");
+        //[PunRPC]
+        //public void UpdateColorRPC(string color)
+        //{
+        //    Debug.Log("UpdateCharacterRPC");
 
-            this.nowColorName = color;
-            this.ApplyColor(color);
-        }
+        //    this.nowColorName = color;
+        //    this.ApplyColor(color);
+        //}
 
         public void ApplyCharacter(int id)
         {
@@ -101,17 +101,17 @@ namespace NHR
             }
             SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[id];
         }
-        public void ApplyColor(string color)
-        {
-            this.nowColorName = color;
+        //public void ApplyColor(string color)
+        //{
+        //    this.nowColorName = color;
 
-            if (this.nowCharacter != null)
-            {
-                var mat = this.nowCharacter.material;
-                Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", this.nowCharacterID, color);
-                mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + this.nowCharacterID + color);
-            }
-        }
+        //    if (this.nowCharacter != null)
+        //    {
+        //        var mat = this.nowCharacter.material;
+        //        Debug.LogFormat("<color=yellow>character : {0}, texture : {1}</color>", this.nowCharacterID, color);
+        //        mat.mainTexture = Resources.Load<Texture>("ClothesTexture/" + this.nowCharacterID + color);
+        //    }
+        //}
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {

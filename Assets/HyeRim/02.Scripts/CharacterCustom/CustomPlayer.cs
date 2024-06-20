@@ -33,7 +33,7 @@ namespace NHR
             this.nowColorName = colorName;
 
             this.playerController.UpdateCharacter(characterNum);
-            this.playerController.UpdateColor(colorName);
+            //this.playerController.UpdateColor(colorName);
         }
     }
 }
