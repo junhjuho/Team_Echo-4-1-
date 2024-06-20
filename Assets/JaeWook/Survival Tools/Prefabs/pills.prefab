@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 23926808027532566}
   - component: {fileID: 95585369411236280}
   - component: {fileID: 1342064510741483601}
+  - component: {fileID: 1186279835198350240}
   - component: {fileID: 4389991340773661302}
   - component: {fileID: 1102466661423123940}
   - component: {fileID: 199677827966221379}
   - component: {fileID: 4219273913954454671}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: pills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6535831155459416250}
@@ -130,8 +131,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.28184116, y: 0.34314823, z: 0.30097947}
-  m_Center: {x: -0.009288866, y: 0.03452614, z: -0.0104552}
+  m_Size: {x: 0.35392126, y: 0.3836376, z: 0.37195587}
+  m_Center: {x: -0.012701015, y: 0.05477079, z: 0.0015134116}
+--- !u!65 &1186279835198350240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985338178271116}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 0.0143500045, z: 0}
 --- !u!54 &4389991340773661302
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -330,7 +352,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 4219273913954454671}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -359,7 +382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6535831155459416250}
-  m_Layer: 21
+  m_Layer: 23
   m_Name: Grab Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
