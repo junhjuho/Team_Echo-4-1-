@@ -30,6 +30,7 @@ namespace NHR
 
         private void Update()
         {
+            if (!photonView.IsMine) return;
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
 
             foreach (var character in this.characters)
