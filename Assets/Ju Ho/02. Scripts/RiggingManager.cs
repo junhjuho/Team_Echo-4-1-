@@ -39,18 +39,17 @@ public class RiggingManager : MonoBehaviour
         }
     }
 
-    void MappingHandTransform(Transform ik, Transform controller, bool isLeft)
+    void MappingHandTransform(Transform ik, Transform controller, bool isLeft) // 핸드 컨트롤러 동기화
     {
         var offset = isLeft ? leftOffset : rightOffset;
         ik.position = controller.TransformPoint(offset[0]);
         ik.rotation = controller.rotation * Quaternion.Euler(offset[1]);
     }
 
-    void MappingBodyTransform(Transform ik, Transform hmd)
+    void MappingBodyTransform(Transform ik, Transform hmd) // 헤드와 몸통 동기화
     {
-        //this.transform.position = new Vector3(hmd.position.x, this.transform.position.y, hmd.position.z);
         this.transform.position = new Vector3(hmd.position.x, hmd.position.y - modelHeight, hmd.position.z);
-        if (hmd.position.y < modelHeight)
+        if (hmd.position.y < modelHeight) 
         {
             this.transform.position = new Vector3(hmd.position.x, 0, hmd.position.z);
         }
@@ -59,7 +58,7 @@ public class RiggingManager : MonoBehaviour
         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(targetRotation), smoothValue);
     }
 
-    void MappingHeadTransform(Transform ik, Transform hmd)
+    void MappingHeadTransform(Transform ik, Transform hmd) // 헤드 동기화
     {
         ik.position = hmd.TransformPoint(headOffset[0]);
         ik.rotation = hmd.rotation * Quaternion.Euler(headOffset[1]);

@@ -40,7 +40,6 @@ public class PlayerSyncController : MonoBehaviour
             ChangeLayer(this.transform.GetChild(i).gameObject, 7); // 플레이어 레이어 설정
         }
 
-
         if(pv.IsMine)
         {
             origin = FindObjectOfType<XROrigin>();
@@ -53,14 +52,18 @@ public class PlayerSyncController : MonoBehaviour
 
     void Update()
     {
-        if (pv.IsMine)
+        Debug.Log(headRig.position);
+
+        if (pv.IsMine) // xr origin과 싱크 오브젝트 동기화(포톤으로 넘겨주기 위한)
         {
+            float distance = headRig.transform.position.y - riggingManager.modelHeight; // 키 보정
+
+            origin.transform.position = new Vector3(origin.transform.position.x, origin.transform.position.y - distance, origin.transform.position.z);
+
             if (headRig.transform.position.y > riggingManager.modelHeight)
             {
-                float floor = headRig.transform.position.y > 5f ? 6.1f : 0f;
-
-                headRig.transform.position = new Vector3(headRig.transform.position.x, (riggingManager.modelHeight) + floor, headRig.transform.position.z);
-                head.transform.position = new Vector3(head.transform.position.x, (riggingManager.modelHeight) + floor, head.transform.position.z);
+                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight, headRig.transform.position.z);
+                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight, head.transform.position.z);            
             }
 
             SyncTransform(head, headRig);
