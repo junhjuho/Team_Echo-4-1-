@@ -145,8 +145,8 @@ namespace SeongMin
             {
                 if (currentRoundPlayersMissionPerSent >= needPersent)
                 {
-                    /*
-                    //TODO 마지막 미션으로 파이널 키 맵에 생기게 할 것인지 논의 필오함
+                    PhotonNetwork.LoadLevel("LobbyScene 1");
+                    /*//TODO 승리 전환 완료 되면 마지막 미션으로 파이널 키 맵에 생기게 할 것인지 논의 필오함
                     GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
                     PhotonNetwork.Instantiate("FinalKey", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
                     */
@@ -208,62 +208,62 @@ namespace SeongMin
         public Round round = Round.One;
         *///-----------------------------------------
 
-        /* -------- 라운드 교체 세팅 코루틴이였던 것 ------
-        public void RoundChange(Round _round)
-        {
-            switch (_round)
-            {
-                // 1라운드에서 2라운드로
-                case Round.One:
-                    round = Round.Two;
-                    //라운드 UI 알림
-                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round1End");
-                    RoundMapSetting();
-                    Invoke("RoundTwoSetting", 3f);
-                    //RoundTwoSetting();
-                    ChangeText("2");
-                    break;
-                // 2라운드에서 3라운드로
-                case Round.Two:
-                    round = Round.Three;
-                    //라운드 UI 알림
-                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round2End");
-                    RoundMapSetting();
-                    RoundThreeSetting();
-                    ChangeText("3");
-                    break;
-                // 3라운드에서 엔딩으로
-                case Round.Three:
-                    // TODO 결과 UI나 Scene 띄우기 
-                    GameDB.Instance.hasGameData = true;
-                    // 로비로 이동하기
-                    EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Lobby);
-                    break;
+                    /* -------- 라운드 교체 세팅 코루틴이였던 것 ------
+                    public void RoundChange(Round _round)
+                    {
+                        switch (_round)
+                        {
+                            // 1라운드에서 2라운드로
+                            case Round.One:
+                                round = Round.Two;
+                                //라운드 UI 알림
+                                EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round1End");
+                                RoundMapSetting();
+                                Invoke("RoundTwoSetting", 3f);
+                                //RoundTwoSetting();
+                                ChangeText("2");
+                                break;
+                            // 2라운드에서 3라운드로
+                            case Round.Two:
+                                round = Round.Three;
+                                //라운드 UI 알림
+                                EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "round2End");
+                                RoundMapSetting();
+                                RoundThreeSetting();
+                                ChangeText("3");
+                                break;
+                            // 3라운드에서 엔딩으로
+                            case Round.Three:
+                                // TODO 결과 UI나 Scene 띄우기 
+                                GameDB.Instance.hasGameData = true;
+                                // 로비로 이동하기
+                                EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Lobby);
+                                break;
 
-            }
-        }*///---------------------------------------
-        /* -------- 라운드 2 세팅 함수였던 것 ------
-        private void RoundTwoSetting()
-        {
-            //내 라운드 데이터 초기화하기
-            RoundPlayerDataReset();
-            ChaserSetting();
-            TeamMissionSetting();
-            MissionSetting();
-            GameManager.Instance.inGameMapManager.PlayerPositionSetting();
-            Debug.Log("라운드2 셋팅 완료");
-            Invoke("RoleSettingEvent", 2f);
-        }
-        *///----------------------------------------
-        /* -------- 라운드 3 세팅 함수였던 것 ------
-        private void RoundThreeSetting()
-        {
-            //내 라운드 데이터 초기화하기
-            RoundPlayerDataReset();
-            TeamMissionSetting();
-            MissionSetting();
-            GameManager.Instance.inGameMapManager.PlayerPositionSetting();
-        }*///---------------------------------------
-    }
+                        }
+                    }*///---------------------------------------
+                    /* -------- 라운드 2 세팅 함수였던 것 ------
+                    private void RoundTwoSetting()
+                    {
+                        //내 라운드 데이터 초기화하기
+                        RoundPlayerDataReset();
+                        ChaserSetting();
+                        TeamMissionSetting();
+                        MissionSetting();
+                        GameManager.Instance.inGameMapManager.PlayerPositionSetting();
+                        Debug.Log("라운드2 셋팅 완료");
+                        Invoke("RoleSettingEvent", 2f);
+                    }
+                    *///----------------------------------------
+                    /* -------- 라운드 3 세팅 함수였던 것 ------
+                    private void RoundThreeSetting()
+                    {
+                        //내 라운드 데이터 초기화하기
+                        RoundPlayerDataReset();
+                        TeamMissionSetting();
+                        MissionSetting();
+                        GameManager.Instance.inGameMapManager.PlayerPositionSetting();
+                    }*///---------------------------------------
+                }
 
 }
