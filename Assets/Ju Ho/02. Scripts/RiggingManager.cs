@@ -1,6 +1,4 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RiggingManager : MonoBehaviour
@@ -20,12 +18,10 @@ public class RiggingManager : MonoBehaviour
     public float smoothValue = 0.1f;
     public float modelHeight = 1.67f;
 
-    PlayerMovement playerMovement;
     PhotonView pv;
 
     private void Start()
     {
-        playerMovement = this.GetComponent<PlayerMovement>();
         pv = this.GetComponentInParent<PhotonView>();
     }
     void LateUpdate()

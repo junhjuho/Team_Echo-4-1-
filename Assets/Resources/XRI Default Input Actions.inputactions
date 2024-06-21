@@ -1232,15 +1232,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "5d916473-d45e-47db-8e03-6845a5f2b36f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Grip Position",
                     "type": "Value",
                     "id": "defe4495-ba8f-4958-b2fb-98d889e45ac5",
@@ -1488,17 +1479,6 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Position",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b440202d-1920-4ca2-a634-a4fa18c8dc2e",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
