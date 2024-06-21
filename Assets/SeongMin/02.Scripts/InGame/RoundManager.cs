@@ -50,8 +50,6 @@ namespace SeongMin
                 RoundMapSetting();
             // 내 클라이언트의 공용 데이터 초기화 하기
             InGamePublicDataReset();
-            // 내 클라이언트의 라운드 데이터 초기화하기
-            RoundPlayerDataReset();
             // 내가 들어 왔음을 알리기
             photonView.RPC("CountPlayer", RpcTarget.MasterClient);
             if (PhotonNetwork.IsMasterClient)
@@ -170,7 +168,7 @@ namespace SeongMin
         }
 
         // 내 라운드 데이터 초기화하기
-        private void RoundPlayerDataReset()
+        public void RoundPlayerDataReset()
         {
             // 개인미션 초기화
             for (int i = 0; i < GameDB.Instance.playerMission.playerMissionArray.Length; i++)
