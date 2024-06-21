@@ -2884,7 +2884,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
-  modelHeight: 1.5
+  modelHeight: 2.9
 --- !u!114 &6747704889837046606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3393,7 +3393,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
-  modelHeight: 1.5
+  modelHeight: 2.9
 --- !u!114 &4515049768067840740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16246,11 +16246,11 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Backward Die
   m_SynchronizeLayers:
-  - SynchronizeType: 2
+  - SynchronizeType: 0
     LayerIndex: 0
-  - SynchronizeType: 2
+  - SynchronizeType: 0
     LayerIndex: 1
-  - SynchronizeType: 2
+  - SynchronizeType: 0
     LayerIndex: 2
   - SynchronizeType: 0
     LayerIndex: 3
@@ -23622,7 +23622,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
-  modelHeight: 1.5
+  modelHeight: 3
 --- !u!114 &4244551943412781961
 MonoBehaviour:
   m_ObjectHideFlags: 0
