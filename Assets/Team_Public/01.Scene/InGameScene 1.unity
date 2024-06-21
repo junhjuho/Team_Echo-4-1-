@@ -3196,7 +3196,6 @@ MonoBehaviour:
   currentRoundPlayersMissionCount: 0
   currentRoundPlayersMissionPerSent: 0
   needPersent: 60
-  round: 0
   photonView: {fileID: 0}
 --- !u!4 &625918499
 Transform:
@@ -5383,7 +5382,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 65011767
+    m_Bits: 60833847
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
