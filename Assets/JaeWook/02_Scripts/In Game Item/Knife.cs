@@ -14,6 +14,7 @@ namespace Jaewook
     {
         [Header("파티클 효과")]
         public ParticleSystem particleSys;
+        [Header("체크용")]
         public PlayerMission playerMission;
 
         private void Start()
@@ -28,13 +29,12 @@ namespace Jaewook
 
         }
 
-        
-              
 
         public void OnGrab()
         {
             // 잡으면 오브젝트 자체를 없애기
             gameObject.SetActive(false);
+            playerMission.chaserMissionClearCount++;
 
             // 변신
             if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
