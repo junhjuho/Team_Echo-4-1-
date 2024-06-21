@@ -17,8 +17,8 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     PlayerSyncController playerSyncController;
 
-    public Animator[] deadAnims;
-
+    public DieAnimation[] dieAnims;
+    
 
     public void OnEnable()
     {
@@ -34,29 +34,29 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     void OnDisable()
     {
-        if (isDie && pv.IsMine)
+        if (isDie /*&& pv.IsMine*/)
         {
-            Vector3 zombiePos = monsterMovement.transform.position - this.transform.position;
-            zombiePos.Normalize();
-            float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
+            //Vector3 zombiePos = monsterMovement.transform.position - this.transform.position;
+            //zombiePos.Normalize();
+            //float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
 
-            string dirDie = attackPos > 0 ? "Backward Die" : "Forward Die";
+            //string dirDie = attackPos > 0 ? "Backward Die" : "Forward Die";
 
-            for(int i = 0; i < deadAnims.Length; i++)
+            for(int i = 0; i < dieAnims.Length; i++)
             {
-                if(this.gameObject.name + "Die Model" == deadAnims[i].gameObject.name)
+                if(this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name)
                 {
-                    if(TryGetComponent(out DieAnimation dieanimation))
-                    {
-                        dieanimation.PlayerDieAnimation(dirDie);
-
-                    }
+                    dieAnims[i].transform.gameObject.SetActive(true);
+                    dieAnims[i].PlayerDieAnimation("Backward Die");
+                    break;
                 }
             }
 
             var heart = SeongMin.GameManager.Instance.playerManager.heart;
             EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
             heart--;
+
+            isDie = false;
         }
     }
 

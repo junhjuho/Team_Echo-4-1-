@@ -6,7 +6,7 @@ public class DieAnimation : MonoBehaviour
 {
     Animator animator;
 
-    private void Start()
+    private void OnEnable()
     {
         animator = this.GetComponent<Animator>();
     }
