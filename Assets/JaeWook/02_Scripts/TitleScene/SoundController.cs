@@ -8,7 +8,6 @@ public class SoundController : MonoBehaviour
     public AudioSource loopSource;
     public AudioSource onceSource;
 
-
     public AudioClip[] audioClip1; // 여러 오디오 클립 배열
     public AudioClip audioClip2;   // 반복 재생할 오디오 클립
     public AudioClip audioClip3;   // 시작 시 한 번만 재생할 오디오 클립
@@ -18,7 +17,6 @@ public class SoundController : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         loopSource = gameObject.AddComponent<AudioSource>();
         onceSource = gameObject.AddComponent<AudioSource>();
-
 
         if (audioClip1 != null && audioClip1.Length > 0)
         {
@@ -55,6 +53,6 @@ public class SoundController : MonoBehaviour
     {
         onceSource.clip = audioClip3;
         onceSource.Play();
-        Destroy(onceSource, audioClip3.length);
+        //Destroy(onceSource, audioClip3.length);
     }
 }

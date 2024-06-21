@@ -17,7 +17,7 @@ namespace NHR
         //¾À enum
         public enum eSceneType
         {
-            App, Title, Lobby, InGame, Loading, Tutorial, CharacterCustom, GameInfo
+            App, Title, Lobby, InGame, Loading, Tutorial, CharacterCustom,
         }
         //ÇöÀç ¾À
         private eSceneType nowScene = eSceneType.Title;
