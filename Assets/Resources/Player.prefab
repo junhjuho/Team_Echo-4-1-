@@ -2901,7 +2901,10 @@ MonoBehaviour:
   inputActionAsset: {fileID: 0}
   moveProvider: {fileID: 0}
   pv: {fileID: 0}
+  monsterMovement: {fileID: 0}
   isRunBtnDown: 0
+  FireAxe: {fileID: 0}
+  deadAnims: []
 --- !u!114 &5530197642181525178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3410,7 +3413,10 @@ MonoBehaviour:
   inputActionAsset: {fileID: 0}
   moveProvider: {fileID: 0}
   pv: {fileID: 0}
+  monsterMovement: {fileID: 0}
   isRunBtnDown: 0
+  FireAxe: {fileID: 0}
+  deadAnims: []
 --- !u!114 &9082723997564200933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16209,7 +16215,10 @@ MonoBehaviour:
   inputActionAsset: {fileID: 0}
   moveProvider: {fileID: 0}
   pv: {fileID: 0}
+  monsterMovement: {fileID: 0}
   isRunBtnDown: 0
+  FireAxe: {fileID: 0}
+  deadAnims: []
 --- !u!114 &479101846059634882
 MonoBehaviour:
   m_ObjectHideFlags: 0

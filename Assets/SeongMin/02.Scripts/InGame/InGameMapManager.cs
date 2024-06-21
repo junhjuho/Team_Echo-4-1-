@@ -80,6 +80,7 @@ namespace SeongMin
             GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
             for (int i = 0; i < inGameChaserItemList.Count; i++)
             {
+                inGameChaserItemList[i].SetActive(true);
                 inGameChaserItemList[i].transform.position = inGameItemPositionList[i].position;
             }
         }
