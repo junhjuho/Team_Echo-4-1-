@@ -31528,6 +31528,8 @@ MonoBehaviour:
   charactorValue: 1
   itemValue: 0
   isFind: 0
+  fx: {fileID: 0}
+  miniMap: {fileID: 0}
 --- !u!4 &1473404533573154965
 Transform:
   m_ObjectHideFlags: 0
@@ -36863,9 +36865,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1985353617951691343}
-  - {fileID: 1042092182}
   - {fileID: 3809174137449706873}
   - {fileID: 2638262467129596301}
+  - {fileID: 1042092182}
   m_Father: {fileID: 5897907405581118128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4260450571670502309
@@ -37537,6 +37539,8 @@ MonoBehaviour:
   charactorValue: 0
   itemValue: 0
   isFind: 0
+  fx: {fileID: 0}
+  miniMap: {fileID: 0}
 --- !u!1 &4703666098491904974
 GameObject:
   m_ObjectHideFlags: 0
