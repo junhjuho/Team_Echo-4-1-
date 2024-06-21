@@ -34,9 +34,7 @@ namespace SeongMin
         public GameObject miniMap;
         protected void Start()
         {
-            fx = transform.Find("FX").gameObject;
             miniMap = transform.Find("MinimapIcon").gameObject;
-            fx.SetActive(false);
             miniMap.SetActive(false);
 
             if (sceneValue == SceneValue.tutorial)
@@ -50,7 +48,11 @@ namespace SeongMin
                     if (charactorValue == CharactorValue.runner)
                         GameManager.Instance.inGameMapManager.inGameRunnerItemList.Add(this.gameObject);
                     else
+                    {
                         GameManager.Instance.inGameMapManager.inGameChaserItemList.Add(this.gameObject);
+                        fx = transform.Find("FX").gameObject;
+                        fx.SetActive(false);
+                    }
                 }
                 else
                 {
