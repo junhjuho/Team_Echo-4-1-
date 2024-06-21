@@ -56,8 +56,8 @@ namespace SeongMin
             if (uiTitle != null)
             {
                 #region 정면 UI
-                this.titleText = transform.Find("TitleText").GetComponent<TMP_Text>();
-                subTitleText = transform.Find("SubTitleText").GetComponent<TMP_Text>();
+                titleText = uiTitle.Find("TitleText").GetComponent<TMP_Text>();
+                subTitleText = uiTitle.Find("SubTitleText").GetComponent<TMP_Text>();
 
                 startButton = uiTitle.Find("StartButton").GetComponent<Button>();
                 gameInfoButton = uiTitle.Find("GameInfoButton").GetComponent<Button>();
@@ -124,9 +124,9 @@ namespace SeongMin
             */
 
             #region 정면 UI Animation
+            //AnimateSubTitle();
+            //AnimateStartButton();
             AnimateTitle();
-            AnimateSubTitle();
-            AnimateStartButton();
             AnimateGameInfoButton();
             AnimateMakersButton();
             #endregion
@@ -173,7 +173,7 @@ namespace SeongMin
                 }
                 canvasGroup.alpha = 0;
                 canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(1);
-                startButton.transform.DOShakePosition(1, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(2);
+                startButton.transform.DOShakePosition(1, new Vector3(1, 1, 0), 10, 90, false, true).SetDelay(2);
             }
         }
 
@@ -188,8 +188,8 @@ namespace SeongMin
                     canvasGroup = gameInfoButton.gameObject.AddComponent<CanvasGroup>();
                 }
                 canvasGroup.alpha = 0;
-                canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(2); // 2초 지연 후 3초 동안 투명도 변화
-                gameInfoButton.transform.DOShakePosition(1, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(1);
+                canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(1); // 2초 지연 후 3초 동안 투명도 변화
+                gameInfoButton.transform.DOShakePosition(1, new Vector3(1, 1, 0), 10, 90, false, true).SetDelay(2);
             }
         }
 
@@ -204,8 +204,8 @@ namespace SeongMin
                     canvasGroup = gameInfoButton.gameObject.AddComponent<CanvasGroup>();
                 }
                 canvasGroup.alpha = 0;
-                canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(2); // 2초 지연 후 3초 동안 투명도 변화
-                gameInfoButton.transform.DOShakePosition(1, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(1);
+                canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(1); // 2초 지연 후 3초 동안 투명도 변화
+                gameInfoButton.transform.DOShakePosition(1, new Vector3(1,1, 0), 10, 90, false, true).SetDelay(2);
 
             }
         }

@@ -10561,6 +10561,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 5543160392446795685}
   - {fileID: 479101846059634882}
   - {fileID: 5230459196823382439}
   - {fileID: 5530197642181525178}
@@ -23418,7 +23419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9132861521565619948
 Transform:
   m_ObjectHideFlags: 0
