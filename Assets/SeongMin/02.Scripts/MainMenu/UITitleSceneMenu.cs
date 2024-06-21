@@ -14,9 +14,7 @@ namespace SeongMin
     /// </summary>
     public class UITitleSceneMenu : MonoBehaviour
     {
-        /// <summary>
-        /// Text (Tween)
-        /// </summary>
+        #region 정면 UI 표시
         [Header("게임 제목 4-1")]
         public TMP_Text titleText;
         [Header("게임 부제 Find and Escape")]
@@ -30,6 +28,17 @@ namespace SeongMin
         // public Button tutorialButton;
         [Header("게임 정보 UI")]
         public Button gameInfoButton;
+        [Header("제작자 정보 UI")]
+        public Button makersButton;
+        #endregion
+
+        #region 우측 UI 표시
+
+        #endregion
+
+        #region 우측 UI 표시
+
+        #endregion
 
         // public Button characterSettingButton;
         // public Button gameSettingButton;
@@ -46,14 +55,14 @@ namespace SeongMin
             if (uiTitle != null)
             {
                 // 찾아서 자동 할당
-                this.titleText = transform.Find("TitleText")
-                    .GetComponent<TMP_Text>();
+                this.titleText = transform.Find("TitleText").GetComponent<TMP_Text>();
                 this.subTitleText = transform.Find("SubTitleText").GetComponent<TMP_Text>();
                 this.startButton = uiTitle.Find("StartButton").GetComponent<Button>();
                 this.gameInfoButton = uiTitle.Find("GameInfoButton").GetComponent<Button>();
+                this.makersButton = uiTitle.Find("MakersButton").GetComponent<Button>();
 
                 // tutorialButton = transform.Find("TutorialButton").GetComponent<Button>();
-                // keyboard = FindObjectOfType<UIKeyboard>(); -> 키보드 다른 씬으로 넘김
+                // keyboard = FindObjectOfType<UIKeyboard>(); -> 키보드 다른 씬으로 넘김 (키 설정 씬)
                 //characterSettingButton = transform.Find("CharacterSettingButton").GetComponent<Button>();
                 //gameSettingButton = transform.Find("GameSettingButton").GetComponent<Button>();
 
@@ -114,11 +123,15 @@ namespace SeongMin
             }
             */
 
+            #region 정면 UI Animation
             AnimateTitle();
             AnimateSubTitle();
             AnimateStartButton();
             AnimateGameInfoButton();
+            AnimateMakersButton();
+            #endregion
 
+            
         }
 
         void AnimateTitle()
@@ -127,10 +140,11 @@ namespace SeongMin
             {
                 // Title 텍스트를 서서히 나타나게 하고, 약간의 떨림 효과를 추가
                 titleText.color = new Color(titleText.color.r, titleText.color.g, titleText.color.b, 0);
-                titleText.DOFade(1, 3).SetEase(Ease.InOutQuad); // 3초 동안 투명도 변화
+                titleText.DOFade(1, 1).SetEase(Ease.InOutQuad);
                 titleText.rectTransform.anchoredPosition = new Vector2(0, 500);
                 titleText.rectTransform.DOAnchorPos(Vector2.zero, 3).SetEase(Ease.OutQuad); // 3초 동안 위치 이동
-                titleText.rectTransform.DOShakePosition(5, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(3); // 3초 후 5초 동안 떨림
+                // duration, strength, vibrato, randomness, snapping, fadeout
+                titleText.rectTransform.DOShakePosition(1, new Vector3(3, 3, 3), 10, 90, false, true).SetDelay(1); // 3초 후 5초 동안 떨림
             }
         }
 
@@ -140,10 +154,10 @@ namespace SeongMin
             {
                 // SubTitle 텍스트를 서서히 나타나게 하고, 약간의 떨림 효과를 추가
                 subTitleText.color = new Color(subTitleText.color.r, subTitleText.color.g, subTitleText.color.b, 0);
-                subTitleText.DOFade(1, 3).SetEase(Ease.InOutQuad); // 3초 동안 투명도 변화
+                subTitleText.DOFade(1, 2).SetEase(Ease.InOutQuad); // 3초 동안 투명도 변화
                 subTitleText.rectTransform.anchoredPosition = new Vector2(-500, 0);
                 subTitleText.rectTransform.DOAnchorPos(Vector2.zero, 3).SetEase(Ease.OutQuad); // 3초 동안 위치 이동
-                subTitleText.rectTransform.DOShakePosition(5, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(3); // 3초 후 5초 동안 떨림
+                subTitleText.rectTransform.DOShakePosition(1, new Vector3(3, 3, 3), 10, 90, false, true).SetDelay(1);
             }
         }
 
@@ -158,8 +172,8 @@ namespace SeongMin
                     canvasGroup = startButton.gameObject.AddComponent<CanvasGroup>();
                 }
                 canvasGroup.alpha = 0;
-                canvasGroup.DOFade(1, 3).SetEase(Ease.InOutQuad).SetDelay(1); // 1초 지연 후 3초 동안 투명도 변화
-                startButton.transform.DOShakePosition(5, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(4); // 4초 후 5초 동안 떨림
+                canvasGroup.DOFade(1, 3).SetEase(Ease.InOutQuad).SetDelay(1);
+                startButton.transform.DOShakePosition(1, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(1);
             }
         }
 
@@ -175,10 +189,17 @@ namespace SeongMin
                 }
                 canvasGroup.alpha = 0;
                 canvasGroup.DOFade(1, 3).SetEase(Ease.InOutQuad).SetDelay(2); // 2초 지연 후 3초 동안 투명도 변화
-                gameInfoButton.transform.DOShakePosition(5, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(5); // 5초 후 5초 동안 떨림
+                gameInfoButton.transform.DOShakePosition(1, new Vector3(5, 5, 0), 10, 90, false, true).SetDelay(1);
             }
         }
 
+        void AnimateMakersButton()
+        {
+            if(makersButton != null)
+            {
+                
+            }
+        }
     }
 
 }
