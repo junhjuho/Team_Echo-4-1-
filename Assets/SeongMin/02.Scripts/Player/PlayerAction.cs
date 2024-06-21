@@ -35,6 +35,7 @@ namespace SeongMin
                 {
                     print("잡았습니다");
                     _item.isFind = true;
+                    _item.gameObject.SetActive(false);
                     playerMission.runnerMissionClearCount++;
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
@@ -47,6 +48,7 @@ namespace SeongMin
                     && playerMission.MissionItemCheck(_item.gameObject, playerMission.chaserMissionArray))
                 {
                     _item.isFind = true;
+                    _item.gameObject.SetActive(false);
                     playerMission.chaserMissionClearCount++;
                 }
                 // 내가 팀 플레이 미션이 있을 때만 팀플레이용 아이템 카운팅 하기

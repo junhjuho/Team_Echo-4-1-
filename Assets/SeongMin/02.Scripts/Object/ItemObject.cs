@@ -29,8 +29,16 @@ namespace SeongMin
         public ItemValue itemValue = ItemValue.solo;
         [Header("플레이어에게 잡혔는지 확인하기")]
         public bool isFind = false;
+        [Header("파티클과 미니맵 아이콘 자동 할당되는 곳 ")]
+        public GameObject fx;
+        public GameObject miniMap;
         protected void Start()
         {
+            fx = transform.Find("FX").gameObject;
+            miniMap = transform.Find("MinimapIcon").gameObject;
+            fx.SetActive(false);
+            miniMap.SetActive(false);
+
             if (sceneValue == SceneValue.tutorial)
                 GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject);
             else if (sceneValue == SceneValue.lobby)
