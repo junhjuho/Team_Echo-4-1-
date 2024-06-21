@@ -35,7 +35,7 @@ namespace SeongMin
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
             while (state != State.Die)
             {
-                yield return nextThink;
+                
                 switch (state)
                 {
                     case State.Idle:
@@ -46,6 +46,7 @@ namespace SeongMin
                         StartCoroutine(Move());
                         break;
                 }
+                yield return nextThink;
                 changeState = false;
             }
             yield break;
@@ -84,8 +85,8 @@ namespace SeongMin
         }
         private void NextTargetSetting()
         {
-            rand = Random.Range(0, GameManager.Instance.inGameMapManager.inGameItemPositionList.Count);
-            targetPosition = GameManager.Instance.inGameMapManager.inGameItemPositionList[rand];
+            rand = Random.Range(0, GameDB.Instance.escapeDoorPositionList.Count);
+            targetPosition = GameDB.Instance.escapeDoorPositionList[rand];
             agent.SetDestination(targetPosition.position);
         }
 
