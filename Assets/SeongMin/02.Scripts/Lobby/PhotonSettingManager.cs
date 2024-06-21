@@ -37,6 +37,7 @@ namespace SeongMin
         {
             print("방에 입장했습니다.");
             var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            _player.transform.position = GameManager.Instance.lobbySceneManager.playerSpawnPointList[0].position;
             GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
             GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
             UIManager.Instance.robbySceneMenu.customPlayer.playerController = _player.GetComponent<PlayerController>();

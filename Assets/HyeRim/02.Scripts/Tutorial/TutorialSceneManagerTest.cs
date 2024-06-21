@@ -110,7 +110,6 @@ namespace NHR
             yield return new WaitForSeconds(1.5f);
             Debug.Log("end");
             this.isDone = true;
-            this.isDone = true;
         }
     }
 
