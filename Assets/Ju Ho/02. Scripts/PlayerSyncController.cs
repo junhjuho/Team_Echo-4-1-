@@ -1,12 +1,6 @@
 using Photon.Pun;
-using SeongMin;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
-using static UnityEngine.UI.Image;
 
 public class PlayerSyncController : MonoBehaviour
 {
@@ -25,11 +19,6 @@ public class PlayerSyncController : MonoBehaviour
     Transform headRig;
     Transform leftHandRig;
     Transform rightHandRig;
-
-    Transform lefttHandIK_hint;
-    Transform rightHandIK_hint;
-
-    RaycastHit hitInfo;
 
     void Start()
     {
@@ -52,7 +41,7 @@ public class PlayerSyncController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(headRig.position);
+        //Debug.Log(headRig.position);
 
         if (pv.IsMine) // xr origin과 싱크 오브젝트 동기화(포톤으로 넘겨주기 위한)
         {

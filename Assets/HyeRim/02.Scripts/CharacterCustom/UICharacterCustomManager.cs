@@ -25,7 +25,7 @@ namespace NHR
     {
         //선택된 캐릭터, 컬러
         public UICharacterSlot selectedCharacter;
-        public UIClothesColor selectedClothesColor;
+        //public UIClothesColor selectedClothesColor;
 
         //옵저버 관리열
         private List<ICharacterObserver> observers = new List<ICharacterObserver>();
@@ -35,10 +35,7 @@ namespace NHR
         public UICharacterSlot[] slots;
 
         //옷 컬러 슬롯들
-        public UIClothesColor[] colors;
-
-        //타이틀로 가는 버튼
-        public Button buttonClose;
+        //public UIClothesColor[] colors;
 
         private void Awake()
         {
@@ -67,26 +64,21 @@ namespace NHR
                 this.slots[i].imageCharacter.sprite = Resources.Load<Sprite>(data.texturePath);
             }
             //옷 컬러들
-            for (int i = 0; i < this.colors.Length; i++) this.colors[i].index = i;
+            //for (int i = 0; i < this.colors.Length; i++) this.colors[i].index = i;
 
             //인포에 저장된 캐릭터 불러오기
             this.selectedCharacter = this.slots[InfoManager.Instance.PlayerInfo.nowCharacterId];
-            this.selectedClothesColor = this.colors[InfoManager.Instance.PlayerInfo.nowClothesColorIndex];
-
-            //this.selectedCharacter = this.slots[0];
-            //this.selectedClothesColor = this.colors[0];
-
-            //디폴트로 선택된 캐릭터/색 활성화
-            this.selectedCharacter.OnSelected();
-            this.selectedClothesColor.selectedGo.SetActive(true);
-
-            this.gameObject.SetActive(false);
+            //this.selectedClothesColor = this.colors[InfoManager.Instance.PlayerInfo.nowClothesColorIndex];
 
         }
 
         private void Start()
         {
             Debug.Log("UICharacterCustomManager start");
+
+            //디폴트로 선택된 캐릭터/색 활성화
+            this.selectedCharacter.OnSelected();
+            //this.selectedClothesColor.selectedGo.SetActive(true);
 
 
             //버튼들 관리, 클릭 시 OnBtnClick 함수 호출
@@ -95,10 +87,10 @@ namespace NHR
                 slot.buttonCharacterSlot.onClick.AddListener(() => OnBtnClick(slot));
             }
 
-            foreach(UIClothesColor color in this.colors)
-            {
-                color.btnColor.onClick.AddListener(() => OnBtnColorClick(color));
-            }
+            //foreach(UIClothesColor color in this.colors)
+            //{
+            //    color.btnColor.onClick.AddListener(() => OnBtnColorClick(color));
+            //}
 
         }
 
@@ -116,36 +108,31 @@ namespace NHR
                 this.UpdateObservers();
             }
         }
-        private void OnBtnColorClick(UIClothesColor color)
-        {
-            //버튼 클릭 시 옵저버들 업데이트, 옷 컬러
-            Debug.LogFormat("{0} clicked", color);
-            //이전 선택한 것과 같지 않다면
-            if (this.selectedClothesColor != color)
-            {
-                this.selectedClothesColor.selectedGo.SetActive(false);
-                this.selectedClothesColor = color;
-                this.selectedClothesColor.selectedGo.SetActive(true);
-                this.UpdateObservers();
-            }
-        }
+        //private void OnBtnColorClick(UIClothesColor color)
+        //{
+        //    //버튼 클릭 시 옵저버들 업데이트, 옷 컬러
+        //    Debug.LogFormat("{0} clicked", color);
+        //    //이전 선택한 것과 같지 않다면
+        //    if (this.selectedClothesColor != color)
+        //    {
+        //        this.selectedClothesColor.selectedGo.SetActive(false);
+        //        this.selectedClothesColor = color;
+        //        this.selectedClothesColor.selectedGo.SetActive(true);
+        //        this.UpdateObservers();
+        //    }
+        //}
         public void UpdateObservers()
         {
             Debug.Log("Update Observers");
-            Debug.LogFormat("num : {0}, color name : {1}", this.selectedCharacter, this.selectedClothesColor);
-            InfoManager.Instance.EditPlayerInfo(this.selectedCharacter.characterNum, this.selectedClothesColor.index, this.selectedClothesColor.textureName);
+            //Debug.LogFormat("num : {0}, color name : {1}", this.selectedCharacter, this.selectedClothesColor);
+            InfoManager.Instance.EditPlayerInfo(this.selectedCharacter.characterNum, 0, "Blue");
 
             //모든 옵저버 업데이트하기
             foreach (ICharacterObserver observer in observers)
             {
-                observer.ObserverUpdate(this.selectedCharacter.characterNum, this.selectedClothesColor.textureName);
+                observer.ObserverUpdate(this.selectedCharacter.characterNum, "Blue");
             }
 
-            //curvedUI 업데이트
-            //EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Update_CurvedUI);
-            //canvasRender.UpdateCamera();
-            //canvasMeshRenderer.UpdateUI();
-            //this.canvasRender.UpdateCurved();
         }
 
         public void RemoveObserver(ICharacterObserver observer)

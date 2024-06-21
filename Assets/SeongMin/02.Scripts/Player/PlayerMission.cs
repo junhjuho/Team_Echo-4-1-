@@ -62,8 +62,7 @@ namespace SeongMin
                 {
                     Debug.Log("<color=red>괴물 변신 완료</color>");
                     //괴물 모델로 바뀐걸 모든 플레이어에게 동기화 하기
-                    photonView.RPC("CharacterChange", RpcTarget.AllBuffered, "Chaser");
-                    GameManager.Instance.inGameMapManager.PlayerPositionSetting();
+                    photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
                 }
                 GameManager.Instance.roundTimer.MonsterTimerStart();
             }));

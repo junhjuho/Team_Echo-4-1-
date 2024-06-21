@@ -50,12 +50,6 @@ namespace SeongMin
             }
         }
 
-        //[PunRPC]
-        //protected void InitPlayerSetting()
-        //{
-        //    if (this.playerController != null) this.playerController.Init();
-        //}
-
     }
 
 }
