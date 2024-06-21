@@ -5,18 +5,22 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using static SeongMin.ItemObject;
 
 namespace Jaewook
 {
     public class XRInteractableCustom : XRGrabInteractable
     {
-
+        ItemObject itemObject;
         void Start()
         {
             this.selectEntered.AddListener(SelectEvent);
             this.selectExited.AddListener(ReleaseEvent);
             this.activated.AddListener(ActivatingEvent);
-
+            if(this.gameObject.TryGetComponent(out ItemObject item))
+            {
+                itemObject = this.gameObject.GetComponent<ItemObject>();
+            }
         }
 
 
@@ -31,6 +35,10 @@ namespace Jaewook
                 canvas.text.gameObject.SetActive(true);
                 canvas.text.text = this.gameObject.name;
             }
+            if(itemObject != null&&itemObject.charactorValue == CharactorValue.chaser)
+            {
+                itemObject.fx.SetActive(true);
+            }
         }
         public void OnTriggerExit(Collider other)
         {
@@ -39,6 +47,10 @@ namespace Jaewook
                 var canvas = GameDB.Instance.itemInfomationCanvas;
                 canvas.image.SetActive(false);
                 canvas.text.gameObject.SetActive(false);
+            }
+            if (itemObject != null && itemObject.charactorValue == CharactorValue.chaser)
+            {
+                itemObject.fx.SetActive(false);
             }
         }
 

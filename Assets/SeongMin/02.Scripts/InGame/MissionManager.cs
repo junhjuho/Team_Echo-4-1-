@@ -40,6 +40,12 @@ namespace SeongMin
             {
                 GameDB.Instance.playerMission.playerMissionArray[j] = 
                     GameManager.Instance.inGameMapManager.inGameRunnerItemList[_intArray[i]];
+                //내가 복수자가 아니면 분배 받은 도망자용 아이템 미니맵에 띄우기 
+                if(GameDB.Instance.playerMission.playerMissionArray[j].TryGetComponent(out ItemObject _itemobject)
+                    && GameDB.Instance.playerMission.isChaser == false)
+                {
+                    _itemobject.miniMap.SetActive(true);
+                }
                 j++;
             }
             EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Get_Mission);
@@ -52,6 +58,9 @@ namespace SeongMin
                 {
                     GameDB.Instance.playerMission.chaserMissionArray[i] =
                         GameManager.Instance.inGameMapManager.inGameChaserItemList[i];
+                    //내가 복수자면 분배 받은 복수자용 아이템 미니맵에 띄우기 
+                    if (GameDB.Instance.playerMission.chaserMissionArray[i].TryGetComponent(out ItemObject _itemObject))
+                        _itemObject.miniMap.SetActive(true);
                 }
             }
             // 협업미션을 수행해야하면 주기
