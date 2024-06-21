@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace SeongMin
 {
-    public class AIRunner : MonoBehaviour
+    public class AIRunner : MonoBehaviour,IDamageable
     {
         private WaitForSecondsRealtime oneSecond = new WaitForSecondsRealtime(1f);
         private WaitUntil nextThink;
@@ -87,6 +87,21 @@ namespace SeongMin
             rand = Random.Range(0, GameManager.Instance.inGameMapManager.inGameItemPositionList.Count);
             targetPosition = GameManager.Instance.inGameMapManager.inGameItemPositionList[rand];
             agent.SetDestination(targetPosition.position);
+        }
+
+        public void OnHit(Collider other)
+        {
+            if(other.gameObject.name == "fireaxe")
+            {
+                agent.speed = 0;
+                state = State.Die;
+                animator.SetTrigger("isDie");
+                Invoke("Die", 0.5f);
+            }
+        }
+        public void Die()
+        {
+            this.gameObject.SetActive(false);
         }
     }
 

@@ -64,7 +64,7 @@ namespace SeongMin
                     //괴물 모델로 바뀐걸 모든 플레이어에게 동기화 하기
                     photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
                 }
-                GameManager.Instance.roundTimer.MonsterTimerStart();
+                //GameManager.Instance.roundTimer.MonsterTimerStart();
             }));
         }
         public bool MissionItemCheck(GameObject _item, GameObject[] _array)
@@ -113,7 +113,6 @@ namespace SeongMin
             {
                 currentRunnerCharacrer.gameObject.SetActive(true);
                 chaserPrefab.SetActive(false);
-                GameManager.Instance.inGameMapManager.ChaserItemResetting();
             }
         }
     }
