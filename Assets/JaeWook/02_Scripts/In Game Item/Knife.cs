@@ -30,7 +30,7 @@ namespace Jaewook
         }
 
 
-        public void OnGrab()
+        public virtual void OnGrab()
         {
             // 잡으면 오브젝트 자체를 없애기
             gameObject.SetActive(false);
