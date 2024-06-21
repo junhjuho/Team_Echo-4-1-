@@ -24,7 +24,7 @@ namespace Jaewook
         /// </summary>
         void Awake()
         {
-            UIManager.Instance.titleSceneController = this;
+            // UIManager.Instance.titleSceneController = this;
             Transform uiTitle = GameObject.Find("UITitle").transform;
 
             // TitleText와 StartButton을 이름으로 찾아 할당
