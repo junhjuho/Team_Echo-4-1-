@@ -54,10 +54,12 @@ namespace NHR
 
                 //remove 할 아이템 인덱스가 존재하면 remove
                 var removeIndex = DataManager.Instance.GetTutorialData(this.currentIndex).removeTartgetIndex;
-                if ((removeIndex!=1))
+                Debug.LogFormat("currentIndex : {0}, removeIndex : {1}", this.currentIndex, removeIndex);
+                if ((removeIndex != -1))
                 {
                     this.questObjectManager.removeObjects[removeIndex].gameObject.SetActive(false);
                 }
+                this.currentIndex++;
                 this.nowQuestIndex++;
             }));
 
@@ -81,6 +83,8 @@ namespace NHR
                         //퀘스트 조건 설정
                         this.isClearQuest = false;
                         this.questObjectManager.questObjects[this.nowQuestIndex].gameObject.SetActive(true);
+                        Debug.LogFormat("currentIndex : {0}, removeIndex : {1}", this.currentIndex, data.removeTartgetIndex);
+                        if (data.removeTartgetIndex != -1) this.questObjectManager.removeObjects[data.removeTartgetIndex].gameObject.SetActive(true);
                         yield return null;
                     }
                     if (this.currentIndex == 2)
@@ -90,6 +94,7 @@ namespace NHR
                     }
                     this.isDone = false;
                     StartCoroutine(CTypingDialog(data.dialog));
+                    if (this.isClearQuest) this.currentIndex++;
                 }
             }
         }
@@ -104,7 +109,7 @@ namespace NHR
             }
             yield return new WaitForSeconds(1.5f);
             Debug.Log("end");
-            this.currentIndex++;
+            this.isDone = true;
             this.isDone = true;
         }
     }
