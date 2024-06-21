@@ -20,7 +20,7 @@ namespace NHR
             App, Title, Lobby, InGame, Loading, Tutorial, CharacterCustom
         }
         //ÇöÀç ¾À
-        private eSceneType nowScene = eSceneType.Title;
+        public eSceneType nowScene = eSceneType.Title;
         //ÀÌÀü ¾À
         private eSceneType preScene = eSceneType.Title;
 
