@@ -1,12 +1,6 @@
 using Photon.Pun;
-using SeongMin;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
-using static UnityEngine.UI.Image;
 
 public class PlayerSyncController : MonoBehaviour
 {
@@ -26,10 +20,6 @@ public class PlayerSyncController : MonoBehaviour
     Transform leftHandRig;
     Transform rightHandRig;
 
-    Transform lefttHandIK_hint;
-    Transform rightHandIK_hint;
-
-    RaycastHit hitInfo;
 
     void Start()
     {

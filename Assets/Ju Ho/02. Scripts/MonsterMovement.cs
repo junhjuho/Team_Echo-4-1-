@@ -1,9 +1,6 @@
 using SeongMin;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public class MonsterMovement : PlayerMovement
 {
@@ -29,7 +26,6 @@ public class MonsterMovement : PlayerMovement
         }
     }
 
-
     private void Update()
     {
         PlayerMove();
@@ -40,7 +36,7 @@ public class MonsterMovement : PlayerMovement
         if (pv.IsMine)
         {
             base.PlayerMove();
-            moveProvider.moveSpeed = 4f;
+            moveProvider.moveSpeed = 3f;
             animator.SetFloat("Walk", dir.magnitude); 
         }
     }

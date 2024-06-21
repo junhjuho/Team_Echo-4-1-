@@ -1,3 +1,4 @@
+using Photon.Pun;
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace NHR
             EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
             {
                 this.heart = heart - 1;
+                if (this.heart <= 0)
+                    GameManager.Instance.roundManager.photonView.RPC("AllPlayerLobbySceneLoad", RpcTarget.MasterClient);
             }));
 
         }
