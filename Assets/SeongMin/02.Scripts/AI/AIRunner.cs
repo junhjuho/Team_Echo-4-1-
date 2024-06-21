@@ -22,7 +22,7 @@ namespace SeongMin
             Idle,
             Move
         }
-        State state = State.Idle;
+        public State state = State.Idle;
         private void Awake()
         {
             nextThink = new WaitUntil(() => changeState);
