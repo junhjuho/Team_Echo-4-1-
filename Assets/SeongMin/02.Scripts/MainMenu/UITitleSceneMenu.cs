@@ -96,7 +96,7 @@ namespace SeongMin
 
             // 게임시작 -> 튜토리얼 씬 전환 버튼 할당, 
             startButton.onClick.AddListener(() =>
-            EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Tutorial));
+            EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Lobby));
 
             /*
             gameInfoButton.onClick.AddListener(() =>
