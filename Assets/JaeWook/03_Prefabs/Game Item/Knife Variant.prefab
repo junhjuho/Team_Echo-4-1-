@@ -241,9 +241,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1289100062823888, guid: 3561d375b004832418eaf9271450e06f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8847374592430074177}
-    - targetCorrespondingSourceObject: {fileID: 1289100062823888, guid: 3561d375b004832418eaf9271450e06f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -5198062788596612985}
     - targetCorrespondingSourceObject: {fileID: 1289100062823888, guid: 3561d375b004832418eaf9271450e06f, type: 3}
       insertIndex: -1
@@ -254,6 +251,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1289100062823888, guid: 3561d375b004832418eaf9271450e06f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4048436449576492774}
+    - targetCorrespondingSourceObject: {fileID: 1289100062823888, guid: 3561d375b004832418eaf9271450e06f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 19918127204830535}
     - targetCorrespondingSourceObject: {fileID: 1295194218107404, guid: 3561d375b004832418eaf9271450e06f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8976894074898802024}
@@ -273,22 +273,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1289100062823888, guid: 3561d375b004832418eaf9271450e06f, type: 3}
   m_PrefabInstance: {fileID: 6611204162081146024}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8847374592430074177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6609915659994091896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb5caf4e7ad1134899f5f09e10db3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneValue: 2
-  charactorValue: 1
-  itemValue: 0
-  isFind: 0
 --- !u!114 &-5198062788596612985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,11 +492,24 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  lookAxis: 1
-  targetTf: {fileID: 0}
-  isTargetCamera: 1
-  uiGo: {fileID: 0}
-  txtGo: {fileID: 0}
+--- !u!114 &19918127204830535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609915659994091896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e06c48593c167f429d1ef2e33d46ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneValue: 2
+  charactorValue: 1
+  itemValue: 0
+  isFind: 0
+  particleSys: {fileID: 0}
+  playerMission: {fileID: 0}
 --- !u!1 &6609928351218357924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1295194218107404, guid: 3561d375b004832418eaf9271450e06f, type: 3}

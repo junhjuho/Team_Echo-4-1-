@@ -14,29 +14,41 @@ namespace Jaewook
     {
         [Header("파티클 효과")]
         public ParticleSystem particleSys;
+        public PlayerMission playerMission;
 
         private void Start()
         {
             base.Start();
 
-            particleSys = GetComponent<ParticleSystem>();
+            playerMission = GameDB.Instance.playerMission;
+            particleSys = GetComponentInChildren<ParticleSystem>();
 
             // 파티클효과 상시 유지
             particleSys.Play();
 
         }
 
+        
+              
+
         public void OnGrab()
         {
-            // 잡으면 파티클 끄기
-            if (particleSys != null)
-            {
-                particleSys.Stop();
-            }
+            // 잡으면 오브젝트 자체를 없애기
+            gameObject.SetActive(false);
 
+            // 변신
+            if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
+            {
+                // 복수자로 캐릭터 변경
+                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
+                // 카운팅 초기화
+                playerMission.chaserMissionClearCount = 0;
+            }
         }
 
-            public void OnRelease()
+      
+
+        public void OnRelease()
         {
             throw new System.NotImplementedException();
         }
@@ -45,33 +57,6 @@ namespace Jaewook
         {
             throw new System.NotImplementedException();
         }
-
-        // [Header("chaser 아이템 할당")]
-        // public List<GameObject> inGameChaserItems = GameManager.Instance.inGameMapManager.inGameChaserItemList;
-        // [Header("chaser 아이템은 chaser에게만 보이기")]
-        // public List<GameObject> chaserItemList = GameManager.Instance.inGameMapManager.inGameChaserItemList;
-        // [Header("chaser인지 아닌지 확인")]
-        // public CharactorValue charValue = CharactorValue.chaser;
-        //[Header("배정받은 복수자 미션 아이템 리스트")]
-        //public GameObject[] chaserMA = GameDB.Instance.playerMission.chaserMissionArray;
-
-        /*
-        private void Awake()
-        {
-            
-        }
-        */
-
-            /*
-            for (int i = 0; i < chaserMA.Length; i++)
-            {
-                if (this.gameObject == chaserMA[i])
-                {
-                    // 이 오브젝트가 chaser에게 배정된 아이템이면 보이기
-                    // 그럼 플레이어 정보는 어디서 가져오지..?
-                }
-            }
-            */
 
 
     }
