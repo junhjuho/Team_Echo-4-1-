@@ -20,7 +20,6 @@ namespace SeongMin
             base.Start();
             photonView = GetComponent<PhotonView>();
             this.selectEntered.AddListener(SelectEvent);
-            this.selectExited.AddListener(SelectExitEvent);
             this.hoverEntered.AddListener(HoverEvent);
             this.hoverExited.AddListener(HoverEventExit);
         }
