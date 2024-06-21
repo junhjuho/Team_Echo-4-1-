@@ -83,6 +83,7 @@ namespace NHR
                         //퀘스트 조건 설정
                         this.isClearQuest = false;
                         this.questObjectManager.questObjects[this.nowQuestIndex].gameObject.SetActive(true);
+                        Debug.LogFormat("currentIndex : {0}, removeIndex : {1}", this.currentIndex, data.removeTartgetIndex);
                         if (data.removeTartgetIndex != -1) this.questObjectManager.removeObjects[data.removeTartgetIndex].gameObject.SetActive(true);
                         yield return null;
                     }
