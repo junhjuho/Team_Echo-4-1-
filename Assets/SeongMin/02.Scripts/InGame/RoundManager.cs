@@ -191,6 +191,11 @@ namespace SeongMin
             currentRoundPlayersMissionPerSent = 0;
 
         }
+        [PunRPC]
+        public void AllPlayerLobbySceneLoad()
+        {
+            PhotonNetwork.LoadLevel("LobbyScene 1");
+        }
         //[PunRPC]
         //protected void InitPlayerSetting()
         //{
