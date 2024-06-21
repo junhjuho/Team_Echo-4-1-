@@ -145,13 +145,14 @@ namespace SeongMin
             {
                 if (currentRoundPlayersMissionPerSent >= needPersent)
                 {
-                    PhotonNetwork.LoadLevel("LobbyScene 1");
-                    /*//TODO 승리 전환 완료 되면 마지막 미션으로 파이널 키 맵에 생기게 할 것인지 논의 필오함
+                    // 파이털 키 생성하기
                     GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
                     PhotonNetwork.Instantiate("FinalKey", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
-                    */
-                    //TODO 도망자의 승리 이므로 승리 이벤트 띄우기 
-                }
+                    // 탈출 지점 2개 생성하기
+                    GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
+                    PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[0].position,Quaternion.identity);
+                    PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[1].position,Quaternion.identity);
+    }
                 else // 그게 아니라면, 모든 플레이어에게 전체 미션 진행도 공유하기
                 {
                     photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);

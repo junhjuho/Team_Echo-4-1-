@@ -33,6 +33,8 @@ namespace SeongMin
         public XROriginBugFixed xrOriginBugFixedObject;
         [Header("인게임 아이템 정보UI")]
         public ItemInfomationCanvas itemInfomationCanvas;
+        [Header("탈출 지점 리스트")]
+        public List<Transform> escapeDoorPositionList;
 
         public void Shuffle(int[] _array)
         {
