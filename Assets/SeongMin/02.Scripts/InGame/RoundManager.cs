@@ -48,7 +48,7 @@ namespace SeongMin
             // 방장이면 맵 세팅 실행
             if (PhotonNetwork.IsMasterClient)
                 RoundMapSetting();
-            // 내 클라이언트의 데이터 초기화 하기
+            // 내 클라이언트의 공용 데이터 초기화 하기
             InGamePublicDataReset();
             // 내 클라이언트의 라운드 데이터 초기화하기
             RoundPlayerDataReset();
