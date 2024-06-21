@@ -35,6 +35,7 @@ namespace SeongMin
             yield return new WaitUntil(() => PhotonNetwork.IsConnected);
             while (state != State.Die)
             {
+                yield return nextThink;
                 switch (state)
                 {
                     case State.Idle:
@@ -45,7 +46,6 @@ namespace SeongMin
                         StartCoroutine(Move());
                         break;
                 }
-                yield return nextThink;
                 changeState = false;
             }
             yield break;
@@ -73,7 +73,7 @@ namespace SeongMin
             animator.SetFloat("isSpeed", 1f);
             while (state == State.Move)
             {
-                if (Vector3.Distance(this.transform.position, targetPosition.position) < 3f)
+                if (Vector3.Distance(this.transform.position, targetPosition.position) < 5f)
                 {
                     state = State.Idle;
                     changeState = true;

@@ -14,12 +14,14 @@ namespace NHR
         }
         public void Init()
         {
+            /*
             //키 측정 유무
             this.uiKeyboard.gameObject.SetActive(false);
             if (InfoManager.Instance.HeightInfo.height==0)
             {
                 this.uiKeyboard.gameObject.SetActive(true);
             }
+            */
         }
     }
 

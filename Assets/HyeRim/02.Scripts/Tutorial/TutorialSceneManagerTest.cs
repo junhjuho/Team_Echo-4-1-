@@ -51,6 +51,13 @@ namespace NHR
                 Debug.Log("Clear_TutorialQuest");
                 this.isClearQuest = true;
                 this.uiTutorialPlayer.textDialog.text = "";
+
+                //remove 할 아이템 인덱스가 존재하면 remove
+                var removeIndex = DataManager.Instance.GetTutorialData(this.currentIndex).removeTartgetIndex;
+                if ((removeIndex!=1))
+                {
+                    this.questObjectManager.removeObjects[removeIndex].gameObject.SetActive(false);
+                }
                 this.nowQuestIndex++;
             }));
 

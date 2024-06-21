@@ -11,7 +11,7 @@ namespace Jaewook
     public class Battery : ItemObject, IItem
     {
         FlashLight flashlight;
-        public void OnGrab()
+        public virtual void OnGrab()
         {
             flashlight = GameDB.Instance.myFlashLight;
 

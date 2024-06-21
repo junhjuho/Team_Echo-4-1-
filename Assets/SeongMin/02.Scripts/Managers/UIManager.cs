@@ -1,3 +1,4 @@
+using Jaewook;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,5 +23,7 @@ namespace SeongMin
         public UITitleSceneMenu titleSceneMenu;
         public UILobbySceneMenu robbySceneMenu;
         public UIInGameSceneMenu inGameSceneMenu;
+        // юс╫ц
+        // public TitleSceneController titleSceneController;
     }
 }

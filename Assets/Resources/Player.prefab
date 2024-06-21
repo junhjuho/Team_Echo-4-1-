@@ -2663,7 +2663,7 @@ GameObject:
   - component: {fileID: 6475554866602124036}
   m_Layer: 0
   m_Name: Frank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3174,7 +3174,7 @@ GameObject:
   - component: {fileID: 568239553882724931}
   m_Layer: 0
   m_Name: MJ
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10561,6 +10561,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 5543160392446795685}
   - {fileID: 479101846059634882}
   - {fileID: 5230459196823382439}
   - {fileID: 5530197642181525178}
@@ -15926,7 +15927,7 @@ GameObject:
   - component: {fileID: 7799693496687141074}
   m_Layer: 0
   m_Name: Jake
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23414,11 +23415,11 @@ GameObject:
   - component: {fileID: 5070962191848955554}
   m_Layer: 0
   m_Name: zombie
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9132861521565619948
 Transform:
   m_ObjectHideFlags: 0

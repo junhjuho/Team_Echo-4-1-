@@ -7,4 +7,5 @@ public class TutorialData
     public int id;
     public string dialog;
     public int type;
+    public int removeTartgetIndex;
 }
