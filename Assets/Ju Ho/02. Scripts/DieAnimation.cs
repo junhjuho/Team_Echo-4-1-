@@ -15,5 +15,4 @@ public class DieAnimation : MonoBehaviour
     {
         animator.SetTrigger(animationName);
     }
-
 }
