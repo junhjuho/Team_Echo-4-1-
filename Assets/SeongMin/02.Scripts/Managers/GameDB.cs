@@ -31,6 +31,8 @@ namespace SeongMin
         public bool isWin = false;
         [Header("XROrigin 버그 픽스용 오브젝트")]
         public XROriginBugFixed xrOriginBugFixedObject;
+        [Header("인게임 아이템 정보UI")]
+        public ItemInfomationCanvas itemInfomationCanvas;
 
         public void Shuffle(int[] _array)
         {

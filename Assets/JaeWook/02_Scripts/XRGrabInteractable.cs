@@ -10,20 +10,6 @@ namespace Jaewook
 {
     public class XRInteractableCustom : XRGrabInteractable
     {
-        //public enum Axis
-        //{
-        //    X,
-        //    Y,
-        //    Z
-        //}
-
-        //public Axis lookAxis = Axis.Y;
-
-        //public Transform targetTf;
-        //public bool isTargetCamera = true;
-
-        //public GameObject uiGo;
-        //public GameObject txtGo;
 
         void Start()
         {
@@ -31,39 +17,30 @@ namespace Jaewook
             this.selectExited.AddListener(ReleaseEvent);
             this.activated.AddListener(ActivatingEvent);
 
-            //if (isTargetCamera)
-            //{
-            //    targetTf = Camera.main.transform;
-            //}
-
-            //this.txtGo.SetActive(false);
-            //this.uiGo.SetActive(false);
-            //this.txtGo.GetComponent<TMP_Text>().text = this.name;
-
         }
-        //private void OnBecameVisible()
-        //{
-        //    //시야각에 들어왔을 때 상호작용 가능 UI 보여줌
-        //    Debug.Log("OnBecameVisible");
-        //    this.uiGo.SetActive(true);
-        //    //StartCoroutine(CLookCamera(this.uiGo));
-        //}
-        //private void OnBecameInvisible()
-        //{
-        //    //시야각에서 빠져나왔을 때 상호작용 가능 UI 없어짐
-        //    Debug.Log("OnBecameInvisible");
-        //    this.uiGo.SetActive(true);
-        //    //StopAllCoroutines();
-        //}
 
-        //public void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.CompareTag("Player"))
-        //    {
-        //        Debug.Log("PlayerCollision");
-        //        this.txtGo.SetActive(true);
-        //    }
-        //}
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.TryGetComponent(out PlayerMovement player))
+            {
+                var canvas = GameDB.Instance.itemInfomationCanvas;
+                canvas.transform.position = this.transform.position+(Vector3.up*2f);
+                canvas.gameObject.transform.LookAt(player.transform.position);
+                canvas.image.SetActive(true);
+                canvas.text.gameObject.SetActive(true);
+                canvas.text.text = this.gameObject.name;
+            }
+        }
+        public void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out PlayerMovement player))
+            {
+                var canvas = GameDB.Instance.itemInfomationCanvas;
+                canvas.image.SetActive(false);
+                canvas.text.gameObject.SetActive(false);
+            }
+        }
 
         /// <summary>
         /// Active 활성 -> OnUse();

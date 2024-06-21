@@ -20,6 +20,7 @@ public class PlayerSyncController : MonoBehaviour
     Transform leftHandRig;
     Transform rightHandRig;
 
+
     void Start()
     {
         pv = this.GetComponent<PhotonView>();
