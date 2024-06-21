@@ -18,6 +18,10 @@ namespace SeongMin
                 Destroy(gameObject);
             DontDestroyOnLoad(gameObject);
         }
+        // jaewook 임시 추가
+        [Header("타이틀 씬 매니저")]
+        public TitleSceneManager TitleSceneManager;
+
         [Header("튜토리얼 씬 매니저")]
         public TutorialSceneManager tutorialSceneManager;
         [Header("로비 씬 매니저")]

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NHR;
 using SeongMin;
 using UnityEngine;
 
@@ -50,13 +51,13 @@ namespace Jaewook
 
         }
 
-        public void OnGrab()
+        public virtual void OnGrab()
         {
-            
+
             
         }
 
-        public void OnUse()
+        public virtual void OnUse()
         {
             if(this.hasBattery)
             {

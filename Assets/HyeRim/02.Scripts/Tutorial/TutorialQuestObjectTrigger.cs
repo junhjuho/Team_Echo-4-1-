@@ -4,17 +4,22 @@ using UnityEngine;
 
 namespace NHR
 {
-    public class TutorialQuestObjectTrigger : MonoBehaviour
+    public class TutorialQuestObjectTrigger : MonoBehaviour, ITutorialQuestObject
     {
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 Debug.Log("Player in");
-                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Clear_TutorialQuest);
-                this.gameObject.SetActive(false);
+                this.SendEventClear();
+                //this.gameObject.SetActive(false);
             }
         }
+        public void SendEventClear()
+        {
+            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Clear_TutorialQuest);
+        }
+
     }
 
 }
