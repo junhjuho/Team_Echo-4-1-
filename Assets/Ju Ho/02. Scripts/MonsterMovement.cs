@@ -1,9 +1,6 @@
 using SeongMin;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public class MonsterMovement : PlayerMovement
 {

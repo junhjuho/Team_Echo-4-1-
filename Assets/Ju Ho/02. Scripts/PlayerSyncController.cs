@@ -1,12 +1,6 @@
 using Photon.Pun;
-using SeongMin;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
-using static UnityEngine.UI.Image;
 
 public class PlayerSyncController : MonoBehaviour
 {
