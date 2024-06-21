@@ -22,10 +22,6 @@ namespace Jaewook
             base.Start();
 
             playerMission = GameDB.Instance.playerMission;
-            particleSys = GetComponentInChildren<ParticleSystem>();
-
-            // 파티클효과 상시 유지
-            particleSys.Play();
 
         }
 
