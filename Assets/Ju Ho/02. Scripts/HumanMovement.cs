@@ -1,20 +1,63 @@
 using NHR;
 using UnityEngine;
+using UnityEngine.InputSystem.Processors;
 using UnityEngine.SceneManagement;
 
-public class HumanMovement : PlayerMovement
+public class HumanMovement : PlayerMovement, IDamageable
 {
+    public MonsterMovement monsterMovement;
     public bool isRunBtnDown;
-    UIPlayer uiPlayer;
-    Scene scene;
+    public GameObject FireAxe;
     bool isEnergyDown;
+    bool isDie;
+
+    UIPlayer uiPlayer;
+
+    Scene scene;
+
     PlayerSyncController playerSyncController;
+
+    public Animator[] deadAnims;
+
+
+    public void OnEnable()
+    {
+        isDie = false;
+    }
 
     public override void Start()
     {
         base.Start();
         scene = SceneManager.GetActiveScene();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
+    }
+
+    void OnDisable()
+    {
+        if (isDie && pv.IsMine)
+        {
+            Vector3 zombiePos = monsterMovement.transform.position - this.transform.position;
+            zombiePos.Normalize();
+            float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
+
+            string dirDie = attackPos > 0 ? "Backward Die" : "Forward Die";
+
+            for(int i = 0; i < deadAnims.Length; i++)
+            {
+                if(this.gameObject.name + "Die Model" == deadAnims[i].gameObject.name)
+                {
+                    if(TryGetComponent(out DieAnimation dieanimation))
+                    {
+                        dieanimation.PlayerDieAnimation(dirDie);
+
+                    }
+                }
+            }
+
+            var heart = SeongMin.GameManager.Instance.playerManager.heart;
+            EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
+            heart--;
+        }
     }
 
     void Update()
@@ -72,26 +115,21 @@ public class HumanMovement : PlayerMovement
 
     public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.name);
-        if (pv.IsMine && other.gameObject.layer == 13) 
-        {
-            Vector3 zombiePos = other.transform.position - this.transform.root.GetChild(3).position;
-            zombiePos.Normalize();
-            float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
-
-            string dirDie = attackPos > 0 ? "Forward Die" : "Backward Die";
-
-            animator.SetTrigger(dirDie);
-
-            var heart = SeongMin.GameManager.Instance.playerManager.heart;
-            EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
-            heart--;
-        }
+        OnHit(other);
     }
 
     void RespawnPlayer()
     {
         playerSyncController.origin.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
+    }
+
+    public void OnHit(Collider other)
+    {
+        if (pv.IsMine && other.gameObject.name == "fireaxe")
+        {
+            isDie = true;
+            this.gameObject.SetActive(false);
+        }
     }
 }
