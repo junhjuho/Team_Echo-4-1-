@@ -41,7 +41,7 @@ public class PlayerSyncController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(headRig.position);
+        //Debug.Log(headRig.position);
 
         if (pv.IsMine) // xr origin과 싱크 오브젝트 동기화(포톤으로 넘겨주기 위한)
         {

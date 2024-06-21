@@ -30,7 +30,6 @@ namespace SeongMin
                 int[] _intArray = GameManager.Instance.inGameMapManager.inGameRunnerItemNumberArray;
                 photonView.RPC("MissionSend", PhotonNetwork.PlayerList[i], _minValue, _maxValue, _intArray);
             }
-            //EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Get_Mission);
         }
         [PunRPC]
         public void MissionSend(int _minValue, int _maxValue, int[] _intArray)

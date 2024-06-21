@@ -23,19 +23,19 @@ namespace NHR
             this.subjectUI.UpdateObservers();
 
             //버튼 이벤트
-            this.subjectUI.buttonClose.onClick.AddListener(() =>
-            {
-                Debug.Log("buttonExit clicked");
+            //this.subjectUI.buttonClose.onClick.AddListener(() =>
+            //{
+            //    Debug.Log("buttonExit clicked");
 
-                //선택된 캐릭터 인포 저장
-                InfoManager.Instance.EditPlayerInfo
-                (this.subjectUI.selectedCharacter.characterNum, this.subjectUI.selectedClothesColor.index, this.subjectUI.selectedClothesColor.textureName);
+            //    //선택된 캐릭터 인포 저장
+            //    InfoManager.Instance.EditPlayerInfo
+            //    (this.subjectUI.selectedCharacter.characterNum, this.subjectUI.selectedClothesColor.index, this.subjectUI.selectedClothesColor.textureName);
 
-                //Close 누르면 닫기
-                this.characterCustomManager.gameObject.SetActive(false);
-                //EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Title);
-                //SceneManager.LoadScene("TitleScene");
-            });
+            //    //Close 누르면 닫기
+            //    this.characterCustomManager.gameObject.SetActive(false);
+            //    //EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Title);
+            //    //SceneManager.LoadScene("TitleScene");
+            //});
 
         }
     }
