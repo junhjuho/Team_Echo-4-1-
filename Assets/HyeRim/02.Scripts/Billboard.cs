@@ -7,7 +7,8 @@ public class Billboard : MonoBehaviour
     {
         X,
         Y,
-        Z
+        Z, 
+        None
     }
 
     public Axis lookAxis = Axis.Y;

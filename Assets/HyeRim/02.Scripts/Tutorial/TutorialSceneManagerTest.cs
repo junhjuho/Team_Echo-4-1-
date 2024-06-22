@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,12 +11,19 @@ namespace NHR
         public UITutorialPlayer uiTutorialPlayer;
 
         //index 0번 : 달성 dialog
+        [Header("총 인덱스 수")]
         public int totalIndex; //0번을 제외한 총 인덱스 수
-        private int currentIndex;   //현재 인덱스
+        [Header("현재 인덱스")]
+        public int currentIndex;   //현재 인덱스
 
         //퀘스트 오브젝트 인덱스
+        [Header("튜토리얼 퀘스트 Manager")]
         public TutorialQuestObjectManager questObjectManager;
+        [Header("현재 퀘스트 인덱스")]
         private int nowQuestIndex = 0;
+
+        [Header("현재 퀘스트 장소 오브젝트")]
+        public GameObject questPosArrow;
 
         //현재 dialog 출력을 완료했는가?
         private bool isDone;
@@ -41,6 +49,11 @@ namespace NHR
             this.currentIndex = 1;
 
             this.nowQuestIndex = 0;
+
+            //폰트 원래대로
+            this.uiTutorialPlayer.textDialog.color = Color.white;
+            this.uiTutorialPlayer.textDialog.fontStyle = FontStyles.Normal;
+
         }
 
         private IEnumerator Start()
@@ -52,13 +65,11 @@ namespace NHR
                 this.isClearQuest = true;
                 this.uiTutorialPlayer.textDialog.text = "";
 
-                //remove 할 아이템 인덱스가 존재하면 remove
-                var removeIndex = DataManager.Instance.GetTutorialData(this.currentIndex).removeTartgetIndex;
-                Debug.LogFormat("currentIndex : {0}, removeIndex : {1}", this.currentIndex, removeIndex);
-                if ((removeIndex != -1))
-                {
-                    this.questObjectManager.removeObjects[removeIndex].gameObject.SetActive(false);
-                }
+                var questObject = this.questObjectManager.questObjects[this.currentIndex];
+                if (this.currentIndex == 5) questObject.GetComponent<TutorialQuestObjectTrigger>().isQuestDone = true;
+
+                this.questPosArrow.SetActive(false);
+                this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(false);
                 this.currentIndex++;
                 this.nowQuestIndex++;
             }));
@@ -82,9 +93,21 @@ namespace NHR
                     {
                         //퀘스트 조건 설정
                         this.isClearQuest = false;
-                        this.questObjectManager.questObjects[this.nowQuestIndex].gameObject.SetActive(true);
+
+                        //퀘스트 오브젝트
+                        var questObj = this.questObjectManager.questObjects[this.nowQuestIndex].gameObject;
+                        questObj.SetActive(true);
+
+                        //퀘스트 장소 화살표 위치 이동
+                        this.questPosArrow.SetActive(true);
+                        this.questPosArrow.transform.position = 
+                            new Vector3(questObj.transform.position.x, this.questPosArrow.transform.position.y, questObj.transform.position.z);
+
+                        //퀘스트 안내 화살표 lookat
+                        this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(true);
+                        this.uiTutorialPlayer.arrowBillboard.targetTf = questObj.transform;
+
                         Debug.LogFormat("currentIndex : {0}, removeIndex : {1}", this.currentIndex, data.removeTartgetIndex);
-                        if (data.removeTartgetIndex != -1) this.questObjectManager.removeObjects[data.removeTartgetIndex].gameObject.SetActive(true);
                         yield return null;
                     }
                     if (this.currentIndex == 2)
@@ -94,7 +117,6 @@ namespace NHR
                     }
                     this.isDone = false;
                     StartCoroutine(CTypingDialog(data.dialog));
-                    if (this.isClearQuest) this.currentIndex++;
                 }
             }
         }
@@ -102,6 +124,12 @@ namespace NHR
         //dialog 출력
         IEnumerator CTypingDialog(string dialog)
         {
+            if (!this.isClearQuest)
+            {
+                //퀘스트면 잘 보이게
+                this.uiTutorialPlayer.textDialog.color = Color.yellow;
+                this.uiTutorialPlayer.textDialog.fontStyle = FontStyles.Bold;
+            }
             foreach (var c in dialog)
             {
                 this.uiTutorialPlayer.textDialog.text += c;
@@ -110,6 +138,7 @@ namespace NHR
             yield return new WaitForSeconds(1.5f);
             Debug.Log("end");
             this.isDone = true;
+            this.currentIndex++;
         }
     }
 
