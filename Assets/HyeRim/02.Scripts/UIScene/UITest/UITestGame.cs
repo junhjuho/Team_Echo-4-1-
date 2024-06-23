@@ -19,7 +19,6 @@ public class UITestGame : MonoBehaviour
     private void Start()
     {
         this.heart = 3;
-        /*
         this.btnAttacked.onClick.AddListener(() =>
         {
             EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, this.heart);
@@ -36,6 +35,5 @@ public class UITestGame : MonoBehaviour
             Debug.Log("±«¹° º¯½Å");
             EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
         });
-        */
     }
 }
