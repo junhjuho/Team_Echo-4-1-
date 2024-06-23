@@ -5516,6 +5516,7 @@ MonoBehaviour:
   - {fileID: 3050691687774574105}
   - {fileID: 374289202312542449}
   - {fileID: 3824212170400821229}
+  - {fileID: 6209815683337650020}
 --- !u!4 &734885712
 Transform:
   m_ObjectHideFlags: 0
@@ -5535,6 +5536,7 @@ Transform:
   - {fileID: 3052150347560848223}
   - {fileID: 3705028537100307170}
   - {fileID: 3821210492393757557}
+  - {fileID: 3288643774642777663}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &743229832
@@ -13467,7 +13469,6 @@ Transform:
   m_Children:
   - {fileID: 396739784}
   - {fileID: 1921756582}
-  - {fileID: 3288643774642777663}
   - {fileID: 1697651083}
   - {fileID: 1402760674}
   - {fileID: 7599300316428204365}
@@ -20376,7 +20377,7 @@ Transform:
   - {fileID: 31745819250781353}
   - {fileID: 4959296607402238673}
   - {fileID: 568105476}
-  m_Father: {fileID: 2105595146}
+  m_Father: {fileID: 734885712}
   m_LocalEulerAnglesHint: {x: 0, y: 134.74, z: 0}
 --- !u!1 &3336033535914869743
 GameObject:
@@ -25625,6 +25626,7 @@ GameObject:
   - component: {fileID: 3691455477653747420}
   - component: {fileID: 7791956078791679546}
   - component: {fileID: 8301076461215154809}
+  - component: {fileID: 8301076461215154810}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -29205,6 +29207,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.78, y: 3.18, z: 1.43}
   m_Center: {x: 0, y: 0.63, z: 0}
+--- !u!114 &8301076461215154810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209815683337650020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b019fb589c92aff4ebf43bd2ce125623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isQuestDone: 0
 --- !u!1 &8314803150278640190
 GameObject:
   m_ObjectHideFlags: 0

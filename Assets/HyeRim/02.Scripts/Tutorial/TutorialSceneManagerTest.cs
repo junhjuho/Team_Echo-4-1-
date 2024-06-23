@@ -29,7 +29,7 @@ namespace NHR
         private bool isDone;
         //현재 퀘스트를 클리어했는가?
         private bool isClearQuest;
-        //private bool isClearTime;
+        private bool isClearTime;
         //퀘스트 완료 타이핑 코루틴
         private Coroutine questClearCoroutine;
 
@@ -70,7 +70,7 @@ namespace NHR
 
                 var questObject = this.questObjectManager.questObjects[this.nowQuestIndex];
                 if (this.nowQuestIndex == 1) questPosArrow.GetComponent<TutorialQuestObjectTrigger>().isQuestDone = true;
-                if (this.nowQuestIndex > 4) questObject.GetComponent<TutorialQuestObjectTrigger>().isQuestDone = true;
+                if (this.nowQuestIndex > 4) questObject.GetComponentInChildren<TutorialQuestObjectTrigger>().isQuestDone = true;
                 Debug.LogFormat("nowIndex :{0}, nowQuestIndex : {1}", this.currentIndex, this.nowQuestIndex);
 
                 this.questPosArrow.SetActive(false);
@@ -78,7 +78,7 @@ namespace NHR
 
                 //this.currentIndex++;
                 this.nowQuestIndex++;
-                //this.isClearTime = true;
+                this.isClearTime = true;
             }));
 
             while (true)
@@ -141,11 +141,11 @@ namespace NHR
             else this.FontInit();
 
             //클리어 직후면 클리어 멘트 출력
-            //if (this.isClearTime)
-            //{
-            //    text = DataManager.Instance.GetTutorialData(0).dialog + dialog;
-            //    this.isClearTime = false;
-            //}
+            if (this.isClearTime)
+            {
+                text = DataManager.Instance.GetTutorialData(0).dialog + "\n" + dialog;
+                this.isClearTime = false;
+            }
 
             foreach (var c in text)
             {
