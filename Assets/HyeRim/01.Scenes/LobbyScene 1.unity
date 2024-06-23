@@ -1293,7 +1293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDialog: {fileID: 212939926}
-  arrowBillboard: {fileID: 4193125317549471695}
   tutorialHands: {fileID: 195692459}
 --- !u!114 &254888431
 MonoBehaviour:
@@ -14967,7 +14966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &498498173062200872
 Transform:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ namespace NHR
                 Debug.LogFormat("nowIndex :{0}, nowQuestIndex : {1}", this.currentIndex, this.nowQuestIndex);
 
                 this.questPosArrow.SetActive(false);
-                this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(false);
+                //this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(false);
 
                 //퀘스트 애니메이션 끄기
                 this.uiTutorialPlayer.tutorialHands.Init();
@@ -119,8 +119,8 @@ namespace NHR
                             new Vector3(questObj.transform.position.x, this.questPosArrow.transform.position.y, questObj.transform.position.z);
 
                         //퀘스트 안내 화살표 lookat
-                        this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(true);
-                        this.uiTutorialPlayer.arrowBillboard.targetTf = questObj.transform;
+                        //this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(true);
+                        //this.uiTutorialPlayer.arrowBillboard.targetTf = questObj.transform;
 
                         //퀘스트 애니메이션
                         this.SetHandsQuest(this.nowQuestIndex);
