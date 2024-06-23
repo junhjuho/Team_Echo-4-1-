@@ -17,7 +17,6 @@ public class MonsterMovement : PlayerMovement
             controllers[i].transform.GetChild(1).gameObject.SetActive(false);
         }
     }
-
     void OnDisable()
     {
         for (int i = 0; i < controllers.Length; i++)

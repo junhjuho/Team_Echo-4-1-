@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 using static SeongMin.ItemObject;
 
 namespace SeongMin
@@ -19,10 +20,13 @@ namespace SeongMin
             base.Start();
             photonView = GetComponent<PhotonView>();
             this.selectEntered.AddListener(SelectEvent);
+            this.hoverEntered.AddListener(HoverEvent);
+            this.hoverExited.AddListener(HoverEventExit);
         }
         // 플레이어가 아이템을 잡았을 때,
         private void SelectEvent(SelectEnterEventArgs args)
         {
+            Debug.Log(args.interactableObject.transform.name);
             //잡은 물체가 ItemObject 스크립트가 있는지 확인 후 _item 을 콜백으로 받아오기
             if (args.interactableObject.transform.TryGetComponent(out ItemObject _item) && _item.isFind == false)
             {
@@ -66,6 +70,23 @@ namespace SeongMin
                 }
 
                 MissionClearCheck();
+            }
+        }
+
+
+        private void HoverEvent(HoverEnterEventArgs args)
+        {
+            if(args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
+            {
+                this.useForceGrab = false;
+            }
+        }
+
+        private void HoverEventExit(HoverExitEventArgs args)
+        {
+            if (args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
+            {
+                this.useForceGrab = true;
             }
         }
         private void MissionClearCheck()
