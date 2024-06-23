@@ -13,15 +13,15 @@ namespace SeongMin
 {
     public class PlayerAction : XRRayInteractor
     {
-        PhotonView photonView;
+        public PhotonView photonView;
         public PlayerMission playerMission;
         protected override void Start()
         {
             base.Start();
             photonView = GetComponent<PhotonView>();
             this.selectEntered.AddListener(SelectEvent);
-            this.hoverEntered.AddListener(HoverEvent);
-            this.hoverExited.AddListener(HoverEventExit);
+            //this.hoverEntered.AddListener(HoverEvent);
+            //this.hoverExited.AddListener(HoverEventExit);
         }
         // 플레이어가 아이템을 잡았을 때,
         private void SelectEvent(SelectEnterEventArgs args)
@@ -73,22 +73,21 @@ namespace SeongMin
             }
         }
 
+        //private void HoverEvent(HoverEnterEventArgs args)
+        //{
+        //    if(args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
+        //    {
+        //        this.useForceGrab = false;
+        //    }
+        //}
 
-        private void HoverEvent(HoverEnterEventArgs args)
-        {
-            if(args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
-            {
-                this.useForceGrab = false;
-            }
-        }
-
-        private void HoverEventExit(HoverExitEventArgs args)
-        {
-            if (args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
-            {
-                this.useForceGrab = true;
-            }
-        }
+        //private void HoverEventExit(HoverExitEventArgs args)
+        //{
+        //    if (args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
+        //    {
+        //        this.useForceGrab = true;
+        //    }
+        //}
         private void MissionClearCheck()
         {
             playerMission = GameDB.Instance.playerMission;
