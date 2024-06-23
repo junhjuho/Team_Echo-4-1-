@@ -37,18 +37,15 @@ public class HumanMovement : PlayerMovement, IDamageable
         scene = SceneManager.GetActiveScene();
         audioSource = this.GetComponent<AudioSource>();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
-        if (pv.IsMine && scene.name == ("InGameScene 1"))
-        {
-            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
-        }
     }
+
     void OnDisable() // 
     {
         if (isDie && pv.IsMine)
         {
-            for (int i = 0; i < dieAnims.Length; i++)
+            for(int i = 0; i < dieAnims.Length; i++)
             {
-                if (this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
+                if(this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
                 {
                     dieAnims[i].transform.gameObject.SetActive(true); // 모델 애니메이션 오브젝트를 활성화 시키고 애니메이션 실행
                     dieAnims[i].PlayerDieAnimation("Backward Die");
@@ -78,6 +75,7 @@ public class HumanMovement : PlayerMovement, IDamageable
 
             if (scene.name == ("InGameScene 1"))
             {
+                SeongMin.GameManager.Instance.playerManager.humanMovement = this;
                 isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
             }
             else // InGameScene 1이 아닐 때, 
@@ -90,7 +88,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
             moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 2f : 1f; // 달리기 버튼에 따른 속도
-
+            
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
         else
