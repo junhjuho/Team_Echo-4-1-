@@ -15327,50 +15327,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: locker (14)
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 100014, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_Layer
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.000001
@@ -15411,41 +15367,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400012, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9291009
-      objectReference: {fileID: 0}
-    - target: {fileID: 400012, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000028250824
-      objectReference: {fileID: 0}
-    - target: {fileID: 400012, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.36982632
-      objectReference: {fileID: 0}
-    - target: {fileID: 400012, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.00000015003855
-      objectReference: {fileID: 0}
-    - target: {fileID: 400012, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 43.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 356453431822736937, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 37.694107
-      objectReference: {fileID: 0}
-    - target: {fileID: 356453431822736937, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 2.9030633
-      objectReference: {fileID: 0}
-    - target: {fileID: 356453431822736937, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 33.17412
-      objectReference: {fileID: 0}
     - target: {fileID: 2324993847696112257, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
       propertyPath: sceneViewId
-      value: 129
+      value: 33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53638,7 +53562,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5527877022166092785}
-  sceneViewId: 32
+  sceneViewId: 34
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &5527877022166092785
