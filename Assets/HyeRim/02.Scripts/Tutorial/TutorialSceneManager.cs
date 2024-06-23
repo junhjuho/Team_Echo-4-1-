@@ -6,19 +6,22 @@ using UnityEngine;
 
 namespace NHR
 {
-    public class TutorialSceneManagerTest : MonoBehaviour
+    public class TutorialSceneManager : MonoBehaviour
     {
+        [Header("튜토리얼 플레이어 UI")]
         public UITutorialPlayer uiTutorialPlayer;
 
         //index 0번 : 달성 dialog
         [Header("총 인덱스 수")]
         public int totalIndex; //0번을 제외한 총 인덱스 수
+
         [Header("현재 인덱스")]
         public int currentIndex;   //현재 인덱스
 
         //퀘스트 오브젝트 인덱스
         [Header("튜토리얼 퀘스트 Manager")]
         public TutorialQuestObjectManager questObjectManager;
+
         [Header("현재 퀘스트 인덱스")]
         private int nowQuestIndex = 0;
 
@@ -69,12 +72,17 @@ namespace NHR
                 this.uiTutorialPlayer.textDialog.text = "";
 
                 var questObject = this.questObjectManager.questObjects[this.nowQuestIndex];
+                //트리거 퀘스트
                 if (this.nowQuestIndex == 1) questPosArrow.GetComponent<TutorialQuestObjectTrigger>().isQuestDone = true;
                 if (this.nowQuestIndex > 4) questObject.GetComponentInChildren<TutorialQuestObjectTrigger>().isQuestDone = true;
+
                 Debug.LogFormat("nowIndex :{0}, nowQuestIndex : {1}", this.currentIndex, this.nowQuestIndex);
 
                 this.questPosArrow.SetActive(false);
-                this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(false);
+                //this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(false);
+
+                //퀘스트 애니메이션 끄기
+                this.uiTutorialPlayer.tutorialHands.Init();
 
                 //this.currentIndex++;
                 this.nowQuestIndex++;
@@ -111,8 +119,11 @@ namespace NHR
                             new Vector3(questObj.transform.position.x, this.questPosArrow.transform.position.y, questObj.transform.position.z);
 
                         //퀘스트 안내 화살표 lookat
-                        this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(true);
-                        this.uiTutorialPlayer.arrowBillboard.targetTf = questObj.transform;
+                        //this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(true);
+                        //this.uiTutorialPlayer.arrowBillboard.targetTf = questObj.transform;
+
+                        //퀘스트 애니메이션
+                        this.SetHandsQuest(this.nowQuestIndex);
 
                         yield return null;
                     }
@@ -124,6 +135,42 @@ namespace NHR
                     this.isDone = false;
                     StartCoroutine(CTypingDialog(data.dialog));
                 }
+            }
+        }
+
+        private void SetHandsQuest(int questIndex)
+        {
+            switch (questIndex)
+            {
+                //이동
+                case 0:
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Move");
+                    break;
+                //달리기
+                case 1:
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Move");
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("ButtonA");
+                    break;
+                //손전등 잡기
+                case 2:
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Grab");
+                    break;
+                //손전등 Trigger
+                case 3:
+
+                    break;
+                //배터리 잡기
+                case 4:
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Grab");
+                    break;
+                //열쇠 잡기+소켓 넣기
+                case 5:
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Grab");
+                    break;
+                //복수자 아이템 잡기
+                case 6:
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Grab");
+                    break;
             }
         }
 
