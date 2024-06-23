@@ -16,8 +16,4 @@ public class DieAnimation : MonoBehaviour
         animator.SetTrigger(animationName);
     }
 
-    public void ModelActiveFalse()
-    {
-        this.gameObject.SetActive(false);
-    }
 }
