@@ -10,14 +10,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerMovement : MonoBehaviour
 {
-    protected Animator animator;
-    protected InputActionAsset inputActionAsset;
-    protected ActionBasedContinuousMoveProvider moveProvider;
-    protected PhotonView pv;
+    public Animator animator;
+    [SerializeField] protected InputActionAsset inputActionAsset;
+    [SerializeField] protected ActionBasedContinuousMoveProvider moveProvider;
+    [SerializeField] protected PhotonView pv;
 
     protected Vector2 dir;
-    protected Vector2 movePosition;
-    protected bool isMove;
+
 
     public virtual void Start()
     {
@@ -29,9 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     public virtual void PlayerMove() // 걷기 입력 이벤트
     {
-        movePosition = inputActionAsset.actionMaps[3].actions[5].ReadValue<Vector2>();
-        isMove = inputActionAsset.actionMaps[3].actions[5].IsPressed();
+        Vector2 _movePosition = inputActionAsset.actionMaps[3].actions[5].ReadValue<Vector2>();
 
-        dir = new Vector2(movePosition.x, movePosition.y).normalized;
+        dir = new Vector2(_movePosition.x, _movePosition.y).normalized;
     }
 }
