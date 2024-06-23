@@ -637,7 +637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &112657007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6196,7 +6196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8314491805865168207, guid: bc83308b2b910e54999e3ddd280ec778, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 171.85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8314491805865168207, guid: bc83308b2b910e54999e3ddd280ec778, type: 3}
       propertyPath: m_SizeDelta.y
@@ -7155,7 +7155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1165124053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8426,8 +8426,6 @@ MonoBehaviour:
   hasGameData: 0
   isWin: 0
   xrOriginBugFixedObject: {fileID: 0}
-  itemInfomationCanvas: {fileID: 0}
-  escapeDoorPositionList: []
 --- !u!4 &1371967614
 Transform:
   m_ObjectHideFlags: 0
