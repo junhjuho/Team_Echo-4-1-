@@ -15315,7 +15315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2324993847696112257, guid: 29b29ac01f6364019bc030ff38a2655b, type: 3}
       propertyPath: sceneViewId
-      value: 32
+      value: 33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53508,7 +53508,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5527877022166092785}
-  sceneViewId: 32
+  sceneViewId: 34
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &5527877022166092785

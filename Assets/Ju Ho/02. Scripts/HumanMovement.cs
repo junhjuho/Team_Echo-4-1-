@@ -1,25 +1,30 @@
 using NHR;
+using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class HumanMovement : PlayerMovement, IDamageable
 {
     public MonsterMovement monsterMovement;
+    public AudioClip footStepSound;
+    public AudioSource audioSource;
     public GameObject FireAxe;
     public DieAnimation[] dieAnims;
 
-
     public bool isRunBtnDown;
+
     bool isEnergyDown;
     bool isDie;
+    int currentPlayer;
     UIPlayer uiPlayer;
 
     Scene scene;
 
     PlayerSyncController playerSyncController;
 
-    
 
     public void OnEnable()
     {
@@ -30,6 +35,7 @@ public class HumanMovement : PlayerMovement, IDamageable
     {
         base.Start();
         scene = SceneManager.GetActiveScene();
+        audioSource = this.GetComponent<AudioSource>();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
     }
 
@@ -37,12 +43,6 @@ public class HumanMovement : PlayerMovement, IDamageable
     {
         if (isDie && pv.IsMine)
         {
-            //Vector3 zombiePos = monsterMovement.transform.position - this.transform.position;
-            //zombiePos.Normalize();
-            //float attackPos = Vector3.Dot(this.transform.forward, zombiePos);
-
-            //string dirDie = attackPos > 0 ? "Backward Die" : "Forward Die";
-
             for(int i = 0; i < dieAnims.Length; i++)
             {
                 if(this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
@@ -66,6 +66,7 @@ public class HumanMovement : PlayerMovement, IDamageable
         PlayerMove();
         FingerMove(animator);
     }
+
     public override void PlayerMove() // 플레이어 걷기 , 달리기
     {
         if (pv.IsMine)
@@ -86,7 +87,7 @@ public class HumanMovement : PlayerMovement, IDamageable
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
-            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 4f : 2f; // 달리기 버튼에 따른 속도
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 2f : 1f; // 달리기 버튼에 따른 속도
             
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
@@ -132,5 +133,17 @@ public class HumanMovement : PlayerMovement, IDamageable
             isDie = true;
             this.gameObject.SetActive(false);
         }
+    }
+
+    void PlayFootStepSound()
+    {
+        audioSource.PlayOneShot(footStepSound);
+        pv.RPC("PhotonFootStepSound", RpcTarget.Others);
+    }
+
+    [PunRPC]
+    void PhotonFootStepSound()
+    {
+        audioSource.PlayOneShot(footStepSound);
     }
 }

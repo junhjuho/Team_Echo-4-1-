@@ -55,6 +55,8 @@ MonoBehaviour:
   - UpdateColorRPC
   - IsMapSettingDone
   - AllPlayerLobbySceneLoad
+  - PlayFootStepSound
+  - PhotonFootStepSound
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
