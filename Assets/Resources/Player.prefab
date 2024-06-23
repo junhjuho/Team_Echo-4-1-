@@ -3126,14 +3126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  inputActionAsset: {fileID: 0}
-  moveProvider: {fileID: 0}
-  pv: {fileID: 0}
   monsterMovement: {fileID: 0}
-  isRunBtnDown: 0
+  footStepSound: {fileID: 0}
+  audioSource: {fileID: 0}
   FireAxe: {fileID: 0}
   dieAnims: []
+  isRunBtnDown: 0
 --- !u!114 &5530197642181525178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3638,14 +3636,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  inputActionAsset: {fileID: 0}
-  moveProvider: {fileID: 0}
-  pv: {fileID: 0}
   monsterMovement: {fileID: 0}
-  isRunBtnDown: 0
+  footStepSound: {fileID: 0}
+  audioSource: {fileID: 0}
   FireAxe: {fileID: 0}
   dieAnims: []
+  isRunBtnDown: 0
 --- !u!114 &9082723997564200933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16612,14 +16608,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  inputActionAsset: {fileID: 0}
-  moveProvider: {fileID: 0}
-  pv: {fileID: 0}
   monsterMovement: {fileID: 0}
-  isRunBtnDown: 0
+  footStepSound: {fileID: 0}
+  audioSource: {fileID: 0}
   FireAxe: {fileID: 0}
   dieAnims: []
+  isRunBtnDown: 0
 --- !u!114 &479101846059634882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24164,10 +24158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878c42d963dd60142b6fae52d9afc484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  inputActionAsset: {fileID: 0}
-  moveProvider: {fileID: 0}
-  pv: {fileID: 0}
   origin: {fileID: 0}
   controllers: []
 --- !u!114 &5811930333523427140
