@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NHR
 {
-    public class TutorialSceneManagerTest : MonoBehaviour
+    public class TutorialSceneManager : MonoBehaviour
     {
         public UITutorialPlayer uiTutorialPlayer;
 
