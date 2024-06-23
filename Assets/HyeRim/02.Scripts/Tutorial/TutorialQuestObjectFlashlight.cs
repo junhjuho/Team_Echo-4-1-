@@ -23,16 +23,16 @@ public class TutorialQuestObjectFlashlight : FlashLight, ITutorialQuestObject
     {
         if (!isGrabDone)
         {
-            this.SendEventClear();
             this.isGrabDone = true;
+            this.SendEventClear();
         }
     }
     public override void OnUse()
     {
         if(!isUseDone)
         {
-            this.SendEventClear();
             this.isUseDone = true;
+            this.SendEventClear();
         }
     }
 
