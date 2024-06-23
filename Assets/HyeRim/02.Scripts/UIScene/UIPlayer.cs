@@ -15,6 +15,9 @@ namespace NHR
         [Header("시계 UI")]
         public UIWatch uiWatch;
 
+        [Header("팁 팝업 이벤트 UI")]
+        public UITip uiTip;
+
         //에너지
         public TMP_Text txtEnergy;
 
@@ -26,6 +29,7 @@ namespace NHR
         private void Awake()
         {
             if (this.uiWatch == null) this.uiWatch = GetComponentInChildren<UIWatch>();
+            this.uiTip = GetComponentInChildren<UITip>();
         }
         private void Start()
         {
