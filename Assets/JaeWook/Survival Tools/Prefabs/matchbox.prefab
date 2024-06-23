@@ -855,7 +855,6 @@ GameObject:
   - component: {fileID: 8347892457558713103}
   - component: {fileID: 6891133770034736077}
   - component: {fileID: 1199914575791608243}
-  - component: {fileID: 5511912598479824143}
   m_Layer: 20
   m_Name: MinimapIcon
   m_TagString: Untagged
@@ -873,7 +872,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.49632734, y: -0.50364596, z: 0.49632734, w: 0.50364596}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4804305644941582}
@@ -928,25 +927,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5511912598479824143
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7671844893675574298}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
