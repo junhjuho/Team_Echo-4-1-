@@ -41,7 +41,7 @@ namespace NHR
         [Header("전체 플레이어 미션 현황 UI")]
         public UIMissionPercent uiMissionPercent;
 
-        private GameObject nowPopUI;
+        //private GameObject nowPopUI;
 
         private void Awake()
         {
@@ -87,8 +87,8 @@ namespace NHR
                 var dialog = DataManager.Instance.GetEventDialog(str);
                 Debug.LogFormat("<color=yellow>{0}</color>", dialog);
                 this.uiNotice.gameObject.SetActive(true);
-                this.nowPopUI = this.uiNotice.gameObject;
-                StartCoroutine(CTypingDialog(dialog, this.uiNotice.textNotice));
+                //this.nowPopUI = this.uiNotice.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiNotice.textNotice, this.uiNotice.gameObject));
                 //this.uiNotice.textNotice.text = dialog;
             }));
             //역할 전달
@@ -101,10 +101,10 @@ namespace NHR
                 var questDialog = DataManager.Instance.GetEventDialog("quest" + role);
 
                 this.uiRole.gameObject.SetActive(true);
-                this.nowPopUI = this.uiRole.gameObject;
+                //this.nowPopUI = this.uiRole.gameObject;
                 Debug.LogFormat("<color=yellow>{0}</color>", role);
                 this.uiRole.textRole.text = roleDialog;
-                StartCoroutine(CTypingDialog("주 목표 : " + questDialog, this.uiRole.textQuest));
+                StartCoroutine(CTypingDialog("주 목표 : " + questDialog, this.uiRole.textQuest, this.uiRole.gameObject));
             }));
 
             //공격받음 1, 2, 3단계
@@ -195,8 +195,8 @@ namespace NHR
                 var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
                 Debug.LogFormat("<color=yellow>{0}</color>", dialog);
                 this.uiMissionPercent.gameObject.SetActive(true);
-                this.nowPopUI = this.uiMissionPercent.gameObject;
-                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice));
+                //this.nowPopUI = this.uiMissionPercent.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
             }));
             //생존자 라운드 목표 완료 알림
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>
@@ -206,8 +206,8 @@ namespace NHR
                 var dialog = DataManager.Instance.GetEventDialog("missionPercentComplete");
                 Debug.LogFormat("<color=yellow>{0}</color>", dialog);
                 this.uiMissionPercent.gameObject.SetActive(true);
-                this.nowPopUI = this.uiMissionPercent.gameObject;
-                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice));
+                //this.nowPopUI = this.uiMissionPercent.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
             }));
         }
 
@@ -227,7 +227,7 @@ namespace NHR
         }
 
         //dialog 출력
-        IEnumerator CTypingDialog(string dialog, TMP_Text tmp)
+        IEnumerator CTypingDialog(string dialog, TMP_Text tmp, GameObject nowPop)
         {
             foreach (var c in dialog)
             {
@@ -235,8 +235,13 @@ namespace NHR
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(2f);
-            this.nowPopUI.gameObject.SetActive(false);
+            this.RemovePop(nowPop);
+            //this.nowPopUI.gameObject.SetActive(false);
         }
 
+        private void RemovePop(GameObject nowPop)
+        {
+            nowPop.SetActive(false);
+        }
     }
 }
