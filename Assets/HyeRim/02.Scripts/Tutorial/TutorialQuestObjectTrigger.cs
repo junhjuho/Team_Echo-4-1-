@@ -6,13 +6,19 @@ namespace NHR
 {
     public class TutorialQuestObjectTrigger : MonoBehaviour, ITutorialQuestObject
     {
+        public bool isQuestDone = false;
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            //spot quest가 끝나면 x
+            if (!this.isQuestDone)
             {
-                Debug.Log("Player in");
-                this.SendEventClear();
-                //this.gameObject.SetActive(false);
+                if (other.CompareTag("Player"))
+                {
+                    Debug.Log("Player in");
+                    this.SendEventClear();
+                    //this.gameObject.SetActive(false);
+                }
             }
         }
         public void SendEventClear()
