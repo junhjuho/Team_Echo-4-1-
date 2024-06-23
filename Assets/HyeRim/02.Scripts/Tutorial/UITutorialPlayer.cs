@@ -12,6 +12,11 @@ namespace NHR
 
         //퀘스트 안내 화살표
         public Billboard arrowBillboard;
+
+        private void Awake()
+        {
+            this.arrowBillboard.gameObject.SetActive(false);
+        }
     }
 
 

@@ -29,6 +29,9 @@ namespace NHR
         private bool isDone;
         //현재 퀘스트를 클리어했는가?
         private bool isClearQuest;
+        //private bool isClearTime;
+        //퀘스트 완료 타이핑 코루틴
+        private Coroutine questClearCoroutine;
 
         private void Awake()
         {
@@ -44,16 +47,16 @@ namespace NHR
             this.uiTutorialPlayer.textDialog.text = "";
             this.isDone = true;
             this.isClearQuest = true;
+            //this.isClearTime = false;
             //인덱스 수 가져오기
             this.totalIndex = DataManager.Instance.totalTutorialIndex;
             this.currentIndex = 1;
-
             this.nowQuestIndex = 0;
 
-            //폰트 원래대로
-            this.uiTutorialPlayer.textDialog.color = Color.white;
-            this.uiTutorialPlayer.textDialog.fontStyle = FontStyles.Normal;
+            this.questPosArrow.SetActive(false);
 
+            //폰트 원래대로
+            this.FontInit();
         }
 
         private IEnumerator Start()
@@ -61,17 +64,21 @@ namespace NHR
             //튜토리얼 퀘스트 클리어 이벤트 정의
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Clear_TutorialQuest, new EventHandler((type) =>
             {
-                Debug.Log("Clear_TutorialQuest");
+                //Debug.Log("Clear_TutorialQuest");
                 this.isClearQuest = true;
                 this.uiTutorialPlayer.textDialog.text = "";
 
-                var questObject = this.questObjectManager.questObjects[this.currentIndex];
-                if (this.currentIndex == 5) questObject.GetComponent<TutorialQuestObjectTrigger>().isQuestDone = true;
+                var questObject = this.questObjectManager.questObjects[this.nowQuestIndex];
+                if (this.nowQuestIndex == 1) questPosArrow.GetComponent<TutorialQuestObjectTrigger>().isQuestDone = true;
+                if (this.nowQuestIndex > 4) questObject.GetComponent<TutorialQuestObjectTrigger>().isQuestDone = true;
+                Debug.LogFormat("nowIndex :{0}, nowQuestIndex : {1}", this.currentIndex, this.nowQuestIndex);
 
                 this.questPosArrow.SetActive(false);
                 this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(false);
-                this.currentIndex++;
+
+                //this.currentIndex++;
                 this.nowQuestIndex++;
+                //this.isClearTime = true;
             }));
 
             while (true)
@@ -107,7 +114,6 @@ namespace NHR
                         this.uiTutorialPlayer.arrowBillboard.gameObject.SetActive(true);
                         this.uiTutorialPlayer.arrowBillboard.targetTf = questObj.transform;
 
-                        Debug.LogFormat("currentIndex : {0}, removeIndex : {1}", this.currentIndex, data.removeTartgetIndex);
                         yield return null;
                     }
                     if (this.currentIndex == 2)
@@ -124,13 +130,24 @@ namespace NHR
         //dialog 출력
         IEnumerator CTypingDialog(string dialog)
         {
+            string text = dialog;
             if (!this.isClearQuest)
             {
+                this.uiTutorialPlayer.textDialog.text = "";
                 //퀘스트면 잘 보이게
                 this.uiTutorialPlayer.textDialog.color = Color.yellow;
                 this.uiTutorialPlayer.textDialog.fontStyle = FontStyles.Bold;
             }
-            foreach (var c in dialog)
+            else this.FontInit();
+
+            //클리어 직후면 클리어 멘트 출력
+            //if (this.isClearTime)
+            //{
+            //    text = DataManager.Instance.GetTutorialData(0).dialog + dialog;
+            //    this.isClearTime = false;
+            //}
+
+            foreach (var c in text)
             {
                 this.uiTutorialPlayer.textDialog.text += c;
                 yield return new WaitForSeconds(0.1f);
@@ -139,6 +156,13 @@ namespace NHR
             Debug.Log("end");
             this.isDone = true;
             this.currentIndex++;
+        }
+
+        private void FontInit()
+        {
+            //폰트 원래대로
+            this.uiTutorialPlayer.textDialog.color = Color.white;
+            this.uiTutorialPlayer.textDialog.fontStyle = FontStyles.Normal;
         }
     }
 
