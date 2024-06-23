@@ -30,9 +30,9 @@ namespace NHR
         //현재 퀘스트를 클리어했는가?
         private bool isClearQuest;
         private bool isClearTime;
-        //퀘스트 완료 타이핑 코루틴
-        private Coroutine questClearCoroutine;
 
+        private WaitForSeconds typingCharSec = new WaitForSeconds(0.05f);
+        private WaitForSeconds typingClearSec = new WaitForSeconds(1.5f);
         private void Awake()
         {
             //임시
@@ -150,9 +150,9 @@ namespace NHR
             foreach (var c in text)
             {
                 this.uiTutorialPlayer.textDialog.text += c;
-                yield return new WaitForSeconds(0.1f);
+                yield return this.typingCharSec;
             }
-            yield return new WaitForSeconds(1.5f);
+            yield return this.typingClearSec;
             Debug.Log("end");
             this.isDone = true;
             this.currentIndex++;
