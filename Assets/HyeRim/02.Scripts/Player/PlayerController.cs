@@ -27,8 +27,10 @@ namespace NHR
         private void Awake()
         {
             if(photonView.IsMine)
-            GameDB.Instance.playerController = this;
-            this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            {
+                GameDB.Instance.playerController = this;
+                this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            }
         }
         private void Start()
         {
@@ -41,8 +43,9 @@ namespace NHR
                 this.characters[nowCharacterID].gameObject.SetActive(true);
                 this.nowCharacter = this.characters[nowCharacterID];
                 SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
+                
+                this.UpdateCharacter(nowCharacterID);
             }
-            this.UpdateCharacter(nowCharacterID);
         }
         public void UpdateCharacter(int id)
         {
@@ -50,6 +53,7 @@ namespace NHR
             photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
             this.ApplyCharacter(id);
         }
+
         [PunRPC]
         public void CharacterRePosition()
         {
