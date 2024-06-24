@@ -103,7 +103,6 @@ public class PlayerSyncController : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             int i = Random.Range(1, zombieSound.Length);
-            //audioSource.PlayOneShot(zombieSound[i]);
             pv.RPC("PhotonZombieSound", RpcTarget.Others, i);
         }
     }
