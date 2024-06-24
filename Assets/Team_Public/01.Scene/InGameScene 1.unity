@@ -2424,6 +2424,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: flashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBattery
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBattery
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: uiFlashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBatteryTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBatteryTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4651832862116281650, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.946768
@@ -2529,6 +2557,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: flashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBattery
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBattery
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: uiFlashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBatteryTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBatteryTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4651832862116281650, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.787533
@@ -3228,6 +3284,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: flashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBattery
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBattery
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: uiFlashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBatteryTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBatteryTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4651832862116281650, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.151114
@@ -4231,6 +4315,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: flashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBattery
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBattery
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: uiFlashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBatteryTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBatteryTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4651832862116281650, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -48.66401
@@ -5048,6 +5160,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: flashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBattery
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBattery
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: uiFlashlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: maxBatteryTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027847192309433524, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
+      propertyPath: nowBatteryTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4651832862116281650, guid: 9e03f23d883b5ad4aaaf164c94b02adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.180923

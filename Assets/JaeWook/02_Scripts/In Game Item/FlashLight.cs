@@ -22,7 +22,7 @@ namespace Jaewook
         //���͸� ��
         public bool hasBattery = true;
         public int nowBatteryTime = 2;
-        public int nowBattery = 2;
+        public int nowBattery = 0;
         //max ��
         public int maxBatteryTime = 3;
         public int maxBattery = 3;
@@ -87,7 +87,7 @@ namespace Jaewook
         public void ChargeFlashlight()
         {
             this.nowBattery = this.maxBattery; // maxtime = 30;
-            this.nowBatteryTime = this.maxBatteryTime;
+            this.nowBatteryTime = this.maxBatteryTime - 1;
             this.hasBattery = true;
             foreach (var battery in this.uiFlashlight.batteries)
             {
@@ -103,24 +103,24 @@ namespace Jaewook
             {
                 this.nowBatteryTime--;
 
-                    this.uiFlashlight.batteries[2 - this.nowBattery].gameObject.SetActive(false);
-                    this.uiFlashlight.batteries[3 - this.nowBattery].gameObject.SetActive(true);
+                this.uiFlashlight.batteries[2 - this.nowBattery].gameObject.SetActive(false);
+                this.uiFlashlight.batteries[3 - this.nowBattery].gameObject.SetActive(true);
 
-                    this.nowBattery--;
+                this.nowBattery--;
 
-                    if (this.nowBattery <= 0 && this.nowBatteryTime <= 0)
-                    {
-                        this.hasBattery = false;
-                        this.OnUse();
-                        yield break;
-                    }
+                if (this.nowBattery <= 0 && this.nowBatteryTime <= 0)
+                {
+                    this.hasBattery = false;
+                    this.OnUse();
+                    yield break;
+                }
 
-                    Debug.Log(3 - this.nowBattery);
-                    this.nowBatteryTime = maxBatteryTime;
+                Debug.Log(3 - this.nowBattery);
+                this.nowBatteryTime = maxBatteryTime;
 
-                    //���͸��� �� ����� ��� ������ ���� ����
-                    Debug.LogFormat("<color=yellow>nowBatery{0}</color>", this.nowBattery);
-                
+                //���͸��� �� ����� ��� ������ ���� ����
+                Debug.LogFormat("<color=yellow>nowBatery{0}</color>", this.nowBattery);
+
                 yield return onesec;
             }
             yield break;
