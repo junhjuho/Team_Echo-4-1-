@@ -114,10 +114,11 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
+    //검토 필요
     private IEnumerator RespawnPlayer()
     {
         yield return reviveTime;
-        this.gameObject.SetActive(true);
+        GameDB.Instance.playerController.photonView.RPC("CharacterRePosition", RpcTarget.All);
         playerSyncController.origin.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
         StopAllCoroutines();
