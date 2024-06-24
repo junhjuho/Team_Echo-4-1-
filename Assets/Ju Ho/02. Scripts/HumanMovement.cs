@@ -15,9 +15,7 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     bool isEnergyDown;
     bool isDie;
-
     Scene scene;
-
 
     public void OnEnable()
     {
