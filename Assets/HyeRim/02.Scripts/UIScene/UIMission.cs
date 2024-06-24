@@ -15,8 +15,11 @@ namespace NHR
             {
                 Debug.LogFormat("<color=yellow>미션 배정 이벤트</color>");
 
+                GameObject[] playerMissionObjects;
+                if (GameDB.Instance.playerMission.isChaser) playerMissionObjects = GameDB.Instance.playerMission.chaserMissionArray;
+                else playerMissionObjects = GameDB.Instance.playerMission.playerMissionArray;
+
                 //미션 오브젝트 배열 받아오기
-                var playerMissionObjects = GameDB.Instance.playerMission.playerMissionArray;
                 for (int i = 0; i < playerMissionObjects.Length; i++)
                 {
                     var mission = Instantiate(Resources.Load<Mission>("UI/Mission/Mission"), this.transform);
@@ -25,7 +28,7 @@ namespace NHR
                     this.missions.Add(mission);
                 }
                 //비활성화
-                Invoke("CloseUI", 2f);
+                //Invoke("CloseUI", 2f);
             }));
         }
         private void CloseUI()

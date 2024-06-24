@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using SeongMin;
+using Jaewook;
 
 namespace Michsky.UI.Dark
 {
@@ -18,14 +20,20 @@ namespace Michsky.UI.Dark
 
         // Settings
         public bool isOn = true;
-        public bool invokeAtStart = true;
+        public bool invokeAtStart = true; 
 
         // Resources
         public Animator switchAnimator;
         public Button switchButton;
 
+        // SoundController
+        public Jaewook.SoundController soundController;
+        public bool isSoundOn = true;
+
         void Awake()
         {
+            Jaewook.SoundController soundController = GetComponent<Jaewook.SoundController>();
+
             if (switchAnimator == null) { switchAnimator = gameObject.GetComponent<Animator>(); }
             if (switchButton == null)
             {
@@ -91,6 +99,8 @@ namespace Michsky.UI.Dark
 
         void OnEnable()
         {
+            
+
             if (switchAnimator == null)
                 return;
 
@@ -132,20 +142,32 @@ namespace Michsky.UI.Dark
                 {
                     switchAnimator.Play("Switch On");
                     isOn = true;
+
+                    soundController?.loopSource.Play();
                 }
 
                 else
                 {
                     switchAnimator.Play("Switch Off");
                     isOn = false;
+
+                    soundController?.loopSource.Pause();
                 }
             }
+
+            
         }
 
         public void AnimateSwitch()
         {
+
             if (isOn == true)
             {
+
+                soundController?.StartLoopClip();
+                
+
+
                 switchAnimator.Play("Switch Off");
                 isOn = false;
                 offEvents.Invoke();
@@ -156,6 +178,7 @@ namespace Michsky.UI.Dark
 
             else
             {
+                soundController?.StopLoopClip();
                 switchAnimator.Play("Switch On");
                 isOn = true;
                 onEvents.Invoke();

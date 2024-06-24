@@ -26,6 +26,7 @@ namespace Jaewook
 
         public void OnTriggerEnter(Collider other)
         {
+            Debug.Log("This Name : " + this.name + "itemObject : " + itemObject);
             if(other.gameObject.TryGetComponent(out PlayerMovement player))
             {
                 var canvas = GameDB.Instance.itemInfomationCanvas;
@@ -35,7 +36,7 @@ namespace Jaewook
                 canvas.text.gameObject.SetActive(true);
                 canvas.text.text = this.gameObject.name;
             }
-            if(itemObject != null&&itemObject.charactorValue == CharactorValue.chaser)
+            if(itemObject != null && itemObject.charactorValue == CharactorValue.chaser)
             {
                 itemObject.fx.SetActive(true);
             }

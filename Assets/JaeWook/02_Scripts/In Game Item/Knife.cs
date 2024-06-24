@@ -30,28 +30,18 @@ namespace Jaewook
         {
             // 잡으면 오브젝트 자체를 없애기
             gameObject.SetActive(false);
-            playerMission.chaserMissionClearCount++;
-
-            // 변신
-            if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
-            {
-                // 복수자로 캐릭터 변경
-                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
-                // 카운팅 초기화
-                playerMission.chaserMissionClearCount = 0;
-            }
         }
 
       
 
         public void OnRelease()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         public void OnUse()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
 

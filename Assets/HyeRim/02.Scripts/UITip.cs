@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class UITip : MonoBehaviour
 {
@@ -16,11 +17,6 @@ public class UITip : MonoBehaviour
     [Header("현재 팝업")]
     public GameObject nowPopup;
 
-    public int nowIndex;
-
-    private WaitForSeconds openTime = new WaitForSeconds(6f);
-    private WaitForSeconds closeTime = new WaitForSeconds(5f);
-
     //초기 셋팅
     public void Init()
     {
@@ -29,23 +25,18 @@ public class UITip : MonoBehaviour
         foreach (var tip in tips) tip.SetActive(false);
     }
 
-<<<<<<< Updated upstream
-    public int PopupTip(string tipName)
-=======
     private void Start()
     {
         EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Popup_Tip, new EventHandler<string>((type, tipName) =>
         {
             Debug.Log("popup tip");
-            StartCoroutine(this.CPopupTip(tipName));
+            int index = this.PopupTip(tipName);
+            Invoke("this.ClosePopup", 3f);
         }));
 
     }
-    public IEnumerator CPopupTip(string tipName)
->>>>>>> Stashed changes
+    public int PopupTip(string tipName)
     {
-        //yield return this.openTime;
-
         this.defaultPopup.SetActive(true);
         switch (tipName)
         {
@@ -54,45 +45,31 @@ public class UITip : MonoBehaviour
                 this.hands.gameObject.SetActive(true);
                 this.hands.SetAnimation("Move");
                 this.hands.SetAnimation("ButtonA");
-                this.nowIndex = 0;
-                break;
+                return 0;
             case "Grab":
                 this.tips[1].SetActive(true);
                 this.hands.gameObject.SetActive(true);
                 this.hands.SetAnimation("Grab");
-                this.nowIndex = 1;
-                break;
+                return 1;
             case "Flashlight":
                 this.tips[2].SetActive(true);
-                this.nowIndex = 2;
-                break;
+                return 2;
             case "Battery":
                 this.tips[3].SetActive(true);
-                this.nowIndex = 3;
-                break;
+                return 3;
             case "Map":
                 this.tips[4].SetActive(true);
-                this.nowIndex = 4;
-                break;
+                return 4;
             case "FinalKey":
                 this.tips[5].SetActive(true);
-                this.nowIndex = 5;
-                break;
-            case "Tip":
-                this.tips[6].SetActive(true);
-                this.nowIndex = 6;
-                break;
+                return 5;
+            default:
+                return -1;
         }
-
-        yield return this.closeTime;
-
-        this.ClosePopup(this.nowIndex);
     }
     public void ClosePopup(int index)
     {
-        this.defaultPopup.SetActive(false);
         if (index == 0 || index == 1) this.hands.Init();
         this.tips[index].SetActive(false);
-        StopAllCoroutines();
     }
 }

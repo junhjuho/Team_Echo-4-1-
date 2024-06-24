@@ -38,6 +38,10 @@ public class TutorialHands : MonoBehaviour
                 this.rightHandjAnimator.gameObject.SetActive(true);
                 this.rightHandjAnimator.SetTrigger(triggerStr);
                 break;
+            case "Trigger":
+                this.rightHandjAnimator.gameObject.SetActive(true);
+                this.rightHandjAnimator.SetTrigger(triggerStr);
+                break;
         }
     }
 }
