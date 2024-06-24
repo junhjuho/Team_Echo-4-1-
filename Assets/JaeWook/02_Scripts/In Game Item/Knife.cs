@@ -36,12 +36,12 @@ namespace Jaewook
 
         public void OnRelease()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         public void OnUse()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
 

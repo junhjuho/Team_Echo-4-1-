@@ -71,13 +71,13 @@ namespace SeongMin
         public bool MissionItemCheck(GameObject _item, GameObject[] _array)
         {
             bool _value = false;
-
+            Debug.Log("Item : " + _item);
             for (int i = 0; i < _array.Length; i++)
             {
-                Debug.Log(_item + " / " + _array[i]);
-                Debug.Log(_item.name + " / " + _array[i].name);
+                //Debug.Log(_item + " / " + _array[i]);
+                //Debug.Log(_item.name + " / " + _array[i].name);
 
-                if (_array[i] == _item)
+                if (_array[i].name == _item.name)
                     _value = true;
             }
             return _value;

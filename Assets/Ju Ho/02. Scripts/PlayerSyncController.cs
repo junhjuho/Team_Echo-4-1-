@@ -114,14 +114,15 @@ public class PlayerSyncController : MonoBehaviour
         audioSource.PlayOneShot(zombieSound[index]);
     }
 
-    public void BloodEffect(Collision collision)
+    public void BloodEffect(Collider other)
     {
-        pv.RPC("PhotonBloodEffect", RpcTarget.All, collision);
+        pv.RPC("PhotonBloodEffect", RpcTarget.All, other);
     }
 
     [PunRPC]
-    public void PhotonBloodEffect(Collision collision)
+    public void PhotonBloodEffect(Collider other)
     {
-        Instantiate(bloodObject, collision.contacts[0].point, Quaternion.identity);
+        var effectPos = this.transform.position + Vector3.up * 1.27f;
+        Instantiate(bloodObject, effectPos, Quaternion.identity);
     }
 }

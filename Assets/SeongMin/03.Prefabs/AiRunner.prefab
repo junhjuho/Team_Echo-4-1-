@@ -2320,6 +2320,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: isSit
+  - Type: 9
+    SynchronizeType: 0
+    Name: isDie
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -2359,6 +2362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978b3b01718bac640bee3e0ace3e8189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 4549276992796258731, guid: 08545f7883507aa4d8a4f476df90c5ab, type: 3}
   state: 1
 --- !u!195 &6672554261221502896
 NavMeshAgent:

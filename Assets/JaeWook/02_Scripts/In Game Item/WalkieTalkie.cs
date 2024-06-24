@@ -19,7 +19,7 @@ namespace Jaewook
 
         public void OnRelease()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
     }
 

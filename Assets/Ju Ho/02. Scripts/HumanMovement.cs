@@ -101,15 +101,15 @@ public class HumanMovement : PlayerMovement, IDamageable
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        OnHit(collision);
+        OnHit(other);
     }
-    public void OnHit(Collision collision) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
+    public void OnHit(Collider other) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
     {
-        if (pv.IsMine && collision.gameObject.name == "Fireaxe")
+        if (pv.IsMine && other.gameObject.name == "Fireaxe")
         {
-            playerSyncController.BloodEffect(collision);
+            playerSyncController.BloodEffect(other);
             isDie = true;
             moveProvider.enabled = false;
             this.gameObject.SetActive(false);
