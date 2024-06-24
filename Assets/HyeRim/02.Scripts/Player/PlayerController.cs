@@ -47,9 +47,10 @@ namespace NHR
         public void UpdateCharacter(int id)
         {
             Debug.Log("UpdateCharacter");
-            photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
+            photonView.RPC("UpdateCharacterRPC", RpcTarget.AllBuffered, id);
             this.ApplyCharacter(id);
         }
+
         [PunRPC]
         public void CharacterRePosition()
         {
