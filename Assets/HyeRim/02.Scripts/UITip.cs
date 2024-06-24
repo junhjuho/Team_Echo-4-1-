@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class UITip : MonoBehaviour
 {
@@ -24,6 +25,16 @@ public class UITip : MonoBehaviour
         foreach (var tip in tips) tip.SetActive(false);
     }
 
+    private void Start()
+    {
+        EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Popup_Tip, new EventHandler<string>((type, tipName) =>
+        {
+            Debug.Log("popup tip");
+            int index = this.PopupTip(tipName);
+            Invoke("this.ClosePopup", 3f);
+        }));
+
+    }
     public int PopupTip(string tipName)
     {
         this.defaultPopup.SetActive(true);

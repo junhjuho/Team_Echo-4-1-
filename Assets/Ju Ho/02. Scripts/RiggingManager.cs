@@ -17,8 +17,15 @@ public class RiggingManager : MonoBehaviour
 
     public float smoothValue = 0.1f;
     public float modelHeight = 1.67f;
+    PlayerSyncController playerSyncController;
 
     PhotonView pv;
+
+    private void OnEnable()
+    {
+        playerSyncController = this.GetComponentInParent<PlayerSyncController>();
+        playerSyncController.riggingManager = this.GetComponentInChildren<RiggingManager>();
+    }
 
     private void Start()
     {

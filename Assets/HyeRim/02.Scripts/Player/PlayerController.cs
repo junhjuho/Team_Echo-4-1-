@@ -26,6 +26,7 @@ namespace NHR
 
         private void Awake()
         {
+            if(photonView.IsMine)
             GameDB.Instance.playerController = this;
             this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
         }
@@ -48,6 +49,18 @@ namespace NHR
             Debug.Log("UpdateCharacter");
             photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
             this.ApplyCharacter(id);
+        }
+        [PunRPC]
+        public void CharacterRePosition()
+        {
+            int rand = Random.Range(0, GameManager.Instance.inGameMapManager.playerSpawnPositionList.Count);
+            GameDB.Instance.myPlayer.transform.position = GameManager.Instance.inGameMapManager.playerSpawnPositionList[rand].position;
+            Invoke("CharacterOn", 1f);
+        }
+        public void CharacterOn()
+        {
+            nowCharacter.gameObject.SetActive(true);
+            SeongMin.GameManager.Instance.playerManager.humanMovement.isDie = true;
         }
 
         [PunRPC]
