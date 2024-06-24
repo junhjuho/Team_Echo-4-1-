@@ -20,6 +20,8 @@ public class HumanMovement : PlayerMovement, IDamageable
     bool isEnergyDown;
     public bool isDie;
 
+    private WaitForSeconds reviveTime = new WaitForSeconds(4f);
+
     Scene scene;
 
     public void OnEnable()
@@ -62,6 +64,8 @@ public class HumanMovement : PlayerMovement, IDamageable
             else
             {
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, SeongMin.GameManager.Instance.playerManager.heart);
+
+                StartCoroutine(this.RespawnPlayer());
             }
         }
     }
@@ -110,10 +114,13 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
-    private void RespawnPlayer()
+    private IEnumerator RespawnPlayer()
     {
+        yield return reviveTime;
+        this.gameObject.SetActive(true);
         playerSyncController.origin.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
+        StopAllCoroutines();
     }
 
     public void OnTriggerEnter(Collider other)
