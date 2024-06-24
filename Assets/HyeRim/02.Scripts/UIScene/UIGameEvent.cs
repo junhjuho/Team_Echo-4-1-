@@ -24,8 +24,8 @@ namespace NHR
         public UIMonsterMode uiMonsterMode;
 
         //관전UI
-        [Header("관전 이벤트")]
-        public UIWatching uiWatching;
+        //[Header("관전 이벤트")]
+        //public UIWatching uiWatching;
 
         //Timer UI
         [Header("Round Timer")]
@@ -52,7 +52,7 @@ namespace NHR
             this.uiRole = GetComponentInChildren<UIRole>();
             this.uiAttacked = GetComponentInChildren<UIAttacked>();
             this.uiMonsterMode = GetComponentInChildren<UIMonsterMode>();
-            this.uiWatching = GetComponentInChildren<UIWatching>();
+            //this.uiWatching = GetComponentInChildren<UIWatching>();
             this.uiTimer = GetComponentInChildren<UITimer>();
             this.uiNowPlayers = GetComponentInChildren<UINowPlayers>();
             this.uiCompleteMission = GetComponentInChildren<UICompleteMission>();
@@ -71,7 +71,7 @@ namespace NHR
             this.uiAttacked.Init();
 
             this.uiMonsterMode.gameObject.SetActive(false);
-            this.uiWatching.gameObject.SetActive(false);
+            //this.uiWatching.gameObject.SetActive(false);
 
             this.uiCompleteMission.gameObject.SetActive(false);
             this.uiMissionPercent.gameObject.SetActive(false);
@@ -131,7 +131,7 @@ namespace NHR
                     else
                     {
                         this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("death");
-                        Invoke("PopWatching", 2f);
+                        //Invoke("PopWatching", 2f);
                     }
                     this.uiAttacked.Close();
                 }
@@ -144,11 +144,11 @@ namespace NHR
             }));
 
             //관전(죽은 후, 승리 후 다른 플레이어 기다림)
-            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Watching_Game, new EventHandler((type) =>
-            {
-                Debug.Log("<color=blue>관전모드</color>");
-                this.uiWatching.gameObject.SetActive(true);
-            }));
+            //EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Watching_Game, new EventHandler((type) =>
+            //{
+            //    Debug.Log("<color=blue>관전모드</color>");
+            //    this.uiWatching.gameObject.SetActive(true);
+            //}));
 
             //괴물 변신
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
@@ -221,10 +221,10 @@ namespace NHR
             this.uiAttacked.imageDeath.gameObject.SetActive(false);
 
         }
-        private void PopWatching()
-        {
-            this.uiWatching.gameObject.SetActive(true);
-        }
+        //private void PopWatching()
+        //{
+        //    this.uiWatching.gameObject.SetActive(true);
+        //}
 
         //dialog 출력
         IEnumerator CTypingDialog(string dialog, TMP_Text tmp, GameObject nowPop)

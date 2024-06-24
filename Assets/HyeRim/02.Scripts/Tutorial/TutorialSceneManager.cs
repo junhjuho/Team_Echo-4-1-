@@ -157,7 +157,7 @@ namespace NHR
                     break;
                 //손전등 Trigger
                 case 3:
-
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Trigger");
                     break;
                 //배터리 잡기
                 case 4:

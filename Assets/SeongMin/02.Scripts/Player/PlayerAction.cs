@@ -30,8 +30,11 @@ namespace SeongMin
             //잡은 물체가 ItemObject 스크립트가 있는지 확인 후 _item 을 콜백으로 받아오기
             if (args.interactableObject.transform.TryGetComponent(out ItemObject _item) && _item.isFind == false)
             {
-                playerMission = GameDB.Instance.playerMission;
+                Debug.Log("Get Item1 : " + args.interactableObject.transform.name);
+                Debug.Log("Get Item2 : " + _item.charactorValue);
 
+                playerMission = GameDB.Instance.playerMission;
+                Debug.Log("Get Item3 : " + playerMission.isChaser);
                 //_item.isFind = true;
 
                 // 플레이어의 미션 배열에 _item 오브젝트와 일치하는 게 있으면 if문 안에 코드를 실행
@@ -51,6 +54,7 @@ namespace SeongMin
                     && playerMission.isChaser
                     && playerMission.MissionItemCheck(_item.gameObject, playerMission.chaserMissionArray))
                 {
+                    Debug.Log("Chaser : " + args.interactableObject.transform.name);
                     _item.isFind = true;
                     _item.gameObject.SetActive(false);
                     playerMission.chaserMissionClearCount++;

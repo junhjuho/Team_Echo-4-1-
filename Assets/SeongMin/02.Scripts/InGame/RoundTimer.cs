@@ -16,6 +16,14 @@ namespace SeongMin
         {
             GameManager.Instance.roundTimer = this;
         }
+        private void Start()
+        {
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
+            {
+                this.MonsterTimerStart();
+            }));
+
+        }
         public void TimerStart()
         {
             StartCoroutine(Timer());
@@ -28,7 +36,7 @@ namespace SeongMin
                 print("타이머가 돌고 있습니다.");
                 yield return waitOneSecond;
                 _timer--;
-                UIManager.Instance.inGameSceneMenu.timer.text = _timer.ToString();
+                //UIManager.Instance.inGameSceneMenu.timer.text = _timer.ToString();
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Update_Timer, _timer);
             }
             GameManager.Instance.inGameSceneManager.Lose();
