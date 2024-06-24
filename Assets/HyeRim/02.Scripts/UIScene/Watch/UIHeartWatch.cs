@@ -19,22 +19,29 @@ namespace NHR
         private void Start()
         {
             this.gameObject.SetActive(false);
-        }
-        private void OnEnable()
-        {
-            Debug.Log("Heart Enabled");
-            if (!GameDB.Instance.playerMission.isChaser)
-            {
-                this.nowHeart = SeongMin.GameManager.Instance.playerManager.heart;
-                if (this.nowHeart < this.maxHeart)
-                {
-                    for (int i = 0; i < 3 - this.nowHeart; i++)
-                    {
-                        this.hearts[i].imageDeath.SetActive(true);
-                    }
-                }
 
-            }
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
+            {
+                this.nowHeart = heart;
+                this.hearts[3 - heart].imageDeath.SetActive(true);
+            }));
+
         }
+        //public void UpdateHeart()
+        //{
+        //    Debug.Log("Heart Enabled");
+        //    if (!GameDB.Instance.playerMission.isChaser)
+        //    {
+        //        this.nowHeart = SeongMin.GameManager.Instance.playerManager.heart;
+        //        if (this.nowHeart < this.maxHeart)
+        //        {
+        //            for (int i = 0; i < 3 - this.nowHeart; i++)
+        //            {
+        //                this.hearts[i].imageDeath.SetActive(true);
+        //            }
+        //        }
+
+        //    }
+        //}
     }
 }
