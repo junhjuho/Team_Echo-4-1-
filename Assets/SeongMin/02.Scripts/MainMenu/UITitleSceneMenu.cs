@@ -24,13 +24,14 @@ namespace SeongMin
         /// </summary>
         [Header("게임스타트 -> 튜토리얼씬으로 전환")]
         public Button startButton;
-        // public Button tutorialButton;
         [Header("게임 정보 UI")]
         public Button gameInfoButton;
         [Header("제작자 정보 UI")]
         public Button makersButton;
+        // public Button tutorialButton;
         #endregion
 
+        /*
         #region 우측 UI 표시
         [Header("우측캔버스 메인 타이틀")]
         public TMP_Text titleTextRight;
@@ -38,24 +39,21 @@ namespace SeongMin
         public TMP_Text subTitleTextRight;
         #endregion
 
-        #region 좌측 UI 표시 -> 미션아이템 설명
+        #region 좌측 UI 표시 -> 설정 
         [Header("좌측캔버스 메인 타이틀")]
         public TMP_Text titleTextLeft;
         [Header("-")]
         public TMP_Text subTitleTextLeft;
         #endregion
+        */
 
         // public Canvas makersCanvas; // 제작자 정보 UI 캔버스
-        public Image makersImage;
+        // public Image makersImage;
         public Button makersBackButton;
 
         // public Canvas gameInfoCanvas; // 게임 정보 UI 캔버스
-        public Image gameInfoImage;
+        // public Image gameInfoImage;
         public Button gameInfoBackButton;
-
-
-        // public Button characterSettingButton;
-        // public Button gameSettingButton;
 
         // 키 입력은 다른 씬으로 넘김
         //public UIKeyboard keyboard;
@@ -65,12 +63,13 @@ namespace SeongMin
             UIManager.Instance.titleSceneMenu = this;
 
             Transform uiTitle = GameObject.Find("UITitle")?.transform;
-            Transform uiTitleRight = GameObject.Find("UITitleRight")?.transform;
-            Transform uiTitleLeft = GameObject.Find("UITitleLeft")?.transform;
+            //Transform uiTitleRight = GameObject.Find("UITitleRight")?.transform;
+            //Transform uiTitleLeft = GameObject.Find("UITitleLeft")?.transform;
 
-            Transform makersCanvas = GameObject.Find("MakersCanvas")?.transform;
-            Transform gameInfoCanvas = GameObject.Find("GameInfoCanvas")?.transform;
+            // Transform makersCanvas = GameObject.Find("MakersCanvas")?.transform;
+            // Transform gameInfoCanvas = GameObject.Find("GameInfoCanvas")?.transform;
 
+            
             #region 정면 UI
             if (uiTitle == null)
             {
@@ -97,8 +96,8 @@ namespace SeongMin
                     Debug.LogError("MakersButton을 찾을 수 없습니다. Hierarchy에서 StartButton 오브젝트의 이름을 확인하세요.");
             }
                 #endregion
-
-                #region 우측 UI
+            /*
+            #region 우측 UI
             if (uiTitleRight == null)
             {
                 Debug.LogError("UITitleRight Canvas를 찾을 수 없습니다. Hierarchy에서 UITitleRight 오브젝트의 이름을 확인하세요.");
@@ -114,8 +113,8 @@ namespace SeongMin
                     Debug.LogError("SubTitleTextRight를 찾을 수 없습니다. Hierarchy에서 SubTitleTextRight 오브젝트의 이름을 확인하세요.");
             }
                 #endregion
-
-                #region 좌측 UI
+            
+            #region 좌측 UI
             if (uiTitleLeft == null)
             {
                 Debug.LogError("UITitleLeft Canvas를 찾을 수 없습니다. Hierarchy에서 UITitleLeft 오브젝트의 이름을 확인하세요.");
@@ -131,7 +130,9 @@ namespace SeongMin
                     Debug.LogError("SubTitleTextLeft를 찾을 수 없습니다. Hierarchy에서 SubTitleTextLeft 오브젝트의 이름을 확인하세요.");
             }
             #endregion
+            */
 
+            /*
             #region Makers Ui
             if (makersCanvas == null)
             {
@@ -148,7 +149,9 @@ namespace SeongMin
                     Debug.LogError("BackButton을 찾을 수 없습니다. Hierarchy에서 BackButton 오브젝트의 이름을 확인하세요.");
             }
             #endregion
+            */
 
+            /*
             #region GameInfo Ui
             if (gameInfoCanvas == null)
             {
@@ -165,6 +168,7 @@ namespace SeongMin
                     Debug.LogError("BackButton을 찾을 수 없습니다. Hierarchy에서 BackButton 오브젝트의 이름을 확인하세요.");
             }
             #endregion
+            */
 
             #region Button Add Listener
             // 게임시작 -> Lobby 씬 전환 버튼 할당
@@ -172,12 +176,14 @@ namespace SeongMin
             EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Lobby));
 
             // GameInfoButton과 MakersButton에 클릭 이벤트 추가
-            gameInfoButton.onClick.AddListener(() => ShowCanvas(gameInfoCanvas));
-            makersButton.onClick.AddListener(() => ShowCanvas(makersCanvas));
+            // gameInfoButton.onClick.AddListener(() => HideCanvas(uiTitle));
+            // makersButton.onClick.AddListener(() => HideCanvas(uiTitle));
 
             // 뒤로 가기 버튼에 클릭 이벤트 추가
-            gameInfoBackButton.onClick.AddListener(() => ShowCanvas(uiTitle));
-            makersBackButton.onClick.AddListener(() => ShowCanvas(uiTitle));
+            //gameInfoBackButton.onClick.AddListener(() => ShowCanvas(uiTitle, gameInfoCanvas));
+            //makersBackButton.onClick.AddListener(() => ShowCanvas(uiTitle, makersCanvas));
+
+           
             #endregion
         }
 
@@ -222,25 +228,34 @@ namespace SeongMin
             {
                 RectTransform rectTransform = button.GetComponent<RectTransform>();
                 Vector2 originalPosition = rectTransform.anchoredPosition;
-                rectTransform.anchoredPosition = new Vector2(10, originalPosition.y); // 오른쪽 화면 밖 위치로 설정
+                rectTransform.anchoredPosition = new Vector2(button.transform.localPosition.x, originalPosition.y); // 오른쪽 화면 밖 위치로 설정
                 rectTransform.DOAnchorPos(originalPosition, 1).SetEase(Ease.OutBack).SetDelay(delay);
             }
         }
 
-        void ShowCanvas(Transform canvas)
+        /*
+        /// <summary>
+        /// 버튼 클릭 시 현재 캔버스 안보이기
+        /// </summary>
+        /// <param name="currentCanvas"></param>
+        void HideCanvas(Transform currentCanvas)
         {
-            canvas.gameObject.SetActive(true);
-        }
+            // 현재 UI 끄기 
+            currentCanvas.gameObject.SetActive(false);
 
+        }
+        */
         void AnimateMakersImage()
         {
-            if (makersImage != null)
+            /*
+            if(makersImage != null)
             {
                 // makersImage.transform.localScale = new Vector3(0, 0, 0); // 시작 크기 설정
                 makersImage.transform.DOScale(Vector3.one, 1).SetEase(Ease.OutBounce); // 크기 애니메이션
                 makersImage.rectTransform.anchoredPosition = new Vector2(0, -500); // 시작 위치 설정
                 makersImage.rectTransform.DOAnchorPos(Vector2.zero, 1).SetEase(Ease.OutBack); // 위치 애니메이션
             }
+            */
         }
     }
 }
