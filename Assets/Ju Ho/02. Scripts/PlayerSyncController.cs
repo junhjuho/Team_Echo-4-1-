@@ -38,12 +38,16 @@ public class PlayerSyncController : MonoBehaviour
             headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
             leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
             rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
-            riggingManager = this.GetComponentInChildren<RiggingManager>();
+            //riggingManager = this.GetComponentInChildren<RiggingManager>();
         }
     }
 
     void Update()
     {
+        if(riggingManager == null)
+        {
+            riggingManager = this.GetComponentInChildren<RiggingManager>();
+        }
         if (pv.IsMine) // xr origin과 싱크 오브젝트 동기화(포톤으로 넘겨주기 위한)
         {
             float distance = headRig.transform.position.y - riggingManager.modelHeight; // 키 보정
