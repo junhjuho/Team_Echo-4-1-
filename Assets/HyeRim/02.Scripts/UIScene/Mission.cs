@@ -17,7 +17,7 @@ namespace NHR
         private void Start()
         {
             //미션 완료하면 폰트 바꾸기
-            if (this.targetItem.isFind) this.textFirstStep.fontStyle = FontStyles.Strikethrough;
+            //if (this.targetItem.isFind) this.textFirstStep.fontStyle = FontStyles.Strikethrough;
         }
         public void UpdateMission()
         {
