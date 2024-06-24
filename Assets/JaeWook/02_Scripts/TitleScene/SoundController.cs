@@ -67,8 +67,9 @@ namespace Jaewook
         public void PlayOnceClip()
         {
             onceSource.clip = audioClip3;
-            onceSource.Play();
+            onceSource.PlayOneShot(onceSource.clip);
         }
+
         public void StopLoopClip()
         {
             if (loopSource.isPlaying)
