@@ -23,7 +23,7 @@ namespace NHR
             EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
             {
                 this.nowHeart = heart - 1;
-                this.hearts[this.maxHeart - heart].imageDeath.SetActive(true);
+                this.hearts[this.maxHeart - heart + 1].imageDeath.SetActive(true);
             }));
 
         }

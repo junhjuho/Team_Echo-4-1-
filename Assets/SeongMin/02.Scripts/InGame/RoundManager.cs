@@ -172,7 +172,12 @@ namespace SeongMin
             //필요 퍼센트의 1/4, 2/4, 3/4 4/4마다 UI 안내
             int quater = this.needPersent / 4;
             if (_value >= needPersent) EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Complete_RoundMission);
-            else if (_value % quater == 0) EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, _value);
+            //else if (_value % quater == 0) EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, _value);
+            else
+            {
+                string str = string.Format("{0}/{1}", GameDB.Instance.playerMission.playerMissionArray.Length, GameDB.Instance.playerMission.runnerMissionClearCount);
+                EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, str);
+            }
 
         }
 

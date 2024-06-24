@@ -61,7 +61,7 @@ namespace SeongMin
                         EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Map");
                         this.hasTipMap = false;
                     }
-                    else if(this.hasTipFinalKey)
+                    else if (this.hasTipFinalKey && !this.playerMission.isChaser) 
                     {
                         EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "FinalKey");
                         this.hasTipFinalKey = false;
