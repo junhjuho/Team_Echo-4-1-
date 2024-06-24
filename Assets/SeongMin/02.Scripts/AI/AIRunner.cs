@@ -15,6 +15,7 @@ namespace SeongMin
         private Transform targetPosition;
         private PhotonView photonView;
         private AudioSource audioSource;
+        public AudioClip footStepSound;
         private bool changeState = false;
         private int rand = 0;
         public GameObject bloodEffect;
@@ -101,7 +102,7 @@ namespace SeongMin
                 agent.speed = 0;
                 state = State.Die;
                 animator.SetTrigger("isDie");
-                Invoke("Die", 0.5f);
+                //Invoke("Die", 0.5f);
 
                 var effectPos = this.transform.position + Vector3.up * 1.27f;
                 Instantiate(bloodEffect, effectPos, Quaternion.identity);
@@ -118,6 +119,18 @@ namespace SeongMin
         public void Die()
         {
             this.gameObject.SetActive(false);
+        }
+
+        public void FootStepSound()
+        {
+            audioSource.PlayOneShot(footStepSound);
+            photonView.RPC("photonView", RpcTarget.Others);
+        }
+
+        [PunRPC]
+        public void PhotonFootStepSound()
+        {
+            audioSource.PlayOneShot(footStepSound);
         }
     }
 

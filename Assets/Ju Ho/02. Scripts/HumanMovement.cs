@@ -32,8 +32,7 @@ public class HumanMovement : PlayerMovement, IDamageable
         base.Start();
         scene = SceneManager.GetActiveScene();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
-        if (pv.IsMine)
-            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+
     }
 
     void OnDisable() // 
@@ -75,6 +74,16 @@ public class HumanMovement : PlayerMovement, IDamageable
         if (pv.IsMine)
         {
             base.PlayerMove();  // PlayerMovement 스크립트 상속
+
+            if (scene.name == "InGameScene 1")
+            {
+                SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+                isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
+            }
+            else
+            {
+                isEnergyDown = false;
+            }
 
             isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼
 
