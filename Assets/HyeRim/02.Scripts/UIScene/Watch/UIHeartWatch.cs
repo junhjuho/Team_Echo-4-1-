@@ -18,12 +18,12 @@ namespace NHR
         }
         private void Start()
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
 
             EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
             {
                 this.nowHeart = heart;
-                this.hearts[3 - heart].imageDeath.SetActive(true);
+                this.hearts[this.maxHeart - heart].imageDeath.SetActive(true);
             }));
 
         }
