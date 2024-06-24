@@ -8,7 +8,7 @@ using SeongMin;
 namespace Jaewook
 {
     public class UIMakers : MonoBehaviour
-    {
+    {/*
         public Button makersBackButton;
 
         private void Awake()
@@ -47,5 +47,7 @@ namespace Jaewook
 
         //
     }
+        */
 
+    }
 }

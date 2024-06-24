@@ -19,17 +19,17 @@ namespace Jaewook
 
         private void Start()
         {
+
             base.Start();
 
-            playerMission = GameDB.Instance.playerMission;
+            // playerMission = GameDB.Instance.playerMission;
 
         }
 
 
         public virtual void OnGrab()
         {
-            // 잡으면 오브젝트 자체를 없애기
-            gameObject.SetActive(false);
+
         }
 
       

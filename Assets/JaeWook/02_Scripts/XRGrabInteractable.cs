@@ -14,9 +14,6 @@ namespace Jaewook
         ItemObject itemObject;
         void Start()
         {
-            this.selectEntered.AddListener(SelectEvent);
-            this.selectExited.AddListener(ReleaseEvent);
-            this.activated.AddListener(ActivatingEvent);
             if(this.gameObject.TryGetComponent(out ItemObject item))
             {
                 itemObject = this.gameObject.GetComponent<ItemObject>();
@@ -54,40 +51,6 @@ namespace Jaewook
                 itemObject.fx.SetActive(false);
             }
         }
-
-        /// <summary>
-        /// Active È°¼º -> OnUse();
-        /// </summary>
-        /// <param name="args"></param>
-        private void ActivatingEvent(ActivateEventArgs args)
-        {
-            if (args.interactableObject.transform.GetComponent<IItem>() != null)
-            {
-                IItem item = args.interactableObject.transform.GetComponent<IItem>();
-                item.OnUse();
-            }
-        }
-        private void SelectEvent(SelectEnterEventArgs args)
-        {
-            if (args.interactableObject.transform.GetComponent<IItem>() != null)
-            {
-                IItem item = args.interactableObject.transform.GetComponent<IItem>();
-                item.OnGrab();
-
-            }
-        }
-        private void ReleaseEvent(SelectExitEventArgs args)
-        {
-            if (args.interactableObject.transform.GetComponent<IItem>() != null)
-            {
-                IItem item = args.interactableObject.transform.GetComponent<IItem>();
-                item.OnRelease();
-            }
-        }
-
-        //private void DeactovateSomething(DeactivateEventArgs args)
-        //{
-        //}
 
     }
 }

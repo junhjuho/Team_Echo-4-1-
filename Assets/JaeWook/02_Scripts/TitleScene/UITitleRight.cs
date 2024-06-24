@@ -9,6 +9,7 @@ namespace Jaewook
 {
     public class UITitleRight : MonoBehaviour
     {
+        /*
         #region 우측 UI 표시
         [Header("우측캔버스 메인 타이틀")]
         public TMP_Text titleTextRight;
@@ -18,7 +19,7 @@ namespace Jaewook
 
         private void Awake()
         {
-            TitleSceneManager.Instance.uiTitleRight = this;
+            // TitleSceneManager.Instance.uiTitleRight = this;
 
             Transform uiTitleRight = GameObject.Find("UITitleRight")?.transform;
 
@@ -40,5 +41,6 @@ namespace Jaewook
             #endregion
         }
     }
-
+        */
+    }
 }

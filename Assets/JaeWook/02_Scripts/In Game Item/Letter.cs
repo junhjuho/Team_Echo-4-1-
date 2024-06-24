@@ -19,7 +19,7 @@ namespace Jaewook
             letterUI = GetComponentInChildren<TMP_Text>();
             image = GetComponentInChildren<Image>();
 
-            letterUI.text = " ㅇㅅㅇ ";
+            letterUI.text = " 11 ";
 
             // LetterUI가 비활성화 상태인지 확인합니다.
             if (letterUI != null)

@@ -190,8 +190,8 @@ namespace SeongMin
         void Start()
         {
             #region 정면 UI Animation
-            // AnimateTitle();
-            // AnimateSubTitle();
+            AnimateTitle();
+            AnimateSubTitle();
             AnimateButton(startButton, 1);
             // AnimateButton(gameInfoButton, 2);
             // AnimateButton(makersButton, 3);
@@ -202,16 +202,35 @@ namespace SeongMin
         {
             if (titleText != null)
             {
+                // 시작 위치와 Z축 설정
+                titleText.transform.localPosition = new Vector3(titleText.transform.localPosition.x, titleText.transform.localPosition.y, 3);
+                titleText.DOFade(1, 4).SetEase(Ease.InOutQuad);
+                titleText.transform.DOLocalMoveZ(0, 1).SetEase(Ease.OutQuad); // Z축 애니메이션
+            }
+            /*
+            if (titleText != null)
+            {
                 // titleText.color = new Color(titleText.color.r, titleText.color.g, titleText.color.b, 0);
                 titleText.DOFade(1, 1).SetEase(Ease.InOutQuad);
                 titleText.rectTransform.anchoredPosition = new Vector2(-3, 0);
                 titleText.rectTransform.DOAnchorPos(Vector2.zero, 3).SetEase(Ease.OutQuad);
-                titleText.rectTransform.DOShakePosition(1, new Vector3(1, 1, 0), 10, 90, false, true).SetDelay(2);
+                // titleText.rectTransform.DOShakePosition(1, new Vector3(1, 1, 0), 10, 90, false, true).SetDelay(2);
             }
+            */
         }
 
         void AnimateSubTitle()
         {
+
+            if (subTitleText != null)
+            {
+                // 시작 위치와 Z축 설정
+                subTitleText.transform.localPosition = new Vector3(subTitleText.transform.localPosition.x, subTitleText.transform.localPosition.y, 3);
+                subTitleText.DOFade(1, 4).SetEase(Ease.InOutQuad);
+                subTitleText.transform.DOLocalMoveZ(0, 1).SetEase(Ease.OutQuad); // Z축 애니메이션
+            }
+
+            /*
             if (subTitleText != null)
             {
                 // subTitleText.color = new Color(subTitleText.color.r, subTitleText.color.g, subTitleText.color.b, 0);
@@ -220,16 +239,21 @@ namespace SeongMin
                 subTitleText.rectTransform.DOAnchorPos(Vector2.zero, 2).SetEase(Ease.OutQuad);
                 subTitleText.rectTransform.DOShakePosition(1, new Vector3(1, 1, 0), 3, 0, false, true).SetDelay(3);
             }
+            */
         }
 
         void AnimateButton(Button button, float delay)
         {
             if (button != null)
             {
-                RectTransform rectTransform = button.GetComponent<RectTransform>();
-                Vector2 originalPosition = rectTransform.anchoredPosition;
-                rectTransform.anchoredPosition = new Vector2(button.transform.localPosition.x, originalPosition.y); // 오른쪽 화면 밖 위치로 설정
-                rectTransform.DOAnchorPos(originalPosition, 1).SetEase(Ease.OutBack).SetDelay(delay);
+                // 현재 위치에 나타나는 애니메이션
+                CanvasGroup canvasGroup = button.GetComponent<CanvasGroup>();
+                if (canvasGroup == null)
+                {
+                    canvasGroup = button.gameObject.AddComponent<CanvasGroup>();
+                }
+                canvasGroup.alpha = 0;
+                canvasGroup.DOFade(1, 10).SetEase(Ease.InOutQuad).SetDelay(delay);
             }
         }
 

@@ -56,6 +56,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             {
                 SeongMin.GameDB.Instance.hasGameData = true;
                 SeongMin.GameDB.Instance.isWin = false;
+                SeongMin.GameManager.Instance.roundManager.photonView.RPC("AllPlayerLobbySceneLoad", RpcTarget.MasterClient);
             }
             else
             {
