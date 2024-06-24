@@ -8,9 +8,6 @@ using UnityEngine.UIElements;
 
 public class HumanMovement : PlayerMovement, IDamageable
 {
-    public MonsterMovement monsterMovement;
-    public AudioClip footStepSound;
-    public AudioSource audioSource;
     public GameObject FireAxe;
     public DieAnimation[] dieAnims;
 
@@ -18,24 +15,20 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     bool isEnergyDown;
     bool isDie;
-    int currentPlayer;
-    UIPlayer uiPlayer;
 
     Scene scene;
-
-    PlayerSyncController playerSyncController;
 
 
     public void OnEnable()
     {
         isDie = false;
+        moveProvider.enabled = true;
     }
 
     public override void Start()
     {
         base.Start();
         scene = SceneManager.GetActiveScene();
-        audioSource = this.GetComponent<AudioSource>();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
         if (scene.name == ("InGameScene 1"))
         {
@@ -118,35 +111,29 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        OnHit(other); // 충돌했을 때 OnHit 실행
-    }
-
     void RespawnPlayer()
     {
         playerSyncController.origin.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
     }
 
-    public void OnHit(Collider other) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
+    public void OnCollisionEnter(Collision collision)
     {
-        if (pv.IsMine && other.gameObject.name == "fireaxe")
+        OnHit(collision);
+    }
+    public void OnHit(Collision collision) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
+    {
+        if (pv.IsMine && collision.gameObject.name == "Fireaxe")
         {
+            playerSyncController.BloodEffect(collision);
             isDie = true;
+            moveProvider.enabled = false;
             this.gameObject.SetActive(false);
         }
     }
 
     void PlayFootStepSound()
     {
-        audioSource.PlayOneShot(footStepSound);
-        pv.RPC("PhotonFootStepSound", RpcTarget.Others);
-    }
-
-    [PunRPC]
-    void PhotonFootStepSound()
-    {
-        audioSource.PlayOneShot(footStepSound);
+        playerSyncController.PlayFootStepSound();
     }
 }

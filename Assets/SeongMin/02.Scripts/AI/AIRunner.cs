@@ -90,9 +90,9 @@ namespace SeongMin
             agent.SetDestination(targetPosition.position);
         }
 
-        public void OnHit(Collider other)
+        public void OnHit(Collision collision)
         {
-            if(other.gameObject.name == "fireaxe")
+            if(collision.gameObject.name == "fireaxe")
             {
                 agent.speed = 0;
                 state = State.Die;
