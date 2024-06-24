@@ -115,7 +115,9 @@ public class PlayerSyncController : MonoBehaviour
 
     public void BloodEffect(Collider other)
     {
-        pv.RPC("PhotonBloodEffect", RpcTarget.All, other);
+        var effectPos = this.transform.position + Vector3.up * 1.27f;
+        Instantiate(bloodObject, effectPos, Quaternion.identity);
+        //pv.RPC("PhotonBloodEffect", RpcTarget.All, other);
     }
 
     [PunRPC]
