@@ -48,7 +48,6 @@ namespace SeongMin
                 }
                 j++;
             }
-            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Get_Mission);
 
             // 복수자이면 복수자 미션 주기
             if (GameDB.Instance.playerMission.isChaser == true)
@@ -74,6 +73,9 @@ namespace SeongMin
                         GameManager.Instance.inGameMapManager.inGameTeamPlayItemList[i];
                 }
             }
+
+            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Get_Mission);
+
         }
     }
 
