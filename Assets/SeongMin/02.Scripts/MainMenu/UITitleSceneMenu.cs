@@ -190,11 +190,11 @@ namespace SeongMin
         void Start()
         {
             #region Á¤¸é UI Animation
-            AnimateTitle();
-            AnimateSubTitle();
+            // AnimateTitle();
+            // AnimateSubTitle();
             AnimateButton(startButton, 1);
-            AnimateButton(gameInfoButton, 2);
-            AnimateButton(makersButton, 3);
+            // AnimateButton(gameInfoButton, 2);
+            // AnimateButton(makersButton, 3);
             #endregion
         }
 

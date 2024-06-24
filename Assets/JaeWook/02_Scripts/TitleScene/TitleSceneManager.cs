@@ -33,6 +33,7 @@ namespace Jaewook
             canvasToHide.gameObject.SetActive(false);
         }
 
+
         public void SwitchCanvas(Transform canvasToShow, Transform canvasToHide)
         {
             canvasToHide.gameObject.SetActive(false);

@@ -20,6 +20,7 @@ public class UIGameInfo : MonoBehaviour
         {
             Debug.LogError("GameInfoCanvas를 찾을 수 없습니다. Hierarchy에서 GameInfoCanvas 오브젝트의 이름을 확인하세요.");
         }
+
         else
         {
             // gameInfoImage = gameInfoCanvas.transform.Find("GameInfoImage")?.GetComponent<Image>();
