@@ -83,11 +83,6 @@ namespace SeongMin
             EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Move");
             yield return this.popupTime;
             EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Grab");
-            yield return this.popupTime;
-            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Flashlight");
-            yield return this.popupTime;
-            yield return this.popupTime;
-            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Map");
 
             yield break;
         }

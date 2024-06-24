@@ -15,6 +15,11 @@ namespace SeongMin
     {
         public PhotonView photonView;
         public PlayerMission playerMission;
+
+        //팁
+        private bool hasTipMap = true;
+        private bool hasTipFinalKey = true;
+
         protected override void Start()
         {
             base.Start();
@@ -22,6 +27,8 @@ namespace SeongMin
             this.selectEntered.AddListener(SelectEvent);
             //this.hoverEntered.AddListener(HoverEvent);
             //this.hoverExited.AddListener(HoverEventExit);
+            this.hasTipMap = true;
+            this.hasTipFinalKey = true;
         }
         // 플레이어가 아이템을 잡았을 때,
         private void SelectEvent(SelectEnterEventArgs args)
@@ -47,6 +54,19 @@ namespace SeongMin
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
                     playerMission.AllPlayerMissionScoreUpdate();
+
+                    //팁
+                    if (this.hasTipMap)
+                    {
+                        EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Map");
+                        this.hasTipMap = false;
+                    }
+                    else if(this.hasTipFinalKey)
+                    {
+                        EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "FinalKey");
+                        this.hasTipFinalKey = false;
+                    }
+
                     //TODO 이 아이템 인벤토리에 넣기
                 }
                 // 내가 복수자 일 때만 복수자용 아이템 카운팅 하기
