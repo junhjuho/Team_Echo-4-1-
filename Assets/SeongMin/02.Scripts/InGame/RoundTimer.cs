@@ -16,6 +16,14 @@ namespace SeongMin
         {
             GameManager.Instance.roundTimer = this;
         }
+        private void Start()
+        {
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
+            {
+                this.MonsterTimerStart();
+            }));
+
+        }
         public void TimerStart()
         {
             StartCoroutine(Timer());
