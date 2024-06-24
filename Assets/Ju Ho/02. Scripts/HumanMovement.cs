@@ -30,10 +30,7 @@ public class HumanMovement : PlayerMovement, IDamageable
         base.Start();
         scene = SceneManager.GetActiveScene();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
-        if (scene.name == ("InGameScene 1"))
-        {
-            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
-        }
+        SeongMin.GameManager.Instance.playerManager.humanMovement = this;
     }
 
     void OnDisable() // 
@@ -61,7 +58,7 @@ public class HumanMovement : PlayerMovement, IDamageable
     void Update()
     {
         PlayerMove();
-        FingerMove(animator);
+        FingerMove();
     }
 
     public override void PlayerMove() // 플레이어 걷기 , 달리기
@@ -69,15 +66,6 @@ public class HumanMovement : PlayerMovement, IDamageable
         if (pv.IsMine)
         {
             base.PlayerMove();  // PlayerMovement 스크립트 상속
-
-            if (scene.name == ("InGameScene 1"))
-            {
-                isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
-            }
-            else // InGameScene 1이 아닐 때, 
-            {
-                isEnergyDown = false;
-            }
 
             isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼
 
@@ -91,7 +79,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
-    public void FingerMove(Animator animator) // 손가락 애니메이션
+    public void FingerMove() // 손가락 애니메이션
     {
         if (pv.IsMine)
         {

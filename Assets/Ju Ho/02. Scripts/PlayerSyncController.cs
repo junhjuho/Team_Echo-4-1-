@@ -81,7 +81,7 @@ public class PlayerSyncController : MonoBehaviour
             foreach (var renderer in renderers)
             {
                 int layerNumber = renderer.gameObject.layer == 14 ? 14 : layer;
-                // 렌더 게임오브젝트의 레이어가 14(fireaxe)였다면 default로 변경
+                // 렌더 게임오브젝트의 레이어가 14(Fireaxe)였다면 default로 변경
                 // 아니면 layer로 변경
                 renderer.gameObject.layer = layerNumber;
             }
