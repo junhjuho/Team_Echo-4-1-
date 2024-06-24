@@ -13,7 +13,7 @@ namespace NHR
         private void Awake()
         {
             this.uiGameResult = FindObjectOfType<UIGameResult>();
-            this.Init();
+            //this.Init();
         }
         private void Init()
         {
@@ -29,6 +29,7 @@ namespace NHR
                 this.ShowGameResult();
                 GameDB.Instance.hasGameData = false;
             }
+            else this.gameObject.SetActive(false);
 
             this.uiGameResult.buttonStay.onClick.AddListener(() => this.uiGameResult.gameObject.SetActive(false));
             this.uiGameResult.buttonTitle.onClick.AddListener(() =>
