@@ -26,6 +26,9 @@ namespace SeongMin
         public int needPersent = 60;
 
         public PhotonView photonView;
+
+        private WaitForSeconds popupTime = new WaitForSeconds(8f);
+
         private void Awake()
         {
             GameManager.Instance.roundManager = this;
@@ -75,6 +78,12 @@ namespace SeongMin
             EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "roundStart");
             // 라운드 타이머 시작
             GameManager.Instance.roundTimer.TimerStart();
+
+            //초기 Tips
+            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Move");
+            yield return this.popupTime;
+            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Grab");
+
             yield break;
         }
         private void RoleSettingEvent()

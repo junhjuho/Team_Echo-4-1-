@@ -18,7 +18,7 @@ namespace NHR
         }
         private void Start()
         {
-            //this.gameObject.SetActive(false);
+            if(GameDB.Instance.playerMission.isChaser) this.gameObject.SetActive(false);
 
             EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
             {

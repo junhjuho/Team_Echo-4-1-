@@ -5,8 +5,8 @@ using DG.Tweening;
 
 public class UITip : MonoBehaviour
 {
-    [Header("기본 셋팅")]
-    public GameObject defaultPopup;
+    //[Header("기본 셋팅")]
+    //public GameObject defaultPopup;
 
     [Header("Hands Animation")]
     public TutorialHands hands;
@@ -15,14 +15,18 @@ public class UITip : MonoBehaviour
     public GameObject[] tips;
 
     [Header("현재 팝업")]
-    public GameObject nowPopup;
+    public GameObject prevPopup;
+
+    private Animator animator;
+    private int preIndex;
 
     //초기 셋팅
     public void Init()
     {
-        this.defaultPopup.SetActive(false);
+        //this.defaultPopup.SetActive(false);
         this.hands.Init();
         foreach (var tip in tips) tip.SetActive(false);
+        this.animator = this.GetComponent<Animator>();
     }
 
     private void Start()
@@ -30,14 +34,14 @@ public class UITip : MonoBehaviour
         EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Popup_Tip, new EventHandler<string>((type, tipName) =>
         {
             Debug.Log("popup tip");
-            int index = this.PopupTip(tipName);
-            Invoke("this.ClosePopup", 3f);
+            this.preIndex = this.PopupTip(tipName);
+            this.animator.SetTrigger("Pop");
         }));
 
     }
     public int PopupTip(string tipName)
     {
-        this.defaultPopup.SetActive(true);
+        this.ClosePopup();
         switch (tipName)
         {
             case "Move":
@@ -53,23 +57,24 @@ public class UITip : MonoBehaviour
                 return 1;
             case "Flashlight":
                 this.tips[2].SetActive(true);
+                this.hands.Init();
                 return 2;
-            case "Battery":
-                this.tips[3].SetActive(true);
-                return 3;
             case "Map":
+                this.tips[3].SetActive(true);
+                this.hands.Init();
+                return 3;
+            case "FinalKey":
+                this.hands.Init();
                 this.tips[4].SetActive(true);
                 return 4;
-            case "FinalKey":
-                this.tips[5].SetActive(true);
-                return 5;
             default:
                 return -1;
         }
     }
-    public void ClosePopup(int index)
+    public void ClosePopup()
     {
-        if (index == 0 || index == 1) this.hands.Init();
-        this.tips[index].SetActive(false);
+        //this.defaultPopup.SetActive(false);
+        if (this.preIndex == 0 || this.preIndex == 1) this.hands.Init();
+        this.tips[this.preIndex].SetActive(false);
     }
 }

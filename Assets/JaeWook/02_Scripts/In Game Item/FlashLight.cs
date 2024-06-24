@@ -27,8 +27,11 @@ namespace Jaewook
         public int maxBatteryTime = 3;
         public int maxBattery = 3;
 
+        public bool hasTip = true;
+
         private void Awake()
         {
+            this.hasTip = true;
             /*
             this.uiFlashlight = this.GetComponentInChildren<NHR.UIFlashlight>();
             this.Init();
@@ -55,6 +58,14 @@ namespace Jaewook
                 flashlight.enabled = isOn;
             }
 
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out PlayerMovement player) && this.hasTip) 
+            {
+                EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Flashlight");
+                this.hasTip = false;
+            }
         }
 
         public virtual void OnGrab()
