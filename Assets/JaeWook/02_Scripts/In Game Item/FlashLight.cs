@@ -106,11 +106,11 @@ namespace Jaewook
                 //���͸� �� ĭ �ð��� �� �Ǿ��� ���
                 if (this.nowBatteryTime < 0)
                 {
-                    this.uiFlashlight.batteries[3 - this.nowBattery].gameObject.SetActive(false);
-                    this.uiFlashlight.batteries[4 - this.nowBattery].gameObject.SetActive(true);
+                    this.uiFlashlight.batteries[20 - this.nowBattery].gameObject.SetActive(false);
+                    this.uiFlashlight.batteries[30 - this.nowBattery].gameObject.SetActive(true);
 
-                    Debug.Log(3 - this.nowBattery);
-                    this.nowBatteryTime = 3;
+                    Debug.Log(30 - this.nowBattery);
+                    this.nowBatteryTime = 20;
                     this.nowBattery--;
 
                     //���͸��� �� ����� ��� ������ ���� ����
