@@ -22,10 +22,10 @@ namespace NHR
             this.uiHeart = GetComponentInChildren<UIHeartWatch>();
             this.uiMission = GetComponentInChildren<UIMission>();
         }
-        private void Start()
-        {
-            this.dim.gameObject.SetActive(false);
-        }
+        //private void Start()
+        //{
+        //    this.dim.gameObject.SetActive(false);
+        //}
 
     }
 

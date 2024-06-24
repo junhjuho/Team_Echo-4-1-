@@ -30,6 +30,7 @@ namespace NHR
         {
             if (this.uiWatch == null) this.uiWatch = GetComponentInChildren<UIWatch>();
             this.uiTip = GetComponentInChildren<UITip>();
+            this.uiTip.Init();
         }
         private void Start()
         {
