@@ -24,8 +24,8 @@ namespace Jaewook
             // 주사하는 사운드 효과
             if (audioSourceInjection != null && audioSourceInjection.clip != null)
             {
-                audioSourceInjection.Play();
-                Debug.Log("주사 효과음!");
+                //audioSourceInjection.Play();
+                // Debug.Log("주사 효과음!");
             }
 
         }

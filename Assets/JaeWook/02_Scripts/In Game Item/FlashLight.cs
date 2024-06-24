@@ -29,19 +29,24 @@ namespace Jaewook
 
         private void Awake()
         {
+            /*
             this.uiFlashlight = this.GetComponentInChildren<NHR.UIFlashlight>();
             this.Init();
             StartCoroutine(this.flashCoroutine);
 
             // GameDB.Instance.myFlashLight = this;
+            */
         }
         //�ʱ� ����
+        
         private void Init()
         {
+            /*
             this.flashCoroutine = this.CLightOn();
             this.nowBattery = this.maxBattery;
             this.nowBatteryTime = this.maxBatteryTime;
             this.uiFlashlight.Init();
+            */
             this.isOn = true;
 
             flashlight = GetComponentInChildren<Light>();
@@ -60,19 +65,19 @@ namespace Jaewook
 
         public virtual void OnUse()
         {
-            if(this.hasBattery)
-            {
-                // Ʈ���� ��ư�� ������ �� �÷��ö���Ʈ �ѱ�/����
-                isOn = !isOn;
-                flashlight.enabled = isOn;
 
-                //������ ���͸�
-                if (this.isOn) StartCoroutine(this.flashCoroutine);
-                else StopCoroutine(this.flashCoroutine);
+            // Ʈ���� ��ư�� ������ �� �÷��ö���Ʈ �ѱ�/����
+            isOn = !isOn;
+            flashlight.enabled = isOn;
 
-            }
+            /*
+            //������ ���͸�
+            if (this.isOn) StartCoroutine(this.flashCoroutine);
+            else StopCoroutine(this.flashCoroutine);
+            */
 
-            //Debug.Log("Flashlight Used: " + (isOn ? "On" : "Off"));
+
+            Debug.Log("Flashlight Used: " + (isOn ? "On" : "Off"));
         }
 
         public void OnRelease()
@@ -84,6 +89,7 @@ namespace Jaewook
         /// <summary>
         /// ������ ����
         /// </summary>
+        /*
         public void ChargeFlashlight()
         {
             this.nowBattery = this.maxBattery; // maxtime = 30;
@@ -94,8 +100,9 @@ namespace Jaewook
                 battery.gameObject.SetActive(true);
             }
         }
+        */
 
-
+        /*
         //������ ��� �ڷ�ƾ
         public IEnumerator CLightOn()
         {
@@ -125,6 +132,6 @@ namespace Jaewook
             }
             yield break;
         }
-
+        */
     }
 }

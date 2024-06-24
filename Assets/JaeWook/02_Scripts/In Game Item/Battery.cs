@@ -13,18 +13,17 @@ namespace Jaewook
         FlashLight flashlight;
         public virtual void OnGrab()
         {
-            flashlight = GameDB.Instance.myFlashLight;
-
             // SeoungMin.ItemObject.cs ->public bool isFind = false;
-            this.isFind = true;
+            // this.isFind = true;
 
+            /*
             if (isFind)
             {
                 flashlight.ChargeFlashlight();
             }
-            // 배터리 충전 후배터리 오브젝트 삭제
-            gameObject.SetActive(false);
-            base.isFind = false;
+            */
+           
+            // base.isFind = false;
         }
 
         public void OnUse()

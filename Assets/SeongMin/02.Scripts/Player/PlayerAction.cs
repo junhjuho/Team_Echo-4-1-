@@ -76,22 +76,6 @@ namespace SeongMin
                 MissionClearCheck();
             }
         }
-
-        //private void HoverEvent(HoverEnterEventArgs args)
-        //{
-        //    if(args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
-        //    {
-        //        this.useForceGrab = false;
-        //    }
-        //}
-
-        //private void HoverEventExit(HoverExitEventArgs args)
-        //{
-        //    if (args.interactableObject.transform.TryGetComponent(out HingeJoint _hingeJoint))
-        //    {
-        //        this.useForceGrab = true;
-        //    }
-        //}
         private void MissionClearCheck()
         {
             playerMission = GameDB.Instance.playerMission;
