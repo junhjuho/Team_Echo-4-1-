@@ -67,7 +67,7 @@ public class HumanMovement : PlayerMovement, IDamageable
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
-            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 2f : 1f; // 달리기 버튼에 따른 속도
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // 달리기 버튼에 따른 속도
 
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
