@@ -8,6 +8,7 @@ namespace Jaewook
 {
     public class FlashLight : MonoBehaviour, IItem
     {
+        private WaitForSeconds onesec = new WaitForSeconds(1);
         public bool isOn = true;
         public Light flashlight;
         
@@ -20,11 +21,11 @@ namespace Jaewook
 
         //���͸� ��
         public bool hasBattery = true;
-        public int nowBatteryTime = 20;
-        public int nowBattery = 20;
+        public int nowBatteryTime = 2;
+        public int nowBattery = 2;
         //max ��
-        public int maxBatteryTime = 30;
-        public int maxBattery = 30;
+        public int maxBatteryTime = 3;
+        public int maxBattery = 3;
 
         private void Awake()
         {
@@ -53,7 +54,7 @@ namespace Jaewook
 
         public virtual void OnGrab()
         {
-
+            //
             
         }
 
@@ -85,7 +86,7 @@ namespace Jaewook
         /// </summary>
         public void ChargeFlashlight()
         {
-            this.nowBattery = this.maxBattery;
+            this.nowBattery = this.maxBattery; // maxtime = 30;
             this.nowBatteryTime = this.maxBatteryTime;
             this.hasBattery = true;
             foreach (var battery in this.uiFlashlight.batteries)
@@ -98,33 +99,31 @@ namespace Jaewook
         //������ ��� �ڷ�ƾ
         public IEnumerator CLightOn()
         {
-            while (true)
+            while (this.nowBatteryTime > 0)
             {
-                //Debug.LogFormat("nowBattery time : {0}", this.nowBatteryTime);
                 this.nowBatteryTime--;
 
-                //���͸� �� ĭ �ð��� �� �Ǿ��� ���
-                if (this.nowBatteryTime < 0)
-                {
-                    this.uiFlashlight.batteries[30 - this.nowBattery].gameObject.SetActive(false);
-                    this.uiFlashlight.batteries[40 - this.nowBattery].gameObject.SetActive(true);
+                    this.uiFlashlight.batteries[2 - this.nowBattery].gameObject.SetActive(false);
+                    this.uiFlashlight.batteries[3 - this.nowBattery].gameObject.SetActive(true);
 
-                    Debug.Log(30 - this.nowBattery);
-                    this.nowBatteryTime = 20;
                     this.nowBattery--;
 
-                    //���͸��� �� ����� ��� ������ ���� ����
-                    if (this.nowBattery <= 0)
+                    if (this.nowBattery <= 0 && this.nowBatteryTime <= 0)
                     {
-                        StopCoroutine(this.flashCoroutine);
-                        this.OnUse();
                         this.hasBattery = false;
+                        this.OnUse();
+                        yield break;
                     }
+
+                    Debug.Log(3 - this.nowBattery);
+                    this.nowBatteryTime = maxBatteryTime;
+
+                    //���͸��� �� ����� ��� ������ ���� ����
                     Debug.LogFormat("<color=yellow>nowBatery{0}</color>", this.nowBattery);
-                    this.nowBatteryTime = this.maxBatteryTime;
-                }
-                yield return new WaitForSeconds(1f);
+                
+                yield return onesec;
             }
+            yield break;
         }
 
     }
