@@ -3,7 +3,6 @@ using Photon.Realtime;
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 namespace SeongMin
 {
@@ -45,7 +44,7 @@ namespace SeongMin
                 if(GameDB.Instance.playerMission.playerMissionArray[j].TryGetComponent(out ItemObject _itemobject)
                     && GameDB.Instance.playerMission.isChaser == false)
                 {
-                     _itemobject.miniMap.SetActive(true);
+                    _itemobject.miniMap.SetActive(true);
                 }
                 j++;
             }
@@ -61,9 +60,7 @@ namespace SeongMin
                         GameManager.Instance.inGameMapManager.inGameChaserItemList[i];
                     //내가 복수자면 분배 받은 복수자용 아이템 미니맵에 띄우기 
                     if (GameDB.Instance.playerMission.chaserMissionArray[i].TryGetComponent(out ItemObject _itemObject))
-                    {
                         _itemObject.miniMap.SetActive(true);
-                    }
                 }
             }
             // 협업미션을 수행해야하면 주기
