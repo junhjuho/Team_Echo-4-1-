@@ -1,14 +1,12 @@
 using Photon.Pun;
+using System.Collections;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class PlayerSyncController : MonoBehaviour
 {
-    PhotonView pv;
+    public PhotonView pv;
     RiggingManager riggingManager;
-    PlayerMovement playerMovement;
-    HumanMovement humanMovement;
-    MonsterMovement monsterMovement;
 
     public Transform head;
     public Transform leftHand;
@@ -20,12 +18,16 @@ public class PlayerSyncController : MonoBehaviour
     Transform leftHandRig;
     Transform rightHandRig;
 
+    public AudioSource audioSource;
+    public AudioClip footStepSound;
+    public AudioClip[] zombieSound;
+    public GameObject bloodObject;
+    public GameObject bloodPoint;
 
+    
     void Start()
     {
-        pv = this.GetComponent<PhotonView>();
-
-        for(int i = 0; i < 4; i++) // 플레이어 프리팹 자식의 Jake, Frank, MJ, Zombie에 접근
+        for (int i = 0; i < 4; i++) // 플레이어 프리팹 자식의 Jake, Frank, MJ, Zombie에 접근
         { 
             ChangeLayer(this.transform.GetChild(i).gameObject, 7); // 플레이어 레이어 설정
         }
@@ -82,5 +84,48 @@ public class PlayerSyncController : MonoBehaviour
                 renderer.gameObject.layer = layerNumber;
             }
         }
+    }
+
+    public void PlayFootStepSound()
+    {
+        if(pv.IsMine && !audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(footStepSound);
+            pv.RPC("PhotonFootStepSound", RpcTarget.Others);
+        }
+    }
+
+    [PunRPC]
+    public void PhotonFootStepSound()
+    {
+        audioSource.PlayOneShot(footStepSound);
+    }
+
+    public void ZombieSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            int i = Random.Range(1, zombieSound.Length);
+            audioSource.PlayOneShot(zombieSound[i]);
+            pv.RPC("PhotonZombieSound", RpcTarget.Others, i);
+        }
+    }
+
+    [PunRPC]
+    public void PhotonZombieSound(int index)
+    {
+        audioSource.PlayOneShot(zombieSound[index]);
+    }
+
+    [PunRPC]
+    public void BloodEffect()
+    {
+        Instantiate(bloodObject, bloodPoint.transform.position, Quaternion.identity);
+    }
+
+    [PunRPC]
+    public void BloodEffect(Collision collision)
+    {
+        Instantiate(bloodObject, collision.contacts[0].point, Quaternion.identity);
     }
 }

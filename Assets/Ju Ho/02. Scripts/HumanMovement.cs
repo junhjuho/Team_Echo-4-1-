@@ -8,9 +8,6 @@ using UnityEngine.UIElements;
 
 public class HumanMovement : PlayerMovement, IDamageable
 {
-    public MonsterMovement monsterMovement;
-    public AudioClip footStepSound;
-    public AudioSource audioSource;
     public GameObject FireAxe;
     public DieAnimation[] dieAnims;
 
@@ -18,30 +15,25 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     bool isEnergyDown;
     bool isDie;
-    int currentPlayer;
-    UIPlayer uiPlayer;
 
     Scene scene;
-
-    PlayerSyncController playerSyncController;
 
 
     public void OnEnable()
     {
         isDie = false;
+        moveProvider.enabled = true;
     }
 
     public override void Start()
     {
         base.Start();
         scene = SceneManager.GetActiveScene();
-        audioSource = this.GetComponent<AudioSource>();
-        playerSyncController = this.GetComponentInParent<PlayerSyncController>();
     }
 
     void OnDisable() // 
     {
-        if (isDie && pv.IsMine)
+        if (isDie/* && pv.IsMine*/)
         {
             for(int i = 0; i < dieAnims.Length; i++)
             {
@@ -128,22 +120,35 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     public void OnHit(Collider other) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
     {
-        if (pv.IsMine && other.gameObject.name == "fireaxe")
+        Debug.Log(other.name);
+        if (/*pv.IsMine &&*/ other.gameObject.name == "Fireaxe")
         {
+            playerSyncController.BloodEffect();
             isDie = true;
+            moveProvider.enabled = false;
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        OnHit(collision);
+    }
+    public void OnHit(Collision collision) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
+    {
+        if (/*pv.IsMine &&*/ collision.gameObject.name == "Fireaxe")
+        {
+            Debug.Log(collision.gameObject.name);
+            Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.red);
+            playerSyncController.BloodEffect(collision);
+            isDie = true;
+            moveProvider.enabled = false;
             this.gameObject.SetActive(false);
         }
     }
 
     void PlayFootStepSound()
     {
-        audioSource.PlayOneShot(footStepSound);
-        pv.RPC("PhotonFootStepSound", RpcTarget.Others);
-    }
-
-    [PunRPC]
-    void PhotonFootStepSound()
-    {
-        audioSource.PlayOneShot(footStepSound);
+        playerSyncController.PlayFootStepSound();
     }
 }

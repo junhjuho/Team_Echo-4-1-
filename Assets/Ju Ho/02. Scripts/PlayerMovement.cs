@@ -13,8 +13,9 @@ public class PlayerMovement : MonoBehaviour
     protected Animator animator;
     protected InputActionAsset inputActionAsset;
     protected ActionBasedContinuousMoveProvider moveProvider;
-    protected PhotonView pv;
-
+    protected PlayerSyncController playerSyncController;
+    [SerializeField] protected PhotonView pv;
+    
     protected Vector2 dir;
     protected Vector2 movePosition;
     protected bool isMove;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = this.GetComponent<Animator>();
         pv = this.transform.GetComponentInParent<PhotonView>();
+        playerSyncController = this.transform.GetComponentInParent<PlayerSyncController>();
         moveProvider = FindObjectOfType<ActionBasedContinuousMoveProvider>();
         inputActionAsset = Resources.Load<InputActionAsset>("XRI Default Input Actions");
     }

@@ -57,6 +57,12 @@ MonoBehaviour:
   - AllPlayerLobbySceneLoad
   - PlayFootStepSound
   - PhotonFootStepSound
+  - MonsterSound
+  - StartSound
+  - PhotonMonsterSound
+  - PhotonStartSound
+  - PhotonZombieSound
+  - BloodEffect
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
