@@ -16,6 +16,7 @@ namespace SeongMin
         private PhotonView photonView;
         private bool changeState = false;
         private int rand = 0;
+        public GameObject bloodEffect;
         public enum State
         {
             Die,
@@ -90,9 +91,29 @@ namespace SeongMin
             agent.SetDestination(targetPosition.position);
         }
 
-        public void OnHit(Collision collision)
+        public void OnHit(Collider other)
         {
-            if(collision.gameObject.name == "fireaxe")
+            if(other.gameObject.name == "fireaxe")
+            {
+                agent.speed = 0;
+                state = State.Die;
+                animator.SetTrigger("isDie");
+                Invoke("Die", 0.5f);
+
+                var effectPos = this.transform.position + Vector3.up * 1.27f;
+                Instantiate(bloodEffect, effectPos, Quaternion.identity);
+            }
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            OnHit(other);
+            //other.bounds.ClosestPoint(other.transform.position);
+        }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.name == "fireaxe")
             {
                 agent.speed = 0;
                 state = State.Die;
@@ -100,6 +121,7 @@ namespace SeongMin
                 Invoke("Die", 0.5f);
             }
         }
+
         public void Die()
         {
             this.gameObject.SetActive(false);

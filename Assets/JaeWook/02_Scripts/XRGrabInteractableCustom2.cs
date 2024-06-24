@@ -9,7 +9,7 @@ using static SeongMin.ItemObject;
 
 namespace Jaewook
 {
-    public class XRInteractableCustom : XRGrabInteractable
+    public class XRGrabInteractableCustom2 : XRGrabInteractable
     {
         ItemObject itemObject;
         void Start()
@@ -17,7 +17,7 @@ namespace Jaewook
             this.selectEntered.AddListener(SelectEvent);
             this.selectExited.AddListener(ReleaseEvent);
             this.activated.AddListener(ActivatingEvent);
-            if(this.gameObject.TryGetComponent(out ItemObject item))
+            if (this.gameObject.TryGetComponent(out ItemObject item))
             {
                 itemObject = this.gameObject.GetComponent<ItemObject>();
             }
@@ -26,17 +26,16 @@ namespace Jaewook
 
         public void OnTriggerEnter(Collider other)
         {
-            Debug.Log("This Name : " + this.name + "itemObject : " + itemObject);
-            if(other.gameObject.TryGetComponent(out PlayerMovement player))
+            if (other.gameObject.TryGetComponent(out PlayerMovement player))
             {
                 var canvas = GameDB.Instance.itemInfomationCanvas;
-                canvas.transform.position = this.transform.position+(Vector3.up*2f);
+                canvas.transform.position = this.transform.position + (Vector3.up * 2f);
                 canvas.gameObject.transform.LookAt(player.transform.position);
                 canvas.image.SetActive(true);
                 canvas.text.gameObject.SetActive(true);
                 canvas.text.text = this.gameObject.name;
             }
-            if(itemObject != null && itemObject.charactorValue == CharactorValue.chaser)
+            if (itemObject != null && itemObject.charactorValue == CharactorValue.chaser)
             {
                 itemObject.fx.SetActive(true);
             }
