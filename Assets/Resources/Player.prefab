@@ -5066,7 +5066,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
   modelHeight: 2.9
-  playerSyncController: {fileID: 38668517752344885}
 --- !u!114 &6747704889837046606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5800,7 +5799,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
   modelHeight: 2.9
-  playerSyncController: {fileID: 38668517752344885}
 --- !u!114 &4515049768067840740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27218,7 +27216,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
   modelHeight: 3
-  playerSyncController: {fileID: 38668517752344885}
 --- !u!114 &1613875989780044681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39466,7 +39463,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   smoothValue: 0.1
   modelHeight: 3
-  playerSyncController: {fileID: 0}
 --- !u!114 &4244551943412781961
 MonoBehaviour:
   m_ObjectHideFlags: 0
