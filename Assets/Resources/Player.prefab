@@ -353,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4280506949345864266}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2133,7 +2133,7 @@ GameObject:
   - component: {fileID: 5415364314419172967}
   - component: {fileID: 9197553351600168368}
   - component: {fileID: 566563163839858078}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Fireaxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5585,7 +5585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5965356903287119246
 Transform:
   m_ObjectHideFlags: 0
@@ -6487,7 +6487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5209454312202024349}
   - component: {fileID: 2882906591550878402}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: fireaxe_LOD2
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -9978,7 +9978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2206774129807237311}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Blood Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25495,7 +25495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8403324356004918095}
   - component: {fileID: 9156438828258612078}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: fireaxe_LOD0
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -32685,7 +32685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2272608012724034444}
   - component: {fileID: 1341766436844906805}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: fireaxe_LOD1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -34311,7 +34311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8200483026668188040}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}

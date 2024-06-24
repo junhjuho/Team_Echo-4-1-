@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -119,10 +120,11 @@ public class HumanMovement : PlayerMovement, IDamageable
     {
         OnHit(other);
     }
-    public void OnHit(Collider other) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
+    public void OnHit(Collider other) // 때린 물체가 Fireaxe라면 오브젝트 비활성화, OnDisable실행
     {
         if (pv.IsMine && other.gameObject.name == "Fireaxe")
         {
+            Debug.Log("충돌 오브젝트 : " + other.name);
             playerSyncController.BloodEffect(other);
             isDie = true;
             moveProvider.enabled = false;
