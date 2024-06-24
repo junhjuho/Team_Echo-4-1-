@@ -14,7 +14,8 @@ public class HumanMovement : PlayerMovement, IDamageable
     public bool isRunBtnDown;
 
     bool isEnergyDown;
-    bool isDie;
+    public bool isDie;
+
     Scene scene;
 
     public void OnEnable()
@@ -28,28 +29,25 @@ public class HumanMovement : PlayerMovement, IDamageable
         base.Start();
         scene = SceneManager.GetActiveScene();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
-        SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+        if (pv.IsMine)
+            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
     }
 
     void OnDisable() // 
     {
         if (isDie && pv.IsMine)
         {
-            for(int i = 0; i < dieAnims.Length; i++)
+            for (int i = 0; i < dieAnims.Length; i++)
             {
-                if(this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
+                if (this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
                 {
                     dieAnims[i].transform.gameObject.SetActive(true); // 모델 애니메이션 오브젝트를 활성화 시키고 애니메이션 실행
                     dieAnims[i].PlayerDieAnimation("Backward Die");
                     break;
                 }
             }
-
-            var heart = SeongMin.GameManager.Instance.playerManager.heart;
-            EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, heart);
-            heart--;
-
-            isDie = false;
+            SeongMin.GameManager.Instance.playerManager.heart--;
+            EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, SeongMin.GameManager.Instance.playerManager.heart);
         }
     }
 
@@ -70,7 +68,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
             moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 2f : 1f; // 달리기 버튼에 따른 속도
-            
+
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
         }
         else
@@ -97,7 +95,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
-    void RespawnPlayer()
+    private void RespawnPlayer()
     {
         playerSyncController.origin.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
