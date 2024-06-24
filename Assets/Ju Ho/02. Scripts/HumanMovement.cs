@@ -18,7 +18,6 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     Scene scene;
 
-
     public void OnEnable()
     {
         isDie = false;
