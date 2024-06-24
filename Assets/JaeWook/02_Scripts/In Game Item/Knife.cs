@@ -19,9 +19,10 @@ namespace Jaewook
 
         private void Start()
         {
+
             base.Start();
 
-            playerMission = GameDB.Instance.playerMission;
+            // playerMission = GameDB.Instance.playerMission;
 
         }
 
