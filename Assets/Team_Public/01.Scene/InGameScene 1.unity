@@ -1543,7 +1543,34 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4586633485911010394, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 5972868654276357359, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 7992132067199667351, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 4333044962736157345, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 6810438805696489610, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 2845745171527665549, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 7436334404504928020, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 5237445940769904633, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 6994523383368819692, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 2423927033727478918, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 5030537101282512854, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 6204160111812383691, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 5171273661303616280, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 6838031096947538438, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 7342109555572192107, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 3559275930765459599, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 2472791793437249233, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 6865946129031363034, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 939120221275245499, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 2167296382466377619, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 8703677242538622919, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 7678237645203163663, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 523138677578635193, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 2175777467662091051, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 8347666512624117621, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 7964763086069467912, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+    - {fileID: 686325299692016487, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -29022,6 +29049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uBCF5\uC218\uC790\uC6A9 \uCE7C"
       objectReference: {fileID: 0}
+    - target: {fileID: 9060744334114950635, guid: 685d11f35d26e6549ad483b262e8b3b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9106808704902233252, guid: 685d11f35d26e6549ad483b262e8b3b6, type: 3}
       propertyPath: cullingMode
       value: 3
@@ -53964,6 +53995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uBB34\uAE30\uC6A9 \uC7A5\uAE30"
       objectReference: {fileID: 0}
+    - target: {fileID: 6702007869962842666, guid: 77e2b157faf959441b173778580235b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8983172170882566955, guid: 77e2b157faf959441b173778580235b6, type: 3}
       propertyPath: cullingMode
       value: 3
@@ -66856,6 +66891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uBCF5\uC218\uC790\uC6A9 \uCE7C 2"
       objectReference: {fileID: 0}
+    - target: {fileID: 4957095892829585240, guid: fd306d72b50f185468e6951fb4bcb30a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5489155565431790960, guid: fd306d72b50f185468e6951fb4bcb30a, type: 3}
       propertyPath: m_AttachTransform
       value: 
@@ -75964,6 +76003,10 @@ PrefabInstance:
       propertyPath: cullingMode
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3357861112433882155, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_Name
+      value: "\uB3C4\uB07C"
+      objectReference: {fileID: 0}
     - target: {fileID: 4758854804010369953, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
       propertyPath: sceneViewId
       value: 14
@@ -75971,6 +76014,34 @@ PrefabInstance:
     - target: {fileID: 5239569859239982375, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
       propertyPath: m_Name
       value: "\uB3C4\uB07C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767350418618228979, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767350418618228979, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767350418618228979, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767350418618228979, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767350418618228979, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767350418618228979, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767350418618228979, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910287570306856352, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
       propertyPath: m_LocalPosition.x
