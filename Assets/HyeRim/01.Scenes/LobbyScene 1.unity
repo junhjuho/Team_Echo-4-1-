@@ -5444,9 +5444,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 193896248321307875, guid: f8caada12315a574084f8c1db2f26b85, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1493865459542600156, guid: f8caada12315a574084f8c1db2f26b85, type: 3}
       propertyPath: m_Name
       value: Spot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494430516925237647, guid: f8caada12315a574084f8c1db2f26b85, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1622027464181291650, guid: f8caada12315a574084f8c1db2f26b85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15960,7 +15968,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 61886679
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 0234550f3adf4da449582917fff135b1, type: 2}
   m_TargetDisplay: 0
