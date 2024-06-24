@@ -7180,6 +7180,7 @@ GameObject:
   - component: {fileID: 5451772075918061307}
   - component: {fileID: 461296983341521293}
   - component: {fileID: 1247120929960380003}
+  - component: {fileID: 7221416036852717417}
   m_Layer: 0
   m_Name: Frank Die Model
   m_TagString: Untagged
@@ -7275,6 +7276,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6395c503e8662b4a90c5fd64bdf1dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7221416036852717417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586227669990698555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1589476102928866592
 GameObject:
   m_ObjectHideFlags: 0
@@ -7805,6 +7822,7 @@ GameObject:
   - component: {fileID: 5042420866959202387}
   - component: {fileID: 1906957352816948017}
   - component: {fileID: 2761026605176788110}
+  - component: {fileID: 8098920259498367778}
   m_Layer: 0
   m_Name: MJ Die Model
   m_TagString: Untagged
@@ -7896,6 +7914,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6395c503e8662b4a90c5fd64bdf1dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8098920259498367778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752387785791330451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1762958909906830003
 GameObject:
   m_ObjectHideFlags: 0
@@ -21058,6 +21092,7 @@ GameObject:
   - component: {fileID: 2292289380466519371}
   - component: {fileID: 1468244836412226158}
   - component: {fileID: 1935782946212029254}
+  - component: {fileID: 8723261802701028141}
   m_Layer: 0
   m_Name: Jake Die Model
   m_TagString: Untagged
@@ -21146,6 +21181,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6395c503e8662b4a90c5fd64bdf1dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8723261802701028141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783989884234165643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4789864332546600283
 GameObject:
   m_ObjectHideFlags: 0
