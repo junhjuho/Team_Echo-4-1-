@@ -9,7 +9,7 @@ using static NHR.App;
 namespace SeongMin
 {
     /// <summary>
-    /// 타이틀씬 - Do Tween으로 제작 
+    /// 타이틀씬
     /// </summary>
     public class UITitleSceneMenu : MonoBehaviour
     {
@@ -32,12 +32,27 @@ namespace SeongMin
         #endregion
 
         #region 우측 UI 표시
-
+        [Header("우측캔버스 메인 타이틀")]
+        public TMP_Text titleTextRight;
+        [Header("-")]
+        public TMP_Text subTitleTextRight;
         #endregion
 
-        #region 우측 UI 표시
-
+        #region 좌측 UI 표시 -> 미션아이템 설명
+        [Header("좌측캔버스 메인 타이틀")]
+        public TMP_Text titleTextLeft;
+        [Header("-")]
+        public TMP_Text subTitleTextLeft;
         #endregion
+
+        // public Canvas makersCanvas; // 제작자 정보 UI 캔버스
+        public Image makersImage;
+        public Button makersBackButton;
+
+        // public Canvas gameInfoCanvas; // 게임 정보 UI 캔버스
+        public Image gameInfoImage;
+        public Button gameInfoBackButton;
+
 
         // public Button characterSettingButton;
         // public Button gameSettingButton;
@@ -45,7 +60,7 @@ namespace SeongMin
         // 키 입력은 다른 씬으로 넘김
         //public UIKeyboard keyboard;
 
-        private void Awake()
+        public void Awake()
         {
             UIManager.Instance.titleSceneMenu = this;
 
@@ -53,98 +68,139 @@ namespace SeongMin
             Transform uiTitleRight = GameObject.Find("UITitleRight")?.transform;
             Transform uiTitleLeft = GameObject.Find("UITitleLeft")?.transform;
 
-            if (uiTitle != null)
-            {
-                #region 정면 UI
-                titleText = uiTitle.Find("TitleText").GetComponent<TMP_Text>();
-                subTitleText = uiTitle.Find("SubTitleText").GetComponent<TMP_Text>();
+            Transform makersCanvas = GameObject.Find("MakersCanvas")?.transform;
+            Transform gameInfoCanvas = GameObject.Find("GameInfoCanvas")?.transform;
 
-                startButton = uiTitle.Find("StartButton").GetComponent<Button>();
-                gameInfoButton = uiTitle.Find("GameInfoButton").GetComponent<Button>();
-                makersButton = uiTitle.Find("MakersButton").GetComponent<Button>();
-                #endregion
-
-
-
-            }
-            else
+            #region 정면 UI
+            if (uiTitle == null)
             {
                 Debug.LogError("UITitle Canvas를 찾을 수 없습니다. Hierarchy에서 UITitle 오브젝트의 이름을 확인하세요.");
             }
-
-            // 최적화를 위해서 찾지 못했을 때 오류 처리
-            if (titleText == null)
+            else
             {
-                Debug.LogError("TitleText를 찾을 수 없습니다. Hierarchy에서 TitleText 오브젝트의 이름을 확인하세요.");
-            }
+                titleText = uiTitle.Find("TitleText")?.GetComponent<TMP_Text>();
+                subTitleText = uiTitle.Find("SubTitleText")?.GetComponent<TMP_Text>();
 
-            if (subTitleText == null)
+                startButton = uiTitle.Find("StartButton")?.GetComponent<Button>();
+                gameInfoButton = uiTitle.Find("GameInfoButton")?.GetComponent<Button>();
+                makersButton = uiTitle.Find("MakersButton")?.GetComponent<Button>();
+
+                if (titleText == null)
+                    Debug.LogError("TitleText를 찾을 수 없습니다. Hierarchy에서 TitleText 오브젝트의 이름을 확인하세요.");
+                if (subTitleText == null)
+                    Debug.LogError("SubTitleText를 찾을 수 없습니다. Hierarchy에서 SubTitleText 오브젝트의 이름을 확인하세요.");
+                if (startButton == null)
+                    Debug.LogError("StartButton을 찾을 수 없습니다. Hierarchy에서 StartButton 오브젝트의 이름을 확인하세요.");
+                if (gameInfoButton == null)
+                    Debug.LogError("GameInfoButton을 찾을 수 없습니다. Hierarchy에서 StartButton 오브젝트의 이름을 확인하세요.");
+                if (makersButton == null)
+                    Debug.LogError("MakersButton을 찾을 수 없습니다. Hierarchy에서 StartButton 오브젝트의 이름을 확인하세요.");
+            }
+                #endregion
+
+                #region 우측 UI
+            if (uiTitleRight == null)
             {
-                Debug.LogError("SubTitleText를 찾을 수 없습니다. Hierarchy에서 SubTitleText 오브젝트의 이름을 확인하세요.");
+                Debug.LogError("UITitleRight Canvas를 찾을 수 없습니다. Hierarchy에서 UITitleRight 오브젝트의 이름을 확인하세요.");
             }
-
-            if (startButton == null)
+            else
             {
-                Debug.LogError("StartButton을 찾을 수 없습니다. Hierarchy에서 StartButton 오브젝트의 이름을 확인하세요.");
-            }
+                titleTextRight = uiTitleRight.Find("TitleTextRight")?.GetComponent<TMP_Text>();
+                subTitleTextRight = uiTitleRight.Find("SubTitleTextRight")?.GetComponent<TMP_Text>();
 
-            if (gameInfoButton == null)
+                if (titleTextRight == null)
+                    Debug.LogError("TitleTextRight를 찾을 수 없습니다. Hierarchy에서 TitleTextRight 오브젝트의 이름을 확인하세요.");
+                if (subTitleTextRight == null)
+                    Debug.LogError("SubTitleTextRight를 찾을 수 없습니다. Hierarchy에서 SubTitleTextRight 오브젝트의 이름을 확인하세요.");
+            }
+                #endregion
+
+                #region 좌측 UI
+            if (uiTitleLeft == null)
             {
-                Debug.LogError("GameInfoButton을 찾을 수 없습니다. Hierarchy에서 StartButton 오브젝트의 이름을 확인하세요.");
-
+                Debug.LogError("UITitleLeft Canvas를 찾을 수 없습니다. Hierarchy에서 UITitleLeft 오브젝트의 이름을 확인하세요.");
             }
+            else
+            {
+                titleTextLeft = uiTitleLeft.Find("TitleTextLeft")?.GetComponent<TMP_Text>();
+                subTitleTextLeft = uiTitleLeft.Find("SubTitleTextLeft")?.GetComponent<TMP_Text>();
 
-            // 게임시작 -> 튜토리얼 씬 전환 버튼 할당, 
+                if (titleTextLeft == null)
+                    Debug.LogError("TitleTextLeft를 찾을 수 없습니다. Hierarchy에서 TitleTextLeft 오브젝트의 이름을 확인하세요.");
+                if (subTitleTextLeft == null)
+                    Debug.LogError("SubTitleTextLeft를 찾을 수 없습니다. Hierarchy에서 SubTitleTextLeft 오브젝트의 이름을 확인하세요.");
+            }
+            #endregion
+
+            #region Makers Ui
+            if (makersCanvas == null)
+            {
+                Debug.LogError("MakersCanvas를 찾을 수 없습니다. Hierarchy에서 MakersCanvas 오브젝트의 이름을 확인하세요.");
+            }
+            else
+            {
+                // makersImage = makersCanvas.transform.Find("MakersImage")?.GetComponent<Image>();
+                makersBackButton = makersCanvas.Find("MakersBackButton")?.GetComponent<Button>();
+
+                //if (makersImage == null)
+                // Debug.LogError("MakersImage를 찾을 수 없습니다. Hierarchy에서 MakersImage 오브젝트의 이름을 확인하세요.");
+                if (makersBackButton == null)
+                    Debug.LogError("BackButton을 찾을 수 없습니다. Hierarchy에서 BackButton 오브젝트의 이름을 확인하세요.");
+            }
+            #endregion
+
+            #region GameInfo Ui
+            if (gameInfoCanvas == null)
+            {
+                Debug.LogError("GameInfoCanvas를 찾을 수 없습니다. Hierarchy에서 GameInfoCanvas 오브젝트의 이름을 확인하세요.");
+            }
+            else
+            {
+                // gameInfoImage = gameInfoCanvas.transform.Find("GameInfoImage")?.GetComponent<Image>();
+                gameInfoBackButton = gameInfoCanvas.Find("GameInfoBackButton")?.GetComponent<Button>();
+
+               // if (gameInfoImage == null)
+                  //  Debug.LogError("GameInfoImage를 찾을 수 없습니다. Hierarchy에서 GameInfoImage 오브젝트의 이름을 확인하세요.");
+                if (gameInfoBackButton == null)
+                    Debug.LogError("BackButton을 찾을 수 없습니다. Hierarchy에서 BackButton 오브젝트의 이름을 확인하세요.");
+            }
+            #endregion
+
+            #region Button Add Listener
+            // 게임시작 -> Lobby 씬 전환 버튼 할당
             startButton.onClick.AddListener(() =>
             EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Lobby));
 
-            /*
-            gameInfoButton.onClick.AddListener(() =>
-            EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.GameInfo));
+            // GameInfoButton과 MakersButton에 클릭 이벤트 추가
+            gameInfoButton.onClick.AddListener(() => ShowCanvas(gameInfoCanvas));
+            makersButton.onClick.AddListener(() => ShowCanvas(makersCanvas));
 
-            // 튜토리얼 - 1라운드 합침 ( 게임 시작 -> 튜토리얼씬으로 전환 )
-            tutorialButton.onClick.AddListener(() =>
-            EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.Tutorial));
-            
-
-             폐기
-            characterSettingButton.onClick.AddListener(() => 
-            EventDispatcher.instance.SendEvent<eSceneType>((int)NHR.EventType.eEventType.Change_Scene, eSceneType.CharacterCustom));
-            */
-
+            // 뒤로 가기 버튼에 클릭 이벤트 추가
+            gameInfoBackButton.onClick.AddListener(() => ShowCanvas(uiTitle));
+            makersBackButton.onClick.AddListener(() => ShowCanvas(uiTitle));
+            #endregion
         }
 
         void Start()
         {
-            /* Awake에서 check 한번 했으니까 필요없을듯
-            if (titleText != null)
-            {
-                AnimateTitle();
-            }
-            */
-
             #region 정면 UI Animation
-            //AnimateSubTitle();
-            //AnimateStartButton();
             AnimateTitle();
-            AnimateGameInfoButton();
-            AnimateMakersButton();
+            AnimateSubTitle();
+            AnimateButton(startButton, 1);
+            AnimateButton(gameInfoButton, 2);
+            AnimateButton(makersButton, 3);
             #endregion
-
-            
         }
 
         void AnimateTitle()
         {
             if (titleText != null)
             {
-                // Title 텍스트를 서서히 나타나게 하고, 약간의 떨림 효과를 추가
-                titleText.color = new Color(titleText.color.r, titleText.color.g, titleText.color.b, 0);
+                // titleText.color = new Color(titleText.color.r, titleText.color.g, titleText.color.b, 0);
                 titleText.DOFade(1, 1).SetEase(Ease.InOutQuad);
-                titleText.rectTransform.anchoredPosition = new Vector2(0, 500);
-                titleText.rectTransform.DOAnchorPos(Vector2.zero, 3).SetEase(Ease.OutQuad); // 3초 동안 위치 이동
-                // duration, strength, vibrato, randomness, snapping, fadeout
-                titleText.rectTransform.DOShakePosition(3, new Vector3(3, 3, 10), 10, 90, false, true).SetDelay(2); // 3초 후 5초 동안 떨림
+                titleText.rectTransform.anchoredPosition = new Vector2(-3, 0);
+                titleText.rectTransform.DOAnchorPos(Vector2.zero, 3).SetEase(Ease.OutQuad);
+                titleText.rectTransform.DOShakePosition(1, new Vector3(1, 1, 0), 10, 90, false, true).SetDelay(2);
             }
         }
 
@@ -152,63 +208,39 @@ namespace SeongMin
         {
             if (subTitleText != null)
             {
-                // SubTitle 텍스트를 서서히 나타나게 하고, 약간의 떨림 효과를 추가
-                subTitleText.color = new Color(subTitleText.color.r, subTitleText.color.g, subTitleText.color.b, 0);
-                subTitleText.DOFade(1, 2).SetEase(Ease.InOutQuad); // 3초 동안 투명도 변화
-                subTitleText.rectTransform.anchoredPosition = new Vector2(-500, 0);
-                subTitleText.rectTransform.DOAnchorPos(Vector2.zero, 3).SetEase(Ease.OutQuad); // 3초 동안 위치 이동
-                subTitleText.rectTransform.DOShakePosition(3, new Vector3(3, 3, 10), 10, 90, false, true).SetDelay(2);
+                // subTitleText.color = new Color(subTitleText.color.r, subTitleText.color.g, subTitleText.color.b, 0);
+                subTitleText.DOFade(1, 2).SetEase(Ease.InOutQuad);
+                subTitleText.rectTransform.anchoredPosition = new Vector2(-3, -5);
+                subTitleText.rectTransform.DOAnchorPos(Vector2.zero, 2).SetEase(Ease.OutQuad);
+                subTitleText.rectTransform.DOShakePosition(1, new Vector3(1, 1, 0), 3, 0, false, true).SetDelay(3);
             }
         }
 
-        void AnimateStartButton()
+        void AnimateButton(Button button, float delay)
         {
-            if (startButton != null)
+            if (button != null)
             {
-                // Start 버튼을 서서히 나타나게 하고, 약간의 떨림 효과를 추가
-                CanvasGroup canvasGroup = startButton.GetComponent<CanvasGroup>();
-                if (canvasGroup == null)
-                {
-                    canvasGroup = startButton.gameObject.AddComponent<CanvasGroup>();
-                }
-                canvasGroup.alpha = 0;
-                canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(1);
-                startButton.transform.DOShakePosition(1, new Vector3(1, 1, 0), 10, 90, false, true).SetDelay(2);
+                RectTransform rectTransform = button.GetComponent<RectTransform>();
+                Vector2 originalPosition = rectTransform.anchoredPosition;
+                rectTransform.anchoredPosition = new Vector2(10, originalPosition.y); // 오른쪽 화면 밖 위치로 설정
+                rectTransform.DOAnchorPos(originalPosition, 1).SetEase(Ease.OutBack).SetDelay(delay);
             }
         }
 
-        void AnimateGameInfoButton()
+        void ShowCanvas(Transform canvas)
         {
-            if (gameInfoButton != null)
-            {
-                // GameInfo 버튼을 서서히 나타나게 하고, 약간의 떨림 효과를 추가
-                CanvasGroup canvasGroup = gameInfoButton.GetComponent<CanvasGroup>();
-                if (canvasGroup == null)
-                {
-                    canvasGroup = gameInfoButton.gameObject.AddComponent<CanvasGroup>();
-                }
-                canvasGroup.alpha = 0;
-                canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(1); // 2초 지연 후 3초 동안 투명도 변화
-                gameInfoButton.transform.DOShakePosition(1, new Vector3(1, 1, 0), 10, 90, false, true).SetDelay(2);
-            }
+            canvas.gameObject.SetActive(true);
         }
 
-        void AnimateMakersButton()
+        void AnimateMakersImage()
         {
-            if(makersButton != null)
+            if (makersImage != null)
             {
-                // MakersButton 버튼을 서서히 나타나게 하고, 약간의 떨림 효과를 추가
-                CanvasGroup canvasGroup = gameInfoButton.GetComponent<CanvasGroup>();
-                if (canvasGroup == null)
-                {
-                    canvasGroup = gameInfoButton.gameObject.AddComponent<CanvasGroup>();
-                }
-                canvasGroup.alpha = 0;
-                canvasGroup.DOFade(1, 2).SetEase(Ease.InOutQuad).SetDelay(1); // 2초 지연 후 3초 동안 투명도 변화
-                gameInfoButton.transform.DOShakePosition(1, new Vector3(1,1, 0), 10, 90, false, true).SetDelay(2);
-
+                // makersImage.transform.localScale = new Vector3(0, 0, 0); // 시작 크기 설정
+                makersImage.transform.DOScale(Vector3.one, 1).SetEase(Ease.OutBounce); // 크기 애니메이션
+                makersImage.rectTransform.anchoredPosition = new Vector2(0, -500); // 시작 위치 설정
+                makersImage.rectTransform.DOAnchorPos(Vector2.zero, 1).SetEase(Ease.OutBack); // 위치 애니메이션
             }
         }
     }
-
 }

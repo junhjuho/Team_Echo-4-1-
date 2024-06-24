@@ -29,6 +29,12 @@ public class HumanMovement : PlayerMovement, IDamageable
     {
         base.Start();
         scene = SceneManager.GetActiveScene();
+        audioSource = this.GetComponent<AudioSource>();
+        playerSyncController = this.GetComponentInParent<PlayerSyncController>();
+        if (scene.name == ("InGameScene 1"))
+        {
+            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
+        }
     }
 
     void OnDisable() // 
@@ -67,7 +73,6 @@ public class HumanMovement : PlayerMovement, IDamageable
 
             if (scene.name == ("InGameScene 1"))
             {
-                SeongMin.GameManager.Instance.playerManager.humanMovement = this;
                 isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
             }
             else // InGameScene 1이 아닐 때, 

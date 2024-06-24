@@ -11,11 +11,11 @@ namespace Michsky.UI.Dark
         // Resources
         public Animator sliderAnimator;
         public Slider mainSlider;
-        [SerializeField] private TextMeshProUGUI valueText;
-        [SerializeField] private TextMeshProUGUI popupValueText;
+        [SerializeField] public TextMeshProUGUI valueText;
+        [SerializeField] public TextMeshProUGUI popupValueText;
 
         // Saving
-        [SerializeField] private bool enableSaving = false;
+        [SerializeField] public bool enableSaving = false;
         public string sliderTag = "Tag Text";
         public float saveValue;
 
@@ -24,11 +24,15 @@ namespace Michsky.UI.Dark
         public bool showValue = true;
         public bool showPopupValue = true;
         public bool useRoundValue = false;
-        [SerializeField] private bool invokeOnAwake = true;
+        [SerializeField] public bool invokeOnAwake = true;
         public float valueMultiplier = 1;
+
+        
 
         void Awake()
         {
+            
+
             if (mainSlider == null) { mainSlider = gameObject.GetComponent<Slider>(); }
             if (enableSaving)
             {
