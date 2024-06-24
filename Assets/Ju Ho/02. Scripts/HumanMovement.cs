@@ -52,7 +52,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             SeongMin.GameManager.Instance.playerManager.heart--;
 
             // 체력이 1보다 낮으면
-            if (SeongMin.GameManager.Instance.playerManager.heart =< 0)
+            if (SeongMin.GameManager.Instance.playerManager.heart <= 0)
             {
                 SeongMin.GameDB.Instance.hasGameData = true;
                 SeongMin.GameDB.Instance.isWin = false;
