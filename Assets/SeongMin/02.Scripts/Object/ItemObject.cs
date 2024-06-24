@@ -38,25 +38,25 @@ namespace SeongMin
             miniMap.SetActive(false);
 
             if (sceneValue == SceneValue.tutorial)
-                GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject);
+                GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject.transform.parent.gameObject);
             else if (sceneValue == SceneValue.lobby)
-                GameManager.Instance.lobbySceneManager.lobbyItemList.Add(this.gameObject);
+                GameManager.Instance.lobbySceneManager.lobbyItemList.Add(this.gameObject.transform.parent.gameObject);
             else if (sceneValue == SceneValue.inGame)
             {
                 if (itemValue == ItemValue.solo)
                 {
                     if (charactorValue == CharactorValue.runner)
-                        GameManager.Instance.inGameMapManager.inGameRunnerItemList.Add(this.gameObject);
+                        GameManager.Instance.inGameMapManager.inGameRunnerItemList.Add(this.gameObject.transform.parent.gameObject);
                     else
                     {
-                        GameManager.Instance.inGameMapManager.inGameChaserItemList.Add(this.gameObject);
+                        GameManager.Instance.inGameMapManager.inGameChaserItemList.Add(this.gameObject.transform.parent.gameObject);
                         fx = transform.Find("FX").gameObject;
                         fx.SetActive(false);
                     }
                 }
                 else
                 {
-                    GameManager.Instance.inGameMapManager.inGameTeamPlayItemList.Add(this.gameObject);
+                    GameManager.Instance.inGameMapManager.inGameTeamPlayItemList.Add(this.gameObject.transform.parent.gameObject);
                 }
             }       
         }

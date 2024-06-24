@@ -75732,6 +75732,10 @@ PrefabInstance:
       propertyPath: m_Colliders.Array.data[0]
       value: 
       objectReference: {fileID: 5164891744748339222}
+    - target: {fileID: 1575217184505332504, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4758854804010369953, guid: cbfb5b74c62311d42a8a4e4868d16172, type: 3}
       propertyPath: sceneViewId
       value: 14
