@@ -101,7 +101,7 @@ namespace SeongMin
                 agent.speed = 0;
                 state = State.Die;
                 animator.SetTrigger("isDie");
-                Invoke("Die", 0.5f);
+                //Invoke("Die", 0.5f);
 
                 var effectPos = this.transform.position + Vector3.up * 1.27f;
                 Instantiate(bloodEffect, effectPos, Quaternion.identity);
