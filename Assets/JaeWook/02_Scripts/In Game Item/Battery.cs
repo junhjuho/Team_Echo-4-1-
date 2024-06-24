@@ -16,9 +16,9 @@ namespace Jaewook
             flashlight = GameDB.Instance.myFlashLight;
 
             // SeoungMin.ItemObject.cs ->public bool isFind = false;
-            base.isFind = true;
+            this.isFind = true;
 
-            if (isFind && (flashlight != null))
+            if (isFind)
             {
                 flashlight.ChargeFlashlight();
             }
