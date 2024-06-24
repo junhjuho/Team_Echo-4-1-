@@ -25,7 +25,7 @@ namespace NHR
                     this.missions.Add(mission);
                 }
                 //비활성화
-                Invoke("CloseUI", 2f);
+                //Invoke("CloseUI", 2f);
             }));
         }
         private void CloseUI()
