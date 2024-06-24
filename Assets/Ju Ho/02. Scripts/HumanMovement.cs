@@ -29,7 +29,6 @@ public class HumanMovement : PlayerMovement, IDamageable
     {
         base.Start();
         scene = SceneManager.GetActiveScene();
-        audioSource = this.GetComponent<AudioSource>();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
         if (scene.name == ("InGameScene 1"))
         {
@@ -39,7 +38,7 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     void OnDisable() // 
     {
-        if (isDie/* && pv.IsMine*/)
+        if (isDie && pv.IsMine)
         {
             for(int i = 0; i < dieAnims.Length; i++)
             {
@@ -112,27 +111,10 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        OnHit(other); // 충돌했을 때 OnHit 실행
-    }
-
     void RespawnPlayer()
     {
         playerSyncController.origin.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
-    }
-
-    public void OnHit(Collider other) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
-    {
-        Debug.Log(other.name);
-        if (/*pv.IsMine &&*/ other.gameObject.name == "Fireaxe")
-        {
-            playerSyncController.BloodEffect();
-            isDie = true;
-            moveProvider.enabled = false;
-            this.gameObject.SetActive(false);
-        }
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -141,10 +123,8 @@ public class HumanMovement : PlayerMovement, IDamageable
     }
     public void OnHit(Collision collision) // 때린 물체가 fireaxe라면 오브젝트 비활성화, OnDisable실행
     {
-        if (/*pv.IsMine &&*/ collision.gameObject.name == "Fireaxe")
+        if (pv.IsMine && collision.gameObject.name == "Fireaxe")
         {
-            Debug.Log(collision.gameObject.name);
-            Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.red);
             playerSyncController.BloodEffect(collision);
             isDie = true;
             moveProvider.enabled = false;

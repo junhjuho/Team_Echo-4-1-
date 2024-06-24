@@ -44,8 +44,6 @@ public class PlayerSyncController : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(headRig.position);
-
         if (pv.IsMine) // xr origin과 싱크 오브젝트 동기화(포톤으로 넘겨주기 위한)
         {
             float distance = headRig.transform.position.y - riggingManager.modelHeight; // 키 보정
@@ -106,7 +104,7 @@ public class PlayerSyncController : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             int i = Random.Range(1, zombieSound.Length);
-            audioSource.PlayOneShot(zombieSound[i]);
+            //audioSource.PlayOneShot(zombieSound[i]);
             pv.RPC("PhotonZombieSound", RpcTarget.Others, i);
         }
     }
@@ -117,14 +115,13 @@ public class PlayerSyncController : MonoBehaviour
         audioSource.PlayOneShot(zombieSound[index]);
     }
 
-    [PunRPC]
-    public void BloodEffect()
+    public void BloodEffect(Collision collision)
     {
-        Instantiate(bloodObject, bloodPoint.transform.position, Quaternion.identity);
+        pv.RPC("PhotonBloodEffect", RpcTarget.All, collision);
     }
 
     [PunRPC]
-    public void BloodEffect(Collision collision)
+    public void PhotonBloodEffect(Collision collision)
     {
         Instantiate(bloodObject, collision.contacts[0].point, Quaternion.identity);
     }

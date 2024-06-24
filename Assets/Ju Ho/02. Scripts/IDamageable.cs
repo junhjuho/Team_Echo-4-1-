@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public void OnHit(Collider other);
+    public void OnHit(Collision collision);
 }
