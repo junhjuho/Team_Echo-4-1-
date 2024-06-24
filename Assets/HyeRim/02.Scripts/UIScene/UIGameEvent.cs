@@ -188,7 +188,7 @@ namespace NHR
                 this.uiCompleteMission.CompleteMission(name);
             }));
             //생존자 전체 미션 달성도 알림
-            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<int>((type, per) =>
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
             {
                 Debug.Log("Notice TotalMission Percent");
                 this.uiMissionPercent.Init();
