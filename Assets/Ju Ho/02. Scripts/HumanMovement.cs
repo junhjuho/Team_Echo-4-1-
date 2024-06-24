@@ -1,5 +1,8 @@
 using NHR;
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
+using SeongMin;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
@@ -47,7 +50,17 @@ public class HumanMovement : PlayerMovement, IDamageable
                 }
             }
             SeongMin.GameManager.Instance.playerManager.heart--;
-            EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, SeongMin.GameManager.Instance.playerManager.heart);
+
+            // 체력이 1보다 낮으면
+            if (SeongMin.GameManager.Instance.playerManager.heart =< 0)
+            {
+                SeongMin.GameDB.Instance.hasGameData = true;
+                SeongMin.GameDB.Instance.isWin = false;
+            }
+            else
+            {
+                EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, SeongMin.GameManager.Instance.playerManager.heart);
+            }
         }
     }
 
