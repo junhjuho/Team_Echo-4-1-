@@ -40,6 +40,7 @@ namespace SeongMin
 
             photonView = GetComponent<PhotonView>();
             chaserPrefab = this.transform.Find("zombie").gameObject;
+            if(photonView.IsMine)
             GameDB.Instance.playerMission = this;
 
             if (GameManager.Instance.missionManager != null)
