@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerSyncController : MonoBehaviour
 {
     public PhotonView pv;
-    RiggingManager riggingManager;
+    public RiggingManager riggingManager;
 
     public Transform head;
     public Transform leftHand;
@@ -38,7 +38,6 @@ public class PlayerSyncController : MonoBehaviour
             headRig = origin.transform.GetChild(0).GetChild(0);      // xr origin / camera offset / main camera
             leftHandRig = origin.transform.GetChild(0).GetChild(1);  // xr origin / camera offset / left controller
             rightHandRig = origin.transform.GetChild(0).GetChild(2); // xr origin / camera offset / right controller
-            riggingManager = this.GetComponentInChildren<RiggingManager>();
         }
     }
 
@@ -77,7 +76,7 @@ public class PlayerSyncController : MonoBehaviour
             foreach (var renderer in renderers)
             {
                 int layerNumber = renderer.gameObject.layer == 14 ? 14 : layer;
-                // 렌더 게임오브젝트의 레이어가 14(fireaxe)였다면 default로 변경
+                // 렌더 게임오브젝트의 레이어가 14(Fireaxe)였다면 default로 변경
                 // 아니면 layer로 변경
                 renderer.gameObject.layer = layerNumber;
             }
