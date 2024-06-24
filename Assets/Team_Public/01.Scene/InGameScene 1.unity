@@ -58049,6 +58049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uACE0\uC591\uC774 \uD1B5\uC870\uB9BC"
       objectReference: {fileID: 0}
+    - target: {fileID: 6925100185280644088, guid: 4a0ac1c17974a954da84045e11f30332, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7867094467288847305, guid: 4a0ac1c17974a954da84045e11f30332, type: 3}
       propertyPath: sceneViewId
       value: 26
@@ -58056,6 +58060,10 @@ PrefabInstance:
     - target: {fileID: 8249575810493453150, guid: 4a0ac1c17974a954da84045e11f30332, type: 3}
       propertyPath: m_Layer
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249575810493453150, guid: 4a0ac1c17974a954da84045e11f30332, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8523050993070355506, guid: 4a0ac1c17974a954da84045e11f30332, type: 3}
       propertyPath: m_LocalScale.x

@@ -12,11 +12,12 @@ namespace Jaewook
     /// </summary>
     public class Knife : ItemObject, IItem
     {
+        /*
         [Header("파티클 효과")]
         public ParticleSystem particleSys;
         [Header("체크용")]
         public PlayerMission playerMission;
-
+        */
         private void Start()
         {
 

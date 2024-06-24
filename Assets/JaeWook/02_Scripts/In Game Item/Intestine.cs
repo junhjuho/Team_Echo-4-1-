@@ -6,25 +6,27 @@ using UnityEngine;
 
 public class Intestine : ItemObject, IItem
 {
+    /*
     [Header("파티클 효과")]
     public ParticleSystem particleSys;
     [Header("체크용")]
     public PlayerMission playerMission;
-
+    */
     private void Start()
     {
         base.Start();
-
+        /*
         playerMission = GameDB.Instance.playerMission;
         particleSys = GetComponentInChildren<ParticleSystem>();
 
         // 파티클효과 상시 유지
         particleSys.Play();
-
+        */
     }
 
     public void OnGrab()
     {
+        /*
         // 잡으면 오브젝트 자체를 없애기
         gameObject.SetActive(false);
         playerMission.chaserMissionClearCount++;
@@ -37,6 +39,7 @@ public class Intestine : ItemObject, IItem
             // 카운팅 초기화
             playerMission.chaserMissionClearCount = 0;
         }
+        */
     }
 
     public void OnRelease()
