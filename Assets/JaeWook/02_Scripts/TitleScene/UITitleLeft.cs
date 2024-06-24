@@ -16,7 +16,7 @@ namespace Jaewook
 
         private void Awake()
         {
-            TitleSceneManager.Instance.uiTitleLeft = this;
+            // TitleSceneManager.Instance.uiTitleLeft = this;
             
             Transform uiTitleLeft = GameObject.Find("UITitleLeft")?.transform;
 
