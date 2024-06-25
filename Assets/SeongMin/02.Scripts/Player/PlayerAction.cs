@@ -76,6 +76,7 @@ namespace SeongMin
                 {
                     Debug.Log("Chaser : " + args.interactableObject.transform.name);
                     _item.isFind = true;
+                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     _item.gameObject.SetActive(false);
                     playerMission.chaserMissionClearCount++;
                 }
