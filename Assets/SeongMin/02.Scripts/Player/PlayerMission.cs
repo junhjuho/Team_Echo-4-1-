@@ -54,7 +54,7 @@ namespace SeongMin
                 chaserMissionArray = new GameObject[missionManager.chaserMissionCount];
             }
         }
-        private IEnumerator Start()
+        private void Start()
         {
             //���� ����
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>

@@ -164,12 +164,18 @@ namespace SeongMin
                 {
                     // 파이털 키 생성하기
                     GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
-                    PhotonNetwork.Instantiate("FinalKey", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+                    GameObject key = PhotonNetwork.Instantiate("FinalKey", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
                     // 탈출 지점 2개 생성하기
                     GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
-                    PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[0].position,Quaternion.identity);
-                    PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[1].position,Quaternion.identity);
-    }
+                    GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[0].position,Quaternion.identity);
+                    GameObject exitDoor2 = PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[1].position,Quaternion.identity);
+                    Debug.Log("키 생성");
+
+                    key.transform.Find("MinimapIcon").gameObject.SetActive(true);
+                    exitDoor1.transform.Find("MinimapIcon").gameObject.SetActive(true);
+                    exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
+                    Debug.Log("미니맵 생성");
+                }
                 else // 그게 아니라면, 모든 플레이어에게 전체 미션 진행도 공유하기
                 {
                     photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
