@@ -20,7 +20,7 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     bool isEnergyDown;
     public bool isDie;
-    private CharacterController characterController;
+    private Rigidbody rb;
 
     private WaitForSeconds reviveTime = new WaitForSeconds(1.5f);
 
@@ -35,8 +35,8 @@ public class HumanMovement : PlayerMovement, IDamageable
     public override void Start()
     {
         base.Start();
+        rb = gameObject.AddComponent<Rigidbody>();
         scene = SceneManager.GetActiveScene();
-        characterController = gameObject.GetComponent<CharacterController>();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
         if (pv.IsMine&& SeongMin.GameManager.Instance.playerManager !=null)
             SeongMin.GameManager.Instance.playerManager.humanMovement = this;
@@ -96,12 +96,12 @@ public class HumanMovement : PlayerMovement, IDamageable
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
-            float moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // 달리기 버튼에 따른 속도
+            moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // 달리기 버튼에 따른 속도
 
            
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
-            Vector3 move = new Vector3(dir.x, 0, dir.y).normalized * moveSpeed * Time.deltaTime;
-            characterController.Move(move);
+            rb.velocity =  new Vector3(dir.x,0,dir.y).normalized;
+            //this.transform.position = this.transform.position + new Vector3(transform.position.x + dir.x, transform.position.y, transform.position.z + dir.y);
         }
         else
             return;
