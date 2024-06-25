@@ -65,6 +65,8 @@ MonoBehaviour:
   - BloodEffect
   - PhotonBloodEffect
   - CharacterRePosition
+  - RunnerSetActive
+  - RunnerSetActiveRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

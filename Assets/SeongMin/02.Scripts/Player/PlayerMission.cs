@@ -179,7 +179,10 @@ namespace SeongMin
             if (photonView.IsMine)
             {
                 photonView.RPC("RunnerSetActiveRPC", RpcTarget.All);
+                currentRunnerCharacrers[InfoManager.Instance.PlayerInfo.nowCharacterId].gameObject.SetActive(true);
+                GameDB.Instance.myPlayer.transform.position = SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
             }
+
 
             yield break;
         }
