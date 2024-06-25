@@ -144,7 +144,7 @@ namespace NHR
                     if (GameManager.Instance.playerManager.heart == 0) 
                     {
                         //this.uiDeath.gameObject.SetActive(true);
-                        EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
+                        EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
                     }
                     this.uiAttacked.Close();
                 }
