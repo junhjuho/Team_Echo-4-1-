@@ -204,11 +204,8 @@ namespace NHR
             //미션 달성 이벤트
             EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
             {
-                if (!GameDB.Instance.playerMission.isChaser)
-                {
-                    this.uiCompleteMission.gameObject.SetActive(true);
-                    this.uiCompleteMission.CompleteMission(name);
-                }
+                this.uiCompleteMission.gameObject.SetActive(true);
+                this.uiCompleteMission.CompleteMission(name);
             }));
             //생존자 전체 미션 달성도 알림
             EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
