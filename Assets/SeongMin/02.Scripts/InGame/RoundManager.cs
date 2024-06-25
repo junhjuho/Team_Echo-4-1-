@@ -169,6 +169,8 @@ namespace SeongMin
                     GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
                     GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[0].position,Quaternion.identity);
                     GameObject exitDoor2 = PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[1].position,Quaternion.identity);
+                    exitDoor1.SetActive(true);
+                    exitDoor2.SetActive(true);
                     Debug.Log("Å° »ý¼º");
 
                     key.transform.Find("MinimapIcon").gameObject.SetActive(true);

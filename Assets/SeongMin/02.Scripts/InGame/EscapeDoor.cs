@@ -17,7 +17,7 @@ public class EscapeDoor : MonoBehaviour
         if(other.TryGetComponent(out FinalKey finalKey))
         {
             animator.SetTrigger("isOpen");
-            Invoke("GameEnding", 0.3f);
+            Invoke("GameEnding", 1f);
         }
     }
     private void GameEnding()
