@@ -193,7 +193,7 @@ namespace SeongMin
             //else if (_value % quater == 0) EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, _value);
             else
             {
-                string str = string.Format("{0}/{1}", GameDB.Instance.playerMission.playerMissionArray.Length, GameDB.Instance.playerMission.runnerMissionClearCount);
+                string str = string.Format("{0}/{1}", GameDB.Instance.playerMission.runnerMissionClearCount, GameDB.Instance.playerMission.playerMissionArray.Length);
                 EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, str);
             }
 

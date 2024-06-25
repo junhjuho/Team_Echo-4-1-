@@ -175,42 +175,48 @@ namespace NHR
                 this.uiTimer.UpdateTimer(time);
             }));
             //괴물 변신 타이머 갱신
-            EventDispatcher.instance.AddEventHandler<float>((int)NHR.EventType.eEventType.Update_MonsterTimer, new EventHandler<float>((type, time) =>
-            {
-                if (GameDB.Instance.playerMission.isChaser)
-                {
-                    Debug.LogFormat("<color=yellow>변신 남은 시간 : {0}</color>", time);
-                    this.uiMonsterMode.UpdateTimer(time);
-                }
-            }));
+            //EventDispatcher.instance.AddEventHandler<float>((int)NHR.EventType.eEventType.Update_MonsterTimer, new EventHandler<float>((type, time) =>
+            //{
+            //    if (GameDB.Instance.playerMission.isChaser)
+            //    {
+            //        Debug.LogFormat("<color=yellow>변신 남은 시간 : {0}</color>", time);
+            //        this.uiMonsterMode.UpdateTimer(time);
+            //    }
+            //}));
             //미션 달성 이벤트
             EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
             {
-                this.uiCompleteMission.gameObject.SetActive(true);
-                this.uiCompleteMission.CompleteMission(name);
+                if (!GameDB.Instance.playerMission.isChaser)
+                {
+                    this.uiCompleteMission.gameObject.SetActive(true);
+                    this.uiCompleteMission.CompleteMission(name);
+                }
             }));
             //생존자 전체 미션 달성도 알림
-            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
-            {
-                Debug.Log("Notice TotalMission Percent");
-                this.uiMissionPercent.Init();
-                var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
-                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
-                this.uiMissionPercent.gameObject.SetActive(true);
-                //this.nowPopUI = this.uiMissionPercent.gameObject;
-                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
-            }));
+            //EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
+            //{
+            //    Debug.Log("Notice TotalMission Percent");
+            //    this.uiMissionPercent.Init();
+            //    var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
+            //    Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+            //    this.uiMissionPercent.gameObject.SetActive(true);
+            //    //this.nowPopUI = this.uiMissionPercent.gameObject;
+            //    StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+            //}));
             //생존자 라운드 목표 완료 알림
-            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>
-            {
-                Debug.Log("Notice TotalMission Percent");
-                this.uiMissionPercent.Init();
-                var dialog = DataManager.Instance.GetEventDialog("missionPercentComplete");
-                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
-                this.uiMissionPercent.gameObject.SetActive(true);
-                //this.nowPopUI = this.uiMissionPercent.gameObject;
-                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
-            }));
+            //EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>
+            //{
+            //    if (!GameDB.Instance.playerMission.isChaser)
+            //    {
+            //        Debug.Log("Notice TotalMission Percent");
+            //        this.uiMissionPercent.Init();
+            //        var dialog = DataManager.Instance.GetEventDialog("missionPercentComplete");
+            //        Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+            //        this.uiMissionPercent.gameObject.SetActive(true);
+            //        //this.nowPopUI = this.uiMissionPercent.gameObject;
+            //        StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+            //    }
+            //}));
         }
 
         /// <summary>
