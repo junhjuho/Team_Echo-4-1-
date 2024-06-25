@@ -105,6 +105,7 @@ namespace SeongMin
         [PunRPC]
         public void CharacterChange(string _value)
         {
+            Debug.LogFormat("±«¹° º¯½Å RPC{0}", _value);
             if (_value != "Chaser")
             {
                 chaserPrefab.SetActive(true);
