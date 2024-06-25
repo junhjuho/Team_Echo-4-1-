@@ -54,7 +54,7 @@ namespace SeongMin
 
                 chaserMissionArray = new GameObject[missionManager.chaserMissionCount];
             }
-            this.currentRunnerCharacrers = this.GetComponentsInChildren<Character>();
+            //this.currentRunnerCharacrers = this.GetComponentsInChildren<Character>();
         }
         private IEnumerator Start()
         {

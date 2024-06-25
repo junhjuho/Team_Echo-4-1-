@@ -18291,6 +18291,10 @@ MonoBehaviour:
   playerTeamPlayMissionCount: 0
   chaserMissionClearCount: 0
   currentRunnerCharacrer: {fileID: 0}
+  currentRunnerCharacrers:
+  - {fileID: 7799693496687141074}
+  - {fileID: 6475554866602124036}
+  - {fileID: 568239553882724931}
   chaserPrefab: {fileID: 8990541683088355710}
 --- !u!114 &8688130894239647620
 MonoBehaviour:
