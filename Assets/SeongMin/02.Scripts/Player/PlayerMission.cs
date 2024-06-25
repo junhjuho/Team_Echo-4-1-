@@ -71,7 +71,7 @@ namespace SeongMin
             }));
 
             yield return new WaitForSeconds(5f);
-            photonView.RPC("CharacterChange", RpcTarget.All, this.isChaser);
+            if(this.isChaser) photonView.RPC("CharacterChange", RpcTarget.All, "ISChaser");
         }
         public bool MissionItemCheck(GameObject _item, GameObject[] _array)
         {
