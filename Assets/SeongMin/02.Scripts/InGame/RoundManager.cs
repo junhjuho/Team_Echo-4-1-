@@ -164,7 +164,7 @@ namespace SeongMin
                 {
                     // 파이털 키 생성하기
                     GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
-                    GameObject key = PhotonNetwork.Instantiate("FinalKey", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+                    GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
                     // 탈출 지점 2개 생성하기
                     GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
                     GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[0].position,Quaternion.identity);
