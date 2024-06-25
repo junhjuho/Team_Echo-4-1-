@@ -129,16 +129,7 @@ namespace SeongMin
             }
             return _value;
         }
-        [PunRPC]
-        public void WinCheck()
-        {
-
-            if (PhotonNetwork.IsMasterClient)
-            {
-
-
-            }
-        }
+       
         public void AllPlayerMissionScoreUpdate()
         {
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
@@ -194,6 +185,48 @@ namespace SeongMin
             SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
             GameDB.Instance.myPlayer.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
+        }
+
+        public void WinCheck(string _value)
+        {
+            if (_value == "RunnerWin")
+            {
+                photonView.RPC("RunnerWin", RpcTarget.All);
+            }
+            else
+            {
+                photonView.RPC("ChaserWin", RpcTarget.All);
+            }
+        }
+        [PunRPC]
+        public void RunnerWin()
+        {
+            GameDB.Instance.hasGameData = true;
+            // 주의 !!!!! 여기서 이 오브젝트를 호출 한 건 다른 PhotonView를 가진
+            // 오브젝트가 가지고 있으므로 이전에 할당으로 PhotonView isMine으로 확정된
+            // 자기 자신의 로컬 playerMission.isChaser를 검사해야 하므로 
+            // 싱글톤에 있는 걸 가지고 와서 검사합니다 ! 
+            if (GameDB.Instance.playerMission.isChaser == false)
+            {
+                GameDB.Instance.isWin = true;
+            }
+            else
+            {
+                GameDB.Instance.isWin = false;
+            }
+        }
+        [PunRPC]
+        public void ChaserWin()
+        {
+            GameDB.Instance.hasGameData = true;
+            if (GameDB.Instance.playerMission.isChaser == false)
+            {
+                GameDB.Instance.isWin = false;
+            }
+            else
+            {
+                GameDB.Instance.isWin = true;
+            }
         }
     }
 }

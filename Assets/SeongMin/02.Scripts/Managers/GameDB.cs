@@ -78,5 +78,6 @@ namespace SeongMin
                 _list[randNum] = temp;
             }
         }
+
     }
 }
