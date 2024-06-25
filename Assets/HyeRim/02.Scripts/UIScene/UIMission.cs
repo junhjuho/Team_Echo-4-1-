@@ -26,8 +26,7 @@ namespace NHR
                 {
                     var mission = Instantiate(Resources.Load<Mission>("UI/Mission/Mission"), this.transform);
                     mission.targetItem = playerMissionObjects[i].GetComponent<ItemObject>();
-                    mission.itemName = mission.targetItem.name;
-                    mission.textFirstStep.text = mission.itemName + "»πµÊ«œ±‚";
+                    mission.textFirstStep.text = playerMissionObjects[i].name + "»πµÊ«œ±‚";
                     this.missions.Add(mission);
                 }
                 //∫Ò»∞º∫»≠
@@ -35,10 +34,9 @@ namespace NHR
             }));
             EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
             {
-                Debug.Log("Complete_Mission in UIMission");
                 for (int i = 0; i < this.missions.Count; i++)
                 {
-                    if (this.missions[i].itemName == name)
+                    if (this.missions[i].targetItem.name == name)
                     {
                         this.missions[i].textFirstStep.fontStyle = FontStyles.Strikethrough;
                         break;
