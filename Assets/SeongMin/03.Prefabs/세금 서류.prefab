@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7200568146742528718}
   - component: {fileID: 6283751906318628705}
   m_Layer: 23
-  m_Name: renderer
+  m_Name: "\uC138\uAE08 \uC11C\uB958"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &4989850885903648050
 MonoBehaviour:
@@ -146,8 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders:
-  - {fileID: 7011750374022846655}
+  m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -370,8 +369,8 @@ Transform:
   m_GameObject: {fileID: 2934278309360025238}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7019128, y: -0, z: -0, w: 0.7122629}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1991513345478903528}
@@ -801,7 +800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8465070152138596843}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 7.34, z: 19.66}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0

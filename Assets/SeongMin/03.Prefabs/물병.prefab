@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723833235179559090}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -25.25, y: 6.85, z: -1.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -91,8 +91,8 @@ Transform:
   m_GameObject: {fileID: 3556311339101124227}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7019128, y: -0, z: -0, w: 0.7122629}
-  m_LocalPosition: {x: 0.11100006, y: 6, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0.11100006, y: 15, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2085214569039061539}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 7538204697946306821}
   - component: {fileID: 6260727427283755850}
   m_Layer: 23
-  m_Name: renderer
+  m_Name: "\uBB3C\uBCD1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +286,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &7714246839029205685
 MonoBehaviour:
@@ -301,8 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders:
-  - {fileID: 4073628347932950968}
+  m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

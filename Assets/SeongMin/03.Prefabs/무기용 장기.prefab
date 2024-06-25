@@ -60,8 +60,8 @@ Transform:
   m_GameObject: {fileID: 3302450909876655270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7019128, y: -0, z: -0, w: 0.7122629}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
-  m_LocalScale: {x: 1.8000001, y: 1.8000001, z: 1.8000001}
+  m_LocalPosition: {x: 0, y: 15, z: -0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5299482694949617485}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 4715903694180770256}
   - component: {fileID: 6191454522471730060}
   m_Layer: 21
-  m_Name: renderer
+  m_Name: "\uBB34\uAE30\uC6A9 \uC7A5\uAE30"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,7 +264,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &813089339110142124
 BoxCollider:
@@ -300,8 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders:
-  - {fileID: 813089339110142124}
+  m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -390,7 +389,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 4212823183500508468}
+  m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -569,6 +568,10 @@ PrefabInstance:
     - target: {fileID: 3353598952381656985, guid: de283b37bdd532540a43a9dabc14ffce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338206193888719622, guid: de283b37bdd532540a43a9dabc14ffce, type: 3}
+      propertyPath: cullingMode
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

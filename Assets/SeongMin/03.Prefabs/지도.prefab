@@ -15,12 +15,11 @@ GameObject:
   - component: {fileID: 1078764780475629904}
   - component: {fileID: 4281903628645659217}
   - component: {fileID: 2379479145732290460}
-  - component: {fileID: 6333178075600155824}
   - component: {fileID: 4189835295385024399}
   - component: {fileID: 7549705048589389025}
   - component: {fileID: 5501695793991485479}
   m_Layer: 23
-  m_Name: renderer
+  m_Name: "\uC9C0\uB3C4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,28 +172,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &6333178075600155824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176794979760628643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b18d844c58793c141aba349f6cbc2248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneValue: 2
-  charactorValue: 0
-  itemValue: 0
-  isFind: 0
-  fx: {fileID: 0}
-  miniMap: {fileID: 0}
-  mapUI: {fileID: 0}
-  scrollMeshRen: {fileID: 7691360534658858810}
-  scrollCollider: {fileID: 9191445810000928989}
-  isGrab: 0
 --- !u!54 &4189835295385024399
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -220,7 +197,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &7549705048589389025
 MonoBehaviour:
@@ -235,8 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders:
-  - {fileID: 9191445810000928989}
+  m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -451,8 +427,8 @@ Transform:
   m_GameObject: {fileID: 2718997674197170945}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7019128, y: -0, z: -0, w: 0.7122629}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.70000005, z: 0.70000005}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6141308059628580843}
@@ -531,7 +507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6085187386900723997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -32.55, y: 6.35, z: 20.65}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
