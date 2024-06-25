@@ -25,7 +25,7 @@ namespace SeongMin
             GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameRunnerItemNumberArray);
             for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
-                int _minValue = i*runnerMissionCount;
+                int _minValue = i * runnerMissionCount;
                 int _maxValue = _minValue + runnerMissionCount;
                 int[] _intArray = GameManager.Instance.inGameMapManager.inGameRunnerItemNumberArray;
                 photonView.RPC("MissionSend", PhotonNetwork.PlayerList[i], _minValue, _maxValue, _intArray);
@@ -36,22 +36,17 @@ namespace SeongMin
         {
             // 내 클라이언트에 다른 클라이언트와 안겹치게 미션 배정 받기
             int j = 0;
-            for (int i =_minValue; i < _maxValue; i++)
+            for (int i = _minValue; i < _maxValue; i++)
             {
-                GameDB.Instance.playerMission.playerMissionArray[j] = 
+                GameDB.Instance.playerMission.playerMissionArray[j] =
                     GameManager.Instance.inGameMapManager.inGameRunnerItemList[_intArray[i]];
                 //내가 복수자가 아니면 분배 받은 도망자용 아이템 미니맵에 띄우기 
-                if(GameDB.Instance.playerMission.playerMissionArray[j].transform.Find(GameDB.Instance.playerMission.playerMissionArray[j].name).TryGetComponent(out ItemObject _itemobject))
+                if (GameDB.Instance.playerMission.playerMissionArray[j].transform.Find(GameDB.Instance.playerMission.playerMissionArray[j].name).TryGetComponent(out ItemObject _itemobject))
                 {
-                        if(GameDB.Instance.playerMission.isChaser == false)
-                    {
-                        if (_itemobject.miniMap == null)
-                        {
-                            Debug.LogError("Not MiniMap");
-                        }
-
+                    if (GameDB.Instance.playerMission.isChaser == false && _itemobject.miniMap == null)
                         _itemobject.miniMap.SetActive(true);
-                    }
+                    else
+                        Debug.LogError("Not MiniMap");
 
                 }
                 j++;
@@ -66,8 +61,14 @@ namespace SeongMin
                     GameDB.Instance.playerMission.chaserMissionArray[i] =
                         GameManager.Instance.inGameMapManager.inGameChaserItemList[i];
                     //내가 복수자면 분배 받은 복수자용 아이템 미니맵에 띄우기 
-                    if (GameDB.Instance.playerMission.chaserMissionArray[i].TryGetComponent(out ItemObject _itemObject))
-                        _itemObject.miniMap.SetActive(true);
+                    if (GameDB.Instance.playerMission.chaserMissionArray[j].transform.Find(GameDB.Instance.playerMission.chaserMissionArray[j].name).TryGetComponent(out ItemObject _itemobject))
+                    {
+                        if (GameDB.Instance.playerMission.isChaser == false && _itemobject.miniMap == null)
+                            _itemobject.miniMap.SetActive(true);
+                        else
+                            Debug.LogError("Not MiniMap");
+
+                    }
                 }
             }
             // 협업미션을 수행해야하면 주기
