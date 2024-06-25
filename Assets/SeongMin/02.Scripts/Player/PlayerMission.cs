@@ -175,11 +175,12 @@ namespace SeongMin
         {
             yield return new WaitForSeconds(2f);
             GameDB.Instance.Shuffle(SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList);
-            // 플레이어 재 위치 시키기
             if (photonView.IsMine)
             {
                 photonView.RPC("RunnerSetActiveRPC", RpcTarget.All);
+                // 플레이어 캐릭터 다시 키고
                 SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
+                // 플레이어 재 위치 시키기
                 GameDB.Instance.myPlayer.transform.position = SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
             }
 

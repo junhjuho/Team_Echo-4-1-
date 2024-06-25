@@ -218,6 +218,7 @@ namespace SeongMin
             GameDB.Instance.playerMission.runnerMissionClearCount = 0;
             GameDB.Instance.playerMission.chaserMissionClearCount = 0;
             GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
+            GameDB.Instance.escapeDoorPositionList.Clear();
             currentRoundPlayersMissionCount = 0;
             currentRoundPlayersMissionPerSent = 0;
 
@@ -225,6 +226,7 @@ namespace SeongMin
         [PunRPC]
         public void AllPlayerLobbySceneLoad()
         {
+            SeongMin.GameManager.Instance.GameDataReset();
             PhotonNetwork.LoadLevel("LobbyScene 1");
         }
         //[PunRPC]
