@@ -42,6 +42,9 @@ namespace NHR
         [Header("전체 플레이어 미션 현황 UI")]
         public UIMissionPercent uiMissionPercent;
 
+        [Header("죽음 UI")]
+        public UIDeath uiDeath;
+
         //private GameObject nowPopUI;
 
         private void Awake()
@@ -58,6 +61,7 @@ namespace NHR
             this.uiNowPlayers = GetComponentInChildren<UINowPlayers>();
             this.uiCompleteMission = GetComponentInChildren<UICompleteMission>();
             this.uiMissionPercent = GetComponentInChildren<UIMissionPercent>();
+            this.uiDeath = GetComponentInChildren<UIDeath>();
 
             this.Init();
         }
@@ -76,6 +80,8 @@ namespace NHR
 
             this.uiCompleteMission.gameObject.SetActive(false);
             this.uiMissionPercent.gameObject.SetActive(false);
+
+            this.uiDeath.gameObject.SetActive(false);
         }
         private void Start()
         {
@@ -129,10 +135,9 @@ namespace NHR
                         //부활
                         Invoke("ReviveUI", 2f);
                     }
-                    else
+                    if (GameManager.Instance.playerManager.heart == 0) 
                     {
-                        this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("death");
-                        //Invoke("PopWatching", 2f);
+                        this.uiDeath.gameObject.SetActive(true);
                     }
                     this.uiAttacked.Close();
                 }
@@ -193,16 +198,16 @@ namespace NHR
                 }
             }));
             //생존자 전체 미션 달성도 알림
-            //EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
-            //{
-            //    Debug.Log("Notice TotalMission Percent");
-            //    this.uiMissionPercent.Init();
-            //    var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
-            //    Debug.LogFormat("<color=yellow>{0}</color>", dialog);
-            //    this.uiMissionPercent.gameObject.SetActive(true);
-            //    //this.nowPopUI = this.uiMissionPercent.gameObject;
-            //    StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
-            //}));
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
+            {
+                Debug.Log("Notice TotalMission Percent");
+                this.uiMissionPercent.Init();
+                var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
+                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                this.uiMissionPercent.gameObject.SetActive(true);
+                //this.nowPopUI = this.uiMissionPercent.gameObject;
+                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+            }));
             //생존자 라운드 목표 완료 알림
             //EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>
             //{
