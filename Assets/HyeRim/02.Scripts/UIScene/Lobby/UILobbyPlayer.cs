@@ -44,8 +44,8 @@ namespace NHR
             this.uiGameResult.gameObject.SetActive(true);
 
             var text = this.uiGameResult.textResult.text;
-            if (GameDB.Instance.isWin) text = DataManager.Instance.GetEventDialog("gameWin");
-            else text = DataManager.Instance.GetEventDialog("gameLose");
+            if (GameDB.Instance.isWin) text = "½Â¸®";
+            else text = "ÆÐ¹è";
         }
     }
 
