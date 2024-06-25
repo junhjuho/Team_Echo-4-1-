@@ -42,8 +42,8 @@ namespace SeongMin
 
             photonView = GetComponent<PhotonView>();
             chaserPrefab = this.transform.Find("zombie").gameObject;
-            if(photonView.IsMine)
-            GameDB.Instance.playerMission = this;
+            if (photonView.IsMine)
+                GameDB.Instance.playerMission = this;
 
             if (GameManager.Instance.missionManager != null)
             {
@@ -77,7 +77,7 @@ namespace SeongMin
                     Debug.Log("<color=red>���� ���� �Ϸ�</color>");
                     //���� �𵨷� �ٲ�� ��� �÷��̾�� ����ȭ �ϱ�'
 
-                    
+
                     photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
                 }
                 //GameManager.Instance.roundTimer.MonsterTimerStart();
@@ -144,7 +144,7 @@ namespace SeongMin
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
             value = (float)Math.Round(value, 2);
             value *= 100;
-            print(value+"���� ���� �� ���� �ۼ�Ʈ");
+            print(value + "���� ���� �� ���� �ۼ�Ʈ");
             // ��ü �̼� �ۼ�Ʈ �ٲ� �� �����ϰ� ��û�ϱ�
             //GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
             GameManager.Instance.roundManager.RPCSendScoreUpdate((int)value);
@@ -179,7 +179,7 @@ namespace SeongMin
             if (photonView.IsMine)
             {
                 photonView.RPC("RunnerSetActiveRPC", RpcTarget.All);
-                currentRunnerCharacrers[InfoManager.Instance.PlayerInfo.nowCharacterId].gameObject.SetActive(true);
+                SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
                 GameDB.Instance.myPlayer.transform.position = SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
             }
 
@@ -190,8 +190,8 @@ namespace SeongMin
         public void RunnerSetActiveRPC()
         {
             Debug.Log("Respawn Character ID : " + InfoManager.Instance.PlayerInfo.nowCharacterId);
-                currentRunnerCharacrers[InfoManager.Instance.PlayerInfo.nowCharacterId].gameObject.SetActive(true);
-                GameDB.Instance.myPlayer.transform.position =
+            SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
+            GameDB.Instance.myPlayer.transform.position =
             SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
         }
     }

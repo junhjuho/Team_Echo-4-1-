@@ -36,7 +36,7 @@ public class HumanMovement : PlayerMovement, IDamageable
         base.Start();
         scene = SceneManager.GetActiveScene();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
-        if (pv.IsMine)
+        if (pv.IsMine&& SeongMin.GameManager.Instance.playerManager !=null)
             SeongMin.GameManager.Instance.playerManager.humanMovement = this;
     }
 
