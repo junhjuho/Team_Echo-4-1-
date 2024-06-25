@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace SeongMin
 {
@@ -66,8 +67,33 @@ namespace SeongMin
                     photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
                 }
                 //GameManager.Instance.roundTimer.MonsterTimerStart();
+
             }));
+
+            StartCoroutine(DelayRoutine());
         }
+
+        IEnumerator DelayRoutine()
+        {
+            yield return new WaitForSeconds(5f);
+
+            if (!isChaser)
+            {
+                foreach (var item in playerMissionArray)
+                {
+                    item.transform.Find("MinimapIcon");
+                }
+            }
+            else
+            {
+                foreach (var item in chaserMissionArray)
+                {
+                    item.transform.Find("MinimapIcon");
+                }
+            }
+
+        }
+
         public bool MissionItemCheck(GameObject _item, GameObject[] _array)
         {
             bool _value = false;
@@ -99,7 +125,8 @@ namespace SeongMin
             value *= 100;
             print(value+"내가 잡은 거 총합 퍼센트");
             // 전체 미션 퍼센트 바뀐 값 전달하게 요청하기
-            GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
+            //GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
+            GameManager.Instance.roundManager.RPCSendScoreUpdate((int)value);
         }
 
         [PunRPC]

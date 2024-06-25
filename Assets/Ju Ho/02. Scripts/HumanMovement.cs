@@ -53,6 +53,7 @@ public class HumanMovement : PlayerMovement, IDamageable
                 }
             }
             SeongMin.GameManager.Instance.playerManager.heart--;
+            print("현재 피 " + SeongMin.GameManager.Instance.playerManager.heart);
 
             // 체력이 1보다 낮으면
             if (SeongMin.GameManager.Instance.playerManager.heart <= 0)

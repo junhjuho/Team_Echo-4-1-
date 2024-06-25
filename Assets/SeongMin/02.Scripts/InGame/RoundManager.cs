@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static NHR.App;
 using static SeongMin.RoundManager;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace SeongMin
 {
@@ -143,13 +144,22 @@ namespace SeongMin
             if (playerCount == GameDB.Instance.playerCount)
                 isPlayerAllConnected = true;
         }
+
+        public void RPCSendScoreUpdate(int _value)
+        {
+            photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, _value);
+        }
+
         [PunRPC] // 모든 플레이어가 받는 곳
         public void SendAllPlayerMissionScoreUpdate(int _value)
         {
+            Debug.Log("Score Update");
             // 플레이어들이 전체 목표 달성 했을 때. 라운드 체인지
             currentRoundPlayersMissionPerSent = _value;
             if (PhotonNetwork.IsMasterClient)
             {
+                Debug.Log("IsMasterClient Update");
+
                 if (currentRoundPlayersMissionPerSent >= needPersent)
                 {
                     // 파이털 키 생성하기

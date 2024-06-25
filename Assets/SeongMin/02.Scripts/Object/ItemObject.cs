@@ -35,7 +35,9 @@ namespace SeongMin
         protected void Start()
         {
             miniMap = transform.parent.transform.Find("MinimapIcon").gameObject;
-            miniMap.SetActive(false);
+
+            if (miniMap != null)
+                miniMap.SetActive(false);
 
             if (sceneValue == SceneValue.tutorial)
                 GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject.transform.parent.gameObject);

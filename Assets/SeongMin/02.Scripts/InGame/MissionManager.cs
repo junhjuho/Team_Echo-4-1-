@@ -41,10 +41,18 @@ namespace SeongMin
                 GameDB.Instance.playerMission.playerMissionArray[j] = 
                     GameManager.Instance.inGameMapManager.inGameRunnerItemList[_intArray[i]];
                 //내가 복수자가 아니면 분배 받은 도망자용 아이템 미니맵에 띄우기 
-                if(GameDB.Instance.playerMission.playerMissionArray[j].TryGetComponent(out ItemObject _itemobject)
-                    && GameDB.Instance.playerMission.isChaser == false)
+                if(GameDB.Instance.playerMission.playerMissionArray[j].transform.Find(GameDB.Instance.playerMission.playerMissionArray[j].name).TryGetComponent(out ItemObject _itemobject))
                 {
-                    _itemobject.miniMap.SetActive(true);
+                        if(GameDB.Instance.playerMission.isChaser == false)
+                    {
+                        if (_itemobject.miniMap == null)
+                        {
+                            Debug.LogError("Not MiniMap");
+                        }
+
+                        _itemobject.miniMap.SetActive(true);
+                    }
+
                 }
                 j++;
             }
