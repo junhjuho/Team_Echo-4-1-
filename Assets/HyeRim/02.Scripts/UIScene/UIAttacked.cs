@@ -20,6 +20,8 @@ namespace NHR
         //목숨들
         public UIHeart[] hearts;
 
+        public int attackCount = 0;
+
         public void Init()
         {
             this.imageDeath.gameObject.SetActive(false);
@@ -48,12 +50,14 @@ namespace NHR
             this.textState.gameObject.SetActive(false);
             this.uiHeart.SetActive(false);
         }
-        public void OpenUI(int heart)
+        public void OpenUI()
         {
+            Debug.Log("기절 UI 하트 업데이트");
             this.uiHeart.SetActive(true);
-            this.attackedImages[3 - heart].gameObject.SetActive(true);
+            for (int i = 0; i < this.attackCount + 1; i++) this.attackedImages[i].gameObject.SetActive(true);
             this.imageDeath.gameObject.SetActive(true);
             this.textState.gameObject.SetActive(true);
+            this.attackCount++;
         }
     }
 
