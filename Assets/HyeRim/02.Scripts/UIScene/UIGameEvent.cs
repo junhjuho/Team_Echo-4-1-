@@ -1,3 +1,4 @@
+using Photon.Pun;
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
@@ -158,6 +159,7 @@ namespace NHR
                 {
                     //±«¹° Àü¿ë UI ¶ç¿ì±â
                     this.uiMonsterMode.gameObject.SetActive(true);
+                    GameDB.Instance.playerMission.photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
                 }
                 else
                 {
