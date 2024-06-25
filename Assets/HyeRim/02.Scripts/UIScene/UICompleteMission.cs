@@ -24,7 +24,7 @@ namespace NHR
             this.textCompleteMission.text = string.Format("{0} È¹µæ ¹Ì¼Ç ¿Ï·á!", missionName);
             this.textCompleteMission.color = Color.gray;
 
-            Invoke("CloseUI", 0.5f);
+            Invoke("CloseUI", 1f);
         }
         public void CloseUI()
         {
