@@ -65,7 +65,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             }
             else
             {
-                EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, SeongMin.GameManager.Instance.playerManager.heart);
+                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Attacked);
 
                 GameDB.Instance.playerMission.RunnerSetActive();
             }

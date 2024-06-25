@@ -9,12 +9,13 @@ namespace NHR
     public class UIHeartWatch : MonoBehaviour
     {
         public UIHeart[] hearts;
-        public int nowHeart = 3;
+        public int attackCount = 0;
         private int maxHeart = 3;
 
         private void Awake()
         {
             this.hearts = GetComponentsInChildren<UIHeart>();
+            this.attackCount = 0;
         }
         private void Start()
         {
@@ -22,8 +23,9 @@ namespace NHR
 
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler((type) =>
             {
-                this.hearts[this.maxHeart - this.nowHeart].imageDeath.SetActive(true);
-                this.nowHeart--;
+                Debug.Log("미션 옆 하트 업데이트");
+                this.hearts[this.attackCount].imageDeath.SetActive(true);
+                this.attackCount++;
             }));
 
         }

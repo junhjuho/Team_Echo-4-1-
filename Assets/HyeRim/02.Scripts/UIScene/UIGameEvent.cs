@@ -109,7 +109,7 @@ namespace NHR
             }));
 
             //공격받음 1, 2, 3단계
-            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler((type) =>
             {
                 //복수자가 아니면
                 if (!GameDB.Instance.playerMission.isChaser)
@@ -117,13 +117,13 @@ namespace NHR
                     Debug.Log("<color=red>공격 받음</color>");
 
                     //UI열기
-                    this.uiAttacked.OpenUI(this.uiAttacked.hearts.Length - heart - 1);
+                    this.uiAttacked.OpenUI();
 
                     //목숨 줄어드는 UI
                     //this.uiAttacked.hearts[this.uiAttacked.hearts.Length - heart + 1].imageDeath.SetActive(true);
 
                     //기절 혹은 죽음 UI text
-                    if (heart != 1)
+                    if (GameManager.Instance.playerManager.heart != 1)
                     {
                         this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("attacked");
                         //부활
