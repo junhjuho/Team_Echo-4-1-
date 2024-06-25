@@ -38,6 +38,7 @@ namespace NHR
         private WaitForSeconds typingClearSec = new WaitForSeconds(1.5f);
         private void Awake()
         {
+            SeongMin.GameManager.Instance.tutorialSceneManager = this;
             //юс╫ц
             DataManager.Instance.LoadTutorialData();
 

@@ -11,11 +11,12 @@ public class TutorialKnife : MonoBehaviour, IItem
     {
         if (!this.isMissionDone)
         {
-            GameManager.Instance.lobbySceneManager.playerMission.chaserPrefab.SetActive(true);
-            GameManager.Instance.lobbySceneManager.playerMission.currentRunnerCharacrer.gameObject.SetActive(false);
+            GameDB.Instance.playerMission.chaserPrefab.SetActive(true);
+            foreach (var character in GameDB.Instance.playerMission.currentRunnerCharacrers) character.gameObject.SetActive(false);
             EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Clear_TutorialQuest);
             this.isMissionDone = true;
         }
+        //EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
     }
 
     public void OnRelease()

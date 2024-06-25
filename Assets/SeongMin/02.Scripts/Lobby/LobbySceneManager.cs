@@ -22,6 +22,11 @@ namespace SeongMin
         public PlayerMission playerMission;
         public PlayerController playerController;
 
+        [Header("복수자 아이템")]
+        public GameObject knife;
+        [Header("로비씬 플레이어 미션 설정")]
+        public int lobbyMissionCount = 1;
+
         private void Awake()
         {
             photonView = GetComponent<PhotonView>();

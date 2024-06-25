@@ -14,8 +14,8 @@ namespace Jaewook
         
 
         //NHR
-        [Header("������ UI")]
-        public NHR.UIFlashlight uiFlashlight;
+        //[Header("������ UI")]
+        //public NHR.UIFlashlight uiFlashlight;
         //�ڷ�ƾ
         private IEnumerator flashCoroutine;
 

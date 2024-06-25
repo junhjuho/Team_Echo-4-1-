@@ -9,7 +9,7 @@ namespace SeongMin
         public List<GameObject> tutorialObjectList;
         private void Awake()
         {
-            GameManager.Instance.tutorialSceneManager = this;
+            //GameManager.Instance.tutorialSceneManager = this;
         }
 
         private void Start()
