@@ -120,7 +120,7 @@ namespace NHR
                     this.uiAttacked.OpenUI(heart);
 
                     //목숨 줄어드는 UI
-                    this.uiAttacked.hearts[3 - heart].imageDeath.SetActive(true);
+                    this.uiAttacked.hearts[this.uiAttacked.hearts.Length - heart + 1].imageDeath.SetActive(true);
 
                     //기절 혹은 죽음 UI text
                     if (heart != 1)

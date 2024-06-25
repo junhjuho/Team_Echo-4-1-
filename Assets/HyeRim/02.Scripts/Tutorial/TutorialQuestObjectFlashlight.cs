@@ -8,6 +8,8 @@ public class TutorialQuestObjectFlashlight : FlashLight, ITutorialQuestObject
     public bool isGrabDone;
     public bool isUseDone;
 
+    public GameObject canvas;
+
     private void Awake()
     {
         this.isGrabDone = false;
@@ -26,6 +28,7 @@ public class TutorialQuestObjectFlashlight : FlashLight, ITutorialQuestObject
             this.isGrabDone = true;
             this.SendEventClear();
         }
+        this.canvas.SetActive(false);
     }
     public override void OnUse()
     {

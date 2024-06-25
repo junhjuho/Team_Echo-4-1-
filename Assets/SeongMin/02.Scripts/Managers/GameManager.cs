@@ -23,7 +23,7 @@ namespace SeongMin
         public TitleSceneManager TitleSceneManager;
 
         [Header("튜토리얼 씬 매니저")]
-        public TutorialSceneManager tutorialSceneManager;
+        public NHR.TutorialSceneManager tutorialSceneManager;
         [Header("로비 씬 매니저")]
         public LobbySceneManager lobbySceneManager;
         public PhotonSettingManager photonSettingManager;

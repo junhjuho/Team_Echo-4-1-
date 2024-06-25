@@ -54,6 +54,16 @@ namespace SeongMin
 
                 chaserMissionArray = new GameObject[missionManager.chaserMissionCount];
             }
+
+            //if(GameManager.Instance.lobbySceneManager != null)
+            //{
+            //    this.chaserMissionArray = new GameObject[GameManager.Instance.lobbySceneManager.lobbyMissionCount];
+            //    //퀘스트 임의 지정_복수자
+            //    this.chaserMissionArray[0] = GameManager.Instance.lobbySceneManager.knife;
+            //    SeongMin.GameManager.Instance.tutorialSceneManager.questObjectManager.Init();
+
+            //}
+
             //this.currentRunnerCharacrers = this.GetComponentsInChildren<Character>();
         }
         private void Start()

@@ -39,9 +39,9 @@ namespace SeongMin
             if (miniMap != null)
                 miniMap.SetActive(false);
 
-            if (sceneValue == SceneValue.tutorial)
-                GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject.transform.parent.gameObject);
-            else if (sceneValue == SceneValue.lobby)
+            //if (sceneValue == SceneValue.tutorial)
+            //    GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject.transform.parent.gameObject);
+            if (sceneValue == SceneValue.lobby)
                 GameManager.Instance.lobbySceneManager.lobbyItemList.Add(this.gameObject.transform.parent.gameObject);
             else if (sceneValue == SceneValue.inGame)
             {

@@ -9,7 +9,7 @@ namespace NHR
         [Header("튜토리얼 퀘스트 오브젝트 배열")]
         public GameObject[] questObjects;
 
-        private void Awake()
+        public void Awake()
         {
             //this.questObjects = GetComponentsInChildren<TutorialQuestObjectTrigger>();
             //모든 오브젝트 비활성화
