@@ -73,6 +73,12 @@ namespace SeongMin
             }));
 
             StartCoroutine(DelayRoutine());
+
+            yield return new WaitForSeconds(5f);
+            if (this.isChaser)
+            {
+                photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
+            }
         }
 
         IEnumerator DelayRoutine()
