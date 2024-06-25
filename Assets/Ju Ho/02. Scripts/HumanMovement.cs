@@ -35,7 +35,7 @@ public class HumanMovement : PlayerMovement, IDamageable
     public override void Start()
     {
         base.Start();
-        rb = gameObject.AddComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody>();
         scene = SceneManager.GetActiveScene();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
         if (pv.IsMine&& SeongMin.GameManager.Instance.playerManager !=null)
