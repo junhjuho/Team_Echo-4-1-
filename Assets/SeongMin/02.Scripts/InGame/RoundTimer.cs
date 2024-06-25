@@ -40,7 +40,7 @@ namespace SeongMin
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Update_Timer, _timer);
             }
             //GameManager.Instance.inGameSceneManager.Lose();
-            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
+            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
             StartCoroutine(EndCoroutine());
             yield break;
         }
