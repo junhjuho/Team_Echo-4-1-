@@ -12,25 +12,25 @@ namespace SeongMin
     public class PlayerMission : MonoBehaviour
     {
         public PhotonView photonView;
-        [Header("º¹¼öÀÚ ¹èÁ¤ ¹Þ¾Ò´ÂÁö ¿©ºÎ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Ò´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public bool isChaser = false;
-        [Header("Çùµ¿ ¹Ì¼Ç ¹èÁ¤ ¹Þ¾Ò´ÂÁö ¿©ºÎ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Ò´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public bool isTeamMission = false;
-        [Header("ÇöÀç ¹èÁ¤¹ÞÀº ÇÃ·¹ÀÌ¾îÀÇ ¹Ì¼Ç ¸®½ºÆ® ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ")]
         public GameObject[] playerMissionArray;
-        [Header("ÇöÀç ¹èÁ¤¹ÞÀº ÇÃ·¹ÀÌ¾îÀÇ Çùµ¿ ¹Ì¼Ç ¸®½ºÆ® ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ")]
         public GameObject[] playerTeamPlayMissionArray;
-        [Header("ÇöÀç ¹èÁ¤¹ÞÀº º¹¼öÀÚÀÇÀÇ ¹Ì¼Ç ¸®½ºÆ® ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ")]
         public GameObject[] chaserMissionArray;
-        [Header("ÇöÀç ¿Ï·áÇÑ ¹Ì¼Ç °¹¼ö")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public int runnerMissionClearCount = 0;
-        [Header("ÇöÀç ¿Ï·áÇÑ ÆÀÇÃ·¹ÀÌ ¹Ì¼Ç °¹¼ö")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public int playerTeamPlayMissionCount = 0;
-        [Header("ÇöÀç ¿Ï·áÇÑ º¹¼öÀÚ ¹Ì¼Ç °¹¼ö")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public int chaserMissionClearCount = 0;
-        [Header("ÀÏ¹Ý »óÅÂ Ä³¸¯ÅÍ ¿ÀºêÁ§Æ®")]
+        [Header("ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
         public Character currentRunnerCharacrer;
-        [Header("º¹¼öÀÚ Ä³Æ½ÅÍ ¿ÀºêÁ§Æ®")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³Æ½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
         public GameObject chaserPrefab;
 
 
@@ -54,16 +54,18 @@ namespace SeongMin
                 chaserMissionArray = new GameObject[missionManager.chaserMissionCount];
             }
         }
-        private void Start()
+        private IEnumerator Start()
         {
-            //±«¹° º¯½Å
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
             {
-                //º¹¼öÀÚ ¹èÁ¤µÈ °æ¿ì¿¡¸¸ ±«¹° º¯½Å
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 if (this.isChaser)
                 {
-                    Debug.Log("<color=red>±«¹° º¯½Å ¿Ï·á</color>");
-                    //±«¹° ¸ðµ¨·Î ¹Ù²ï°É ¸ðµç ÇÃ·¹ÀÌ¾î¿¡°Ô µ¿±âÈ­ ÇÏ±â
+                    Debug.Log("<color=red>ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½</color>");
+                    //ï¿½ï¿½ï¿½ï¿½ ï¿½ðµ¨·ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ ï¿½Ï±ï¿½'
+
+                    
                     photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
                 }
                 //GameManager.Instance.roundTimer.MonsterTimerStart();
@@ -123,8 +125,8 @@ namespace SeongMin
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
             value = (float)Math.Round(value, 2);
             value *= 100;
-            print(value+"³»°¡ ÀâÀº °Å ÃÑÇÕ ÆÛ¼¾Æ®");
-            // ÀüÃ¼ ¹Ì¼Ç ÆÛ¼¾Æ® ¹Ù²ï °ª Àü´ÞÇÏ°Ô ¿äÃ»ÇÏ±â
+            print(value+"ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½Æ®");
+            // ï¿½ï¿½Ã¼ ï¿½Ì¼ï¿½ ï¿½Û¼ï¿½Æ® ï¿½Ù²ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Ã»ï¿½Ï±ï¿½
             //GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
             GameManager.Instance.roundManager.RPCSendScoreUpdate((int)value);
         }
@@ -132,14 +134,16 @@ namespace SeongMin
         [PunRPC]
         public void CharacterChange(string _value)
         {
+            Debug.LogFormat("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ RPC{0}", _value);
             if (_value == "Chaser")
             {
                 chaserPrefab.SetActive(true);
-                currentRunnerCharacrer.gameObject.SetActive(false);
+                //currentRunnerCharacrer.gameObject.SetActive(false);
+                foreach (Character character in GameDB.Instance.playerController.characters) character.gameObject.SetActive(false);
             }
             else
             {
-                currentRunnerCharacrer.gameObject.SetActive(true);
+                //currentRunnerCharacrer.gameObject.SetActive(true);]
                 chaserPrefab.SetActive(false);
             }
         }
