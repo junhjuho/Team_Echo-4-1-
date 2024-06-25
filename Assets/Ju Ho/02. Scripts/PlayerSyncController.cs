@@ -102,8 +102,12 @@ public class PlayerSyncController : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            int i = Random.Range(1, zombieSound.Length);
-            pv.RPC("PhotonZombieSound", RpcTarget.Others, i);
+            int j = Random.Range(1, 3);
+            if (j == 1)
+            {
+                int i = Random.Range(1, zombieSound.Length);
+                pv.RPC("PhotonZombieSound", RpcTarget.Others, i);
+            }
         }
     }
 
