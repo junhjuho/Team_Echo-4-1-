@@ -1,6 +1,7 @@
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace NHR
@@ -31,20 +32,28 @@ namespace NHR
                 //비활성화
                 //Invoke("CloseUI", 2f);
             }));
-            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
             {
-                this.UpdateMissions();
+                Debug.Log("Complete_Mission in UIMission");
+                for (int i = 0; i < this.missions.Count; i++)
+                {
+                    if (this.missions[i].targetItem.name == name)
+                    {
+                        this.missions[i].textFirstStep.fontStyle = FontStyles.Strikethrough;
+                        break;
+                    }
+                }
             }));
 
         }
-        private void CloseUI()
-        {
-            this.gameObject.SetActive(false);
-        }
-        public void UpdateMissions()
-        {
-            foreach (var mission in this.missions) mission.UpdateMission();
-        }
+        //private void CloseUI()
+        //{
+        //    this.gameObject.SetActive(false);
+        //}
+        //public void UpdateMissions()
+        //{
+        //    foreach (var mission in this.missions) mission.UpdateMission();
+        //}
     }
     
 

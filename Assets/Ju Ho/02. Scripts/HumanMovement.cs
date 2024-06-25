@@ -62,7 +62,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             if (SeongMin.GameManager.Instance.playerManager.heart <= 0)
             {
 
-                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
+                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
 
                 StartCoroutine(EndCoroutine());
             }
