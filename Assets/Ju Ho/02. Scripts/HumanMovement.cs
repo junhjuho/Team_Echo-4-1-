@@ -20,6 +20,7 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     bool isEnergyDown;
     public bool isDie;
+    private Rigidbody rb;
 
     private WaitForSeconds reviveTime = new WaitForSeconds(1.5f);
 
@@ -34,6 +35,7 @@ public class HumanMovement : PlayerMovement, IDamageable
     public override void Start()
     {
         base.Start();
+        rb = gameObject.AddComponent<Rigidbody>();
         scene = SceneManager.GetActiveScene();
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
         if (pv.IsMine&& SeongMin.GameManager.Instance.playerManager !=null)
@@ -96,7 +98,10 @@ public class HumanMovement : PlayerMovement, IDamageable
 
             moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 10f : 5f; // 달리기 버튼에 따른 속도
 
+           
             animator.SetFloat("Move", dir.magnitude * moveBlendtree);
+            rb.velocity =  new Vector3(dir.x,0,dir.y).normalized;
+            //this.transform.position = this.transform.position + new Vector3(transform.position.x + dir.x, transform.position.y, transform.position.z + dir.y);
         }
         else
             return;

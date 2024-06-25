@@ -14,8 +14,8 @@ public class ExampleWheelController : MonoBehaviour
 
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>(); // Get reference to rigidbody
-        m_Rigidbody.maxAngularVelocity = 100; // Set max velocity for rigidbody
+        m_Rigidbody = GetComponent<Rigidbody>(); // Get reference to rb
+        m_Rigidbody.maxAngularVelocity = 100; // Set max velocity for rb
     }
 
     void Update()
