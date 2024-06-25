@@ -1,6 +1,7 @@
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace NHR
@@ -25,26 +26,35 @@ namespace NHR
                 {
                     var mission = Instantiate(Resources.Load<Mission>("UI/Mission/Mission"), this.transform);
                     mission.targetItem = playerMissionObjects[i].GetComponent<ItemObject>();
-                    mission.textFirstStep.text = playerMissionObjects[i].name + "»πµÊ«œ±‚";
+                    mission.itemName = mission.targetItem.name;
+                    mission.textFirstStep.text = mission.itemName + "»πµÊ«œ±‚";
                     this.missions.Add(mission);
                 }
                 //∫Ò»∞º∫»≠
                 //Invoke("CloseUI", 2f);
             }));
-            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
             {
-                this.UpdateMissions();
+                Debug.Log("Complete_Mission in UIMission");
+                for (int i = 0; i < this.missions.Count; i++)
+                {
+                    if (this.missions[i].itemName == name)
+                    {
+                        this.missions[i].textFirstStep.fontStyle = FontStyles.Strikethrough;
+                        break;
+                    }
+                }
             }));
 
         }
-        private void CloseUI()
-        {
-            this.gameObject.SetActive(false);
-        }
-        public void UpdateMissions()
-        {
-            foreach (var mission in this.missions) mission.UpdateMission();
-        }
+        //private void CloseUI()
+        //{
+        //    this.gameObject.SetActive(false);
+        //}
+        //public void UpdateMissions()
+        //{
+        //    foreach (var mission in this.missions) mission.UpdateMission();
+        //}
     }
     
 
