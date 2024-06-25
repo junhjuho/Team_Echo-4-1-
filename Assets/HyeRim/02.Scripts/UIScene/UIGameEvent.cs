@@ -117,10 +117,10 @@ namespace NHR
                     Debug.Log("<color=red>공격 받음</color>");
 
                     //UI열기
-                    this.uiAttacked.OpenUI(heart);
+                    this.uiAttacked.OpenUI(this.uiAttacked.hearts.Length - heart - 1);
 
                     //목숨 줄어드는 UI
-                    this.uiAttacked.hearts[this.uiAttacked.hearts.Length - heart + 1].imageDeath.SetActive(true);
+                    //this.uiAttacked.hearts[this.uiAttacked.hearts.Length - heart + 1].imageDeath.SetActive(true);
 
                     //기절 혹은 죽음 UI text
                     if (heart != 1)

@@ -20,10 +20,10 @@ namespace NHR
         {
             if(GameDB.Instance.playerMission.isChaser) this.gameObject.SetActive(false);
 
-            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler((type) =>
             {
-                this.nowHeart = heart - 1;
-                this.hearts[this.maxHeart - heart + 1].imageDeath.SetActive(true);
+                this.hearts[this.maxHeart - this.nowHeart].imageDeath.SetActive(true);
+                this.nowHeart--;
             }));
 
         }
