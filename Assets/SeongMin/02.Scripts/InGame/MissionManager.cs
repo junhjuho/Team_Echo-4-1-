@@ -61,9 +61,9 @@ namespace SeongMin
                     GameDB.Instance.playerMission.chaserMissionArray[i] =
                         GameManager.Instance.inGameMapManager.inGameChaserItemList[i];
                     //내가 복수자면 분배 받은 복수자용 아이템 미니맵에 띄우기 
-                    if (GameDB.Instance.playerMission.chaserMissionArray[j].transform.Find(GameDB.Instance.playerMission.chaserMissionArray[j].name).TryGetComponent(out ItemObject _itemobject))
+                    if (GameDB.Instance.playerMission.chaserMissionArray[i].transform.Find(GameDB.Instance.playerMission.chaserMissionArray[i].name).TryGetComponent(out ItemObject _itemobject))
                     {
-                        if (GameDB.Instance.playerMission.isChaser == true && _itemobject.miniMap != null)
+                        if(_itemobject.miniMap != null)
                             _itemobject.miniMap.SetActive(true);
                         else
                             Debug.LogError("Not MiniMap");
