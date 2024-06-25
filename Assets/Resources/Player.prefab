@@ -4842,6 +4842,7 @@ GameObject:
   - component: {fileID: 5002763283625766833}
   - component: {fileID: 8416686582346951755}
   - component: {fileID: 6475554866602124036}
+  - component: {fileID: 7315305858107437883}
   m_Layer: 0
   m_Name: Frank
   m_TagString: Player
@@ -5203,6 +5204,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothes: {fileID: 4866154357791445918}
   material: {fileID: 0}
+--- !u!143 &7315305858107437883
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096075468381986903}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.5
+  m_Radius: 0.2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.76, z: 0}
 --- !u!1 &1109164892669715150
 GameObject:
   m_ObjectHideFlags: 0
@@ -5579,13 +5606,14 @@ GameObject:
   - component: {fileID: 8483520106763727463}
   - component: {fileID: 7269527081203774749}
   - component: {fileID: 568239553882724931}
+  - component: {fileID: 1294321424712553167}
   m_Layer: 0
   m_Name: MJ
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5965356903287119246
 Transform:
   m_ObjectHideFlags: 0
@@ -5938,6 +5966,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothes: {fileID: 5170722468358746488}
   material: {fileID: 0}
+--- !u!143 &1294321424712553167
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209871280481194162}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.5
+  m_Radius: 0.2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &1249293673947197414
 GameObject:
   m_ObjectHideFlags: 0
@@ -27009,6 +27063,7 @@ GameObject:
   - component: {fileID: 1780690741825212353}
   - component: {fileID: 3685679657255716916}
   - component: {fileID: 7799693496687141074}
+  - component: {fileID: 5342849015557431220}
   m_Layer: 0
   m_Name: Jake
   m_TagString: Player
@@ -27418,6 +27473,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothes: {fileID: 1979160958870651215}
   material: {fileID: 0}
+--- !u!143 &5342849015557431220
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210806223002501516}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.5
+  m_Radius: 0.2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1 &6230313366177179876
 GameObject:
   m_ObjectHideFlags: 0
@@ -39315,6 +39396,7 @@ GameObject:
   - component: {fileID: 1538609854833007018}
   - component: {fileID: 5070962191848955554}
   - component: {fileID: 137597115555151002}
+  - component: {fileID: 2710553958438385621}
   m_Layer: 0
   m_Name: zombie
   m_TagString: Player
@@ -39696,6 +39778,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!143 &2710553958438385621
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990541683088355710}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8992432753627684331
 GameObject:
   m_ObjectHideFlags: 0
