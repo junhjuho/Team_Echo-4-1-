@@ -197,6 +197,8 @@ namespace SeongMin
             {
                 photonView.RPC("ChaserWin", RpcTarget.All);
             }
+            SeongMin.GameManager.Instance.roundManager.RoundPlayerDataReset();
+            SeongMin.GameManager.Instance.roundManager.photonView.RPC("AllPlayerLobbySceneLoad", RpcTarget.MasterClient);
         }
         [PunRPC]
         public void RunnerWin()

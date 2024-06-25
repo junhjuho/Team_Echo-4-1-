@@ -41,7 +41,7 @@ namespace SeongMin
             }
             //GameManager.Instance.inGameSceneManager.Lose();
             EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
-
+            StartCoroutine(EndCoroutine());
             yield break;
         }
         public void MonsterTimerStart()
@@ -62,6 +62,12 @@ namespace SeongMin
             //괴물 변신 풀림
             EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOff");
             yield break;
+        }
+
+        IEnumerator EndCoroutine()
+        {
+            yield return new WaitForSecondsRealtime(2f);
+            GameDB.Instance.playerMission.WinCheck("ChaserWin");
         }
     }
 
