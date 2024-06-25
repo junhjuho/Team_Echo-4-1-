@@ -30,6 +30,7 @@ namespace SeongMin
         public int chaserMissionClearCount = 0;
         [Header("�Ϲ� ���� ĳ���� ������Ʈ")]
         public Character currentRunnerCharacrer;
+        public Character[] currentRunnerCharacrers;
         [Header("������ ĳƽ�� ������Ʈ")]
         public GameObject chaserPrefab;
 
@@ -53,8 +54,9 @@ namespace SeongMin
 
                 chaserMissionArray = new GameObject[missionManager.chaserMissionCount];
             }
+            this.currentRunnerCharacrers = this.GetComponentsInChildren<Character>();
         }
-        private void Start()
+        private IEnumerator Start()
         {
             //���� ����
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
@@ -145,7 +147,7 @@ namespace SeongMin
             {
                 chaserPrefab.SetActive(true);
                 //currentRunnerCharacrer.gameObject.SetActive(false);
-                foreach (Character character in GameDB.Instance.playerController.characters) character.gameObject.SetActive(false);
+                foreach (Character character in currentRunnerCharacrers) character.gameObject.SetActive(false);
             }
             else
             {
