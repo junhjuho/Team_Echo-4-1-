@@ -32,7 +32,8 @@ namespace NHR
             Notice_TotalMissionPercent, 
             Complete_RoundMission, 
             Popup_Tip, 
-            Notice_Result
+            Notice_Result, 
+            Complete_ChaserMission
         }
     }
 

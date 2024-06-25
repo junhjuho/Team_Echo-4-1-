@@ -26,6 +26,7 @@ namespace NHR
                 {
                     var mission = Instantiate(Resources.Load<Mission>("UI/Mission/Mission"), this.transform);
                     mission.targetItem = playerMissionObjects[i].GetComponent<ItemObject>();
+                    //Debug.LogFormat("미션 아이템 할당{0}, {1}", mission.targetItem.name, playerMissionObjects[i].name);
                     mission.textFirstStep.text = playerMissionObjects[i].name + "획득하기";
                     this.missions.Add(mission);
                 }
