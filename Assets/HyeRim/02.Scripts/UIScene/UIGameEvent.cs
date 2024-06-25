@@ -42,8 +42,11 @@ namespace NHR
         [Header("전체 플레이어 미션 현황 UI")]
         public UIMissionPercent uiMissionPercent;
 
-        [Header("죽음 UI")]
-        public UIDeath uiDeath;
+        //[Header("죽음 UI")]
+        //public UIDeath uiDeath;
+
+        [Header("게임 결과 UI")]
+        public UIGameOver uiGameOver;
 
         //private GameObject nowPopUI;
 
@@ -61,7 +64,8 @@ namespace NHR
             this.uiNowPlayers = GetComponentInChildren<UINowPlayers>();
             this.uiCompleteMission = GetComponentInChildren<UICompleteMission>();
             this.uiMissionPercent = GetComponentInChildren<UIMissionPercent>();
-            this.uiDeath = GetComponentInChildren<UIDeath>();
+            //this.uiDeath = GetComponentInChildren<UIDeath>();
+            this.uiGameOver = GetComponentInChildren<UIGameOver>();
 
             this.Init();
         }
@@ -81,7 +85,8 @@ namespace NHR
             this.uiCompleteMission.gameObject.SetActive(false);
             this.uiMissionPercent.gameObject.SetActive(false);
 
-            this.uiDeath.gameObject.SetActive(false);
+            //this.uiDeath.gameObject.SetActive(false);
+            this.uiGameOver.gameObject.SetActive(false);
         }
         private void Start()
         {
@@ -135,12 +140,20 @@ namespace NHR
                         //부활
                         Invoke("ReviveUI", 2f);
                     }
+                    //죽으면
                     if (GameManager.Instance.playerManager.heart == 0) 
                     {
-                        this.uiDeath.gameObject.SetActive(true);
+                        //this.uiDeath.gameObject.SetActive(true);
+                        EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
                     }
                     this.uiAttacked.Close();
                 }
+            }));
+
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Result, new EventHandler((type) =>
+            {
+                Debug.Log("<color=yellow>게임 종료, 결과 알림</color>");
+                this.uiGameOver.IsWin(GameDB.Instance.isWin);
             }));
 
             //부활

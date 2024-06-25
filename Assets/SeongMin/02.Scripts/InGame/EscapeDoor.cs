@@ -23,8 +23,7 @@ public class EscapeDoor : MonoBehaviour
     private void GameEnding()
     {
 
-        SeongMin.GameDB.Instance.isWin = true;
-        SeongMin.GameDB.Instance.hasGameData = true;
+        EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
 
         SeongMin.GameManager.Instance.roundManager.RoundPlayerDataReset();
         //TODO µµ¸ÁÀÚÀÇ ½Â¸® ÀÌ¹Ç·Î ½Â¸® ÀÌº¥Æ® ¶ç¿ì±â 

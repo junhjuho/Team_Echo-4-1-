@@ -39,7 +39,9 @@ namespace SeongMin
                 //UIManager.Instance.inGameSceneMenu.timer.text = _timer.ToString();
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Update_Timer, _timer);
             }
-            GameManager.Instance.inGameSceneManager.Lose();
+            //GameManager.Instance.inGameSceneManager.Lose();
+            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
+
             yield break;
         }
         public void MonsterTimerStart()
