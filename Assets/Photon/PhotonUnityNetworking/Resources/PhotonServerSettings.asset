@@ -67,6 +67,10 @@ MonoBehaviour:
   - CharacterRePosition
   - RunnerSetActive
   - RunnerSetActiveRPC
+  - isLose
+  - IsWin
+  - ChaserWin
+  - RunnerWin
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
