@@ -41,8 +41,6 @@ namespace SeongMin
             GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
             //튜토리얼 임의 지정
             //GameManager.Instance.lobbySceneManager.playerMission.isChaser = true;
-            GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
-            UIManager.Instance.robbySceneMenu.customPlayer.playerController = _player.GetComponent<PlayerController>();
 
             if (PhotonNetwork.IsMasterClient)
             GameManager.Instance.lobbySceneManager.isLobbySetting = true; // 로비 세팅 가능함을 알리기

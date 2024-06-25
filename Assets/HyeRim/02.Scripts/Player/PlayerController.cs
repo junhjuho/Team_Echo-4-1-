@@ -9,6 +9,7 @@ using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace NHR
 {
@@ -29,6 +30,9 @@ namespace NHR
             if(photonView.IsMine)
             {
                 GameDB.Instance.playerController = this;
+                GameManager.Instance.lobbySceneManager.playerController = this;
+                SeongMin.UIManager.Instance.robbySceneMenu.customPlayer.playerController = this;
+
                 this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
             }
         }
