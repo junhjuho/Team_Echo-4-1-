@@ -31,6 +31,11 @@ namespace NHR
                 //비활성화
                 //Invoke("CloseUI", 2f);
             }));
+            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
+            {
+                this.UpdateMissions();
+            }));
+
         }
         private void CloseUI()
         {
