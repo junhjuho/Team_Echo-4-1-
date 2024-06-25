@@ -35,6 +35,10 @@ namespace SeongMin
         public RoundTimer roundTimer;
         public PlayerManager playerManager;
         public PhotonManager photonManager;
+        public void GameDataReset()
+        {
+            roundManager.RoundPlayerDataReset();
+        }
     }
 
 }
