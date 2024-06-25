@@ -117,6 +117,7 @@ public class PlayerSyncController : MonoBehaviour
     {
         var effectPos = this.transform.position + Vector3.up * 1.27f;
         Instantiate(bloodObject, effectPos, Quaternion.identity);
+        Debug.Log("Blood Particle " + bloodObject.name + " / Position : " + effectPos);
         //pv.RPC("PhotonBloodEffect", RpcTarget.All, other);
     }
 

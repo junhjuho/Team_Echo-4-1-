@@ -156,5 +156,30 @@ namespace SeongMin
                 chaserPrefab.SetActive(false);
             }
         }
+        public void RunnerSetActive()
+        {
+            StartCoroutine(RespawnPlayer());
+        }
+
+        private IEnumerator RespawnPlayer()
+        {
+            yield return new WaitForSeconds(2f);
+            GameDB.Instance.Shuffle(SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList);
+            // 플레이어 재 위치 시키기
+            if (photonView.IsMine)
+            {
+                photonView.RPC("RunnerSetActiveRPC", RpcTarget.All);
+            }
+
+            yield break;
+        }
+        [PunRPC]
+        public void RunnerSetActiveRPC()
+        {
+            Debug.Log("Respawn Character ID : " + InfoManager.Instance.PlayerInfo.nowCharacterId);
+                currentRunnerCharacrers[InfoManager.Instance.PlayerInfo.nowCharacterId].gameObject.SetActive(true);
+                GameDB.Instance.myPlayer.transform.position =
+            SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
+        }
     }
 }

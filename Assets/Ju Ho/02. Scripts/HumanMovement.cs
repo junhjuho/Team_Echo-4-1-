@@ -1,3 +1,4 @@
+using DG.Tweening;
 using NHR;
 using Photon.Pun;
 using Photon.Pun.Demo.PunBasics;
@@ -66,7 +67,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             {
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, SeongMin.GameManager.Instance.playerManager.heart);
 
-                StartCoroutine(this.RespawnPlayer());
+                GameDB.Instance.playerMission.RunnerSetActive();
             }
         }
     }
@@ -115,13 +116,6 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
-    private IEnumerator RespawnPlayer()
-    {
-        yield return reviveTime;
-        GameDB.Instance.myPlayer.transform.position =
-            SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
-        StopAllCoroutines();
-    }
 
     public void OnTriggerEnter(Collider other)
     {
