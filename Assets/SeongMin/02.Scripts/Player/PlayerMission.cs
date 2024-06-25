@@ -114,13 +114,14 @@ namespace SeongMin
             if (_value == "Chaser")
             {
                 chaserPrefab.SetActive(true);
-                currentRunnerCharacrer.gameObject.SetActive(false);
+                //currentRunnerCharacrer.gameObject.SetActive(false);
+                foreach (Character character in GameDB.Instance.playerController.characters) character.gameObject.SetActive(false);
             }
-            else
-            {
-                currentRunnerCharacrer.gameObject.SetActive(true);
-                chaserPrefab.SetActive(false);
-            }
+            //else
+            //{
+            //    //currentRunnerCharacrer.gameObject.SetActive(true);]
+            //    chaserPrefab.SetActive(false);
+            //}
         }
     }
 }
