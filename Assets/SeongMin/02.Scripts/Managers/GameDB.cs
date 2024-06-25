@@ -18,7 +18,7 @@ namespace SeongMin
             DontDestroyOnLoad(gameObject);
         }
         public int playerCount = 0;
-        [Header("인게임 로컬 플레이어의 오브젝트")]
+        [Header("인게임 로컬 XROrigin의 오브젝트")]
         public GameObject myPlayer;
         [Header("플레이어 손전등")]
         public FlashLight myFlashLight;

@@ -20,7 +20,7 @@ public class HumanMovement : PlayerMovement, IDamageable
     bool isEnergyDown;
     public bool isDie;
 
-    private WaitForSeconds reviveTime = new WaitForSeconds(4f);
+    private WaitForSeconds reviveTime = new WaitForSeconds(1.5f);
 
     Scene scene;
 
@@ -66,7 +66,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             {
                 EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, SeongMin.GameManager.Instance.playerManager.heart);
 
-                //StartCoroutine(this.RespawnPlayer());
+                StartCoroutine(this.RespawnPlayer());
             }
         }
     }
@@ -115,15 +115,13 @@ public class HumanMovement : PlayerMovement, IDamageable
             return;
     }
 
-    //검토 필요
-    //private IEnumerator RespawnPlayer()
-    //{
-    //    yield return reviveTime;
-    //    GameDB.Instance.playerController.photonView.RPC("CharacterRePosition", RpcTarget.All);
-    //    playerSyncController.origin.transform.position =
-    //        SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
-    //    StopAllCoroutines();
-    //}
+    private IEnumerator RespawnPlayer()
+    {
+        yield return reviveTime;
+        GameDB.Instance.myPlayer.transform.position =
+            SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
+        StopAllCoroutines();
+    }
 
     public void OnTriggerEnter(Collider other)
     {

@@ -22,7 +22,7 @@ public class UITestGame : MonoBehaviour
         this.btnAttacked.onClick.AddListener(() =>
         {
             EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_Attacked, this.heart);
-            this.heart--;
+            //this.heart--;
         });
         this.btnEnd.onClick.AddListener(() =>
         {
