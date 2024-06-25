@@ -105,7 +105,7 @@ namespace SeongMin
         [PunRPC]
         public void CharacterChange(string _value)
         {
-            if (_value == "Chaser")
+            if (_value != "Chaser")
             {
                 chaserPrefab.SetActive(true);
                 currentRunnerCharacrer.gameObject.SetActive(false);
