@@ -22,6 +22,9 @@ public class EscapeDoor : MonoBehaviour
     }
     private void GameEnding()
     {
+
+        EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_GameResult);
+
         SeongMin.GameManager.Instance.roundManager.RoundPlayerDataReset();
         //TODO 도망자의 승리 이므로 승리 이벤트 띄우기 
         PhotonNetwork.LoadLevel("LobbyScene 1");
