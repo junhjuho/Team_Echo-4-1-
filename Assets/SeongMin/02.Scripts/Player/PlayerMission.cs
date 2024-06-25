@@ -56,7 +56,7 @@ namespace SeongMin
             }
             //this.currentRunnerCharacrers = this.GetComponentsInChildren<Character>();
         }
-        private IEnumerator Start()
+        private void Start()
         {
             //���� ����
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
@@ -76,11 +76,12 @@ namespace SeongMin
 
             StartCoroutine(DelayRoutine());
 
-            yield return new WaitForSeconds(5f);
-            if (this.isChaser)
-            {
-                photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
-            }
+            //테스트
+            //yield return new WaitForSeconds(5f);
+            //if (this.isChaser)
+            //{
+            //    photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
+            //}
         }
 
         IEnumerator DelayRoutine()
