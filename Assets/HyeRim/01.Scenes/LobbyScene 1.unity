@@ -24579,6 +24579,7 @@ GameObject:
   - component: {fileID: 5634532463230562518}
   - component: {fileID: 5634532463230562517}
   - component: {fileID: 5634532463230562519}
+  - component: {fileID: 5634532463230562520}
   m_Layer: 21
   m_Name: rust_key
   m_TagString: Untagged
@@ -34774,6 +34775,18 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &5634532463230562520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374289202312542449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecb1f54c8d7ddd419a52f917dc7af60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5643272450379077295
 Transform:
   m_ObjectHideFlags: 0
