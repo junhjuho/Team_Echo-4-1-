@@ -71,7 +71,7 @@ namespace SeongMin
             }));
 
             yield return new WaitForSeconds(5f);
-            photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
+            photonView.RPC("CharacterChange", RpcTarget.All, this.isChaser);
         }
         public bool MissionItemCheck(GameObject _item, GameObject[] _array)
         {
@@ -117,11 +117,11 @@ namespace SeongMin
                 //currentRunnerCharacrer.gameObject.SetActive(false);
                 foreach (Character character in GameDB.Instance.playerController.characters) character.gameObject.SetActive(false);
             }
-            //else
-            //{
-            //    //currentRunnerCharacrer.gameObject.SetActive(true);]
-            //    chaserPrefab.SetActive(false);
-            //}
+            else
+            {
+                //currentRunnerCharacrer.gameObject.SetActive(true);]
+                chaserPrefab.SetActive(false);
+            }
         }
     }
 }
