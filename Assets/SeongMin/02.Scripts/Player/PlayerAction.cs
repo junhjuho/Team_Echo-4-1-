@@ -51,6 +51,24 @@ namespace SeongMin
                     _item.isFind = true;
                     _item.gameObject.SetActive(false);
                     playerMission.runnerMissionClearCount++;
+                    if (playerMission.runnerMissionClearCount >= 3)
+                    {
+                        //Test code
+                        GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
+                        GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+                        // 탈출 지점 2개 생성하기
+                        GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
+                        GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[0].position, Quaternion.identity);
+                        GameObject exitDoor2 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[1].position, Quaternion.identity);
+                        exitDoor1.SetActive(true);
+                        exitDoor2.SetActive(true);
+                        Debug.Log("키 생성");
+
+                        key.transform.Find("MinimapIcon").gameObject.SetActive(true);
+                        exitDoor1.transform.Find("MinimapIcon").gameObject.SetActive(true);
+                        exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
+                        Debug.Log("미니맵 생성");
+                    }
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
                     playerMission.AllPlayerMissionScoreUpdate();
