@@ -88,10 +88,10 @@ namespace SeongMin
                     playerMission.playerTeamPlayMissionCount++;
                 }
 
-                if (args.interactableObject.transform.TryGetComponent(out FlashLight _flash))
-                {
-                    GameDB.Instance.myFlashLight = _flash;
-                }
+                //if (args.interactableObject.transform.TryGetComponent(out FlashLight _flash))
+                //{
+                //    GameDB.Instance.myFlashLight = _flash;
+                //}
 
                 MissionClearCheck();
             }
