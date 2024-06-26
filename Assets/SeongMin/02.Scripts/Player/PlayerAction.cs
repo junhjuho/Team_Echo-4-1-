@@ -57,9 +57,10 @@ namespace SeongMin
                     canvas.image.SetActive(false);
                     canvas.text.gameObject.SetActive(false);
                     playerMission.runnerMissionClearCount++;
+                    //이 클라이언트 플레이어가 복수자가 아니고, 일반 미션 클리어한 갯수가 2개이상 이면 실행
                     if (playerMission.runnerMissionClearCount >= 2)
                     {
-                        //Test code
+                        // 파이털 키 생성하기
                         GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
                         GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
                         // 탈출 지점 2개 생성하기
@@ -124,30 +125,6 @@ namespace SeongMin
         {
             playerMission = GameDB.Instance.playerMission;
 
-            Debug.Log("키 생성 시도");
-            //이 클라이언트 플레이어가 복수자가 아니고, 일반 미션 클리어한 갯수가 일반 미션 배열의 길이와 같거나 높으면 실행
-            if (GameDB.Instance.playerMission.isChaser == false &&
-                GameDB.Instance.playerMission.runnerMissionClearCount >= GameDB.Instance.playerMission.playerMissionArray.Length)
-            {
-                Debug.Log("키 생성 시도2");
-                //-----------TODO 테스트 코드 ------------------------------------
-                // 파이털 키 생성하기
-                GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
-                    GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
-                    // 탈출 지점 2개 생성하기
-                    GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
-                    GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[0].position, Quaternion.identity);
-                    GameObject exitDoor2 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[1].position, Quaternion.identity);
-                    exitDoor1.SetActive(true);
-                    exitDoor2.SetActive(true);
-                    Debug.Log("키 생성");
-
-                    key.transform.Find("MinimapIcon").gameObject.SetActive(true);
-                    exitDoor1.transform.Find("MinimapIcon").gameObject.SetActive(true);
-                    exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
-                    Debug.Log("미니맵 생성");
-                //------------------------------------------------------------------
-            }
             // 이 클라이언트가 복수자이며, 복수자 미션 클리어 갯수가 복수자 미션 배열의 길이와 같거나 높으면 실행
             if (playerMission.isChaser && playerMission.chaserMissionClearCount >= playerMission.chaserMissionArray.Length)
             {
