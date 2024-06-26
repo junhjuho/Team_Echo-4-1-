@@ -13,6 +13,10 @@ public class EscapeDoor : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+    private void Start()
+    {
+        Invoke("OnMiniMap", 0.5f);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out FinalKey finalKey))
@@ -32,5 +36,9 @@ public class EscapeDoor : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2f);
         GameDB.Instance.playerMission.WinCheck("RunnerWin");
+    }
+    private void OnMiniMap()
+    {
+        transform.Find("MinimapIcon").gameObject.SetActive(true);
     }
 }
