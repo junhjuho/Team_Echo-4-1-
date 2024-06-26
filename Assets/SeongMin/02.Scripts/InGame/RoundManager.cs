@@ -147,28 +147,26 @@ namespace SeongMin
 
         public void RPCSendScoreUpdate(int _value)
         {
-            if (currentRoundPlayersMissionPerSent >= needPersent)
-            {
-                // 파이털 키 생성하기
-                GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
-                GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
-                // 탈출 지점 2개 생성하기
-                GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
-                GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[0].position, Quaternion.identity);
-                GameObject exitDoor2 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[1].position, Quaternion.identity);
-                exitDoor1.SetActive(true);
-                exitDoor2.SetActive(true);
-                Debug.Log("키 생성");
+            //if (currentRoundPlayersMissionPerSent >= needPersent)
+            //{
+            //    // 파이털 키 생성하기
+            //    GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
+            //    GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+            //    // 탈출 지점 2개 생성하기
+            //    GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
+            //    GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[0].position, Quaternion.identity);
+            //    GameObject exitDoor2 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[1].position, Quaternion.identity);
+            //    exitDoor1.SetActive(true);
+            //    exitDoor2.SetActive(true);
+            //    Debug.Log("키 생성");
 
-                key.transform.Find("MinimapIcon").gameObject.SetActive(true);
-                exitDoor1.transform.Find("MinimapIcon").gameObject.SetActive(true);
-                exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
-                Debug.Log("미니맵 생성");
-            }
-            else // 그게 아니라면, 모든 플레이어에게 전체 미션 진행도 공유하기
-            {
+            //    key.transform.Find("MinimapIcon").gameObject.SetActive(true);
+            //    exitDoor1.transform.Find("MinimapIcon").gameObject.SetActive(true);
+            //    exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
+            //    Debug.Log("미니맵 생성");
+            //}
+
                 photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
-            }
         }
 
         [PunRPC]
