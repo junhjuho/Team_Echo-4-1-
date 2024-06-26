@@ -48,9 +48,14 @@ namespace SeongMin
                 if (_item.charactorValue == CharactorValue.runner && playerMission.MissionItemCheck(_item.gameObject, playerMission.playerMissionArray))
                 {
                     print("잡았습니다");
+                    // 아이템 끄기
                     _item.isFind = true;
                     _item.triggerObject.SetActive(false);
                     _item.gameObject.SetActive(false);
+                    // 아이템 표시 UI 끄기
+                    var canvas = GameDB.Instance.itemInfomationCanvas;
+                    canvas.image.SetActive(false);
+                    canvas.text.gameObject.SetActive(false);
                     playerMission.runnerMissionClearCount++;
                     if (playerMission.runnerMissionClearCount >= 2)
                     {
