@@ -7,9 +7,11 @@ using static SeongMin.ItemObject;
 
 public class TriggerCheck : MonoBehaviour
 {
-    ItemObject itemObject;
+    [Header("ItemObject오브젝트 할당하기")]
+    public ItemObject itemObject;
     void Start()
     {
+
         if (this.gameObject.TryGetComponent(out ItemObject item))
         {
             itemObject = this.gameObject.GetComponent<ItemObject>();
@@ -28,6 +30,24 @@ public class TriggerCheck : MonoBehaviour
             canvas.image.SetActive(true);
             canvas.text.gameObject.SetActive(true);
             canvas.text.text = this.gameObject.name;
+            canvas.text.color = Color.white;
+
+            if (GameDB.Instance.playerMission.isChaser == false)
+            {
+                // 내 미션 아이템인지 확인
+                if (GameDB.Instance.playerMission.MissionItemCheck(itemObject.gameObject, GameDB.Instance.playerMission.playerMissionArray))
+                {
+                    canvas.text.color = Color.green;
+                }
+            }
+            else
+            {
+                // 내 미션 아이템인지 확인
+                if (GameDB.Instance.playerMission.MissionItemCheck(itemObject.gameObject, GameDB.Instance.playerMission.chaserMissionArray))
+                {
+                    canvas.text.color = Color.green;
+                }
+            }
         }
         if (itemObject != null && itemObject.charactorValue == CharactorValue.chaser)
         {

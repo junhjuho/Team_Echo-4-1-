@@ -49,9 +49,10 @@ namespace SeongMin
                 {
                     print("잡았습니다");
                     _item.isFind = true;
+                    _item.triggerObject.SetActive(false);
                     _item.gameObject.SetActive(false);
                     playerMission.runnerMissionClearCount++;
-                    if (playerMission.runnerMissionClearCount >= 3)
+                    if (playerMission.runnerMissionClearCount >= 2)
                     {
                         //Test code
                         GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);

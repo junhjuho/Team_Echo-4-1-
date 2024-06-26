@@ -32,6 +32,8 @@ namespace SeongMin
         [Header("파티클과 미니맵 아이콘 자동 할당되는 곳 ")]
         public GameObject fx;
         public GameObject miniMap;
+        [Header("캔버스 용 트리거 체크 오브젝트")]
+        public GameObject triggerObject;
         protected void Start()
         {
             miniMap = transform.parent.transform.Find("MinimapIcon").gameObject;
