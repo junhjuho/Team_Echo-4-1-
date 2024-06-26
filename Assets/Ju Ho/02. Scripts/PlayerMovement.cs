@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     protected InputActionAsset inputActionAsset;
     protected ActionBasedContinuousMoveProvider moveProvider;
     protected PlayerSyncController playerSyncController;
-    protected PhotonView pv;
+    public PhotonView pv;
     
     protected Vector2 dir;
     protected Vector2 movePosition;

@@ -5079,6 +5079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pv: {fileID: 0}
   FireAxe: {fileID: 447811445966961580}
   dieAnims:
   - {fileID: 1935782946212029254}
@@ -5814,6 +5815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pv: {fileID: 0}
   FireAxe: {fileID: 447811445966961580}
   dieAnims:
   - {fileID: 1935782946212029254}
@@ -27290,6 +27292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pv: {fileID: 0}
   FireAxe: {fileID: 447811445966961580}
   dieAnims:
   - {fileID: 1935782946212029254}
@@ -39538,6 +39541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878c42d963dd60142b6fae52d9afc484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pv: {fileID: 0}
   origin: {fileID: 0}
   controllers: []
 --- !u!114 &5811930333523427140
