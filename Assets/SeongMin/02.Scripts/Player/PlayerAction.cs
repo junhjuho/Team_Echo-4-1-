@@ -99,13 +99,16 @@ namespace SeongMin
         private void MissionClearCheck()
         {
             playerMission = GameDB.Instance.playerMission;
+
+            Debug.Log("키 생성 시도");
             //이 클라이언트 플레이어가 복수자가 아니고, 일반 미션 클리어한 갯수가 일반 미션 배열의 길이와 같거나 높으면 실행
-            if (playerMission.isChaser == false &&
-                playerMission.runnerMissionClearCount >= playerMission.playerMissionArray.Length)
+            if (GameDB.Instance.playerMission.isChaser == false &&
+                GameDB.Instance.playerMission.runnerMissionClearCount >= GameDB.Instance.playerMission.playerMissionArray.Length)
             {
+                Debug.Log("키 생성 시도2");
                 //-----------TODO 테스트 코드 ------------------------------------
-                    // 파이털 키 생성하기
-                    GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
+                // 파이털 키 생성하기
+                GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
                     GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
                     // 탈출 지점 2개 생성하기
                     GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
