@@ -49,6 +49,36 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     void OnDisable() // 
     {
+        if (isDie && pv.IsMine)
+        {
+            for (int i = 0; i < dieAnims.Length; i++)
+            {
+                if (this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
+                {
+                    dieAnims[i].transform.gameObject.SetActive(true); // 모델 애니메이션 오브젝트를 활성화 시키고 애니메이션 실행
+                    dieAnims[i].PlayerDieAnimation("Backward Die");
+                    break;
+                }
+            }
+            SeongMin.GameManager.Instance.playerManager.heart--;
+            print("현재 피 " + SeongMin.GameManager.Instance.playerManager.heart);
+
+            // 체력이 1보다 낮으면
+            if (SeongMin.GameManager.Instance.playerManager.heart <= 0)
+            {
+                GameDB.Instance.isWin = false;
+
+                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
+
+                StartCoroutine(EndCoroutine());
+            }
+            else
+            {
+                EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Attacked);
+
+                GameDB.Instance.playerMission.RunnerSetActive();
+            }
+        }
     }
     IEnumerator EndCoroutine()
     {
@@ -124,27 +154,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             Debug.Log("충돌 오브젝트 : " + other.name);
             playerSyncController.BloodEffect(other);
             isDie = true;
-            if (isDie && pv.IsMine)
-            {
-                SeongMin.GameManager.Instance.playerManager.heart--;
-                print("현재 피 " + SeongMin.GameManager.Instance.playerManager.heart);
-
-                // 체력이 1보다 낮으면
-                if (SeongMin.GameManager.Instance.playerManager.heart <= 0)
-                {
-                    GameDB.Instance.isWin = false;
-
-                    EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
-
-                    StartCoroutine(EndCoroutine());
-                }
-                else
-                {
-                    EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Attacked);
-
-                    GameDB.Instance.playerMission.RunnerSetActive();
-                }
-            }
+            this.gameObject.SetActive(false);
         }
     }
 
