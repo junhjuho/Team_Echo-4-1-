@@ -3,6 +3,7 @@ using Photon.Pun;
 using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -113,6 +114,10 @@ namespace SeongMin
                 {
                     _item.isFind = true;
                     playerMission.playerTeamPlayMissionCount++;
+                }
+                else if(playerMission.isChaser == false && _item.TryGetComponent(out FinalKey _key))
+                {
+                    _key.miniMap.SetActive(false);
                 }
 
                 //if (args.interactableObject.transform.TryGetComponent(out FlashLight _flash))
