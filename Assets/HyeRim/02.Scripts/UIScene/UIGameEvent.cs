@@ -155,7 +155,7 @@ namespace NHR
             {
                 Debug.Log("<color=yellow>게임 종료, 결과 알림</color>");
                 this.uiGameOver.gameObject.SetActive(true);
-                this.uiGameOver.IsWin(GameDB.Instance.isWin);
+                //this.uiGameOver.IsWin(GameDB.Instance.isWin);
             }));
 
             //부활
