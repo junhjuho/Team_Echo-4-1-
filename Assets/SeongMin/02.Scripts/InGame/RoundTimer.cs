@@ -9,7 +9,7 @@ namespace SeongMin
         [Header("라운드 타이머 시간 조절")]
         public int timer = 190;
         [Header("괴물 변신 타이머 시간 조절")]
-        public float monsterTimer = 10;
+        public float monsterTimer = 1;
 
         WaitForSecondsRealtime waitOneSecond = new WaitForSecondsRealtime(1f);
         private void Awake()
@@ -18,10 +18,10 @@ namespace SeongMin
         }
         private void Start()
         {
-            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
-            {
-                this.MonsterTimerStart();
-            }));
+            //EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
+            //{
+            //    this.MonsterTimerStart();
+            //}));
 
         }
         public void TimerStart()
@@ -45,25 +45,25 @@ namespace SeongMin
             StartCoroutine(EndCoroutine());
             yield break;
         }
-        public void MonsterTimerStart()
-        {
-            StartCoroutine(this.MonsterTimer());
-        }
-        private IEnumerator MonsterTimer()
-        {
-            float _monsterTimer = this.monsterTimer;
-            while (_monsterTimer > 0)
-            {
-                Debug.Log("괴물 변신 중");
-                yield return waitOneSecond;
-                _monsterTimer--;
-                EventDispatcher.instance.SendEvent<float>((int)NHR.EventType.eEventType.Update_MonsterTimer, _monsterTimer);
-            }
-            GameDB.Instance.playerMission.photonView.RPC("CharacterChange",Photon.Pun.RpcTarget.All, "Player");
-            //괴물 변신 풀림
-            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOff");
-            yield break;
-        }
+        //public void MonsterTimerStart()
+        //{
+        //    StartCoroutine(this.MonsterTimer());
+        //}
+        //private IEnumerator MonsterTimer()
+        //{
+        //    float _monsterTimer = this.monsterTimer;
+        //    while (_monsterTimer > 0)
+        //    {
+        //        Debug.Log("괴물 변신 중");
+        //        yield return waitOneSecond;
+        //        _monsterTimer--;
+        //        EventDispatcher.instance.SendEvent<float>((int)NHR.EventType.eEventType.Update_MonsterTimer, _monsterTimer);
+        //    }
+        //    GameDB.Instance.playerMission.photonView.RPC("CharacterChange",Photon.Pun.RpcTarget.All, "Player");
+        //    //괴물 변신 풀림
+        //    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOff");
+        //    yield break;
+        //}
 
         IEnumerator EndCoroutine()
         {
