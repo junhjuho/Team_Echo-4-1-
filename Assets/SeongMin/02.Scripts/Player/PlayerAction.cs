@@ -137,6 +137,7 @@ namespace SeongMin
             {
                 // 복수자로 캐릭터 변경
                 EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Change_Monster);
+                GameDB.Instance.playerController.nowCharacter.gameObject.SetActive(false);
                 // 카운팅 초기화
                 playerMission.chaserMissionClearCount = 0;
             }
