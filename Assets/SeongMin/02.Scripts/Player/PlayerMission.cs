@@ -69,21 +69,6 @@ namespace SeongMin
         private void Start()
         {
             //���� ����
-            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
-            {
-                //������ ������ ��쿡�� ���� ����
-                if (this.isChaser)
-                {
-                    Debug.Log("<color=red>���� ���� �Ϸ�</color>");
-                    //���� �𵨷� �ٲ�� ��� �÷��̾�� ����ȭ �ϱ�'
-
-
-                    photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
-                }
-                //GameManager.Instance.roundTimer.MonsterTimerStart();
-
-            }));
-
             StartCoroutine(DelayRoutine());
 
             //테스트
@@ -156,6 +141,8 @@ namespace SeongMin
                 //currentRunnerCharacrer.gameObject.SetActive(true);]
                 chaserPrefab.SetActive(false);
             }
+            //괴물 변신 알림
+            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOn");
         }
         public void RunnerSetActive()
         {

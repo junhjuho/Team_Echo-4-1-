@@ -181,11 +181,6 @@ namespace NHR
                     this.uiMonsterMode.gameObject.SetActive(true);
                     GameDB.Instance.playerMission.photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
                 }
-                else
-                {
-                    //괴물 변신 알림
-                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOn");
-                }
             }));
 
             //타이머 갱신

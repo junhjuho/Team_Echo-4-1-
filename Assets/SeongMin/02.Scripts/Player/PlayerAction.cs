@@ -120,6 +120,20 @@ namespace SeongMin
                     && playerMission.MissionItemCheck(_item.gameObject, playerMission.chaserMissionArray))
                 {
                     Debug.Log("Chaser : " + args.interactableObject.transform.name);
+
+                    //UI이벤트
+                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
+                    int index = -1;
+                    for (int i = 0; i < playerMission.chaserMissionArray.Length; i++)
+                    {
+                        if (playerMission.chaserMissionArray[i].name == _item.gameObject.name)
+                        {
+                            index = i;
+                            break;
+                        }
+                    }
+                    EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Remove_Mission, index);
+
                     // 아이템 끄기
                     _item.isFind = true;
                     _item.triggerObject.SetActive(false);
