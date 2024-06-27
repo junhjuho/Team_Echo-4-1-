@@ -10,7 +10,7 @@ namespace NHR
     {
         public UIHeart[] hearts;
         public int attackCount = 0;
-        private int maxHeart = 3;
+        private int maxHeart = 2;
 
         private void Awake()
         {
