@@ -103,8 +103,16 @@ namespace SeongMin
                     && playerMission.MissionItemCheck(_item.gameObject, playerMission.chaserMissionArray))
                 {
                     Debug.Log("Chaser : " + args.interactableObject.transform.name);
+                    // 아이템 끄기
                     _item.isFind = true;
+                    _item.triggerObject.SetActive(false);
                     _item.gameObject.SetActive(false);
+                    _item.triggerObject.SetActive(false);
+                    _item.miniMap.SetActive(false);
+                    // 아이템 표시 UI 끄기
+                    var canvas = GameDB.Instance.itemInfomationCanvas;
+                    canvas.image.SetActive(false);
+                    canvas.text.gameObject.SetActive(false);
                     playerMission.chaserMissionClearCount++;
                 }
                 // 내가 팀 플레이 미션이 있을 때만 팀플레이용 아이템 카운팅 하기
