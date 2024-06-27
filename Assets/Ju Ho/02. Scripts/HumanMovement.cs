@@ -26,6 +26,8 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     Scene scene;
 
+    //public GameObject diePrefab;
+
     public void OnEnable()
     {
         isDie = false;
