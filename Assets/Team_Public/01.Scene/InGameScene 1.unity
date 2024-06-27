@@ -2194,6 +2194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uC124\uBA85UI"
       objectReference: {fileID: 0}
+    - target: {fileID: 5535918696282006696, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5618350915610152838, guid: 49f89b8fb0c4fa542a3f155dd3668c97, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
@@ -7409,9 +7413,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1
-  m_Height: 1.67
+  m_Height: 1.5938034
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.83809763, z: 0}
 --- !u!114 &1838960663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26425,18 +26429,6 @@ PrefabInstance:
     - target: {fileID: 6283751906318628705, guid: d1a031d2bea66154d946cb0d6b0b2200, type: 3}
       propertyPath: sceneViewId
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6451252118479005862, guid: d1a031d2bea66154d946cb0d6b0b2200, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6451252118479005862, guid: d1a031d2bea66154d946cb0d6b0b2200, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6451252118479005862, guid: d1a031d2bea66154d946cb0d6b0b2200, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8465070152138596843, guid: d1a031d2bea66154d946cb0d6b0b2200, type: 3}
       propertyPath: m_Name
