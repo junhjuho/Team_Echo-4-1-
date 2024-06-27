@@ -29,7 +29,7 @@ public class HumanMovement : PlayerMovement, IDamageable
     public void OnEnable()
     {
         isDie = false;
-        moveProvider.enabled = true;
+       
     }
 
     public override void Start()
@@ -149,7 +149,6 @@ public class HumanMovement : PlayerMovement, IDamageable
             Debug.Log("충돌 오브젝트 : " + other.name);
             playerSyncController.BloodEffect(other);
             isDie = true;
-            moveProvider.enabled = false;
             this.gameObject.SetActive(false);
         }
     }
