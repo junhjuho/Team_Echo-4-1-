@@ -31,7 +31,10 @@ public class HumanMovement : PlayerMovement, IDamageable
     public void OnEnable()
     {
         isDie = false;
-       
+        //껏다 켜졌을 때도 재 할당
+        playerSyncController = this.GetComponentInParent<PlayerSyncController>();
+        if (pv.IsMine && SeongMin.GameManager.Instance.playerManager != null)
+            SeongMin.GameManager.Instance.playerManager.humanMovement = this;
     }
 
     public override void Start()
