@@ -152,6 +152,10 @@ public class HumanMovement : PlayerMovement, IDamageable
             Debug.Log("충돌 오브젝트 : " + other.name);
             playerSyncController.BloodEffect(other);
             isDie = true;
+
+            //공격 UI 이벤트
+            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Attack);
+
             this.gameObject.SetActive(false);
         }
     }
