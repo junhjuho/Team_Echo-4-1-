@@ -61,6 +61,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             // 체력이 1보다 낮으면
             if (SeongMin.GameManager.Instance.playerManager.heart <= 0)
             {
+                GameDB.Instance.isWin = false;
 
                 EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
 

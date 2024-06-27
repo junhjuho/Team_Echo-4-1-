@@ -27,6 +27,7 @@ public class EscapeDoor : MonoBehaviour
     }
     private void GameEnding()
     {
+        GameDB.Instance.isWin = true;
 
         EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
         StartCoroutine(EndCoroutine());

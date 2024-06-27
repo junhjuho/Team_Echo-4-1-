@@ -24,6 +24,7 @@ public class UIGameOver : MonoBehaviour
 
     IEnumerator CTypingDialog(string dialog)
     {
+        this.txtGameResult.text = "";
         foreach (var c in dialog)
         {
             this.txtGameResult.text += c;
