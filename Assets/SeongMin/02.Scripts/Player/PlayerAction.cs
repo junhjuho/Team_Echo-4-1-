@@ -45,12 +45,30 @@ namespace SeongMin
                 Debug.Log("Get Item3 : " + playerMission.isChaser);
                 //_item.isFind = true;
 
+                //탈출구 열쇠를 잡았다면
+                if(_item.gameObject.TryGetComponent<FinalKey>(out FinalKey finalKey))
+                    EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Get_Final_Key);
+
                 // 플레이어의 미션 배열에 _item 오브젝트와 일치하는 게 있으면 if문 안에 코드를 실행
                 if (_item.charactorValue == CharactorValue.runner && playerMission.MissionItemCheck(_item.gameObject, playerMission.playerMissionArray))
                 {
                     print("잡았습니다");
-                    // 아이템 끄기
                     _item.isFind = true;
+
+                    //UI이벤트
+                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
+                    int index = -1;
+                    for (int i = 0; i < playerMission.playerMissionArray.Length; i++)
+                    {
+                        if (playerMission.playerMissionArray[i].name == _item.gameObject.name)
+                        {
+                            index = i;
+                            break;
+                        }
+                    }
+                    EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Remove_Mission, index);
+
+                    // 아이템 끄기
                     _item.triggerObject.SetActive(false);
                     _item.gameObject.SetActive(false);
                     _item.triggerObject.SetActive(false);
@@ -79,7 +97,6 @@ namespace SeongMin
                         exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
                         Debug.Log("미니맵 생성");
                     }
-                    EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
                     playerMission.AllPlayerMissionScoreUpdate();
 

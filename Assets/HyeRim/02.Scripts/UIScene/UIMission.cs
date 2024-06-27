@@ -33,16 +33,9 @@ namespace NHR
                 //비활성화
                 //Invoke("CloseUI", 2f);
             }));
-            EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
+            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Remove_Mission, new EventHandler<int>((type, index) =>
             {
-                for (int i = 0; i < this.missions.Count; i++)
-                {
-                    if (this.missions[i].targetItem.name == name)
-                    {
-                        this.missions[i].textFirstStep.fontStyle = FontStyles.Strikethrough;
-                        break;
-                    }
-                }
+                this.missions[index].gameObject.SetActive(false);
             }));
 
         }

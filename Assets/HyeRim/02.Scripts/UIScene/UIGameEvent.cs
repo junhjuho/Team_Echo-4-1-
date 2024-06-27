@@ -206,19 +206,59 @@ namespace NHR
             //미션 달성 이벤트
             EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Complete_Mission, new EventHandler<string>((type, name) =>
             {
+                Debug.Log("<color=green>Complete_Mission 이벤트</color>");
                 this.uiCompleteMission.gameObject.SetActive(true);
                 this.uiCompleteMission.CompleteMission(name);
             }));
+
+            int missionCount = 0;
             //생존자 전체 미션 달성도 알림
             EventDispatcher.instance.AddEventHandler<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, new EventHandler<string>((type, per) =>
             {
+                missionCount++;
                 Debug.Log("Notice TotalMission Percent");
+                if (missionCount == 2 && GameDB.Instance.playerMission.isChaser)  //복수자
+                {
+                    Debug.Log("<color=green>나는 복수자고 생존자는 미션 2개를 완료했지</color>");
+                    string str = "탈출 열쇠가 나타났습니다!\n열쇠로 향하는 생존자를 방해하세요!";
+                    this.uiMissionPercent.gameObject.SetActive(true);
+                    StartCoroutine(CTypingDialog(str, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+                }
+                if(!GameDB.Instance.playerMission.isChaser) //생존자
+                {
+                    this.uiMissionPercent.Init();
+                    string str = "<color=yellow>탈출 열쇠 등장! 열쇠를 얻어 탈출구로 향하세요\n</color>";
+                    if (GameDB.Instance.playerMission.runnerMissionClearCount == 2) this.uiMissionPercent.textNotice.text = str;
+                    var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
+                    Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                    this.uiMissionPercent.gameObject.SetActive(true);
+                    StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+                }
+            }));
+            //탈출구 열쇠 얻음
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Get_Final_Key, new EventHandler((type) =>
+            {
+                Debug.Log("Get_Final_Key");
                 this.uiMissionPercent.Init();
-                var dialog = string.Format(DataManager.Instance.GetEventDialog("missionPercent"), per);
-                Debug.LogFormat("<color=yellow>{0}</color>", dialog);
+                string str = "탈출 열쇠 획득!\n열쇠를 잡고 탈출구로 향하세요!";
+                if (GameDB.Instance.playerMission.isChaser) str = "생존자가 탈출 열쇠를 획득했습니다!\n탈출구로 향해 막으세요!";
                 this.uiMissionPercent.gameObject.SetActive(true);
-                //this.nowPopUI = this.uiMissionPercent.gameObject;
-                StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+                StartCoroutine(CTypingDialog(str, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+            }));
+
+            int attackCount = 0;
+            //복수자 공격 성공
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Attack, new EventHandler((type) =>
+            {
+                attackCount++;
+                Debug.Log("공격 성공");
+                if (attackCount <= 2&&GameDB.Instance.playerMission.isChaser)
+                {
+                    this.uiMissionPercent.Init();
+                    string str = "공격 성공!\n랜덤한 위치로 이동됩니다.";
+                    this.uiMissionPercent.gameObject.SetActive(true);
+                    StartCoroutine(CTypingDialog(str, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+                }
             }));
             //생존자 라운드 목표 완료 알림
             //EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Complete_RoundMission, new EventHandler((type) =>

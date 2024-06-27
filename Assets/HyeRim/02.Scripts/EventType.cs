@@ -33,7 +33,10 @@ namespace NHR
             Complete_RoundMission, 
             Popup_Tip, 
             Notice_Result, 
-            Complete_ChaserMission
+            Complete_ChaserMission, 
+            Remove_Mission, 
+            Get_Final_Key, 
+            Attack
         }
     }
 
