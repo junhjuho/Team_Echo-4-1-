@@ -19,7 +19,7 @@ public class UITimer : MonoBehaviour
             min = sec / 60;
             sec %= 60;
         }
-        this.textTimer.text = string.Format("{0:D2}:{1:D2}", min, sec);
+        this.textTimer.text = string.Format("남은 시간 : {0:D2}:{1:D2}", min, sec);
     }
 
 }
