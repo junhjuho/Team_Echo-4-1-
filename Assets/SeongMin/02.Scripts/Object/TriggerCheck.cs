@@ -25,7 +25,7 @@ public class TriggerCheck : MonoBehaviour
         if (other.gameObject.TryGetComponent(out PlayerMovement player) && player.pv.IsMine)
         {
             var canvas = GameDB.Instance.itemInfomationCanvas;
-            canvas.transform.position = this.transform.position + (Vector3.up * 2f);
+            canvas.transform.position = this.transform.position + (Vector3.up * 1.5f);
             canvas.gameObject.transform.LookAt(player.transform.position);
             canvas.image.SetActive(true);
             canvas.text.gameObject.SetActive(true);
