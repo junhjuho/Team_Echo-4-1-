@@ -51,15 +51,15 @@ public class HumanMovement : PlayerMovement, IDamageable
     {
         if (isDie && pv.IsMine)
         {
-            for (int i = 0; i < dieAnims.Length; i++)
-            {
-                if (this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
-                {
-                    dieAnims[i].transform.gameObject.SetActive(true); // 모델 애니메이션 오브젝트를 활성화 시키고 애니메이션 실행
-                    dieAnims[i].PlayerDieAnimation("Backward Die");
-                    break;
-                }
-            }
+            //for (int i = 0; i < dieAnims.Length; i++)
+            //{
+            //    if (this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
+            //    {
+            //        dieAnims[i].transform.gameObject.SetActive(true); // 모델 애니메이션 오브젝트를 활성화 시키고 애니메이션 실행
+            //        dieAnims[i].PlayerDieAnimation("Backward Die");
+            //        break;
+            //    }
+            //}
             SeongMin.GameManager.Instance.playerManager.heart--;
             print("현재 피 " + SeongMin.GameManager.Instance.playerManager.heart);
 
@@ -69,8 +69,7 @@ public class HumanMovement : PlayerMovement, IDamageable
                 GameDB.Instance.isWin = false;
 
                 EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
-
-                StartCoroutine(EndCoroutine());
+                EndCoroutine();
             }
             else
             {
@@ -80,9 +79,8 @@ public class HumanMovement : PlayerMovement, IDamageable
             }
         }
     }
-    IEnumerator EndCoroutine()
+    private void EndCoroutine()
     {
-        yield return new WaitForSecondsRealtime(2f);
         GameDB.Instance.playerMission.WinCheck("ChaserWin");
     }
 

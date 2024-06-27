@@ -134,14 +134,14 @@ namespace NHR
                     //this.uiAttacked.hearts[this.uiAttacked.hearts.Length - heart + 1].imageDeath.SetActive(true);
 
                     //기절 혹은 죽음 UI text
-                    if (GameManager.Instance.playerManager.heart != 0)
+                    if (GameManager.Instance.playerManager.heart > 0)
                     {
                         this.uiAttacked.textState.text = DataManager.Instance.GetEventDialog("attacked");
                         //부활
                         Invoke("ReviveUI", 2f);
                     }
                     //죽으면
-                    if (GameManager.Instance.playerManager.heart == 0) 
+                    if (GameManager.Instance.playerManager.heart <= 0) 
                     {
                         //this.uiDeath.gameObject.SetActive(true);
                         GameDB.Instance.isWin = false;
