@@ -153,6 +153,7 @@ namespace NHR
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Result, new EventHandler((type) =>
             {
                 Debug.Log("<color=yellow>게임 종료, 결과 알림</color>");
+                this.uiGameOver.gameObject.SetActive(true);
                 this.uiGameOver.IsWin(GameDB.Instance.isWin);
             }));
 
