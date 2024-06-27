@@ -42,6 +42,9 @@ namespace NHR
         [Header("전체 플레이어 미션 현황 UI")]
         public UIMissionPercent uiMissionPercent;
 
+        [Header("공격 받은 사운드")]
+        public GameObject attackSound;
+
         //[Header("죽음 UI")]
         //public UIDeath uiDeath;
 
@@ -122,6 +125,8 @@ namespace NHR
             //공격받음 1, 2, 3단계
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler((type) =>
             {
+                //사운드
+                this.attackSound.gameObject.SetActive(true);
                 //복수자가 아니면
                 if (!GameDB.Instance.playerMission.isChaser)
                 {

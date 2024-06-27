@@ -9,9 +9,13 @@ using UnityEngine;
 public class EscapeDoor : MonoBehaviour
 {
     Animator animator;
+
+    public GameObject doorSound;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        this.doorSound.SetActive(false);
     }
     private void Start()
     {
@@ -22,6 +26,7 @@ public class EscapeDoor : MonoBehaviour
         if(other.TryGetComponent(out FinalKey finalKey))
         {
             animator.SetTrigger("isOpen");
+            this.doorSound.SetActive(true);
             Invoke("GameEnding", 1f);
         }
     }

@@ -8,8 +8,8 @@ namespace SeongMin
     {
         [Header("라운드 타이머 시간 조절")]
         public int timer = 190;
-        [Header("괴물 변신 타이머 시간 조절")]
-        public float monsterTimer = 1;
+        //[Header("괴물 변신 타이머 시간 조절")]
+        //public float monsterTimer = 1;
 
         WaitForSecondsRealtime waitOneSecond = new WaitForSecondsRealtime(1f);
         private void Awake()

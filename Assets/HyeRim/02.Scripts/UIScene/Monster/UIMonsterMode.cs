@@ -16,14 +16,14 @@ namespace NHR
         {
             //this.imageMonsterTime = GetComponentInChildren<Image>();
         }
-        private void Start()
-        {
-            this.maxTime = GameManager.Instance.roundTimer.monsterTimer;
-        }
-        public void UpdateTimer(float sec)
-        {
-            this.imageMonsterTime.fillAmount = sec/this.maxTime;
-        }
+        //private void Start()
+        //{
+        //    this.maxTime = GameManager.Instance.roundTimer.monsterTimer;
+        //}
+        //public void UpdateTimer(float sec)
+        //{
+        //    this.imageMonsterTime.fillAmount = sec/this.maxTime;
+        //}
     }
 
 }
