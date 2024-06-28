@@ -236,16 +236,21 @@ namespace NHR
                     StartCoroutine(CTypingDialog(dialog, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
                 }
             }));
+            bool getKey = false;
             //≈ª√‚±∏ ø≠ºË æÚ¿Ω
             EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Get_Final_Key, new EventHandler((type) =>
             {
-                Debug.Log("Get_Final_Key");
-                this.uiMissionPercent.Init();
-                string str = "≈ª√‚ ø≠ºË »πµÊ!\nø≠ºË∏¶ ¿‚∞Ì ≈ª√‚±∏∑Œ «‚«œººø‰!";
-                if (GameDB.Instance.playerMission.isChaser) str = "ª˝¡∏¿⁄∞° ≈ª√‚ ø≠ºË∏¶ »πµÊ«ﬂΩ¿¥œ¥Ÿ!\n≈ª√‚±∏∑Œ «‚«ÿ ∏∑¿∏ººø‰!";
-                this.uiMissionPercent.gameObject.SetActive(true);
-                this.uiMissionPercent.Init();
-                StartCoroutine(CTypingDialog(str, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+                if (!getKey)
+                {
+                    getKey = true;
+                    Debug.Log("Get_Final_Key");
+                    this.uiMissionPercent.Init();
+                    string str = "≈ª√‚ ø≠ºË »πµÊ!\nø≠ºË∏¶ ¿‚∞Ì ≈ª√‚±∏∑Œ «‚«œººø‰!";
+                    if (GameDB.Instance.playerMission.isChaser) str = "ª˝¡∏¿⁄∞° ≈ª√‚ ø≠ºË∏¶ »πµÊ«ﬂΩ¿¥œ¥Ÿ!\n≈ª√‚±∏∑Œ «‚«ÿ ∏∑¿∏ººø‰!";
+                    this.uiMissionPercent.gameObject.SetActive(true);
+                    this.uiMissionPercent.Init();
+                    StartCoroutine(CTypingDialog(str, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
+                }
             }));
 
             int attackCount = 0;
