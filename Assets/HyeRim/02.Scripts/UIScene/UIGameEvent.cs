@@ -308,6 +308,7 @@ namespace NHR
 
         private void RemovePop(GameObject nowPop)
         {
+            Debug.Log(nowPop);
             nowPop.SetActive(false);
         }
     }
