@@ -244,6 +244,7 @@ namespace NHR
                 string str = "≈ª√‚ ø≠ºË »πµÊ!\nø≠ºË∏¶ ¿‚∞Ì ≈ª√‚±∏∑Œ «‚«œººø‰!";
                 if (GameDB.Instance.playerMission.isChaser) str = "ª˝¡∏¿⁄∞° ≈ª√‚ ø≠ºË∏¶ »πµÊ«ﬂΩ¿¥œ¥Ÿ!\n≈ª√‚±∏∑Œ «‚«ÿ ∏∑¿∏ººø‰!";
                 this.uiMissionPercent.gameObject.SetActive(true);
+                this.uiMissionPercent.Init();
                 StartCoroutine(CTypingDialog(str, this.uiMissionPercent.textNotice, this.uiMissionPercent.gameObject));
             }));
 
