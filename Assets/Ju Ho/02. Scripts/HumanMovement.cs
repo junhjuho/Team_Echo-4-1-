@@ -154,7 +154,7 @@ public class HumanMovement : PlayerMovement, IDamageable
             isDie = true;
 
             //공격 UI 이벤트
-            EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Attack);
+            //EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Attack);
 
             this.gameObject.SetActive(false);
         }
