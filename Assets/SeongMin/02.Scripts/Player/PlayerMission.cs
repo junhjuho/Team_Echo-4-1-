@@ -151,7 +151,7 @@ namespace SeongMin
 
         private IEnumerator RespawnPlayer()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.3f);
             GameDB.Instance.Shuffle(SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList);
             if (photonView.IsMine)
             {

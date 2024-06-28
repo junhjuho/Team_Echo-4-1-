@@ -147,7 +147,7 @@ public class HumanMovement : PlayerMovement, IDamageable
     }
     public void OnHit(Collider other) // 때린 물체가 Fireaxe라면 오브젝트 비활성화, OnDisable실행
     {
-        if (pv.IsMine && other.gameObject.name == "Fireaxe")
+        if (pv.IsMine && other.gameObject.name == "Fireaxe"&&isDie == false)
         {
             Debug.Log("충돌 오브젝트 : " + other.name);
             playerSyncController.BloodEffect(other);
