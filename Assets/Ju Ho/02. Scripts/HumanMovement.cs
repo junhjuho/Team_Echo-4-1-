@@ -11,17 +11,13 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class HumanMovement : PlayerMovement, IDamageable
+public class HumanMovement : PlayerMovement, IDamageable, IMovable
 {
     public GameObject FireAxe;
 
     public bool isEnergyDown = false;
     public bool isDie;
     public bool isRunBtnDown;
-
-    WaitForSeconds reviveTime = new WaitForSeconds(1.5f);
-
-    //public GameObject diePrefab;
 
     public void OnEnable()
     {
@@ -35,8 +31,6 @@ public class HumanMovement : PlayerMovement, IDamageable
     public override void Start()
     {
         base.Start();
-
-        playerSyncController = this.GetComponentInParent<PlayerSyncController>();
 
         if (pv.IsMine && SeongMin.GameManager.Instance.playerManager !=null)
             SeongMin.GameManager.Instance.playerManager.humanMovement = this;
@@ -72,47 +66,29 @@ public class HumanMovement : PlayerMovement, IDamageable
 
     void Update()
     {
-        PlayerMove();
-        FingerMove();
+        Move();
     }
 
-    public override void PlayerMove() // 플레이어 걷기 , 달리기
+    public void Move()
     {
         if (pv.IsMine)
         {
-            base.PlayerMove();  // PlayerMovement 스크립트 상속
+            move = moveProvider.leftHandMoveAction.reference.action.ReadValue<Vector2>();
 
-            isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼
+            //isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼
+            isRunBtnDown = false;
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
             moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 4f : 2f; // 달리기 버튼에 따른 속도
 
-            animator.SetFloat("Move", Convert.ToInt32(isMove) * moveBlendtree);
+            Debug.Log(move.magnitude);
+            animator.SetFloat("Move", move.magnitude * moveBlendtree);
         }
         else
             return;
     }
 
-    public void FingerMove() // 손가락 애니메이션
-    {
-        if (pv.IsMine)
-        {
-            float leftTriggerValue = inputActionAsset.actionMaps[2].actions[3].ReadValue<float>();
-            animator.SetFloat("Left Trigger", leftTriggerValue);
-
-            float leftGripValue = inputActionAsset.actionMaps[2].actions[1].ReadValue<float>();
-            animator.SetFloat("Left Grip", leftGripValue);
-
-            float rightTriggerValue = inputActionAsset.actionMaps[5].actions[3].ReadValue<float>();
-            animator.SetFloat("Right Trigger", rightTriggerValue);
-
-            float rightGripValue = inputActionAsset.actionMaps[5].actions[1].ReadValue<float>();
-            animator.SetFloat("Right Grip", rightGripValue);
-        }
-        else
-            return;
-    }
 
 
     public void OnTriggerEnter(Collider other)
