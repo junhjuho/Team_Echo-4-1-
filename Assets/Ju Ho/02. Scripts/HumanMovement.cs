@@ -11,7 +11,7 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class HumanMovement : PlayerMovement
+public class HumanMovement : PlayerMovement, IDamageable
 {
     public GameObject FireAxe;
 
