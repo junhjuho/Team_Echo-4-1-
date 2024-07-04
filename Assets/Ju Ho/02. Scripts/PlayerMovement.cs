@@ -15,20 +15,16 @@ public class PlayerMovement : MonoBehaviour
     protected ActionBasedContinuousMoveProvider moveProvider;
     protected PlayerSyncController playerSyncController;
 
-    protected ActionBasedController controller;
-
     public PhotonView pv;
 
-    protected Vector2 dir;
-    protected Vector2 movePosition;
     protected Vector2 move;
-    protected bool isMove;
 
     public virtual void Start()
     {
         animator = this.GetComponent<Animator>();
         pv = this.transform.GetComponentInParent<PhotonView>();
         moveProvider = FindObjectOfType<ActionBasedContinuousMoveProvider>();
+        playerSyncController = this.transform.GetComponentInParent<PlayerSyncController>();
         //inputActionAsset = Resources.Load<InputActionAsset>("XRI Default Input Actions");
     }
 }

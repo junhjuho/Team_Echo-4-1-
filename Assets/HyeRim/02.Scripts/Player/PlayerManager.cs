@@ -20,6 +20,9 @@ namespace NHR
         [Header("인간 플레이어 움직임")]
         public HumanMovement humanMovement;
 
+        [Header("인간 플레이어 충돌 시")]
+        public HumanHit humanHit;
+
         private void Awake()
         {
             SeongMin.GameManager.Instance.playerManager = this;

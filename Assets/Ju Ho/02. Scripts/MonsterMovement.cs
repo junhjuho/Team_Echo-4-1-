@@ -8,28 +8,32 @@ public class MonsterMovement : PlayerMovement, IMovable
 {
     public GameObject origin;
     public PlayerAction[] controllers;
-    void OnEnable()
+
+    void Awake()
     {
         origin = FindObjectOfType<XROrigin>().gameObject;
         controllers = origin.GetComponentsInChildren<PlayerAction>();
-
-        for (int i = 0; i < controllers.Length; i++)
-        {
-            controllers[i].transform.GetChild(0).gameObject.SetActive(false);
-        }
+    }
+    void OnEnable()
+    {
+        ControllerActive(false);
     }
     void OnDisable()
     {
+        ControllerActive(true);
+    }
+
+    void ControllerActive(bool active)
+    {
         for (int i = 0; i < controllers.Length; i++)
         {
-            controllers[i].transform.GetChild(0).gameObject.SetActive(true);
+            controllers[i].transform.GetChild(0).gameObject.SetActive(active);
         }
     }
 
     public override void Start()
     {
         base.Start();
-        //playerSyncController.ZombieSound(0); // 시작할 때 한번
     }
     void Update()
     {

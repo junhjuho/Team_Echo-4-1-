@@ -68,7 +68,7 @@ namespace NHR
         public void CharacterOn()
         {
             nowCharacter.gameObject.SetActive(true);
-            SeongMin.GameManager.Instance.playerManager.humanMovement.isDie = true;
+            SeongMin.GameManager.Instance.playerManager.humanHit.isDie = true;
         }
 
         [PunRPC]

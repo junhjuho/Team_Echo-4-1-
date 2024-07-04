@@ -2826,6 +2826,7 @@ GameObject:
   - component: {fileID: 7552130190591036758}
   - component: {fileID: 6747704889837046606}
   - component: {fileID: 6095427485931438930}
+  - component: {fileID: 1281690413106035761}
   - component: {fileID: 6475554866602124036}
   - component: {fileID: 6549464174681808422}
   - component: {fileID: 5530197642181525178}
@@ -3117,7 +3118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
-  FireAxe: {fileID: 447811445966961580}
   isEnergyDown: 0
   isDie: 0
   isRunBtnDown: 0
@@ -3137,6 +3137,19 @@ MonoBehaviour:
   controllers:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &1281690413106035761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096075468381986903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866d6ed72037d394e84389e76e960a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDie: 0
 --- !u!114 &6475554866602124036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3349,6 +3362,7 @@ GameObject:
   - component: {fileID: 393380273534313707}
   - component: {fileID: 4515049768067840740}
   - component: {fileID: 1220913655470808993}
+  - component: {fileID: 3222275680459166666}
   - component: {fileID: 568239553882724931}
   - component: {fileID: 662856113354543662}
   - component: {fileID: 9082723997564200933}
@@ -3638,7 +3652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
-  FireAxe: {fileID: 447811445966961580}
   isEnergyDown: 0
   isDie: 0
   isRunBtnDown: 0
@@ -3658,6 +3671,19 @@ MonoBehaviour:
   controllers:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &3222275680459166666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209871280481194162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866d6ed72037d394e84389e76e960a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDie: 0
 --- !u!114 &568239553882724931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16429,6 +16455,7 @@ GameObject:
   - component: {fileID: 4315010459282881082}
   - component: {fileID: 1613875989780044681}
   - component: {fileID: 5366018598158978928}
+  - component: {fileID: 6063017714886252347}
   - component: {fileID: 7799693496687141074}
   - component: {fileID: 5230459196823382439}
   - component: {fileID: 479101846059634882}
@@ -16764,7 +16791,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
-  FireAxe: {fileID: 447811445966961580}
   isEnergyDown: 0
   isDie: 0
   isRunBtnDown: 0
@@ -16784,6 +16810,19 @@ MonoBehaviour:
   controllers:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &6063017714886252347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210806223002501516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866d6ed72037d394e84389e76e960a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDie: 0
 --- !u!114 &7799693496687141074
 MonoBehaviour:
   m_ObjectHideFlags: 0
