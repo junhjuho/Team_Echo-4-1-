@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     protected ActionBasedContinuousMoveProvider moveProvider;
     protected PlayerSyncController playerSyncController;
     public PhotonView pv;
-    
+
     protected Vector2 dir;
     protected Vector2 movePosition;
     protected bool isMove;
@@ -24,16 +24,12 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = this.GetComponent<Animator>();
         pv = this.transform.GetComponentInParent<PhotonView>();
-        playerSyncController = this.transform.GetComponentInParent<PlayerSyncController>();
         moveProvider = FindObjectOfType<ActionBasedContinuousMoveProvider>();
         inputActionAsset = Resources.Load<InputActionAsset>("XRI Default Input Actions");
     }
 
     public virtual void PlayerMove() // 걷기 입력 이벤트
     {
-        movePosition = inputActionAsset.actionMaps[3].actions[5].ReadValue<Vector2>();
         isMove = inputActionAsset.actionMaps[3].actions[5].IsPressed();
-
-        dir = new Vector2(movePosition.x, movePosition.y).normalized;
     }
 }
