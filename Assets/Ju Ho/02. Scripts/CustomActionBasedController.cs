@@ -7,13 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class CustomActionBasedController : ActionBasedController
 {
-    
-
     [SerializeField]
     InputActionProperty RunAction = new InputActionProperty(new InputAction("Run", type: InputActionType.Button) { wantsInitialStateCheck = true });
-    /// <summary>
-    /// The Input System action to use for Rotation Tracking for this GameObject. Must be a <see cref="QuaternionControl"/> Control.
-    /// </summary>
+   
     public InputActionProperty runAction
     {
         get => RunAction;

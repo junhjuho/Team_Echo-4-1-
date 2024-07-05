@@ -14626,6 +14626,7 @@ GameObject:
   - component: {fileID: 8798148606640562982}
   - component: {fileID: 1925787025451592992}
   - component: {fileID: 8798148606640562983}
+  - component: {fileID: 8798148606640562984}
   m_Layer: 13
   m_Name: Hand_Right
   m_TagString: Untagged
@@ -15650,7 +15651,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882724209769156750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4de11223eb63e54787551c1c474d944, type: 3}
   m_Name: 
@@ -16951,7 +16952,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9179241607550979670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fed65a911a790c546853475ab75ca020, type: 3}
   m_Name: 
@@ -21590,6 +21591,19 @@ MonoBehaviour:
   sceneViewId: 14
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8798148606640562984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882724209769156750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdffd75a3e6ef84aaafce921beaef74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handType: 1
 --- !u!1 &8800904637424076732
 GameObject:
   m_ObjectHideFlags: 0
@@ -22852,6 +22866,7 @@ GameObject:
   - component: {fileID: 6785536259886211371}
   - component: {fileID: 3707730263215304161}
   - component: {fileID: 9179241607550979671}
+  - component: {fileID: 9179241607550979672}
   m_Layer: 13
   m_Name: Hand_Left
   m_TagString: Untagged
@@ -22881,6 +22896,19 @@ MonoBehaviour:
   sceneViewId: 13
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &9179241607550979672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9179241607550979670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdffd75a3e6ef84aaafce921beaef74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handType: 0
 --- !u!1 &9184456872290602000
 GameObject:
   m_ObjectHideFlags: 0

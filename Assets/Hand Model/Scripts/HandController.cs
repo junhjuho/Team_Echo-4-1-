@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,12 @@ public class HandController : MonoBehaviour
     private bool isSetting = false;
     private int container;
 
+    PhotonView pv;
+
     IEnumerator Start()
     {
         anim = this.GetComponent<Animator>();
+        pv = this.GetComponent<PhotonView>();
         List<InputDevice> devices = new List<InputDevice>(); //디바이스들을 담을 변수 생성
 
         while (true)
@@ -54,17 +58,19 @@ public class HandController : MonoBehaviour
 
     void Update()
     {
-        if (!isSetting) return;
+        if(pv.IsMine)
+        {
+            if (!isSetting) return;
 
-        if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
-            anim.SetFloat("Trigger", triggerValue);
-        else
-            anim.SetFloat("Trigger", 0);
+            if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+                anim.SetFloat("Trigger", triggerValue);
+            else
+                anim.SetFloat("Trigger", 0);
 
-        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
-            anim.SetFloat("Grip", gripValue);
-        else
-            anim.SetFloat("Grip", 0);
-        
+            if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
+                anim.SetFloat("Grip", gripValue);
+            else
+                anim.SetFloat("Grip", 0);
+        }        
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace SeongMin
 {
-    public class AIRunner : MonoBehaviour,IDamageable
+    public class AIRunner : MonoBehaviour, IDamageable
     {
         private WaitForSecondsRealtime oneSecond = new WaitForSecondsRealtime(1f);
         private WaitUntil nextThink;
@@ -95,8 +95,8 @@ namespace SeongMin
 
         public void OnHit(Collider other)
         {
-            Debug.Log("OnHit : " + other.gameObject.name);
-            if(other.gameObject.name == "Fireaxe")
+            //Debug.Log("OnHit : " + other.gameObject.name);
+            if(other.CompareTag("Fireaxe"))
             {
                 agent.speed = 0;
                 state = State.Die;
@@ -110,7 +110,7 @@ namespace SeongMin
 
         public void OnTriggerEnter(Collider other)
         {
-            Debug.Log("AI 충돌 : " + other.gameObject.name);
+            //Debug.Log("AI 충돌 : " + other.gameObject.name);
             OnHit(other);
             //other.bounds.ClosestPoint(other.transform.position);
         }
