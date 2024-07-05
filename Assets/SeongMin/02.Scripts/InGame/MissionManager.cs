@@ -23,12 +23,14 @@ namespace SeongMin
         public void MissionSetting()
         {
             GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameRunnerItemNumberArray);
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+            int i = 0;
+            foreach(Player player in PhotonNetwork.PlayerList)
             {
                 int _minValue = i * runnerMissionCount;
                 int _maxValue = _minValue + runnerMissionCount;
                 int[] _intArray = GameManager.Instance.inGameMapManager.inGameRunnerItemNumberArray;
-                photonView.RPC("MissionSend", PhotonNetwork.PlayerList[i], _minValue, _maxValue, _intArray);
+                photonView.RPC("MissionSend", player, _minValue, _maxValue, _intArray);
+                i++;
             }
         }
         [PunRPC]

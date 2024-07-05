@@ -23,9 +23,6 @@ namespace NHR
 
         public Image staminaBar;
 
-        //에너지 다운 상태인가?
-        public bool isEnergyDown = false;
-
         private void Awake()
         {
             if (this.uiWatch == null) this.uiWatch = GetComponentInChildren<UIWatch>();
@@ -43,7 +40,7 @@ namespace NHR
             {
                 staminaBar.fillAmount -= 0.2f * Time.deltaTime;
 
-                this.isEnergyDown = staminaBar.fillAmount > 0 ? false : true;
+                SeongMin.GameManager.Instance.playerManager.humanMovement.isEnergyDown = staminaBar.fillAmount > 0 ? false : true;
             }
             else
             {

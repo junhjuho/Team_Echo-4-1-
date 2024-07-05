@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -78,10 +79,12 @@ namespace SeongMin
         public void PlayerPositionSetting()
         {
             GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.playerSpawnPositionList);
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+            int i = 0;
+            foreach(Player player in PhotonNetwork.PlayerList)
             {
                 Vector3 _playerPosition = GameManager.Instance.inGameMapManager.playerSpawnPositionList[i].position;
-                photonView.RPC("GetPlayerPosition", PhotonNetwork.PlayerList[i], _playerPosition); ;
+                photonView.RPC("GetPlayerPosition", player, _playerPosition);
+                i++;
             }
         }
 

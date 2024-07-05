@@ -14,17 +14,12 @@ using UnityEngine.UIElements;
 public class HumanMovement : PlayerMovement, IDamageable
 {
     public GameObject FireAxe;
-    public DieAnimation[] dieAnims;
 
+    public bool isEnergyDown = false;
+    public bool isDie;
     public bool isRunBtnDown;
 
-    bool isEnergyDown;
-    public bool isDie;
-    private Rigidbody rb;
-
-    private WaitForSeconds reviveTime = new WaitForSeconds(1.5f);
-
-    Scene scene;
+    WaitForSeconds reviveTime = new WaitForSeconds(1.5f);
 
     //public GameObject diePrefab;
 
@@ -40,26 +35,17 @@ public class HumanMovement : PlayerMovement, IDamageable
     public override void Start()
     {
         base.Start();
-        rb = gameObject.GetComponent<Rigidbody>();
-        scene = SceneManager.GetActiveScene();
+
         playerSyncController = this.GetComponentInParent<PlayerSyncController>();
-        if (pv.IsMine&& SeongMin.GameManager.Instance.playerManager !=null)
+
+        if (pv.IsMine && SeongMin.GameManager.Instance.playerManager !=null)
             SeongMin.GameManager.Instance.playerManager.humanMovement = this;
     }
 
-    void OnDisable() // 
+    void OnDisable() // 캐릭터 오브젝트 비활성화될 시
     {
         if (isDie && pv.IsMine)
         {
-            //for (int i = 0; i < dieAnims.Length; i++)
-            //{
-            //    if (this.gameObject.name + " Die Model" == dieAnims[i].gameObject.name) // 현재 오브젝트의 이름과 모델 애니메이션 오브젝트 이름이 같으면
-            //    {
-            //        dieAnims[i].transform.gameObject.SetActive(true); // 모델 애니메이션 오브젝트를 활성화 시키고 애니메이션 실행
-            //        dieAnims[i].PlayerDieAnimation("Backward Die");
-            //        break;
-            //    }
-            //}
             SeongMin.GameManager.Instance.playerManager.heart--;
             print("현재 피 " + SeongMin.GameManager.Instance.playerManager.heart);
 
@@ -96,25 +82,13 @@ public class HumanMovement : PlayerMovement, IDamageable
         {
             base.PlayerMove();  // PlayerMovement 스크립트 상속
 
-            if(scene.name != "InGameScene 1")
-            {
-                isEnergyDown = false;
-            }
-            else
-            {
-                isEnergyDown = SeongMin.GameManager.Instance.playerManager.uiPlayer.isEnergyDown;
-            }
-
             isRunBtnDown = inputActionAsset.actionMaps[4].actions[11].IsPressed(); // 달리기 버튼
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 
             moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 4f : 2f; // 달리기 버튼에 따른 속도
 
-           
-            animator.SetFloat("Move", dir.magnitude * moveBlendtree);
-            rb.velocity =  new Vector3(dir.x,0,dir.y).normalized;
-            //this.transform.position = this.transform.position + new Vector3(transform.position.x + dir.x, transform.position.y, transform.position.z + dir.y);
+            animator.SetFloat("Move", Convert.ToInt32(isMove) * moveBlendtree);
         }
         else
             return;
@@ -145,9 +119,10 @@ public class HumanMovement : PlayerMovement, IDamageable
     {
         OnHit(other);
     }
+
     public void OnHit(Collider other) // 때린 물체가 Fireaxe라면 오브젝트 비활성화, OnDisable실행
     {
-        if (pv.IsMine && other.gameObject.name == "Fireaxe"&&isDie == false)
+        if (pv.IsMine && other.CompareTag("Fireaxe") && isDie == false)
         {
             Debug.Log("충돌 오브젝트 : " + other.name);
             playerSyncController.BloodEffect(other);
