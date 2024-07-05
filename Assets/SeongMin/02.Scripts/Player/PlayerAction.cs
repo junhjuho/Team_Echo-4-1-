@@ -34,17 +34,10 @@ namespace SeongMin
         // 플레이어가 아이템을 잡았을 때,
         private void SelectEvent(SelectEnterEventArgs args)
         {
-            Debug.Log(args.interactableObject.transform.name);
             //잡은 물체가 ItemObject 스크립트가 있는지 확인 후 _item 을 콜백으로 받아오기
             if (args.interactableObject.transform.TryGetComponent(out ItemObject _item) && _item.isFind == false)
             {
-                Debug.Log("Get Item1 : " + args.interactableObject.transform.name);
-                Debug.Log("Get Item2 : " + _item.charactorValue);
-
                 playerMission = GameDB.Instance.playerMission;
-                Debug.Log("Get Item3 : " + playerMission.isChaser);
-                //_item.isFind = true;
-
                 //탈출구 열쇠를 잡았다면
                 if(_item.gameObject.TryGetComponent<FinalKey>(out FinalKey finalKey))
                     EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Get_Final_Key);
@@ -52,9 +45,7 @@ namespace SeongMin
                 // 플레이어의 미션 배열에 _item 오브젝트와 일치하는 게 있으면 if문 안에 코드를 실행
                 if (_item.charactorValue == CharactorValue.runner && playerMission.MissionItemCheck(_item.gameObject, playerMission.playerMissionArray))
                 {
-                    print("잡았습니다");
                     _item.isFind = true;
-
                     //UI이벤트
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     int index = -1;
@@ -70,16 +61,15 @@ namespace SeongMin
 
                     // 아이템 끄기
                     _item.triggerObject.SetActive(false);
-                    _item.gameObject.SetActive(false);
-                    _item.triggerObject.SetActive(false);
                     _item.miniMap.SetActive(false);
+                    _item.gameObject.SetActive(false);
                     // 아이템 표시 UI 끄기
                     var canvas = GameDB.Instance.itemInfomationCanvas;
                     canvas.image.SetActive(false);
                     canvas.text.gameObject.SetActive(false);
                     playerMission.runnerMissionClearCount++;
-                    //이 클라이언트 플레이어가 복수자가 아니고, 일반 미션 클리어한 갯수가 2개이상 이면 실행
-                    if (playerMission.runnerMissionClearCount >= 2)
+                    //일반 미션 클리어한 갯수 체크
+                    if (playerMission.runnerMissionClearCount >= playerMission.playerMissionArray.Length - 1)
                     {
                         // 파이털 키 생성하기
                         GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
@@ -97,9 +87,9 @@ namespace SeongMin
                         exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
                         Debug.Log("미니맵 생성");
                     }
-                    GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
+                    // 모든 클라이언트에게 전체 미션 진행 갯수 올리기
+                    photonView.RPC("RunnersAllMissionCount", RpcTarget.All);
                     playerMission.AllPlayerMissionScoreUpdate();
-
                     //팁
                     if (this.hasTipMap)
                     {
@@ -111,16 +101,12 @@ namespace SeongMin
                         EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "FinalKey");
                         this.hasTipFinalKey = false;
                     }
-
-                    //TODO 이 아이템 인벤토리에 넣기
                 }
                 // 내가 복수자 일 때만 복수자용 아이템 카운팅 하기
                 else if (_item.charactorValue == CharactorValue.chaser
                     && playerMission.isChaser
                     && playerMission.MissionItemCheck(_item.gameObject, playerMission.chaserMissionArray))
                 {
-                    Debug.Log("Chaser : " + args.interactableObject.transform.name);
-
                     //UI이벤트
                     EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Complete_Mission, _item.name);
                     int index = -1;
@@ -180,6 +166,11 @@ namespace SeongMin
                 // 카운팅 초기화
                 playerMission.chaserMissionClearCount = 0;
             }
+        }
+        [PunRPC]
+        private void RunnersAllMissionCount()
+        {
+            GameManager.Instance.roundManager.currentRoundPlayersMissionCount++;
         }
     }
 

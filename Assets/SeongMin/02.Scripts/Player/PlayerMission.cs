@@ -32,7 +32,7 @@ namespace SeongMin
         public Character currentRunnerCharacrer;
         [Header("현재 도망자 캐릭터 배열")]
         public Character[] currentRunnerCharacrers;
-        [Header("도망자 프리팹")]
+        [Header("복수자 프리팹")]
         public GameObject chaserPrefab;
 
 
@@ -67,49 +67,12 @@ namespace SeongMin
 
             //this.currentRunnerCharacrers = this.GetComponentsInChildren<Character>();
         }
-        private void Start()
-        {
-            //���� ����
-            StartCoroutine(DelayRoutine());
-
-            //테스트
-            //yield return new WaitForSeconds(5f);
-            //if (this.isChaser)
-            //{
-            //    photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
-            //}
-        }
-
-        IEnumerator DelayRoutine()
-        {
-            yield return new WaitForSeconds(5f);
-
-            if (!isChaser)
-            {
-                foreach (var item in playerMissionArray)
-                {
-                    item.transform.Find("MinimapIcon");
-                }
-            }
-            else
-            {
-                foreach (var item in chaserMissionArray)
-                {
-                    item.transform.Find("MinimapIcon");
-                }
-            }
-
-        }
-
         public bool MissionItemCheck(GameObject _item, GameObject[] _array)
         {
             bool _value = false;
             Debug.Log("Item : " + _item);
             for (int i = 0; i < _array.Length; i++)
             {
-                //Debug.Log(_item + " / " + _array[i]);
-                //Debug.Log(_item.name + " / " + _array[i].name);
-
                 if (_array[i].name == _item.name)
                     _value = true;
             }
@@ -121,25 +84,19 @@ namespace SeongMin
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
             value = (float)Math.Round(value, 2);
             value *= 100;
-            print(value + "���� ���� �� ���� �ۼ�Ʈ");
-            // ��ü �̼� �ۼ�Ʈ �ٲ� �� �����ϰ� ��û�ϱ�
-            //GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
             GameManager.Instance.roundManager.RPCSendScoreUpdate((int)value);
         }
 
         [PunRPC]
         public void CharacterChange(string _value)
         {
-            Debug.LogFormat("���� ���� RPC{0}", _value);
             if (_value == "Chaser")
             {
                 chaserPrefab.SetActive(true);
-                //currentRunnerCharacrer.gameObject.SetActive(false);
                 foreach (Character character in currentRunnerCharacrers) character.gameObject.SetActive(false);
             }
             else
             {
-                //currentRunnerCharacrer.gameObject.SetActive(true);]
                 chaserPrefab.SetActive(false);
             }
             //괴물 변신 알림
@@ -149,7 +106,6 @@ namespace SeongMin
         {
             StartCoroutine(RespawnPlayer());
         }
-
         private IEnumerator RespawnPlayer()
         {
             yield return new WaitForSeconds(0.3f);
@@ -162,8 +118,6 @@ namespace SeongMin
                 // 플레이어 재 위치 시키기
                 GameDB.Instance.myPlayer.transform.position = SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position+Vector3.up;
             }
-
-
             yield break;
         }
         [PunRPC]
