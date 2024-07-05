@@ -3026,6 +3026,109 @@ MonoBehaviour:
   - m_Rig: {fileID: 2454533136838680745}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &7552130190591036758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096075468381986903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab39cb7ed19a0b4199835973edd7c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandIK: {fileID: 237553801288887823}
+  rightHandIK: {fileID: 7622251909170703914}
+  headIK: {fileID: 5917987423237647540}
+  leftHandController: {fileID: 927024852629838001}
+  rightHandController: {fileID: 7893504428891386148}
+  hmd: {fileID: 1497171489332586268}
+  leftOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: -90, y: 180, z: 0}
+  rightOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: -90, y: 180, z: 0}
+  headOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  smoothValue: 0.1
+  modelHeight: 2.9
+--- !u!114 &6747704889837046606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096075468381986903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pv: {fileID: 0}
+  FireAxe: {fileID: 447811445966961580}
+  dieAnims:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isEnergyDown: 0
+  isDie: 0
+  isRunBtnDown: 0
+--- !u!114 &5530197642181525178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096075468381986903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: Move
+  - Type: 1
+    SynchronizeType: 2
+    Name: Left Grip
+  - Type: 1
+    SynchronizeType: 2
+    Name: Left Trigger
+  - Type: 1
+    SynchronizeType: 2
+    Name: Right Grip
+  - Type: 1
+    SynchronizeType: 2
+    Name: Right Trigger
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
+  - SynchronizeType: 0
+    LayerIndex: 2
+--- !u!114 &6549464174681808422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096075468381986903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!136 &5002763283625766833
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3560,6 +3663,109 @@ MonoBehaviour:
   - m_Rig: {fileID: 323501151480293718}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &393380273534313707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209871280481194162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab39cb7ed19a0b4199835973edd7c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandIK: {fileID: 3188722091661321645}
+  rightHandIK: {fileID: 6727728748730424}
+  headIK: {fileID: 6213919910637375492}
+  leftHandController: {fileID: 927024852629838001}
+  rightHandController: {fileID: 7893504428891386148}
+  hmd: {fileID: 1497171489332586268}
+  leftOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: -90, y: 180, z: 0}
+  rightOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: -90, y: 180, z: 0}
+  headOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  smoothValue: 0.1
+  modelHeight: 2.9
+--- !u!114 &4515049768067840740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209871280481194162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pv: {fileID: 0}
+  FireAxe: {fileID: 447811445966961580}
+  dieAnims:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isEnergyDown: 0
+  isDie: 0
+  isRunBtnDown: 0
+--- !u!114 &9082723997564200933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209871280481194162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: Move
+  - Type: 1
+    SynchronizeType: 2
+    Name: Left Grip
+  - Type: 1
+    SynchronizeType: 2
+    Name: Left Trigger
+  - Type: 1
+    SynchronizeType: 2
+    Name: Right Grip
+  - Type: 1
+    SynchronizeType: 2
+    Name: Right Trigger
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
+  - SynchronizeType: 0
+    LayerIndex: 2
+--- !u!114 &662856113354543662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209871280481194162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!136 &8483520106763727463
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11016,6 +11222,12 @@ MonoBehaviour:
   - {fileID: 9082723997564200933}
   - {fileID: 5811930333523427140}
   - {fileID: 1538609854833007018}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 544615763576767039}
   - {fileID: 2050152540694940347}
   - {fileID: 948411426445154261}
@@ -16699,6 +16911,113 @@ MonoBehaviour:
   - m_Rig: {fileID: 3950919769586989900}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &4315010459282881082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210806223002501516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab39cb7ed19a0b4199835973edd7c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandIK: {fileID: 5223302159558350270}
+  rightHandIK: {fileID: 3132164541756339813}
+  headIK: {fileID: 6456340491321867321}
+  leftHandController: {fileID: 927024852629838001}
+  rightHandController: {fileID: 7893504428891386148}
+  hmd: {fileID: 1497171489332586268}
+  leftOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: -90, y: -180, z: 0}
+  rightOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: -90, y: -180, z: 0}
+  headOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  smoothValue: 0.1
+  modelHeight: 3
+--- !u!114 &1613875989780044681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210806223002501516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df2abd2b9f8b5642845396c4dd04a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pv: {fileID: 0}
+  FireAxe: {fileID: 447811445966961580}
+  dieAnims:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isEnergyDown: 0
+  isDie: 0
+  isRunBtnDown: 0
+--- !u!114 &479101846059634882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210806223002501516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: Move
+  - Type: 1
+    SynchronizeType: 2
+    Name: Left Grip
+  - Type: 1
+    SynchronizeType: 2
+    Name: Left Trigger
+  - Type: 1
+    SynchronizeType: 2
+    Name: Right Grip
+  - Type: 1
+    SynchronizeType: 2
+    Name: Right Trigger
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
+  - SynchronizeType: 0
+    LayerIndex: 2
+  - SynchronizeType: 0
+    LayerIndex: 3
+  - SynchronizeType: 0
+    LayerIndex: 4
+--- !u!114 &5230459196823382439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210806223002501516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!136 &1780690741825212353
 CapsuleCollider:
   m_ObjectHideFlags: 0
