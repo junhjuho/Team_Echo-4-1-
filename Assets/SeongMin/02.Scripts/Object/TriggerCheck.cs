@@ -44,12 +44,9 @@ public class TriggerCheck : MonoBehaviour
                     if (GameDB.Instance.playerMission.MissionItemCheck(itemObject.gameObject, GameDB.Instance.playerMission.chaserMissionArray))
                     {
                         canvas.text.color = Color.green;
+                        itemObject.fx.SetActive(true);
                     }
                 }
-            }
-            if (itemObject.charactorValue == CharactorValue.chaser)
-            {
-                itemObject.fx.SetActive(true);
             }
         }
     }
