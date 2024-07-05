@@ -1,5 +1,6 @@
 using NHR;
 using Photon.Pun;
+using Photon.Realtime;
 using SeongMin;
 using System;
 using System.Collections;
@@ -78,7 +79,7 @@ namespace SeongMin
             }
             return _value;
         }
-       
+
         public void AllPlayerMissionScoreUpdate()
         {
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
@@ -112,20 +113,23 @@ namespace SeongMin
             GameDB.Instance.Shuffle(SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList);
             if (photonView.IsMine)
             {
-                photonView.RPC("RunnerSetActiveRPC", RpcTarget.All);
-                // 플레이어 캐릭터 다시 키고
-                SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
-                // 플레이어 재 위치 시키기
-                GameDB.Instance.myPlayer.transform.position = SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position+Vector3.up;
+                int i = 0;
+                foreach(Player player in PhotonNetwork.PlayerList)
+                {
+                    photonView.RPC("RunnerSetActiveRPC", player, i);
+                    i++;
+                }
             }
             yield break;
         }
         [PunRPC]
-        public void RunnerSetActiveRPC()
+        public void RunnerSetActiveRPC(int _num)
         {
-            Debug.Log("Respawn Character ID : " + InfoManager.Instance.PlayerInfo.nowCharacterId);
-            if(GameDB.Instance.playerMission.isChaser == false)
-            SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
+            // 플레이어 캐릭터 다시 키고
+            if (GameDB.Instance.playerMission.isChaser == false)
+                SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
+            // 플레이어 재 위치 시키기
+            GameDB.Instance.myPlayer.transform.position = SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[_num].position + Vector3.up;
         }
 
         public void WinCheck(string _value)
