@@ -1,5 +1,6 @@
 using Photon.Pun;
 using SeongMin;
+using System;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
@@ -41,7 +42,7 @@ public class MonsterMovement : PlayerMovement
         {
             base.PlayerMove();
             moveProvider.moveSpeed = 3f;
-            animator.SetFloat("Walk", dir.magnitude);
+            animator.SetFloat("Walk", Convert.ToInt32(isMove));
         }
     }
 
