@@ -12,26 +12,27 @@ namespace SeongMin
     public class PlayerMission : MonoBehaviour
     {
         public PhotonView photonView;
-        [Header("������ ���� �޾Ҵ��� ����")]
+        [Header("복수자 여부")]
         public bool isChaser = false;
-        [Header("���� �̼� ���� �޾Ҵ��� ����")]
+        [Header("팀 미션 배정 여부")]
         public bool isTeamMission = false;
-        [Header("���� �������� �÷��̾��� �̼� ����Ʈ ")]
+        [Header("플레이어 미션 배열")]
         public GameObject[] playerMissionArray;
-        [Header("���� �������� �÷��̾��� ���� �̼� ����Ʈ ")]
+        [Header("협동 미션 배열")]
         public GameObject[] playerTeamPlayMissionArray;
-        [Header("���� �������� ���������� �̼� ����Ʈ ")]
+        [Header("복수자 미션 배열")]
         public GameObject[] chaserMissionArray;
-        [Header("���� �Ϸ��� �̼� ����")]
+        [Header("도망자 미션 완료 갯수")]
         public int runnerMissionClearCount = 0;
-        [Header("���� �Ϸ��� ���÷��� �̼� ����")]
+        [Header("협동 미션 완료 갯수")]
         public int playerTeamPlayMissionCount = 0;
-        [Header("���� �Ϸ��� ������ �̼� ����")]
+        [Header("복수자 미션 완료 갯수")]
         public int chaserMissionClearCount = 0;
-        [Header("�Ϲ� ���� ĳ���� ������Ʈ")]
+        [Header("현재 도망자 캐릭터")]
         public Character currentRunnerCharacrer;
+        [Header("현재 도망자 캐릭터 배열")]
         public Character[] currentRunnerCharacrers;
-        [Header("������ ĳƽ�� ������Ʈ")]
+        [Header("도망자 프리팹")]
         public GameObject chaserPrefab;
 
 
