@@ -124,9 +124,8 @@ namespace SeongMin
         public void RunnerSetActiveRPC()
         {
             Debug.Log("Respawn Character ID : " + InfoManager.Instance.PlayerInfo.nowCharacterId);
+            if(GameDB.Instance.playerMission.isChaser == false)
             SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
-            GameDB.Instance.myPlayer.transform.position =
-            SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
         }
 
         public void WinCheck(string _value)
