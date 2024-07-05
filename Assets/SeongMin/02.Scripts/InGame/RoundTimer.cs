@@ -67,7 +67,7 @@ namespace SeongMin
 
         IEnumerator EndCoroutine()
         {
-            yield return new WaitForSecondsRealtime(2f);
+            yield return new WaitForSecondsRealtime(1f);
             GameDB.Instance.playerMission.WinCheck("ChaserWin");
         }
     }
