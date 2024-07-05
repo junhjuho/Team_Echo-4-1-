@@ -6,11 +6,11 @@ namespace NHR
 {
     public class TitleSceneManager : MonoBehaviour
     {
-        public UIKeyboard uiKeyboard;
+        // public UIKeyboard uiKeyboard;
         private void Awake()
         {
-            this.uiKeyboard = FindObjectOfType<UIKeyboard>();
-            this.Init();
+            // this.uiKeyboard = FindObjectOfType<UIKeyboard>();
+            // this.Init();
         }
         public void Init()
         {
