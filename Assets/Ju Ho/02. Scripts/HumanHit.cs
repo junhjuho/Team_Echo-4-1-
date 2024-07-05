@@ -17,14 +17,12 @@ public class HumanHit : MonoBehaviour, IDamageable
             SeongMin.GameManager.Instance.playerManager.humanHit = this;
     }
 
-
     void Start()
     {
         pv = this.transform.GetComponentInParent<PhotonView>();
 
         if (pv.IsMine && SeongMin.GameManager.Instance.playerManager != null)
             SeongMin.GameManager.Instance.playerManager.humanHit = this;
-
     }
 
     void OnDisable() // 캐릭터 오브젝트 비활성화될 시

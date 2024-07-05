@@ -26,5 +26,11 @@ public class PlayerMovement : MonoBehaviour
         moveProvider = FindObjectOfType<ActionBasedContinuousMoveProvider>(); // XR Origin에 있는 컴포넌트
         playerSyncController = this.transform.GetComponentInParent<PlayerSyncController>();
         //inputActionAsset = Resources.Load<InputActionAsset>("XRI Default Input Actions");
+
+    }
+
+    public virtual void Move()
+    {
+        move = moveProvider.leftHandMoveAction.reference.action.ReadValue<Vector2>();
     }
 }

@@ -23,16 +23,16 @@ public class GhostFingerController : MonoBehaviour
         animator = this.GetComponent<Animator>();
         pv = this.GetComponent<PhotonView>();
 
-        if(handType == HandType.LeftHand)
+        if (handType == HandType.LeftHand)
         {
-            if(this.transform.GetParentComponent<ActionBasedController>() != null)
+            if (this.transform.GetParentComponent<ActionBasedController>() != null)
             {
                 controller = this.GetComponentInParent<ActionBasedController>();
             }
         }
-        else if(handType == HandType.RightHand)
+        else if (handType == HandType.RightHand)
         {
-            if(this.transform.GetParentComponent<CustomActionBasedController>() != null)
+            if (this.transform.GetParentComponent<CustomActionBasedController>() != null)
             {
                 controller = this.GetComponentInParent<CustomActionBasedController>();
             }

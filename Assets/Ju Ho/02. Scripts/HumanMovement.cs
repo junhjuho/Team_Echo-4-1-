@@ -15,7 +15,6 @@ public class HumanMovement : PlayerMovement, IMovable
 {
     CustomActionBasedController customActionBasedController;
     public bool isEnergyDown = false;
-    public bool isDie;
     public bool isRunBtnDown;
 
     public void OnEnable()
@@ -43,9 +42,9 @@ public class HumanMovement : PlayerMovement, IMovable
     {
         if (pv.IsMine)
         {
-            move = moveProvider.leftHandMoveAction.reference.action.ReadValue<Vector2>();
+            base.Move();
 
-            isRunBtnDown = customActionBasedController.runAction.reference.action.IsPressed();
+            isRunBtnDown = customActionBasedController.runAction.reference.action.IsPressed(); // 오른손 컨트롤러 A버튼
 
             float moveBlendtree = isRunBtnDown && !isEnergyDown ? 1f : 0.5f; // 달리기 버튼에 따른 블렌드 트리
 

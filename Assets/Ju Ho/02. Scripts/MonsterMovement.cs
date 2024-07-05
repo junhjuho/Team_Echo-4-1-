@@ -23,11 +23,11 @@ public class MonsterMovement : PlayerMovement, IMovable
         ControllerActive(true);
     }
 
-    void ControllerActive(bool active)
+    void ControllerActive(bool isActive)
     {
         for (int i = 0; i < controllers.Length; i++)
         {
-            controllers[i].transform.GetChild(0).gameObject.SetActive(active);
+            controllers[i].transform.GetChild(0).gameObject.SetActive(isActive);
         }
     }
 
@@ -42,6 +42,8 @@ public class MonsterMovement : PlayerMovement, IMovable
 
     public void Move()
     {
+        base.Move();
+
         if (pv.IsMine)
         {
             move = moveProvider.leftHandMoveAction.reference.action.ReadValue<Vector2>();

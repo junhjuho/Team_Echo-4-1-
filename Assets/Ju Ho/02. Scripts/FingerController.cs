@@ -1,19 +1,21 @@
 using Photon.Pun;
-using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class FingerMovement : PlayerMovement
+public class FingerController : MonoBehaviour
 {
     public ActionBasedController[] controllers;
+    PhotonView pv;
+    ActionBasedContinuousMoveProvider moveProvider;
+    Animator animator;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
+        animator = this.GetComponent<Animator>();
+        pv = this.GetComponent<PhotonView>();
+        moveProvider = FindAnyObjectByType<ActionBasedContinuousMoveProvider>();
 
         for (int i = 0; i < controllers.Length; i++)
         {
