@@ -13,15 +13,16 @@ namespace NHR
 
         [Header("미션 아이템")]
         public ItemObject targetItem;
+        public string itemName;
 
         private void Start()
         {
             //미션 완료하면 폰트 바꾸기
-            if (this.targetItem.isFind) this.textFirstStep.fontStyle = FontStyles.Strikethrough;
+            //if (this.targetItem.isFind) this.textFirstStep.fontStyle = FontStyles.Strikethrough;
         }
-        public void UpdateMission()
-        {
-            if (this.targetItem.isFind) this.textFirstStep.fontStyle = FontStyles.Strikethrough;
-        }
+        //public void UpdateMission()
+        //{
+        //    if (this.targetItem.isFind) this.textFirstStep.fontStyle = FontStyles.Strikethrough;
+        //}
     }
 }

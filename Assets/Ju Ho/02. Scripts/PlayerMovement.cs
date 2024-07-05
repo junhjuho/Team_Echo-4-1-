@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     protected Animator animator;
     protected InputActionAsset inputActionAsset;
     protected ActionBasedContinuousMoveProvider moveProvider;
-    protected PhotonView pv;
+    protected PlayerSyncController playerSyncController;
+    public PhotonView pv;
 
     protected Vector2 dir;
     protected Vector2 movePosition;
@@ -29,9 +30,6 @@ public class PlayerMovement : MonoBehaviour
 
     public virtual void PlayerMove() // 걷기 입력 이벤트
     {
-        movePosition = inputActionAsset.actionMaps[3].actions[5].ReadValue<Vector2>();
         isMove = inputActionAsset.actionMaps[3].actions[5].IsPressed();
-
-        dir = new Vector2(movePosition.x, movePosition.y).normalized;
     }
 }

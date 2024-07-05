@@ -9,6 +9,7 @@ using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace NHR
 {
@@ -26,8 +27,14 @@ namespace NHR
 
         private void Awake()
         {
-            GameDB.Instance.playerController = this;
-            this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            if(photonView.IsMine)
+            {
+                GameDB.Instance.playerController = this;
+                GameManager.Instance.lobbySceneManager.playerController = this;
+                SeongMin.UIManager.Instance.robbySceneMenu.customPlayer.playerController = this;
+
+                this.nowCharacterID = InfoManager.Instance.PlayerInfo.nowCharacterId;
+            }
         }
         private void Start()
         {
@@ -40,14 +47,28 @@ namespace NHR
                 this.characters[nowCharacterID].gameObject.SetActive(true);
                 this.nowCharacter = this.characters[nowCharacterID];
                 SeongMin.GameDB.Instance.playerMission.currentRunnerCharacrer = this.characters[nowCharacterID];
+                
+                this.UpdateCharacter(nowCharacterID);
             }
-            this.UpdateCharacter(nowCharacterID);
         }
         public void UpdateCharacter(int id)
         {
             Debug.Log("UpdateCharacter");
             photonView.RPC("UpdateCharacterRPC", RpcTarget.OthersBuffered, id);
             this.ApplyCharacter(id);
+        }
+
+        //[PunRPC]
+        //public void CharacterRePosition()
+        //{
+        //    int rand = Random.Range(0, GameManager.Instance.inGameMapManager.playerSpawnPositionList.Count);
+        //    GameDB.Instance.myPlayer.transform.position = GameManager.Instance.inGameMapManager.playerSpawnPositionList[rand].position;
+        //    Invoke("CharacterOn", 1f);
+        //}
+        public void CharacterOn()
+        {
+            nowCharacter.gameObject.SetActive(true);
+            SeongMin.GameManager.Instance.playerManager.humanMovement.isDie = true;
         }
 
         [PunRPC]

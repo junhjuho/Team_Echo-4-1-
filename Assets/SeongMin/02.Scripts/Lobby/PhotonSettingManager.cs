@@ -36,14 +36,17 @@ namespace SeongMin
         public override void OnJoinedRoom()
         {
             print("방에 입장했습니다.");
-            var _player = PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
-            _player.transform.position = GameManager.Instance.lobbySceneManager.playerSpawnPointList[0].position;
-            GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
-            GameManager.Instance.lobbySceneManager.playerController = _player.GetComponent<PlayerController>();
-            UIManager.Instance.robbySceneMenu.customPlayer.playerController = _player.GetComponent<PlayerController>();
+            PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
+            //_player.transform.position = GameManager.Instance.lobbySceneManager.playerSpawnPointList[0].position;
+            //GameManager.Instance.lobbySceneManager.playerMission = _player.GetComponent<PlayerMission>();
+
+            //튜토리얼 임의 지정
+            //GameManager.Instance.lobbySceneManager.playerMission.isChaser = true;
 
             if (PhotonNetwork.IsMasterClient)
             GameManager.Instance.lobbySceneManager.isLobbySetting = true; // 로비 세팅 가능함을 알리기
+
+
         }
 
 

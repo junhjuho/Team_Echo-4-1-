@@ -38,6 +38,7 @@ namespace NHR
         private WaitForSeconds typingClearSec = new WaitForSeconds(1.5f);
         private void Awake()
         {
+            SeongMin.GameManager.Instance.tutorialSceneManager = this;
             //임시
             DataManager.Instance.LoadTutorialData();
 
@@ -157,18 +158,14 @@ namespace NHR
                     break;
                 //손전등 Trigger
                 case 3:
-
+                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Trigger");
                     break;
-                //배터리 잡기
+                //열쇠 잡기+소켓 넣기
                 case 4:
                     this.uiTutorialPlayer.tutorialHands.SetAnimation("Grab");
                     break;
-                //열쇠 잡기+소켓 넣기
-                case 5:
-                    this.uiTutorialPlayer.tutorialHands.SetAnimation("Grab");
-                    break;
                 //복수자 아이템 잡기
-                case 6:
+                case 5:
                     this.uiTutorialPlayer.tutorialHands.SetAnimation("Grab");
                     break;
             }

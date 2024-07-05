@@ -5,31 +5,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace SeongMin
 {
     public class PlayerMission : MonoBehaviour
     {
         public PhotonView photonView;
-        [Header("º¹¼öÀÚ ¹èÁ¤ ¹Ş¾Ò´ÂÁö ¿©ºÎ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¾Ò´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public bool isChaser = false;
-        [Header("Çùµ¿ ¹Ì¼Ç ¹èÁ¤ ¹Ş¾Ò´ÂÁö ¿©ºÎ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¾Ò´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public bool isTeamMission = false;
-        [Header("ÇöÀç ¹èÁ¤¹ŞÀº ÇÃ·¹ÀÌ¾îÀÇ ¹Ì¼Ç ¸®½ºÆ® ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ")]
         public GameObject[] playerMissionArray;
-        [Header("ÇöÀç ¹èÁ¤¹ŞÀº ÇÃ·¹ÀÌ¾îÀÇ Çùµ¿ ¹Ì¼Ç ¸®½ºÆ® ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ")]
         public GameObject[] playerTeamPlayMissionArray;
-        [Header("ÇöÀç ¹èÁ¤¹ŞÀº º¹¼öÀÚÀÇÀÇ ¹Ì¼Ç ¸®½ºÆ® ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ")]
         public GameObject[] chaserMissionArray;
-        [Header("ÇöÀç ¿Ï·áÇÑ ¹Ì¼Ç °¹¼ö")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public int runnerMissionClearCount = 0;
-        [Header("ÇöÀç ¿Ï·áÇÑ ÆÀÇÃ·¹ÀÌ ¹Ì¼Ç °¹¼ö")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public int playerTeamPlayMissionCount = 0;
-        [Header("ÇöÀç ¿Ï·áÇÑ º¹¼öÀÚ ¹Ì¼Ç °¹¼ö")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½")]
         public int chaserMissionClearCount = 0;
-        [Header("ÀÏ¹İ »óÅÂ Ä³¸¯ÅÍ ¿ÀºêÁ§Æ®")]
+        [Header("ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
         public Character currentRunnerCharacrer;
-        [Header("º¹¼öÀÚ Ä³Æ½ÅÍ ¿ÀºêÁ§Æ®")]
+        public Character[] currentRunnerCharacrers;
+        [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³Æ½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
         public GameObject chaserPrefab;
 
 
@@ -40,7 +42,8 @@ namespace SeongMin
 
             photonView = GetComponent<PhotonView>();
             chaserPrefab = this.transform.Find("zombie").gameObject;
-            GameDB.Instance.playerMission = this;
+            if (photonView.IsMine)
+                GameDB.Instance.playerMission = this;
 
             if (GameManager.Instance.missionManager != null)
             {
@@ -51,68 +54,167 @@ namespace SeongMin
 
                 chaserMissionArray = new GameObject[missionManager.chaserMissionCount];
             }
+
+            //if(GameManager.Instance.lobbySceneManager != null)
+            //{
+            //    this.chaserMissionArray = new GameObject[GameManager.Instance.lobbySceneManager.lobbyMissionCount];
+            //    //í€˜ìŠ¤íŠ¸ ì„ì˜ ì§€ì •_ë³µìˆ˜ì
+            //    this.chaserMissionArray[0] = GameManager.Instance.lobbySceneManager.knife;
+            //    SeongMin.GameManager.Instance.tutorialSceneManager.questObjectManager.Init();
+
+            //}
+
+            //this.currentRunnerCharacrers = this.GetComponentsInChildren<Character>();
         }
         private void Start()
         {
-            //±«¹° º¯½Å
-            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Change_Monster, new EventHandler((type) =>
-            {
-                //º¹¼öÀÚ ¹èÁ¤µÈ °æ¿ì¿¡¸¸ ±«¹° º¯½Å
-                if (this.isChaser)
-                {
-                    Debug.Log("<color=red>±«¹° º¯½Å ¿Ï·á</color>");
-                    //±«¹° ¸ğµ¨·Î ¹Ù²ï°É ¸ğµç ÇÃ·¹ÀÌ¾î¿¡°Ô µ¿±âÈ­ ÇÏ±â
-                    photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
-                }
-                //GameManager.Instance.roundTimer.MonsterTimerStart();
-            }));
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            StartCoroutine(DelayRoutine());
+
+            //í…ŒìŠ¤íŠ¸
+            //yield return new WaitForSeconds(5f);
+            //if (this.isChaser)
+            //{
+            //    photonView.RPC("CharacterChange", RpcTarget.All, "Chaser");
+            //}
         }
+
+        IEnumerator DelayRoutine()
+        {
+            yield return new WaitForSeconds(5f);
+
+            if (!isChaser)
+            {
+                foreach (var item in playerMissionArray)
+                {
+                    item.transform.Find("MinimapIcon");
+                }
+            }
+            else
+            {
+                foreach (var item in chaserMissionArray)
+                {
+                    item.transform.Find("MinimapIcon");
+                }
+            }
+
+        }
+
         public bool MissionItemCheck(GameObject _item, GameObject[] _array)
         {
             bool _value = false;
-
+            Debug.Log("Item : " + _item);
             for (int i = 0; i < _array.Length; i++)
             {
-                Debug.Log(_item + " / " + _array[i]);
-                Debug.Log(_item.name + " / " + _array[i].name);
+                //Debug.Log(_item + " / " + _array[i]);
+                //Debug.Log(_item.name + " / " + _array[i].name);
 
-                if (_array[i] == _item)
+                if (_array[i].name == _item.name)
                     _value = true;
             }
             return _value;
         }
-        [PunRPC]
-        public void WinCheck()
-        {
-
-            if (PhotonNetwork.IsMasterClient)
-            {
-
-
-            }
-        }
+       
         public void AllPlayerMissionScoreUpdate()
         {
             float value = GameManager.Instance.roundManager.currentRoundPlayersMissionCount / (playerMissionArray.Length * PhotonNetwork.PlayerList.Length);
             value = (float)Math.Round(value, 2);
             value *= 100;
-            print(value+"³»°¡ ÀâÀº °Å ÃÑÇÕ ÆÛ¼¾Æ®");
-            // ÀüÃ¼ ¹Ì¼Ç ÆÛ¼¾Æ® ¹Ù²ï °ª Àü´ŞÇÏ°Ô ¿äÃ»ÇÏ±â
-            GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
+            print(value + "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½Æ®");
+            // ï¿½ï¿½Ã¼ ï¿½Ì¼ï¿½ ï¿½Û¼ï¿½Æ® ï¿½Ù²ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Ã»ï¿½Ï±ï¿½
+            //GameManager.Instance.roundManager.photonView.RPC("SendAllPlayerMissionScoreUpdate", RpcTarget.All, (int)value);
+            GameManager.Instance.roundManager.RPCSendScoreUpdate((int)value);
         }
 
         [PunRPC]
         public void CharacterChange(string _value)
         {
+            Debug.LogFormat("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ RPC{0}", _value);
             if (_value == "Chaser")
             {
                 chaserPrefab.SetActive(true);
-                currentRunnerCharacrer.gameObject.SetActive(false);
+                //currentRunnerCharacrer.gameObject.SetActive(false);
+                foreach (Character character in currentRunnerCharacrers) character.gameObject.SetActive(false);
             }
             else
             {
-                currentRunnerCharacrer.gameObject.SetActive(true);
+                //currentRunnerCharacrer.gameObject.SetActive(true);]
                 chaserPrefab.SetActive(false);
+            }
+            //ê´´ë¬¼ ë³€ì‹  ì•Œë¦¼
+            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "chaserChangeOn");
+        }
+        public void RunnerSetActive()
+        {
+            StartCoroutine(RespawnPlayer());
+        }
+
+        private IEnumerator RespawnPlayer()
+        {
+            yield return new WaitForSeconds(0.3f);
+            GameDB.Instance.Shuffle(SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList);
+            if (photonView.IsMine)
+            {
+                photonView.RPC("RunnerSetActiveRPC", RpcTarget.All);
+                // í”Œë ˆì´ì–´ ìºë¦­í„° ë‹¤ì‹œ í‚¤ê³ 
+                SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
+                // í”Œë ˆì´ì–´ ì¬ ìœ„ì¹˜ ì‹œí‚¤ê¸°
+                GameDB.Instance.myPlayer.transform.position = SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position+Vector3.up;
+            }
+
+
+            yield break;
+        }
+        [PunRPC]
+        public void RunnerSetActiveRPC()
+        {
+            Debug.Log("Respawn Character ID : " + InfoManager.Instance.PlayerInfo.nowCharacterId);
+            SeongMin.GameManager.Instance.playerManager.humanMovement.gameObject.SetActive(true);
+            GameDB.Instance.myPlayer.transform.position =
+            SeongMin.GameManager.Instance.inGameMapManager.playerSpawnPositionList[0].position;
+        }
+
+        public void WinCheck(string _value)
+        {
+            if (_value == "RunnerWin")
+            {
+                photonView.RPC("RunnerWin", RpcTarget.All);
+            }
+            else
+            {
+                photonView.RPC("ChaserWin", RpcTarget.All);
+            }
+            SeongMin.GameManager.Instance.roundManager.RoundPlayerDataReset();
+            SeongMin.GameManager.Instance.roundManager.photonView.RPC("AllPlayerLobbySceneLoad", RpcTarget.MasterClient);
+        }
+        [PunRPC]
+        public void RunnerWin()
+        {
+            GameDB.Instance.hasGameData = true;
+            // ì£¼ì˜ !!!!! ì—¬ê¸°ì„œ ì´ ì˜¤ë¸Œì íŠ¸ë¥¼ í˜¸ì¶œ í•œ ê±´ ë‹¤ë¥¸ PhotonViewë¥¼ ê°€ì§„
+            // ì˜¤ë¸Œì íŠ¸ê°€ ê°€ì§€ê³  ìˆìœ¼ë¯€ë¡œ ì´ì „ì— í• ë‹¹ìœ¼ë¡œ PhotonView isMineìœ¼ë¡œ í™•ì •ëœ
+            // ìê¸° ìì‹ ì˜ ë¡œì»¬ playerMission.isChaserë¥¼ ê²€ì‚¬í•´ì•¼ í•˜ë¯€ë¡œ 
+            // ì‹±ê¸€í†¤ì— ìˆëŠ” ê±¸ ê°€ì§€ê³  ì™€ì„œ ê²€ì‚¬í•©ë‹ˆë‹¤ ! 
+            if (GameDB.Instance.playerMission.isChaser == false)
+            {
+                GameDB.Instance.isWin = true;
+            }
+            else
+            {
+                GameDB.Instance.isWin = false;
+            }
+        }
+        [PunRPC]
+        public void ChaserWin()
+        {
+            GameDB.Instance.hasGameData = true;
+            if (GameDB.Instance.playerMission.isChaser == false)
+            {
+                GameDB.Instance.isWin = false;
+            }
+            else
+            {
+                GameDB.Instance.isWin = true;
             }
         }
     }

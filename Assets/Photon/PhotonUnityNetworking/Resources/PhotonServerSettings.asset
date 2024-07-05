@@ -57,6 +57,20 @@ MonoBehaviour:
   - AllPlayerLobbySceneLoad
   - PlayFootStepSound
   - PhotonFootStepSound
+  - MonsterSound
+  - StartSound
+  - PhotonMonsterSound
+  - PhotonStartSound
+  - PhotonZombieSound
+  - BloodEffect
+  - PhotonBloodEffect
+  - CharacterRePosition
+  - RunnerSetActive
+  - RunnerSetActiveRPC
+  - isLose
+  - IsWin
+  - ChaserWin
+  - RunnerWin
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

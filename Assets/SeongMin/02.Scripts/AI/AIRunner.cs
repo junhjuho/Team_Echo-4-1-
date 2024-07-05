@@ -14,8 +14,10 @@ namespace SeongMin
         private Animator animator;
         private Transform targetPosition;
         private PhotonView photonView;
+        private AudioSource audioSource;
         private bool changeState = false;
         private int rand = 0;
+        public GameObject bloodEffect;
         public enum State
         {
             Die,
@@ -29,6 +31,7 @@ namespace SeongMin
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             photonView = GetComponent<PhotonView>();
+            audioSource = GetComponent<AudioSource>();
         }
         private IEnumerator Start()
         {
@@ -92,18 +95,29 @@ namespace SeongMin
 
         public void OnHit(Collider other)
         {
-            if(other.gameObject.name == "fireaxe")
+            Debug.Log("OnHit : " + other.gameObject.name);
+            if(other.gameObject.name == "Fireaxe")
             {
                 agent.speed = 0;
                 state = State.Die;
                 animator.SetTrigger("isDie");
-                Invoke("Die", 0.5f);
+                Invoke("Die", 3f);
+
+                var effectPos = this.transform.position + Vector3.up * 1.27f;
+                Instantiate(bloodEffect, effectPos, Quaternion.identity);
             }
         }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("AI Ãæµ¹ : " + other.gameObject.name);
+            OnHit(other);
+            //other.bounds.ClosestPoint(other.transform.position);
+        }
+
         public void Die()
         {
             this.gameObject.SetActive(false);
         }
     }
-
 }

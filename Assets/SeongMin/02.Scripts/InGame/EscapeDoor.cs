@@ -1,6 +1,7 @@
 using Jaewook;
 using Photon.Pun;
 using Photon.Pun.Demo.PunBasics;
+using SeongMin;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,22 +9,42 @@ using UnityEngine;
 public class EscapeDoor : MonoBehaviour
 {
     Animator animator;
+
+    public GameObject doorSound;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        this.doorSound.SetActive(false);
+    }
+    private void Start()
+    {
+        Invoke("OnMiniMap", 0.5f);
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out FinalKey finalKey))
         {
             animator.SetTrigger("isOpen");
-            Invoke("GameEnding", 0.3f);
+            this.doorSound.SetActive(true);
+            Invoke("GameEnding", 1f);
         }
     }
     private void GameEnding()
     {
-        SeongMin.GameManager.Instance.roundManager.RoundPlayerDataReset();
-        //TODO µµ¸ÁÀÚÀÇ ½Â¸® ÀÌ¹Ç·Î ½Â¸® ÀÌº¥Æ® ¶ç¿ì±â 
-        PhotonNetwork.LoadLevel("LobbyScene 1");
+        GameDB.Instance.isWin = true;
+
+        EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Notice_Result);
+        StartCoroutine(EndCoroutine());
+        
+    }
+    IEnumerator EndCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        GameDB.Instance.playerMission.WinCheck("RunnerWin");
+    }
+    private void OnMiniMap()
+    {
+        transform.Find("MinimapIcon").gameObject.SetActive(true);
     }
 }

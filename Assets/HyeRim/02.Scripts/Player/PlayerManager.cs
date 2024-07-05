@@ -15,7 +15,7 @@ namespace NHR
         public UIPlayer uiPlayer;
 
         [Header("남은 생명 수")]
-        public int heart = 3;
+        public int heart = 2;
 
         [Header("인간 플레이어 움직임")]
         public HumanMovement humanMovement;
@@ -23,17 +23,17 @@ namespace NHR
         private void Awake()
         {
             SeongMin.GameManager.Instance.playerManager = this;
-            this.heart = 3;
+            this.heart = 2;
         }
         private void Start()
         {
-            //공격받음
-            EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
-            {
-                this.heart = heart - 1;
-                if (this.heart <= 0)
-                    GameManager.Instance.roundManager.photonView.RPC("AllPlayerLobbySceneLoad", RpcTarget.MasterClient);
-            }));
+            ////공격받음
+            //EventDispatcher.instance.AddEventHandler<int>((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler<int>((type, heart) =>
+            //{
+            //    //this.heart = heart - 1;
+            //    if (this.heart <= 0)
+            //        GameManager.Instance.roundManager.photonView.RPC("AllPlayerLobbySceneLoad", RpcTarget.MasterClient);
+            //}));
 
         }
     }

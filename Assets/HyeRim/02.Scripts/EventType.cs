@@ -30,7 +30,13 @@ namespace NHR
             Get_Mission, 
             Complete_Mission, 
             Notice_TotalMissionPercent, 
-            Complete_RoundMission
+            Complete_RoundMission, 
+            Popup_Tip, 
+            Notice_Result, 
+            Complete_ChaserMission, 
+            Remove_Mission, 
+            Get_Final_Key, 
+            Attack
         }
     }
 

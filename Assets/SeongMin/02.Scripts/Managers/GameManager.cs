@@ -23,7 +23,7 @@ namespace SeongMin
         public TitleSceneManager TitleSceneManager;
 
         [Header("Æ©Åä¸®¾ó ¾À ¸Å´ÏÀú")]
-        public TutorialSceneManager tutorialSceneManager;
+        public NHR.TutorialSceneManager tutorialSceneManager;
         [Header("·Îºñ ¾À ¸Å´ÏÀú")]
         public LobbySceneManager lobbySceneManager;
         public PhotonSettingManager photonSettingManager;
@@ -35,6 +35,10 @@ namespace SeongMin
         public RoundTimer roundTimer;
         public PlayerManager playerManager;
         public PhotonManager photonManager;
+        public void GameDataReset()
+        {
+            roundManager.RoundPlayerDataReset();
+        }
     }
 
 }

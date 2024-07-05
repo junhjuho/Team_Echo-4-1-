@@ -12,8 +12,8 @@ namespace NHR
 
         private void Awake()
         {
-            this.uiGameResult = FindObjectOfType<UIGameResult>();
-            this.Init();
+            //this.uiGameResult = FindObjectOfType<UIGameResult>();
+            //this.Init();
         }
         private void Init()
         {
@@ -29,6 +29,7 @@ namespace NHR
                 this.ShowGameResult();
                 GameDB.Instance.hasGameData = false;
             }
+            else this.gameObject.SetActive(false);
 
             this.uiGameResult.buttonStay.onClick.AddListener(() => this.uiGameResult.gameObject.SetActive(false));
             this.uiGameResult.buttonTitle.onClick.AddListener(() =>
@@ -42,9 +43,11 @@ namespace NHR
         {
             this.uiGameResult.gameObject.SetActive(true);
 
-            var text = this.uiGameResult.textResult.text;
-            if (GameDB.Instance.isWin) text = DataManager.Instance.GetEventDialog("gameWin");
-            else text = DataManager.Instance.GetEventDialog("gameLose");
+            ;
+            if (GameDB.Instance.isWin) this.uiGameResult.textResult.text = "승리";
+            else this.uiGameResult.textResult.text = "패배";
+
+            Debug.LogFormat("<color=yellow>게임 결과{0}</color>", GameDB.Instance.isWin);
         }
     }
 

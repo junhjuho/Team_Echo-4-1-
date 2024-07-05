@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static NHR.App;
 using static SeongMin.RoundManager;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace SeongMin
 {
@@ -26,6 +27,9 @@ namespace SeongMin
         public int needPersent = 60;
 
         public PhotonView photonView;
+
+        private WaitForSeconds popupTime = new WaitForSeconds(8f);
+
         private void Awake()
         {
             GameManager.Instance.roundManager = this;
@@ -75,6 +79,12 @@ namespace SeongMin
             EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_EventUI, "roundStart");
             // 라운드 타이머 시작
             GameManager.Instance.roundTimer.TimerStart();
+
+            //초기 Tips
+            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Move");
+            yield return this.popupTime;
+            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Popup_Tip, "Grab");
+
             yield break;
         }
         private void RoleSettingEvent()
@@ -134,36 +144,38 @@ namespace SeongMin
             if (playerCount == GameDB.Instance.playerCount)
                 isPlayerAllConnected = true;
         }
-        [PunRPC] // 모든 플레이어가 받는 곳
-        public void SendAllPlayerMissionScoreUpdate(int _value)
+
+        public void RPCSendScoreUpdate(int _value)
         {
-            // 플레이어들이 전체 목표 달성 했을 때. 라운드 체인지
-            currentRoundPlayersMissionPerSent = _value;
-            if (PhotonNetwork.IsMasterClient)
-            {
-                if (currentRoundPlayersMissionPerSent >= needPersent)
-                {
-                    // 파이털 키 생성하기
-                    GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
-                    PhotonNetwork.Instantiate("FinalKey", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
-                    // 탈출 지점 2개 생성하기
-                    GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
-                    PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[0].position,Quaternion.identity);
-                    PhotonNetwork.Instantiate("EscapeDoor",GameDB.Instance.escapeDoorPositionList[1].position,Quaternion.identity);
-    }
-                else // 그게 아니라면, 모든 플레이어에게 전체 미션 진행도 공유하기
-                {
-                    photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
-                }
-            }
+            //if (currentRoundPlayersMissionPerSent >= needPersent)
+            //{
+            //    // 파이털 키 생성하기
+            //    GameDB.Instance.Shuffle(GameManager.Instance.inGameMapManager.inGameItemPositionList);
+            //    GameObject key = PhotonNetwork.Instantiate("탈출구 열쇠", GameManager.Instance.inGameMapManager.inGameItemPositionList[0].position, Quaternion.identity);
+            //    // 탈출 지점 2개 생성하기
+            //    GameDB.Instance.Shuffle(GameDB.Instance.escapeDoorPositionList);
+            //    GameObject exitDoor1 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[0].position, Quaternion.identity);
+            //    GameObject exitDoor2 = PhotonNetwork.Instantiate("EscapeDoor", GameDB.Instance.escapeDoorPositionList[1].position, Quaternion.identity);
+            //    exitDoor1.SetActive(true);
+            //    exitDoor2.SetActive(true);
+            //    Debug.Log("키 생성");
+
+            //    key.transform.Find("MinimapIcon").gameObject.SetActive(true);
+            //    exitDoor1.transform.Find("MinimapIcon").gameObject.SetActive(true);
+            //    exitDoor2.transform.Find("MinimapIcon").gameObject.SetActive(true);
+            //    Debug.Log("미니맵 생성");
+            //}
+
+                photonView.RPC("UpdateAllPlayerMissionPersent", RpcTarget.All, _value);
         }
+
         [PunRPC]
         public void UpdateAllPlayerMissionPersent(int _value)
         {
             //필요 퍼센트의 1/4, 2/4, 3/4 4/4마다 UI 안내
-            int quater = this.needPersent / 4;
-            if (_value >= needPersent) EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Complete_RoundMission);
-            else if (_value % quater == 0) EventDispatcher.instance.SendEvent<int>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, _value);
+            //int quater = this.needPersent / 4;
+            string str = string.Format("{0}/{1}", GameDB.Instance.playerMission.runnerMissionClearCount, GameDB.Instance.playerMission.playerMissionArray.Length);
+            EventDispatcher.instance.SendEvent<string>((int)NHR.EventType.eEventType.Notice_TotalMissionPercent, str);
 
         }
 
@@ -186,6 +198,7 @@ namespace SeongMin
             GameDB.Instance.playerMission.runnerMissionClearCount = 0;
             GameDB.Instance.playerMission.chaserMissionClearCount = 0;
             GameDB.Instance.playerMission.playerTeamPlayMissionCount = 0;
+            GameDB.Instance.escapeDoorPositionList.Clear();
             currentRoundPlayersMissionCount = 0;
             currentRoundPlayersMissionPerSent = 0;
 
@@ -193,6 +206,7 @@ namespace SeongMin
         [PunRPC]
         public void AllPlayerLobbySceneLoad()
         {
+            SeongMin.GameManager.Instance.GameDataReset();
             PhotonNetwork.LoadLevel("LobbyScene 1");
         }
         //[PunRPC]

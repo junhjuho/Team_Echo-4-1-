@@ -16,17 +16,12 @@ namespace Jaewook
 
         public void OnGrab()
         {
-            // 스테미너 물약의 효과
-            Instantiate(pickupEffect, this.transform.position, Quaternion.identity);
 
            
         }
 
         public void OnUse()
         {
-            // 스테미너 회복 효과
-            Instantiate(useEffect, this.transform.position, Quaternion.identity);
-            Debug.Log("Health Potion Used");
 
             // stemina 회복 로직
             

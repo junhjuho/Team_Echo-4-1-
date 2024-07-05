@@ -23,9 +23,9 @@ namespace SeongMin
         private void Start()
         {
             // 각 방의 매니저에게 자신의 objectPosition을 알리기
-            if (sceneValue == SceneValue.tutorial)
-                GameManager.Instance.tutorialSceneManager.tutorialObjectPositionList.Add(this.transform);
-            else if (sceneValue == SceneValue.lobby)
+            //if (sceneValue == SceneValue.tutorial)
+            //    //GameManager.Instance.tutorialSceneManager.tutorialObjectPositionList.Add(this.transform);
+            if (sceneValue == SceneValue.lobby)
                 GameManager.Instance.lobbySceneManager.lobbyItemPositionList.Add(this.transform);
             else if (sceneValue == SceneValue.inGame)
             {

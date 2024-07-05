@@ -32,31 +32,35 @@ namespace SeongMin
         [Header("파티클과 미니맵 아이콘 자동 할당되는 곳 ")]
         public GameObject fx;
         public GameObject miniMap;
+        [Header("캔버스 용 트리거 체크 오브젝트")]
+        public GameObject triggerObject;
         protected void Start()
         {
-            miniMap = transform.Find("MinimapIcon").gameObject;
-            miniMap.SetActive(false);
+            miniMap = transform.parent.transform.Find("MinimapIcon").gameObject;
 
-            if (sceneValue == SceneValue.tutorial)
-                GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject);
-            else if (sceneValue == SceneValue.lobby)
-                GameManager.Instance.lobbySceneManager.lobbyItemList.Add(this.gameObject);
+            if (miniMap != null&&this.gameObject.name!= "탈출구 열쇠")
+                miniMap.SetActive(false);
+
+            //if (sceneValue == SceneValue.tutorial)
+            //    GameManager.Instance.tutorialSceneManager.tutorialObjectList.Add(this.gameObject.transform.parent.gameObject);
+            if (sceneValue == SceneValue.lobby)
+                GameManager.Instance.lobbySceneManager.lobbyItemList.Add(this.gameObject.transform.parent.gameObject);
             else if (sceneValue == SceneValue.inGame)
             {
                 if (itemValue == ItemValue.solo)
                 {
                     if (charactorValue == CharactorValue.runner)
-                        GameManager.Instance.inGameMapManager.inGameRunnerItemList.Add(this.gameObject);
+                        GameManager.Instance.inGameMapManager.inGameRunnerItemList.Add(this.gameObject.transform.parent.gameObject);
                     else
                     {
-                        GameManager.Instance.inGameMapManager.inGameChaserItemList.Add(this.gameObject);
+                        GameManager.Instance.inGameMapManager.inGameChaserItemList.Add(this.gameObject.transform.parent.gameObject);
                         fx = transform.Find("FX").gameObject;
                         fx.SetActive(false);
                     }
                 }
                 else
                 {
-                    GameManager.Instance.inGameMapManager.inGameTeamPlayItemList.Add(this.gameObject);
+                    GameManager.Instance.inGameMapManager.inGameTeamPlayItemList.Add(this.gameObject.transform.parent.gameObject);
                 }
             }       
         }

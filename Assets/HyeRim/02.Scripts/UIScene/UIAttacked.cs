@@ -16,9 +16,11 @@ namespace NHR
         //텍스트
         public TMP_Text textState;
 
-        public GameObject uiHeart;
+        //public GameObject uiHeart;
         //목숨들
-        public UIHeart[] hearts;
+        //public UIHeart[] hearts;
+
+        public int attackCount = 0;
 
         public void Init()
         {
@@ -29,12 +31,12 @@ namespace NHR
             {
                 image.gameObject.SetActive(false);
             }
-            foreach (var heart in this.hearts)
-            {
-                heart.imageDeath.SetActive(false);
-            }
+            //foreach (var heart in this.hearts)
+            //{
+            //    heart.imageDeath.SetActive(false);
+            //}
 
-            this.uiHeart.gameObject.SetActive(false);
+            //this.uiHeart.gameObject.SetActive(false);
         }
         public void Close()
         {
@@ -46,14 +48,16 @@ namespace NHR
             this.imageDeath.gameObject.SetActive(false);
             this.imageDeath.gameObject.SetActive(false);
             this.textState.gameObject.SetActive(false);
-            this.uiHeart.SetActive(false);
+            //this.uiHeart.SetActive(false);
         }
-        public void OpenUI(int heart)
+        public void OpenUI()
         {
-            this.uiHeart.SetActive(true);
-            this.attackedImages[3 - heart].gameObject.SetActive(true);
+            Debug.Log("기절 UI 하트 업데이트");
+            //this.uiHeart.SetActive(true);
+            for (int i = 0; i < this.attackCount; i++) this.attackedImages[i].gameObject.SetActive(true);
             this.imageDeath.gameObject.SetActive(true);
             this.textState.gameObject.SetActive(true);
+            this.attackCount++;
         }
     }
 

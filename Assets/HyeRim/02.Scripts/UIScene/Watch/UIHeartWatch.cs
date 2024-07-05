@@ -9,32 +9,41 @@ namespace NHR
     public class UIHeartWatch : MonoBehaviour
     {
         public UIHeart[] hearts;
-        public int nowHeart = 3;
-        private int maxHeart = 3;
+        public int attackCount = 0;
+        private int maxHeart = 2;
 
         private void Awake()
         {
             this.hearts = GetComponentsInChildren<UIHeart>();
+            this.attackCount = 0;
         }
         private void Start()
         {
-            this.gameObject.SetActive(false);
-        }
-        private void OnEnable()
-        {
-            Debug.Log("Heart Enabled");
-            if (!GameDB.Instance.playerMission.isChaser)
-            {
-                this.nowHeart = SeongMin.GameManager.Instance.playerManager.heart;
-                if (this.nowHeart < this.maxHeart)
-                {
-                    for (int i = 0; i < 3 - this.nowHeart; i++)
-                    {
-                        this.hearts[i].imageDeath.SetActive(true);
-                    }
-                }
+            if(GameDB.Instance.playerMission.isChaser) this.gameObject.SetActive(false);
 
-            }
+            EventDispatcher.instance.AddEventHandler((int)NHR.EventType.eEventType.Notice_Attacked, new EventHandler((type) =>
+            {
+                Debug.Log("미션 옆 하트 업데이트");
+                this.hearts[this.attackCount].imageDeath.SetActive(true);
+                this.attackCount++;
+            }));
+
         }
+        //public void UpdateHeart()
+        //{
+        //    Debug.Log("Heart Enabled");
+        //    if (!GameDB.Instance.playerMission.isChaser)
+        //    {
+        //        this.nowHeart = SeongMin.GameManager.Instance.playerManager.heart;
+        //        if (this.nowHeart < this.maxHeart)
+        //        {
+        //            for (int i = 0; i < 3 - this.nowHeart; i++)
+        //            {
+        //                this.hearts[i].imageDeath.SetActive(true);
+        //            }
+        //        }
+
+        //    }
+        //}
     }
 }
