@@ -123,9 +123,8 @@ namespace SeongMin
                     // 아이템 끄기
                     _item.isFind = true;
                     _item.triggerObject.SetActive(false);
-                    _item.gameObject.SetActive(false);
-                    _item.triggerObject.SetActive(false);
                     _item.miniMap.SetActive(false);
+                    _item.gameObject.SetActive(false);
                     // 아이템 표시 UI 끄기
                     var canvas = GameDB.Instance.itemInfomationCanvas;
                     canvas.image.SetActive(false);
