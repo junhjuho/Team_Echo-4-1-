@@ -8,7 +8,8 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 public class CustomActionBasedController : ActionBasedController
 {
     [SerializeField]
-    InputActionProperty RunAction = new InputActionProperty(new InputAction("Run", type: InputActionType.Button) { wantsInitialStateCheck = true });
+    InputActionProperty RunAction = 
+        new InputActionProperty(new InputAction("Run", type: InputActionType.Button) { wantsInitialStateCheck = true });
    
     public InputActionProperty runAction
     {

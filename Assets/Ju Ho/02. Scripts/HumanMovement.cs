@@ -11,7 +11,7 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class HumanMovement : PlayerMovement, IMovable
+public class HumanMovement : PlayerMovement
 {
     CustomActionBasedController customActionBasedController;
     public bool isEnergyDown = false;
@@ -38,7 +38,7 @@ public class HumanMovement : PlayerMovement, IMovable
         Move();
     }
 
-    public void Move()
+    public override void Move()
     {
         if (pv.IsMine)
         {

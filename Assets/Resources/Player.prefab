@@ -22325,7 +22325,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
   origin: {fileID: 0}
-  controllers: []
+  controllers:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5811930333523427140
 MonoBehaviour:
   m_ObjectHideFlags: 0

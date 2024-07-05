@@ -4,7 +4,7 @@ using System;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
-public class MonsterMovement : PlayerMovement, IMovable
+public class MonsterMovement : PlayerMovement
 {
     public GameObject origin;
     public PlayerAction[] controllers;
@@ -40,13 +40,12 @@ public class MonsterMovement : PlayerMovement, IMovable
         Move();
     }
 
-    public void Move()
+    public override void Move()
     {
         base.Move();
 
         if (pv.IsMine)
         {
-            move = moveProvider.leftHandMoveAction.reference.action.ReadValue<Vector2>();
             moveProvider.moveSpeed = 3f;
             animator.SetFloat("Walk", move.magnitude);
         }

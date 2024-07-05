@@ -65,9 +65,6 @@ public class HumanHit : MonoBehaviour, IDamageable
         {
             isDie = true;
 
-            //공격 UI 이벤트
-            //EventDispatcher.instance.SendEvent((int)NHR.EventType.eEventType.Attack);
-
             this.gameObject.SetActive(false);
         }
     }
