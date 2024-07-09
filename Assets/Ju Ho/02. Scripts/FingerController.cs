@@ -14,7 +14,7 @@ public class FingerController : MonoBehaviour
     void Start()
     {
         animator = this.GetComponent<Animator>();
-        pv = this.GetComponent<PhotonView>();
+        pv = this.transform.GetComponentInParent<PhotonView>();
         moveProvider = FindAnyObjectByType<ActionBasedContinuousMoveProvider>();
 
         for (int i = 0; i < controllers.Length; i++)

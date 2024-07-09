@@ -47,13 +47,8 @@ public class PlayerSyncController : MonoBehaviour
         {
             float distance = headRig.transform.position.y - riggingManager.modelHeight; // Å° º¸Á¤
 
-            origin.transform.position = new Vector3(origin.transform.position.x, origin.transform.position.y - distance, origin.transform.position.z);
-
-            if (headRig.transform.position.y > riggingManager.modelHeight)
-            {
-                headRig.transform.position = new Vector3(headRig.transform.position.x, riggingManager.modelHeight, headRig.transform.position.z);
-                head.transform.position = new Vector3(head.transform.position.x, riggingManager.modelHeight, head.transform.position.z);            
-            }
+            origin.transform.position = 
+                new Vector3(origin.transform.position.x, origin.transform.position.y - distance, origin.transform.position.z);
 
             SyncTransform(head, headRig);
             SyncTransform(leftHand, leftHandRig);

@@ -11,7 +11,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class PlayerMovement : MonoBehaviour
 {
     protected Animator animator;
-    protected InputActionAsset inputActionAsset;
     protected ActionBasedContinuousMoveProvider moveProvider;
     protected PlayerSyncController playerSyncController;
 
@@ -32,3 +31,5 @@ public class PlayerMovement : MonoBehaviour
         move = moveProvider.leftHandMoveAction.reference.action.ReadValue<Vector2>();
     }
 }
+
+
