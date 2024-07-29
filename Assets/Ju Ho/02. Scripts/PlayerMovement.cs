@@ -13,16 +13,15 @@ public class PlayerMovement : MonoBehaviour
     protected Animator animator;
     protected ActionBasedContinuousMoveProvider moveProvider;
     protected PlayerSyncController playerSyncController;
+    protected Vector2 move;
 
     public PhotonView pv;
-
-    protected Vector2 move;
 
     public virtual void Start()
     {
         animator = this.GetComponent<Animator>();
         pv = this.transform.GetComponentInParent<PhotonView>();
-        moveProvider = FindObjectOfType<ActionBasedContinuousMoveProvider>(); // XR Origin에 있는 컴포넌트
+        moveProvider = FindObjectOfType<ActionBasedContinuousMoveProvider>();
         playerSyncController = this.transform.GetComponentInParent<PlayerSyncController>();
     }
 

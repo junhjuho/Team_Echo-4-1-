@@ -50,9 +50,9 @@ public class PlayerSyncController : MonoBehaviour
             origin.transform.position = 
                 new Vector3(origin.transform.position.x, origin.transform.position.y - distance, origin.transform.position.z);
 
-            SyncTransform(head, headRig);
-            SyncTransform(leftHand, leftHandRig);
-            SyncTransform(rightHand, rightHandRig);
+            SyncTransform(head, headRig);                // headRig = xr origin¿« main camera
+            SyncTransform(leftHand, leftHandRig);        // leftHandRig = xr origin¿« left controller
+            SyncTransform(rightHand, rightHandRig);      // rightHandRig = xr origin¿« right controller
         }
     }
 

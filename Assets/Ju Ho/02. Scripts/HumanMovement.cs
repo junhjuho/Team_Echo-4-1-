@@ -50,7 +50,6 @@ public class HumanMovement : PlayerMovement
 
             moveProvider.moveSpeed = isRunBtnDown && !isEnergyDown ? 4f : 2f; // 달리기 버튼에 따른 속도
 
-            Debug.Log(move.magnitude);
             animator.SetFloat("Move", move.magnitude * moveBlendtree);
         }
         else

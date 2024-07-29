@@ -42,13 +42,14 @@ public class MonsterMovement : PlayerMovement
 
     public override void Move()
     {
-        base.Move();
-
         if (pv.IsMine)
         {
+            base.Move();
             moveProvider.moveSpeed = 3f;
             animator.SetFloat("Walk", move.magnitude);
         }
+        else
+            return;
     }
 
     public void MosterSound() // ¿©·¯¹ø
